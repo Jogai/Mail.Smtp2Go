@@ -21,7 +21,7 @@ Scott.Mail.Smtp2Go.ApiResponse<TData>.ApiResponse() -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Data.get -> TData
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Data.init -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
-Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.init -> void
+Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.set -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.get -> string!
 Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.init -> void
 Scott.Mail.Smtp2Go.AuthenticationScheme

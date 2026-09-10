@@ -15,7 +15,10 @@ public sealed class ApiResponse<TData>
     [JsonPropertyName("data")]
     public required TData Data { get; init; }
 
-    /// <summary>Any top-level field this library does not model, so new server fields are observable before the model is updated.</summary>
+    /// <summary>
+    /// Any top-level field this library does not model, so new server fields are observable before the model is updated.
+    /// Has a plain setter because the source generator binds <c>required</c>/<c>init</c> members through an object initializer, which an extension-data bag cannot use.
+    /// </summary>
     [JsonExtensionData]
-    public IDictionary<string, JsonElement>? Extra { get; init; }
+    public IDictionary<string, JsonElement>? Extra { get; set; }
 }

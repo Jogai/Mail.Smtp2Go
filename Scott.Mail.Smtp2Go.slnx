@@ -7,4 +7,7 @@
   <Folder Name="/src/tools/">
     <Project Path="src/tools/Scott.Mail.Smtp2Go.SpecHarvester/Scott.Mail.Smtp2Go.SpecHarvester.csproj" />
   </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/Scott.Mail.Smtp2Go.Tests.Shared/Scott.Mail.Smtp2Go.Tests.Shared.csproj" />
+  </Folder>
 </Solution>

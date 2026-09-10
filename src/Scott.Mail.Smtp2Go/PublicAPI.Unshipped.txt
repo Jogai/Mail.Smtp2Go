@@ -1,1 +1,66 @@
 #nullable enable
+Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.AuthenticationScheme.ApiKeyHeader = 0 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.AuthenticationScheme.Bearer = 1 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.Region
+Scott.Mail.Smtp2Go.Region.AU = 3 -> Scott.Mail.Smtp2Go.Region
+Scott.Mail.Smtp2Go.Region.EU = 2 -> Scott.Mail.Smtp2Go.Region
+Scott.Mail.Smtp2Go.Region.Global = 0 -> Scott.Mail.Smtp2Go.Region
+Scott.Mail.Smtp2Go.Region.US = 1 -> Scott.Mail.Smtp2Go.Region
+Scott.Mail.Smtp2Go.RegionEndpoints
+Scott.Mail.Smtp2Go.RequestOptions
+Scott.Mail.Smtp2Go.RequestOptions.<Clone>$() -> Scott.Mail.Smtp2Go.RequestOptions!
+Scott.Mail.Smtp2Go.RequestOptions.AllowRetry.get -> bool
+Scott.Mail.Smtp2Go.RequestOptions.AllowRetry.init -> void
+Scott.Mail.Smtp2Go.RequestOptions.ApiKeyOverride.get -> string?
+Scott.Mail.Smtp2Go.RequestOptions.ApiKeyOverride.init -> void
+Scott.Mail.Smtp2Go.RequestOptions.Equals(Scott.Mail.Smtp2Go.RequestOptions? other) -> bool
+Scott.Mail.Smtp2Go.RequestOptions.Region.get -> Scott.Mail.Smtp2Go.Region?
+Scott.Mail.Smtp2Go.RequestOptions.Region.init -> void
+Scott.Mail.Smtp2Go.RequestOptions.RequestOptions() -> void
+Scott.Mail.Smtp2Go.RequestOptions.SubaccountId.get -> string?
+Scott.Mail.Smtp2Go.RequestOptions.SubaccountId.init -> void
+Scott.Mail.Smtp2Go.RequestOptions.Timeout.get -> System.TimeSpan?
+Scott.Mail.Smtp2Go.RequestOptions.Timeout.init -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ApiKey.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ApiKey.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AuthenticationScheme.get -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AuthenticationScheme.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.BaseUrl.get -> System.Uri?
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.BaseUrl.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ClientSideValidation.get -> bool
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ClientSideValidation.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.DefaultFastAccept.get -> bool?
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.DefaultFastAccept.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.DefaultSubaccountId.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.DefaultSubaccountId.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.GetValidationErrors() -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.GetValidationWarnings() -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Region.get -> Scott.Mail.Smtp2Go.Region?
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Region.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Smtp2GoClientOptions() -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Timeout.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Timeout.set -> void
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Validate() -> void
+Scott.Mail.Smtp2Go.Smtp2GoException
+Scott.Mail.Smtp2Go.Smtp2GoException.Smtp2GoException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoException.Smtp2GoException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoException.Smtp2GoException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Smtp2GoValidationException
+Scott.Mail.Smtp2Go.Smtp2GoValidationException.Errors.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message, System.Collections.Generic.IReadOnlyList<string!>! errors) -> void
+Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message, System.Exception? innerException) -> void
+override Scott.Mail.Smtp2Go.RequestOptions.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.RequestOptions.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.RequestOptions.ToString() -> string!
+static Scott.Mail.Smtp2Go.RegionEndpoints.AU.get -> System.Uri!
+static Scott.Mail.Smtp2Go.RegionEndpoints.EU.get -> System.Uri!
+static Scott.Mail.Smtp2Go.RegionEndpoints.GetBaseUrl(Scott.Mail.Smtp2Go.Region region) -> System.Uri!
+static Scott.Mail.Smtp2Go.RegionEndpoints.Global.get -> System.Uri!
+static Scott.Mail.Smtp2Go.RegionEndpoints.US.get -> System.Uri!
+static Scott.Mail.Smtp2Go.RequestOptions.operator !=(Scott.Mail.Smtp2Go.RequestOptions? left, Scott.Mail.Smtp2Go.RequestOptions? right) -> bool
+static Scott.Mail.Smtp2Go.RequestOptions.operator ==(Scott.Mail.Smtp2Go.RequestOptions? left, Scott.Mail.Smtp2Go.RequestOptions? right) -> bool
+static Scott.Mail.Smtp2Go.Smtp2GoClientOptions.IsWellFormedApiKey(string! apiKey) -> bool

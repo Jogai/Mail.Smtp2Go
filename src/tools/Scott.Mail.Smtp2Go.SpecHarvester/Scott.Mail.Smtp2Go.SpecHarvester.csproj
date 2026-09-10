@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>Harvests the SMTP2GO API specification from developers.smtp2go.com into docs/api-spec (plan 08).</Description>
+  </PropertyGroup>
+
+</Project>

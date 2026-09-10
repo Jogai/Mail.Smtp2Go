@@ -4,4 +4,7 @@
     <Project Path="src/Scott.Mail.Smtp2Go.DependencyInjection/Scott.Mail.Smtp2Go.DependencyInjection.csproj" />
     <Project Path="src/Scott.Mail.Smtp2Go/Scott.Mail.Smtp2Go.csproj" />
   </Folder>
+  <Folder Name="/src/tools/">
+    <Project Path="src/tools/Scott.Mail.Smtp2Go.SpecHarvester/Scott.Mail.Smtp2Go.SpecHarvester.csproj" />
+  </Folder>
 </Solution>

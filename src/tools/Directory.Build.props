@@ -1,0 +1,9 @@
+<Project>
+  <!-- Tools skip src/Directory.Build.props (packable defaults, public API analyzers) and import the repository root directly. -->
+  <Import Project="$(MSBuildThisFileDirectory)../../Directory.Build.props" />
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,7 @@
+<Project>
+  <!-- Evaluated after the project file, so $(TargetFramework) is known for each inner multi-target build. -->
+  <PropertyGroup Condition="'$(TargetFramework)' != '' And $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">
+    <IsTrimmable>true</IsTrimmable>
+    <IsAotCompatible>true</IsAotCompatible>
+  </PropertyGroup>
+</Project>

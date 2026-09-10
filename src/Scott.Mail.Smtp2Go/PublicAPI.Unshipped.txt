@@ -1,7 +1,30 @@
 #nullable enable
+Scott.Mail.Smtp2Go.ApiResponse<TData>
+Scott.Mail.Smtp2Go.ApiResponse<TData>.ApiResponse() -> void
+Scott.Mail.Smtp2Go.ApiResponse<TData>.Data.get -> TData
+Scott.Mail.Smtp2Go.ApiResponse<TData>.Data.init -> void
+Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.init -> void
+Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.get -> string!
+Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.init -> void
 Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.ApiKeyHeader = 0 -> Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.Bearer = 1 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
+Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.PercentageConverter() -> void
+Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter
+Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Smtp2GoDateTimeOffsetConverter() -> void
+Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>
+Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.TolerantEnumConverter() -> void
+Scott.Mail.Smtp2Go.Percentage
+Scott.Mail.Smtp2Go.Percentage.Deconstruct(out decimal? Value, out string? Raw) -> void
+Scott.Mail.Smtp2Go.Percentage.Equals(Scott.Mail.Smtp2Go.Percentage other) -> bool
+Scott.Mail.Smtp2Go.Percentage.Percentage() -> void
+Scott.Mail.Smtp2Go.Percentage.Percentage(decimal? Value, string? Raw) -> void
+Scott.Mail.Smtp2Go.Percentage.Raw.get -> string?
+Scott.Mail.Smtp2Go.Percentage.Raw.init -> void
+Scott.Mail.Smtp2Go.Percentage.Value.get -> decimal?
+Scott.Mail.Smtp2Go.Percentage.Value.init -> void
 Scott.Mail.Smtp2Go.Region
 Scott.Mail.Smtp2Go.Region.AU = 3 -> Scott.Mail.Smtp2Go.Region
 Scott.Mail.Smtp2Go.Region.EU = 2 -> Scott.Mail.Smtp2Go.Region
@@ -82,12 +105,25 @@ const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> lon
 const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.AllowRetryKey = "Scott.Mail.Smtp2Go.AllowRetry" -> string!
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.EndpointKey = "Scott.Mail.Smtp2Go.Endpoint" -> string!
+override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.Percentage
+override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.Percentage value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.DateTimeOffset
+override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Write(System.Text.Json.Utf8JsonWriter! writer, System.DateTimeOffset value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> TEnum
+override Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.Write(System.Text.Json.Utf8JsonWriter! writer, TEnum value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Percentage.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.RequestOptions.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.ToString() -> string!
 override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
+static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Format(System.DateTimeOffset value) -> string!
+static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.TryParse(string! text, out System.DateTimeOffset value) -> bool
+static Scott.Mail.Smtp2Go.Percentage.FromDecimal(decimal value) -> Scott.Mail.Smtp2Go.Percentage
+static Scott.Mail.Smtp2Go.Percentage.FromString(string? raw) -> Scott.Mail.Smtp2Go.Percentage
+static Scott.Mail.Smtp2Go.Percentage.operator !=(Scott.Mail.Smtp2Go.Percentage left, Scott.Mail.Smtp2Go.Percentage right) -> bool
+static Scott.Mail.Smtp2Go.Percentage.operator ==(Scott.Mail.Smtp2Go.Percentage left, Scott.Mail.Smtp2Go.Percentage right) -> bool
 static Scott.Mail.Smtp2Go.RegionEndpoints.AU.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.EU.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.GetBaseUrl(Scott.Mail.Smtp2Go.Region region) -> System.Uri!
@@ -105,3 +141,5 @@ static Scott.Mail.Smtp2Go.Transport.EndpointTable.Get(string! path) -> Scott.Mai
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.TryGet(string! path, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.GetAllowRetry(System.Net.Http.HttpRequestMessage! request) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.TryGetEndpoint(System.Net.Http.HttpRequestMessage! request, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
+~override Scott.Mail.Smtp2Go.Percentage.Equals(object obj) -> bool
+~override Scott.Mail.Smtp2Go.Percentage.ToString() -> string

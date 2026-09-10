@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
     <Description>Client for the SMTP2GO v3 API: email sending, webhooks, reporting, templates, suppressions, archive, account management and SMS.</Description>
+    <!-- netstandard2.0: also polyfill the trimming annotations (DynamicallyAccessedMembers etc.) so the source compiles unchanged on every target. -->
+    <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +13,12 @@
     <InternalsVisibleTo Include="Scott.Mail.Smtp2Go.Tests.Integration" />
   </ItemGroup>
 
-  <!-- In-box on net8.0 and later; packages are only needed for netstandard2.0. PolySharp generates the C# language-feature polyfills. -->
+  <!-- net8.0: the in-box System.Text.Json 8 lacks JsonStringEnumMemberNameAttribute (added in 9), so the package is referenced there too. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+  <!-- In-box on net10.0; packages are only needed for netstandard2.0. PolySharp generates the C# language-feature polyfills. -->
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
     <PackageReference Include="PolySharp" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />

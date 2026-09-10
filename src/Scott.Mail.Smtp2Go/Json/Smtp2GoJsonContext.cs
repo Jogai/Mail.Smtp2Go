@@ -1,0 +1,34 @@
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Json.Converters;
+
+namespace Scott.Mail.Smtp2Go.Json;
+
+/// <summary>
+/// Source-generated serializer context for every request and response model. snake_case wire names, nulls omitted, case-insensitive
+/// reads, comments skipped, numbers readable from strings, and the SMTP2GO timestamp converter. Every model type must be listed here
+/// with <see cref="JsonSerializableAttribute"/>; the transport refuses types that are not, which keeps the library trim- and AOT-safe.
+/// </summary>
+[JsonSourceGenerationOptions(
+    PropertyNamingPolicy = JsonKnownNamingPolicy.SnakeCaseLower,
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    PropertyNameCaseInsensitive = true,
+    ReadCommentHandling = JsonCommentHandling.Skip,
+    NumberHandling = JsonNumberHandling.AllowReadingFromString,
+    Converters = new[] { typeof(Smtp2GoDateTimeOffsetConverter) })]
+
+// Raw payloads usable with IRawClient for endpoints that have no typed model yet.
+[JsonSerializable(typeof(JsonElement))]
+[JsonSerializable(typeof(JsonNode))]
+[JsonSerializable(typeof(JsonObject))]
+[JsonSerializable(typeof(JsonArray))]
+[JsonSerializable(typeof(ApiResponse<JsonElement>))]
+[JsonSerializable(typeof(ApiResponse<JsonNode>))]
+[JsonSerializable(typeof(ApiResponse<JsonObject>))]
+[JsonSerializable(typeof(ApiResponse<JsonArray>))]
+
+// Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
+internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
+{
+}

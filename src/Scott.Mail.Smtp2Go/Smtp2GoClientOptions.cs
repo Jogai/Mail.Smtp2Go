@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization.Metadata;
+
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>Settings for the SMTP2GO client. A plain mutable class so it can be bound from configuration.</summary>
@@ -29,6 +31,13 @@ public sealed class Smtp2GoClientOptions
 
     /// <summary>Validate request bodies (size limits, recipient counts) before any network activity. Defaults to <see langword="true"/>.</summary>
     public bool ClientSideValidation { get; set; } = true;
+
+    /// <summary>
+    /// An extra source-generated <see cref="System.Text.Json.Serialization.JsonSerializerContext"/> (or any resolver) whose types become usable with the raw
+    /// client's typed overload, for endpoints this library has no model for. Register both the request type and <c>ApiResponse&lt;TResponse&gt;</c> in it.
+    /// The library's own context is always consulted first.
+    /// </summary>
+    public IJsonTypeInfoResolver? AdditionalJsonTypeInfoResolver { get; set; }
 
     /// <summary>Throws <see cref="Smtp2GoValidationException"/> listing every problem found by <see cref="GetValidationErrors"/>.</summary>
     public void Validate()

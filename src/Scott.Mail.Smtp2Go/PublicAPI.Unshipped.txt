@@ -90,6 +90,8 @@ Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, System.Exception? innerException) -> void
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
+Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.set -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ApiKey.get -> string?
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ApiKey.set -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AuthenticationScheme.get -> Scott.Mail.Smtp2Go.AuthenticationScheme
@@ -153,6 +155,8 @@ Scott.Mail.Smtp2Go.Transport.Endpoint.Path.init -> void
 Scott.Mail.Smtp2Go.Transport.Endpoint.RateLimit.get -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.Endpoint.RateLimit.init -> void
 Scott.Mail.Smtp2Go.Transport.EndpointTable
+Scott.Mail.Smtp2Go.Transport.IRequestValidator
+Scott.Mail.Smtp2Go.Transport.IRequestValidator.Validate(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Collections.Generic.ICollection<string!>! errors) -> void
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestCompleted(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, int statusCode, string? requestId, System.TimeSpan elapsed) -> void
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestFailed(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Exception! exception, string? requestId) -> void

@@ -94,6 +94,12 @@ Scott.Mail.Smtp2Go.Transport.Endpoint.Path.init -> void
 Scott.Mail.Smtp2Go.Transport.Endpoint.RateLimit.get -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.Endpoint.RateLimit.init -> void
 Scott.Mail.Smtp2Go.Transport.EndpointTable
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestCompleted(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, int statusCode, string? requestId, System.TimeSpan elapsed) -> void
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestFailed(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Exception! exception, string? requestId) -> void
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestStarting(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, Scott.Mail.Smtp2Go.Region? region) -> void
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.SubaccountIdIgnored(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint) -> void
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.ValidationFailed(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Collections.Generic.IReadOnlyList<string!>! errors) -> void
 Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.RateLimitClass.ActivitySearch = 1 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.RateLimitClass.ApiKeyAdd = 2 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
@@ -101,10 +107,12 @@ Scott.Mail.Smtp2Go.Transport.RateLimitClass.EmailSearch = 4 -> Scott.Mail.Smtp2G
 Scott.Mail.Smtp2Go.Transport.RateLimitClass.None = 0 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.RateLimitClass.SubaccountAdd = 3 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.RequestOptionKeys
+Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource
 const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
 const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.AllowRetryKey = "Scott.Mail.Smtp2Go.AllowRetry" -> string!
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.EndpointKey = "Scott.Mail.Smtp2Go.Endpoint" -> string!
+const Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource.Name = "Scott.Mail.Smtp2Go" -> string!
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.Percentage
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.Percentage value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.DateTimeOffset

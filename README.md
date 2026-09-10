@@ -32,7 +32,7 @@ The quick start above is compiled by a unit test so it stays in sync with the AP
 
 ## Status
 
-Scaffold only. The client surface lands in the following plans; nothing in this package is usable yet.
+Core transport is in place: construction, header authentication, regional endpoints, subaccount injection, client-side validation, the response envelope, typed errors, tracing and the `client.Raw` escape hatch that can call any endpoint today (see [docs/getting-started.md](docs/getting-started.md)). The typed family clients, starting with `client.Email`, land in the following plans.
 
 ## License
 

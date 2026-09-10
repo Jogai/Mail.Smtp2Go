@@ -36,6 +36,11 @@ Scott.Mail.Smtp2Go.FieldValidationError.FieldName.init -> void
 Scott.Mail.Smtp2Go.FieldValidationError.FieldValidationError(string? FieldName, string! Message) -> void
 Scott.Mail.Smtp2Go.FieldValidationError.Message.get -> string!
 Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
+Scott.Mail.Smtp2Go.IRawClient
+Scott.Mail.Smtp2Go.IRawClient.SendAsync<TRequest, TResponse>(string! path, TRequest? body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<TResponse>!>!
+Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonElement body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Text.Json.JsonDocument!>!
+Scott.Mail.Smtp2Go.ISmtp2GoClient
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.PercentageConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter
@@ -89,6 +94,12 @@ Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message) -> void
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, System.Exception? innerException) -> void
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
+Scott.Mail.Smtp2Go.Smtp2GoClient
+Scott.Mail.Smtp2Go.Smtp2GoClient.Options.get -> Scott.Mail.Smtp2Go.Smtp2GoClientOptions!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options) -> void
+Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(System.Net.Http.HttpClient! httpClient, Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options, Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics? diagnostics = null) -> void
+Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(string! apiKey) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.set -> void

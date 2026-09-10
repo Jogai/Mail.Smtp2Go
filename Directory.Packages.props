@@ -4,7 +4,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
-  <!-- Versions are pinned exactly and bumped deliberately. Resolved on 2026-09-10 with `dotnet package search <id> --exact-match`. -->
+  <!-- Versions are pinned exactly and bumped deliberately. Resolved on 2026-09-10 with dotnet package search (exact match). -->
   <ItemGroup Label="Core (netstandard2.0 only)">
     <PackageVersion Include="System.Text.Json" Version="10.0.12" />
     <PackageVersion Include="System.Net.Http.Json" Version="10.0.12" />

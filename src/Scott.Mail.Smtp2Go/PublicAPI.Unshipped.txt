@@ -1,4 +1,21 @@
 #nullable enable
+Scott.Mail.Smtp2Go.ApiError
+Scott.Mail.Smtp2Go.ApiError.<Clone>$() -> Scott.Mail.Smtp2Go.ApiError!
+Scott.Mail.Smtp2Go.ApiError.ApiError() -> void
+Scott.Mail.Smtp2Go.ApiError.Code.get -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
+Scott.Mail.Smtp2Go.ApiError.Code.init -> void
+Scott.Mail.Smtp2Go.ApiError.Equals(Scott.Mail.Smtp2Go.ApiError? other) -> bool
+Scott.Mail.Smtp2Go.ApiError.ErrorCode.get -> string?
+Scott.Mail.Smtp2Go.ApiError.ErrorCode.init -> void
+Scott.Mail.Smtp2Go.ApiError.FieldValidationErrors.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.FieldValidationError!>!
+Scott.Mail.Smtp2Go.ApiError.FieldValidationErrors.init -> void
+Scott.Mail.Smtp2Go.ApiError.IsParsed.get -> bool
+Scott.Mail.Smtp2Go.ApiError.Message.get -> string?
+Scott.Mail.Smtp2Go.ApiError.Message.init -> void
+Scott.Mail.Smtp2Go.ApiError.RawBody.get -> string?
+Scott.Mail.Smtp2Go.ApiError.RawBody.init -> void
+Scott.Mail.Smtp2Go.ApiError.RequestId.get -> string?
+Scott.Mail.Smtp2Go.ApiError.RequestId.init -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>
 Scott.Mail.Smtp2Go.ApiResponse<TData>.ApiResponse() -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Data.get -> TData
@@ -10,6 +27,15 @@ Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.init -> void
 Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.ApiKeyHeader = 0 -> Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.Bearer = 1 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.FieldValidationError
+Scott.Mail.Smtp2Go.FieldValidationError.<Clone>$() -> Scott.Mail.Smtp2Go.FieldValidationError!
+Scott.Mail.Smtp2Go.FieldValidationError.Deconstruct(out string? FieldName, out string! Message) -> void
+Scott.Mail.Smtp2Go.FieldValidationError.Equals(Scott.Mail.Smtp2Go.FieldValidationError? other) -> bool
+Scott.Mail.Smtp2Go.FieldValidationError.FieldName.get -> string?
+Scott.Mail.Smtp2Go.FieldValidationError.FieldName.init -> void
+Scott.Mail.Smtp2Go.FieldValidationError.FieldValidationError(string? FieldName, string! Message) -> void
+Scott.Mail.Smtp2Go.FieldValidationError.Message.get -> string!
+Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.PercentageConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter
@@ -45,6 +71,24 @@ Scott.Mail.Smtp2Go.RequestOptions.SubaccountId.get -> string?
 Scott.Mail.Smtp2Go.RequestOptions.SubaccountId.init -> void
 Scott.Mail.Smtp2Go.RequestOptions.Timeout.get -> System.TimeSpan?
 Scott.Mail.Smtp2Go.RequestOptions.Timeout.init -> void
+Scott.Mail.Smtp2Go.Smtp2GoApiException
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Code.get -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Error.get -> Scott.Mail.Smtp2Go.ApiError?
+Scott.Mail.Smtp2Go.Smtp2GoApiException.ErrorCode.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoApiException.FieldValidationErrors.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.FieldValidationError!>!
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Path.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoApiException.RawBody.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoApiException.RequestId.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Smtp2GoApiException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Smtp2GoApiException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Smtp2GoApiException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Smtp2GoApiException.Smtp2GoApiException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
+Scott.Mail.Smtp2Go.Smtp2GoApiException.StatusCode.get -> int
+Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException
+Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ApiKey.get -> string?
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.ApiKey.set -> void
@@ -66,10 +110,25 @@ Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Smtp2GoClientOptions() -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Timeout.get -> System.TimeSpan
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Timeout.set -> void
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.Validate() -> void
+Scott.Mail.Smtp2Go.Smtp2GoErrorCode
+Scott.Mail.Smtp2Go.Smtp2GoErrorCode.EndpointPermissionDenied = 1 -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
+Scott.Mail.Smtp2Go.Smtp2GoErrorCode.NonValidatingInPayload = 2 -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
+Scott.Mail.Smtp2Go.Smtp2GoErrorCode.Unknown = 0 -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
 Scott.Mail.Smtp2Go.Smtp2GoException
 Scott.Mail.Smtp2Go.Smtp2GoException.Smtp2GoException() -> void
 Scott.Mail.Smtp2Go.Smtp2GoException.Smtp2GoException(string! message) -> void
 Scott.Mail.Smtp2Go.Smtp2GoException.Smtp2GoException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Smtp2GoPermissionException
+Scott.Mail.Smtp2Go.Smtp2GoPermissionException.Smtp2GoPermissionException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoPermissionException.Smtp2GoPermissionException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoPermissionException.Smtp2GoPermissionException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Smtp2GoPermissionException.Smtp2GoPermissionException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
+Scott.Mail.Smtp2Go.Smtp2GoRateLimitException
+Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.RetryAfter.get -> System.TimeSpan?
+Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.TimeSpan? retryAfter, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoValidationException
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Errors.get -> System.Collections.Generic.IReadOnlyList<string!>!
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException() -> void
@@ -113,6 +172,12 @@ const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.AllowRetryKey = "Scott.Mail.Smtp2Go.AllowRetry" -> string!
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.EndpointKey = "Scott.Mail.Smtp2Go.Endpoint" -> string!
 const Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource.Name = "Scott.Mail.Smtp2Go" -> string!
+override Scott.Mail.Smtp2Go.ApiError.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ApiError.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ApiError.ToString() -> string!
+override Scott.Mail.Smtp2Go.FieldValidationError.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.FieldValidationError.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.FieldValidationError.ToString() -> string!
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.Percentage
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.Percentage value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.DateTimeOffset
@@ -126,6 +191,10 @@ override Scott.Mail.Smtp2Go.RequestOptions.ToString() -> string!
 override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
+static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
+static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
+static Scott.Mail.Smtp2Go.FieldValidationError.operator !=(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
+static Scott.Mail.Smtp2Go.FieldValidationError.operator ==(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Format(System.DateTimeOffset value) -> string!
 static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.TryParse(string! text, out System.DateTimeOffset value) -> bool
 static Scott.Mail.Smtp2Go.Percentage.FromDecimal(decimal value) -> Scott.Mail.Smtp2Go.Percentage

@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/demo/">
+    <Project Path="demo/Scott.Mail.Smtp2Go.Demo/Scott.Mail.Smtp2Go.Demo.csproj" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Scott.Mail.Smtp2Go.AspNetCore/Scott.Mail.Smtp2Go.AspNetCore.csproj" />
     <Project Path="src/Scott.Mail.Smtp2Go.DependencyInjection/Scott.Mail.Smtp2Go.DependencyInjection.csproj" />

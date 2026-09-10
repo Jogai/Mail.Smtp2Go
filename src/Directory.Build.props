@@ -3,7 +3,6 @@
 
   <PropertyGroup Label="Packable library defaults">
     <IsPackable>true</IsPackable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>
 

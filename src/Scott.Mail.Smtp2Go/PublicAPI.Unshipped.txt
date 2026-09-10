@@ -53,9 +53,41 @@ Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException() -> vo
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message) -> void
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message, System.Collections.Generic.IReadOnlyList<string!>! errors) -> void
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint
+Scott.Mail.Smtp2Go.Transport.Endpoint.<Clone>$() -> Scott.Mail.Smtp2Go.Transport.Endpoint!
+Scott.Mail.Smtp2Go.Transport.Endpoint.AcceptsSubaccountId.get -> bool
+Scott.Mail.Smtp2Go.Transport.Endpoint.AcceptsSubaccountId.init -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.Deconstruct(out string! Path, out System.Net.Http.HttpMethod! Method, out bool Idempotent, out bool AcceptsSubaccountId, out Scott.Mail.Smtp2Go.Transport.RateLimitClass RateLimit, out long MaxBodyBytes) -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.Endpoint(string! Path, System.Net.Http.HttpMethod! Method, bool Idempotent, bool AcceptsSubaccountId, Scott.Mail.Smtp2Go.Transport.RateLimitClass RateLimit, long MaxBodyBytes) -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(Scott.Mail.Smtp2Go.Transport.Endpoint? other) -> bool
+Scott.Mail.Smtp2Go.Transport.Endpoint.Idempotent.get -> bool
+Scott.Mail.Smtp2Go.Transport.Endpoint.Idempotent.init -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.MaxBodyBytes.get -> long
+Scott.Mail.Smtp2Go.Transport.Endpoint.MaxBodyBytes.init -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.Method.get -> System.Net.Http.HttpMethod!
+Scott.Mail.Smtp2Go.Transport.Endpoint.Method.init -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.Path.get -> string!
+Scott.Mail.Smtp2Go.Transport.Endpoint.Path.init -> void
+Scott.Mail.Smtp2Go.Transport.Endpoint.RateLimit.get -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.Endpoint.RateLimit.init -> void
+Scott.Mail.Smtp2Go.Transport.EndpointTable
+Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.RateLimitClass.ActivitySearch = 1 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.RateLimitClass.ApiKeyAdd = 2 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.RateLimitClass.EmailSearch = 4 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.RateLimitClass.None = 0 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.RateLimitClass.SubaccountAdd = 3 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
+Scott.Mail.Smtp2Go.Transport.RequestOptionKeys
+const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
+const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
+const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.AllowRetryKey = "Scott.Mail.Smtp2Go.AllowRetry" -> string!
+const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.EndpointKey = "Scott.Mail.Smtp2Go.Endpoint" -> string!
 override Scott.Mail.Smtp2Go.RequestOptions.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.RequestOptions.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.ToString() -> string!
+override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
 static Scott.Mail.Smtp2Go.RegionEndpoints.AU.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.EU.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.GetBaseUrl(Scott.Mail.Smtp2Go.Region region) -> System.Uri!
@@ -64,3 +96,12 @@ static Scott.Mail.Smtp2Go.RegionEndpoints.US.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RequestOptions.operator !=(Scott.Mail.Smtp2Go.RequestOptions? left, Scott.Mail.Smtp2Go.RequestOptions? right) -> bool
 static Scott.Mail.Smtp2Go.RequestOptions.operator ==(Scott.Mail.Smtp2Go.RequestOptions? left, Scott.Mail.Smtp2Go.RequestOptions? right) -> bool
 static Scott.Mail.Smtp2Go.Smtp2GoClientOptions.IsWellFormedApiKey(string! apiKey) -> bool
+static Scott.Mail.Smtp2Go.Transport.Endpoint.Patch.get -> System.Net.Http.HttpMethod!
+static Scott.Mail.Smtp2Go.Transport.Endpoint.operator !=(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool
+static Scott.Mail.Smtp2Go.Transport.Endpoint.operator ==(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool
+static Scott.Mail.Smtp2Go.Transport.EndpointTable.All.get -> System.Collections.Generic.IReadOnlyCollection<Scott.Mail.Smtp2Go.Transport.Endpoint!>!
+static Scott.Mail.Smtp2Go.Transport.EndpointTable.CreateDefault(string! path) -> Scott.Mail.Smtp2Go.Transport.Endpoint!
+static Scott.Mail.Smtp2Go.Transport.EndpointTable.Get(string! path) -> Scott.Mail.Smtp2Go.Transport.Endpoint!
+static Scott.Mail.Smtp2Go.Transport.EndpointTable.TryGet(string! path, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
+static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.GetAllowRetry(System.Net.Http.HttpRequestMessage! request) -> bool
+static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.TryGetEndpoint(System.Net.Http.HttpRequestMessage! request, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool

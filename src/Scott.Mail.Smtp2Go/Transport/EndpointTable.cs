@@ -1,0 +1,66 @@
+namespace Scott.Mail.Smtp2Go.Transport;
+
+/// <summary>
+/// Registry of known <see cref="Endpoint"/> descriptors. Unknown paths get a conservative default so the raw client can reach
+/// endpoints that have no descriptor yet. Each API family adds its rows to <see cref="Seed"/> when its typed client lands.
+/// </summary>
+public static class EndpointTable
+{
+    private static readonly Dictionary<string, Endpoint> s_endpoints = Seed();
+
+    /// <summary>Every registered descriptor.</summary>
+    public static IReadOnlyCollection<Endpoint> All => s_endpoints.Values;
+
+    /// <summary>Returns the descriptor for <paramref name="path"/>, or <see cref="CreateDefault"/> when the path is not registered.</summary>
+    public static Endpoint Get(string path)
+    {
+        return TryGet(path, out Endpoint? endpoint) ? endpoint : CreateDefault(path);
+    }
+
+    /// <summary>Returns the registered descriptor for <paramref name="path"/>, if any.</summary>
+    public static bool TryGet(string path, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out Endpoint? endpoint)
+    {
+        Argument.ThrowIfNullOrWhiteSpace(path);
+        return s_endpoints.TryGetValue(Normalize(path), out endpoint);
+    }
+
+    /// <summary>
+    /// The descriptor used for unregistered paths: <c>POST</c>, not idempotent, no <c>subaccount_id</c>, <see cref="RateLimitClass.None"/>,
+    /// and the body limit for the path's family (50 MB under <c>email/</c>, 1 MB otherwise).
+    /// </summary>
+    public static Endpoint CreateDefault(string path)
+    {
+        Argument.ThrowIfNullOrWhiteSpace(path);
+        string normalized = Normalize(path);
+        long maxBody = normalized.StartsWith("email/", StringComparison.Ordinal) ? Endpoint.EmailMaxBodyBytes : Endpoint.DefaultMaxBodyBytes;
+        return new Endpoint(normalized, HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, maxBody);
+    }
+
+    /// <summary>Strips a leading slash so <c>/email/send</c> and <c>email/send</c> resolve to the same descriptor.</summary>
+    internal static string Normalize(string path)
+    {
+        string trimmed = path.Trim();
+        return trimmed.Length > 0 && trimmed[0] == '/' ? trimmed.Substring(1) : trimmed;
+    }
+
+    // One Add per endpoint. Family plans append their rows here, grouped by family, in the order of comparison.md section 4.
+    private static Dictionary<string, Endpoint> Seed()
+    {
+        Dictionary<string, Endpoint> table = new(StringComparer.Ordinal);
+
+        // Email
+        Add(table, new Endpoint("email/send", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
+        Add(table, new Endpoint("email/mime", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
+        Add(table, new Endpoint("email/batch", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
+        Add(table, new Endpoint("email/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.EmailSearch, Endpoint.EmailMaxBodyBytes));
+        Add(table, new Endpoint("email/scheduled/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
+        Add(table, new Endpoint("email/scheduled/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
+
+        return table;
+    }
+
+    private static void Add(Dictionary<string, Endpoint> table, Endpoint endpoint)
+    {
+        table.Add(endpoint.Path, endpoint);
+    }
+}

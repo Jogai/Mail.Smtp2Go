@@ -4,8 +4,8 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <!-- Same setting the `dotnet new xunit3` template emits; the runner selection itself lives in global.json (test.runner). -->
-    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    <!-- CS1591: no doc comments in tests. CA1707: underscores in test method names are the convention. -->
+    <NoWarn>$(NoWarn);CS1591;CA1707</NoWarn>
+    <!-- The test runner (Microsoft.Testing.Platform) is selected in the root global.json (test.runner), as the xunit3 template does. -->
   </PropertyGroup>
 </Project>

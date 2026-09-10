@@ -11,6 +11,7 @@
     <Project Path="src/tools/Scott.Mail.Smtp2Go.SpecHarvester/Scott.Mail.Smtp2Go.SpecHarvester.csproj" />
   </Folder>
   <Folder Name="/test/">
+    <Project Path="test/Scott.Mail.Smtp2Go.Tests.Contract/Scott.Mail.Smtp2Go.Tests.Contract.csproj" />
     <Project Path="test/Scott.Mail.Smtp2Go.Tests.Shared/Scott.Mail.Smtp2Go.Tests.Shared.csproj" />
     <Project Path="test/Scott.Mail.Smtp2Go.Tests.Unit/Scott.Mail.Smtp2Go.Tests.Unit.csproj" />
   </Folder>

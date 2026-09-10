@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
+    <Description>Client for the SMTP2GO v3 API: email sending, webhooks, reporting, templates, suppressions, archive, account management and SMS.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Scott.Mail.Smtp2Go.Tests.Unit" />
+    <InternalsVisibleTo Include="Scott.Mail.Smtp2Go.Tests.Contract" />
+    <InternalsVisibleTo Include="Scott.Mail.Smtp2Go.Tests.Integration" />
+  </ItemGroup>
+
+  <!-- In-box on net8.0 and later; packages are only needed for netstandard2.0. PolySharp generates the C# language-feature polyfills. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
+    <PackageReference Include="PolySharp" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageReference Include="System.Net.Http.Json" />
+    <PackageReference Include="System.Text.Json" />
+  </ItemGroup>
+
+</Project>

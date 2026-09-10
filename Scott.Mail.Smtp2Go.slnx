@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Scott.Mail.Smtp2Go.DependencyInjection/Scott.Mail.Smtp2Go.DependencyInjection.csproj" />
     <Project Path="src/Scott.Mail.Smtp2Go/Scott.Mail.Smtp2Go.csproj" />
   </Folder>
 </Solution>

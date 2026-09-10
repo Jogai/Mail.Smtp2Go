@@ -1,0 +1,11 @@
+{
+  "request_id": "0d1a2b3c-4d5e-6f70-8192-a3b4c5d6e7f8",
+  "data": {
+    "error": "Failed to validate JSON payload.",
+    "error_code": "E_ApiResponseCodes.NON_VALIDATING_IN_PAYLOAD",
+    "field_validation_errors": {
+      "fieldname": "to",
+      "message": "'to' is a required property"
+    }
+  }
+}

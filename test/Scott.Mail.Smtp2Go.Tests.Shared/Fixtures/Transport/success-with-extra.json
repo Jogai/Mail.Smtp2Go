@@ -1,0 +1,11 @@
+{
+  "request_id": "6c7d8e9f-0a1b-2c3d-4e5f-6a7b8c9d0e1f",
+  "data": {
+    "email_id": "1er8bV-6Tw0Mi-7h",
+    "succeeded": 1,
+    "failed": 0,
+    "failures": []
+  },
+  "warnings": ["a deprecated field was used"],
+  "meta": { "region": "eu" }
+}

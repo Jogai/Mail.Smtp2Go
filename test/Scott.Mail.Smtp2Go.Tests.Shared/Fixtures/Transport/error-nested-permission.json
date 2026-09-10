@@ -1,0 +1,7 @@
+{
+  "request_id": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+  "data": {
+    "error": "You do not have permission to access this endpoint.",
+    "error_code": "E_ApiResponseCodes.ENDPOINT_PERMISSION_DENIED"
+  }
+}

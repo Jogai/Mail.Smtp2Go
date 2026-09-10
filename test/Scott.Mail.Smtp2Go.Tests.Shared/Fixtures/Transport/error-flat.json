@@ -1,0 +1,5 @@
+{
+  "request_id": "5f0a9c2e-1b3d-4e6f-8a7b-9c0d1e2f3a4b",
+  "error": "Invalid API key.",
+  "error_code": "E_ApiResponseCodes.API_KEY_INVALID"
+}

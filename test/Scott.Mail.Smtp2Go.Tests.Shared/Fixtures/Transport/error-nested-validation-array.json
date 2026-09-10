@@ -1,0 +1,11 @@
+{
+  "request_id": "1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b",
+  "data": {
+    "error": "Failed to validate JSON payload.",
+    "error_code": "E_ApiResponseCodes.NON_VALIDATING_IN_PAYLOAD",
+    "field_validation_errors": [
+      { "fieldname": "sender", "message": "'sender' is a required property" },
+      { "fieldname": "to", "message": "'to' must contain at least one address" }
+    ]
+  }
+}

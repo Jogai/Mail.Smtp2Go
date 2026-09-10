@@ -4,8 +4,8 @@
   <PropertyGroup>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <!-- CS1591: no doc comments in tests. CA1707: underscores in test method names are the convention. -->
-    <NoWarn>$(NoWarn);CS1591;CA1707</NoWarn>
+    <!-- CS1591: no doc comments in tests. CA1707: underscores in test method names are the convention. CA1716: the Tests.Shared namespace matches its project name; test support code has no VB consumers. xUnit1051: tests drive the client's own cancellation and timeout tokens against a fake handler that never blocks. -->
+    <NoWarn>$(NoWarn);CS1591;CA1707;CA1716;xUnit1051</NoWarn>
     <!-- The test runner (Microsoft.Testing.Platform) is selected in the root global.json (test.runner), as the xunit3 template does. -->
   </PropertyGroup>
 </Project>

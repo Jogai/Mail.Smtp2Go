@@ -1,0 +1,15 @@
+[
+  { "source": "stats/email_summary cycle_start (docs)", "input": "2022-11-01 00:00:00+00:00", "expectedUtc": "2022-11-01T00:00:00Z" },
+  { "source": "email/search (docs, fractional, no offset)", "input": "2016-08-04 01:49:15.863998", "expectedUtc": "2016-08-04T01:49:15.863998Z" },
+  { "source": "email/send schedule (docs, compact offset)", "input": "2025-09-10 13:15:00 +1200", "expectedUtc": "2025-09-10T01:15:00Z" },
+  { "source": "compact negative offset", "input": "2024-01-15 10:30:00 -0500", "expectedUtc": "2024-01-15T15:30:00Z" },
+  { "source": "space, colon offset, no gap", "input": "2025-09-10 13:15:00+12:00", "expectedUtc": "2025-09-10T01:15:00Z" },
+  { "source": "space, Z", "input": "2024-01-15 10:30:00Z", "expectedUtc": "2024-01-15T10:30:00Z" },
+  { "source": "ISO-8601 Z", "input": "2024-01-15T10:30:00Z", "expectedUtc": "2024-01-15T10:30:00Z" },
+  { "source": "ISO-8601 fractional Z", "input": "2024-01-15T10:30:00.123456Z", "expectedUtc": "2024-01-15T10:30:00.123456Z" },
+  { "source": "ISO-8601 offset", "input": "2024-01-15T10:30:00+02:00", "expectedUtc": "2024-01-15T08:30:00Z" },
+  { "source": "ISO-8601 fractional offset", "input": "2024-01-15T10:30:00.5-03:00", "expectedUtc": "2024-01-15T13:30:00.5Z" },
+  { "source": "ISO-8601 no offset (assumed UTC)", "input": "2024-01-15T10:30:00", "expectedUtc": "2024-01-15T10:30:00Z" },
+  { "source": "date only", "input": "2024-01-15", "expectedUtc": "2024-01-15T00:00:00Z" },
+  { "source": "webhook time field (unix-like text is not supported; whitespace tolerated)", "input": "  2024-01-15 10:30:00  ", "expectedUtc": "2024-01-15T10:30:00Z" }
+]

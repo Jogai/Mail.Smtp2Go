@@ -1,0 +1,11 @@
+{
+  "request_id": "2f3a4b5c-6d7e-8f9a-0b1c-2d3e4f5a6b7c",
+  "data": {
+    "error": "Failed to validate JSON payload.",
+    "error_code": "E_ApiResponseCodes.NON_VALIDATING_IN_PAYLOAD",
+    "field_validation_errors": {
+      "subject": "must be a string",
+      "attachments": ["filename is required", "fileblob must be base64"]
+    }
+  }
+}

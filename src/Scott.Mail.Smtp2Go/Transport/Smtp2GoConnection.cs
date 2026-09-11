@@ -42,6 +42,9 @@ internal sealed class Smtp2GoConnection
     /// <summary>The serializer options in effect: the library context, optionally combined with <see cref="Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver"/>.</summary>
     public JsonSerializerOptions JsonOptions => _json;
 
+    /// <summary>The diagnostics sink, for family clients that raise their own notifications such as <see cref="ISmtp2GoDiagnostics.EmailResult"/>.</summary>
+    public ISmtp2GoDiagnostics Diagnostics => _diagnostics;
+
     /// <summary>The client-side throttle for <paramref name="rateLimitClass"/>, shared by every call through this connection; <see langword="null"/> when the class has no limit or <see cref="Smtp2GoClientOptions.ClientSideRateLimiting"/> is off.</summary>
     public RateLimitThrottle? GetThrottle(RateLimitClass rateLimitClass)
     {

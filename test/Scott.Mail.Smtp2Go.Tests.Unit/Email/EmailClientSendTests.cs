@@ -136,4 +136,65 @@ public class EmailClientSendTests
         typeof(ISmtp2GoClient).GetProperty(nameof(ISmtp2GoClient.Email))!.PropertyType.Should().Be<IEmailClient>();
         client.Email.Should().NotBeNull().And.BeSameAs(client.Email);
     }
+
+    [Fact]
+    public async Task SendAsync_reports_the_recipient_counts_to_diagnostics()
+    {
+        FakeHttpMessageHandler handler = new FakeHttpMessageHandler().Respond("email/send", HttpStatusCode.OK, Fixture.Read("Email/send-response-failed.json"));
+        RecordingDiagnostics diagnostics = new();
+        Smtp2GoClient client = TestClient.Create(handler, diagnostics: diagnostics);
+
+        await client.Email.SendAsync(Minimal());
+
+        diagnostics.EmailResults.Should().Equal((Succeeded: 1, Failed: 1));
+    }
+
+    [Fact]
+    public async Task SendMimeAsync_reports_the_recipient_counts_to_diagnostics()
+    {
+        FakeHttpMessageHandler handler = new FakeHttpMessageHandler().Respond("email/mime", HttpStatusCode.OK, Fixture.Read("Email/send-response-ok.json"));
+        RecordingDiagnostics diagnostics = new();
+        Smtp2GoClient client = TestClient.Create(handler, diagnostics: diagnostics);
+
+        await client.Email.SendMimeAsync(new EmailMimeRequest { MimeEmail = "QQ==" });
+
+        diagnostics.EmailResults.Should().Equal((Succeeded: 1, Failed: 0));
+    }
+
+    [Fact]
+    public async Task A_fastaccept_response_without_counts_reports_nothing()
+    {
+        FakeHttpMessageHandler handler = new FakeHttpMessageHandler().Respond("email/send", HttpStatusCode.OK, Fixture.Read("Email/send-response-fastaccept.json"));
+        RecordingDiagnostics diagnostics = new();
+        Smtp2GoClient client = TestClient.Create(handler, diagnostics: diagnostics);
+
+        await client.Email.SendAsync(Minimal() with { FastAccept = true });
+
+        diagnostics.EmailResults.Should().BeEmpty();
+    }
+
+    [Fact]
+    public async Task Batch_items_carry_no_counts_so_nothing_is_reported()
+    {
+        FakeHttpMessageHandler handler = new FakeHttpMessageHandler().Respond("email/batch", HttpStatusCode.OK, Fixture.Read("Email/batch-response.json"));
+        RecordingDiagnostics diagnostics = new();
+        Smtp2GoClient client = TestClient.Create(handler, diagnostics: diagnostics);
+
+        await client.Email.SendBatchAsync(new EmailBatchRequest { Emails = [Minimal()] });
+
+        diagnostics.EmailResults.Should().BeEmpty();
+    }
+
+    [Fact]
+    public async Task A_failed_send_reports_nothing()
+    {
+        FakeHttpMessageHandler handler = new FakeHttpMessageHandler().Respond("email/send", HttpStatusCode.BadRequest, Fixture.Read("Transport/error-nested-permission.json"));
+        RecordingDiagnostics diagnostics = new();
+        Smtp2GoClient client = TestClient.Create(handler, diagnostics: diagnostics);
+
+        Func<Task> act = () => client.Email.SendAsync(Minimal());
+
+        await act.Should().ThrowAsync<Smtp2GoApiException>();
+        diagnostics.EmailResults.Should().BeEmpty();
+    }
 }

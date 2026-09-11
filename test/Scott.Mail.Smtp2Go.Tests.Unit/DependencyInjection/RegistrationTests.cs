@@ -241,6 +241,16 @@ public sealed class RegistrationTests
     }
 
     [Fact]
+    public void ClientSideRateLimiting_is_off_by_default_because_the_pipeline_throttles()
+    {
+        // The core default is on; the DI package's Polly rate limiter replaces the core token buckets, so the mirror flips the default.
+        new Smtp2GoClientOptions().ClientSideRateLimiting.Should().BeTrue();
+        new Smtp2GoOptions().ClientSideRateLimiting.Should().BeFalse();
+        new Smtp2GoOptions().ToClientOptions().ClientSideRateLimiting.Should().BeFalse();
+        new Smtp2GoOptions { ClientSideRateLimiting = true }.ToClientOptions().ClientSideRateLimiting.Should().BeTrue();
+    }
+
+    [Fact]
     public void ToClientOptions_copies_every_property()
     {
         Smtp2GoOptions options = new()

@@ -46,7 +46,7 @@ Event ids are constants on `Smtp2GoEventIds` and never change meaning:
 
 The 100-range messages are per request. In production, set `"Scott.Mail.Smtp2Go": "Warning"` in `Logging:LogLevel` to keep only failures, or `"Information"` to keep one line per call with the `request_id` SMTP2GO support asks for.
 
-Event 102 is raised through `ISmtp2GoDiagnostics.EmailResult(succeeded, failed)`, which the email client calls after each send; it also drives the two email counters below.
+Event 102 is raised through `ISmtp2GoDiagnostics.EmailResult(succeeded, failed)`, which the email client calls after every `SendAsync` and `SendMimeAsync` that returned recipient counts (a `fastaccept` response carries none, and `email/batch` items carry only ids, so neither raises it); it also drives the two email counters below.
 
 ## Metrics
 

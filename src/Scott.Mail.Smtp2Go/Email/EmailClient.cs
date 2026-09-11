@@ -14,19 +14,24 @@ internal sealed class EmailClient(Smtp2GoConnection connection) : IEmailClient
     private static readonly Endpoint s_scheduledRemove = EndpointTable.Get("email/scheduled/remove");
     private static readonly Endpoint s_search = EndpointTable.Get("email/search");
 
-    public Task<ApiResponse<EmailSendResult>> SendAsync(EmailSendRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<EmailSendResult>> SendAsync(EmailSendRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
     {
         Argument.ThrowIfNull(request);
-        return connection.SendAsync<EmailSendRequest, EmailSendResult>(s_send, ApplyDefaults(request), options, cancellationToken);
+        ApiResponse<EmailSendResult> response = await connection.SendAsync<EmailSendRequest, EmailSendResult>(s_send, ApplyDefaults(request), options, cancellationToken).ConfigureAwait(false);
+        ReportResult(response.Data);
+        return response;
     }
 
-    public Task<ApiResponse<EmailSendResult>> SendMimeAsync(EmailMimeRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<EmailSendResult>> SendMimeAsync(EmailMimeRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
     {
         Argument.ThrowIfNull(request);
         EmailMimeRequest body = request.FastAccept is null && connection.Options.DefaultFastAccept is { } fastAccept ? request with { FastAccept = fastAccept } : request;
-        return connection.SendAsync<EmailMimeRequest, EmailSendResult>(s_mime, body, options, cancellationToken);
+        ApiResponse<EmailSendResult> response = await connection.SendAsync<EmailMimeRequest, EmailSendResult>(s_mime, body, options, cancellationToken).ConfigureAwait(false);
+        ReportResult(response.Data);
+        return response;
     }
 
+    /// <remarks>Batch items carry only ids, not recipient counts, so <see cref="ISmtp2GoDiagnostics.EmailResult"/> is not raised for batches.</remarks>
     public Task<ApiResponse<IReadOnlyList<EmailBatchItem>>> SendBatchAsync(EmailBatchRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
     {
         Argument.ThrowIfNull(request);
@@ -76,6 +81,15 @@ internal sealed class EmailClient(Smtp2GoConnection connection) : IEmailClient
 #pragma warning restore CS0618
 
     /// <summary>Fills <c>fastaccept</c> from <see cref="Smtp2GoClientOptions.DefaultFastAccept"/> when the request leaves it unset.</summary>
+    /// <summary>Raises <see cref="ISmtp2GoDiagnostics.EmailResult"/> with the server's recipient counts. A <c>fastaccept</c> response carries neither count and raises nothing.</summary>
+    private void ReportResult(EmailSendResult? result)
+    {
+        if (result is { } && (result.Succeeded is not null || result.Failed is not null))
+        {
+            connection.Diagnostics.EmailResult(result.Succeeded ?? 0, result.Failed ?? 0);
+        }
+    }
+
     private EmailSendRequest ApplyDefaults(EmailSendRequest request)
     {
         return request.FastAccept is null && connection.Options.DefaultFastAccept is { } fastAccept

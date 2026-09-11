@@ -23,6 +23,13 @@ dotnet pack -c Release -o artifacts
 
 Tests run on Microsoft.Testing.Platform (selected by `test.runner` in `global.json`) with xUnit v3.
 
+Unit and contract tests never touch the network. The integration tests marked `[Trait("Category", "Sandbox")]` call the SMTP2GO sandbox, which accepts without delivering; they skip unless a sandbox key is present in the `SMTP2GO_SANDBOX_API_KEY` environment variable or the user secret `Smtp2Go:ApiKey:Sandbox`:
+
+```shell
+dotnet user-secrets set "Smtp2Go:ApiKey:Sandbox" "api-..." --project test/Scott.Mail.Smtp2Go.Tests.Integration
+dotnet test --project test/Scott.Mail.Smtp2Go.Tests.Integration
+```
+
 ## Conventions
 
 - Central Package Management: versions live only in `Directory.Packages.props`; never put `Version=` on a `PackageReference`. Lock files (`packages.lock.json`) are committed.

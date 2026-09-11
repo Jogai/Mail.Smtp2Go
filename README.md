@@ -28,11 +28,11 @@ var response = await client.Email.SendAsync(new EmailSendRequest
 Console.WriteLine($"Sent: {response.Data.Succeeded} succeeded, {response.Data.Failed} failed ({response.RequestId})");
 ```
 
-The quick start above is compiled by a unit test so it stays in sync with the API (plan 03). See [docs/index.md](docs/index.md) for configuration, dependency injection, webhooks and API coverage.
+The quick start above is compiled by a unit test so it stays in sync with the API. See [docs/sending.md](docs/sending.md) for MIME and batch sends, `fastaccept`, scheduling, attachments, templates and `EnsureAccepted()`, and [docs/index.md](docs/index.md) for configuration, dependency injection, webhooks and API coverage.
 
 ## Status
 
-Core transport is in place: construction, header authentication, regional endpoints, subaccount injection, client-side validation, the response envelope, typed errors, tracing and the `client.Raw` escape hatch that can call any endpoint today (see [docs/getting-started.md](docs/getting-started.md)). The typed family clients, starting with `client.Email`, land in the following plans.
+Core transport is in place: construction, header authentication, regional endpoints, subaccount injection, client-side validation, the response envelope, typed errors, tracing and the `client.Raw` escape hatch that can call any endpoint today (see [docs/getting-started.md](docs/getting-started.md)). `client.Email` covers sending (JSON, MIME, batch), scheduled-email search and removal, and the deprecated email search. The remaining typed family clients land in the following plans.
 
 ## License
 

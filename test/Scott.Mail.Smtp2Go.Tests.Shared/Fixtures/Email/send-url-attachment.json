@@ -1,0 +1,9 @@
+{
+  "sender": "alice@example.com",
+  "to": ["bob@example.com"],
+  "subject": "Brochure",
+  "html_body": "<p>Attached.</p>",
+  "attachments": [
+    { "filename": "brochure.pdf", "mimetype": "application/pdf", "url": "https://example.com/files/brochure.pdf" }
+  ]
+}

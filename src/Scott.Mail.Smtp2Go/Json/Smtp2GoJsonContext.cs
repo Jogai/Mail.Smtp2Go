@@ -28,6 +28,20 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(ApiResponse<JsonObject>))]
 [JsonSerializable(typeof(ApiResponse<JsonArray>))]
 
+// Primitives and containers that may appear as template_data values (object-typed dictionary entries are resolved by runtime type).
+[JsonSerializable(typeof(Dictionary<string, object>))]
+[JsonSerializable(typeof(string))]
+[JsonSerializable(typeof(string[]))]
+[JsonSerializable(typeof(bool))]
+[JsonSerializable(typeof(int))]
+[JsonSerializable(typeof(long))]
+[JsonSerializable(typeof(double))]
+[JsonSerializable(typeof(decimal))]
+
+// Email
+[JsonSerializable(typeof(EmailSendRequest))]
+[JsonSerializable(typeof(ApiResponse<EmailSendResult>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

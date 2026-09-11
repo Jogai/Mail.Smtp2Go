@@ -1,0 +1,6 @@
+{
+  "sender": "Alice <alice@example.com>",
+  "to": ["bob@example.com"],
+  "subject": "Hello",
+  "text_body": "Plain text."
+}

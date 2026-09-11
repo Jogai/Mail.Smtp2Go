@@ -55,6 +55,58 @@ Scott.Mail.Smtp2Go.EmailAddress.EmailAddress(string! address, string? name = nul
 Scott.Mail.Smtp2Go.EmailAddress.Equals(Scott.Mail.Smtp2Go.EmailAddress other) -> bool
 Scott.Mail.Smtp2Go.EmailAddress.IsEmpty.get -> bool
 Scott.Mail.Smtp2Go.EmailAddress.Name.get -> string?
+Scott.Mail.Smtp2Go.EmailSendRequest
+Scott.Mail.Smtp2Go.EmailSendRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSendRequest!
+Scott.Mail.Smtp2Go.EmailSendRequest.Attachments.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Attachment!>?
+Scott.Mail.Smtp2Go.EmailSendRequest.Attachments.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Bcc.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailAddress>?
+Scott.Mail.Smtp2Go.EmailSendRequest.Bcc.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Cc.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailAddress>?
+Scott.Mail.Smtp2Go.EmailSendRequest.Cc.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.CustomHeaders.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.CustomHeader!>?
+Scott.Mail.Smtp2Go.EmailSendRequest.CustomHeaders.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.EmailSendRequest() -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Equals(Scott.Mail.Smtp2Go.EmailSendRequest? other) -> bool
+Scott.Mail.Smtp2Go.EmailSendRequest.FastAccept.get -> bool?
+Scott.Mail.Smtp2Go.EmailSendRequest.FastAccept.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.HtmlBody.get -> string?
+Scott.Mail.Smtp2Go.EmailSendRequest.HtmlBody.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Inlines.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Attachment!>?
+Scott.Mail.Smtp2Go.EmailSendRequest.Inlines.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Schedule.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailSendRequest.Schedule.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Sender.get -> Scott.Mail.Smtp2Go.EmailAddress
+Scott.Mail.Smtp2Go.EmailSendRequest.Sender.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.Subject.get -> string?
+Scott.Mail.Smtp2Go.EmailSendRequest.Subject.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.TemplateData.get -> System.Collections.Generic.IReadOnlyDictionary<string!, object?>?
+Scott.Mail.Smtp2Go.EmailSendRequest.TemplateData.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.TemplateId.get -> string?
+Scott.Mail.Smtp2Go.EmailSendRequest.TemplateId.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.TextBody.get -> string?
+Scott.Mail.Smtp2Go.EmailSendRequest.TextBody.init -> void
+Scott.Mail.Smtp2Go.EmailSendRequest.To.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailAddress>!
+Scott.Mail.Smtp2Go.EmailSendRequest.To.init -> void
+Scott.Mail.Smtp2Go.EmailSendResult
+Scott.Mail.Smtp2Go.EmailSendResult.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSendResult!
+Scott.Mail.Smtp2Go.EmailSendResult.EmailId.get -> string?
+Scott.Mail.Smtp2Go.EmailSendResult.EmailId.init -> void
+Scott.Mail.Smtp2Go.EmailSendResult.EmailSendResult() -> void
+Scott.Mail.Smtp2Go.EmailSendResult.EnsureAccepted(string? requestId = null) -> Scott.Mail.Smtp2Go.EmailSendResult!
+Scott.Mail.Smtp2Go.EmailSendResult.Equals(Scott.Mail.Smtp2Go.EmailSendResult? other) -> bool
+Scott.Mail.Smtp2Go.EmailSendResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailSendResult.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailSendResult.Failed.get -> int?
+Scott.Mail.Smtp2Go.EmailSendResult.Failed.init -> void
+Scott.Mail.Smtp2Go.EmailSendResult.Failures.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.EmailSendResult.Failures.init -> void
+Scott.Mail.Smtp2Go.EmailSendResult.HasFailures.get -> bool
+Scott.Mail.Smtp2Go.EmailSendResult.IsScheduled.get -> bool
+Scott.Mail.Smtp2Go.EmailSendResult.ScheduleId.get -> string?
+Scott.Mail.Smtp2Go.EmailSendResult.ScheduleId.init -> void
+Scott.Mail.Smtp2Go.EmailSendResult.Succeeded.get -> int?
+Scott.Mail.Smtp2Go.EmailSendResult.Succeeded.init -> void
+Scott.Mail.Smtp2Go.EmailSendResultExtensions
 Scott.Mail.Smtp2Go.FieldValidationError
 Scott.Mail.Smtp2Go.FieldValidationError.<Clone>$() -> Scott.Mail.Smtp2Go.FieldValidationError!
 Scott.Mail.Smtp2Go.FieldValidationError.Deconstruct(out string? FieldName, out string! Message) -> void
@@ -172,6 +224,14 @@ Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException() -> void
 Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException(string! message) -> void
 Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException(string! message, System.Exception? innerException) -> void
 Scott.Mail.Smtp2Go.Smtp2GoRateLimitException.Smtp2GoRateLimitException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.TimeSpan? retryAfter, System.Exception? innerException = null) -> void
+Scott.Mail.Smtp2Go.Smtp2GoSendException
+Scott.Mail.Smtp2Go.Smtp2GoSendException.Failures.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.Smtp2GoSendException.RequestId.get -> string?
+Scott.Mail.Smtp2Go.Smtp2GoSendException.Result.get -> Scott.Mail.Smtp2Go.EmailSendResult?
+Scott.Mail.Smtp2Go.Smtp2GoSendException.Smtp2GoSendException() -> void
+Scott.Mail.Smtp2Go.Smtp2GoSendException.Smtp2GoSendException(string! message) -> void
+Scott.Mail.Smtp2Go.Smtp2GoSendException.Smtp2GoSendException(string! message, System.Collections.Generic.IReadOnlyList<string!>! failures, string? requestId, Scott.Mail.Smtp2Go.EmailSendResult? result) -> void
+Scott.Mail.Smtp2Go.Smtp2GoSendException.Smtp2GoSendException(string! message, System.Exception? innerException) -> void
 Scott.Mail.Smtp2Go.Smtp2GoValidationException
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Errors.get -> System.Collections.Generic.IReadOnlyList<string!>!
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException() -> void
@@ -228,6 +288,12 @@ override Scott.Mail.Smtp2Go.CustomHeader.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.CustomHeader.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailAddress.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailAddress.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailSendRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailSendRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailSendRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailSendResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailSendResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailSendResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.FieldValidationError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.FieldValidationError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.FieldValidationError.ToString() -> string!
@@ -263,6 +329,11 @@ static Scott.Mail.Smtp2Go.EmailAddress.TryParse(string? text, out Scott.Mail.Smt
 static Scott.Mail.Smtp2Go.EmailAddress.implicit operator Scott.Mail.Smtp2Go.EmailAddress(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.operator !=(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
 static Scott.Mail.Smtp2Go.EmailAddress.operator ==(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
+static Scott.Mail.Smtp2Go.EmailSendRequest.operator !=(Scott.Mail.Smtp2Go.EmailSendRequest? left, Scott.Mail.Smtp2Go.EmailSendRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSendRequest.operator ==(Scott.Mail.Smtp2Go.EmailSendRequest? left, Scott.Mail.Smtp2Go.EmailSendRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSendResult.operator !=(Scott.Mail.Smtp2Go.EmailSendResult? left, Scott.Mail.Smtp2Go.EmailSendResult? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSendResult.operator ==(Scott.Mail.Smtp2Go.EmailSendResult? left, Scott.Mail.Smtp2Go.EmailSendResult? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSendResultExtensions.EnsureAccepted(this Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>! response) -> Scott.Mail.Smtp2Go.EmailSendResult!
 static Scott.Mail.Smtp2Go.FieldValidationError.operator !=(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.FieldValidationError.operator ==(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Format(System.DateTimeOffset value) -> string!

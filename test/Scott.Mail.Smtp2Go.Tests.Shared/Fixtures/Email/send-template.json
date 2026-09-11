@@ -1,0 +1,6 @@
+{
+  "sender": "alice@example.com",
+  "to": ["bob@example.com"],
+  "template_id": "welcome",
+  "template_data": { "first_name": "Bob" }
+}

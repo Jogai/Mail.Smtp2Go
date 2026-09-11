@@ -1,0 +1,11 @@
+{
+  "request_id": "0f6ed5a1-5c1e-4f0e-9b0c-2f0a4a6b9d11",
+  "data": {
+    "succeeded": 1,
+    "failed": 1,
+    "failures": [
+      "nobody@invalid.example: recipient domain does not exist"
+    ],
+    "email_id": "1u0SwL-B9zBpi9ffUq-JAB3"
+  }
+}

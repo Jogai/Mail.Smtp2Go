@@ -1,0 +1,30 @@
+{
+  "sender": "\"Smith, Alice\" <alice@example.com>",
+  "to": ["Bob <bob@example.com>", "carol@example.com"],
+  "cc": ["dave@example.com"],
+  "bcc": ["erin@example.com"],
+  "subject": "Invoice {{ number }}",
+  "html_body": "<p>See attached <img src=\"cid:logo.png\"></p>",
+  "text_body": "See attached.",
+  "custom_headers": [
+    { "header": "X-Campaign", "value": "spring" },
+    { "header": "Reply-To", "value": "support@example.com" }
+  ],
+  "attachments": [
+    { "filename": "invoice.pdf", "fileblob": "JVBERi0xLjQK", "mimetype": "application/pdf" }
+  ],
+  "inlines": [
+    { "filename": "logo.png", "fileblob": "iVBORw0KGgo=", "mimetype": "image/png" }
+  ],
+  "template_id": "tpl-123",
+  "template_data": {
+    "number": "INV-42",
+    "amount": 12.5,
+    "paid": false,
+    "items": ["a", "b"],
+    "customer": { "name": "Bob" },
+    "meta": { "source": "json-element" }
+  },
+  "schedule": "2026-09-12T10:00:00Z",
+  "fastaccept": true
+}

@@ -13,6 +13,9 @@ public interface ISmtp2GoClient
     /// <summary>Webhook management: <c>webhook/view</c>, <c>webhook/add</c>, <c>webhook/edit</c>, <c>webhook/remove</c>.</summary>
     IWebhookClient Webhooks { get; }
 
+    /// <summary>Statistics: <c>stats/email_summary</c>, <c>email_cycle</c>, <c>email_bounces</c>, <c>email_spam</c>, <c>email_unsubs</c>, <c>email_history</c>.</summary>
+    IStatsClient Stats { get; }
+
     /// <summary>Calls any endpoint by path; the escape hatch for endpoints without a typed client.</summary>
     IRawClient Raw { get; }
 }

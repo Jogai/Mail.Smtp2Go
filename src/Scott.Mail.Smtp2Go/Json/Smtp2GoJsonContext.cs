@@ -59,6 +59,16 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(ApiResponse<Webhook>))]
 [JsonSerializable(typeof(ApiResponse<IReadOnlyList<Webhook>>))]
 
+// Stats
+[JsonSerializable(typeof(StatsUsernameRequest))]
+[JsonSerializable(typeof(EmailHistoryRequest))]
+[JsonSerializable(typeof(ApiResponse<EmailSummary>))]
+[JsonSerializable(typeof(ApiResponse<EmailCycle>))]
+[JsonSerializable(typeof(ApiResponse<EmailBounces>))]
+[JsonSerializable(typeof(ApiResponse<EmailSpam>))]
+[JsonSerializable(typeof(ApiResponse<EmailUnsubscribes>))]
+[JsonSerializable(typeof(ApiResponse<EmailHistory>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

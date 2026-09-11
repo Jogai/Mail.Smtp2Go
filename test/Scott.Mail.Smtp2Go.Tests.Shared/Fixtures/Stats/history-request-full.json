@@ -1,0 +1,6 @@
+{
+  "group_by": "subaccount",
+  "start_date": "2026-08-01T00:00:00Z",
+  "end_date": "2026-09-01T00:00:00Z",
+  "subaccounts": ["sub-1", "sub-2"]
+}

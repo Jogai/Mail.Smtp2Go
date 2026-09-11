@@ -1,0 +1,47 @@
+{
+  "request_id": "f3898083-f5d5-4512-86bd-e02bd1685841",
+  "data": {
+    "count": 3,
+    "bounce_percent_total": 1.24,
+    "open_percent_total": 12.5,
+    "reject_percent_total": 0,
+    "spam_percent_total": 0.1,
+    "unsubscribe_percent_total": 0.2,
+    "history": [
+      {
+        "domain": "test.com",
+        "domain_verified": true,
+        "lastip": "55.67.22.12",
+        "used": 123,
+        "bytecount": 148113,
+        "avgsize": 1204.1707317073171,
+        "bounces": 2,
+        "clicks": 3,
+        "opens": 4,
+        "rejects": 0,
+        "spam": 1,
+        "unsubscribes": 1,
+        "bounce_percent": 1.24,
+        "open_percent": 3.25,
+        "reject_percent": 0,
+        "spam_percent": 0.81,
+        "unsubscribe_percent": 0.81
+      },
+      {
+        "username": "my_user",
+        "description": "Marketing sends",
+        "lastip": "55.67.22.13",
+        "used": 10,
+        "bytecount": 10000,
+        "avgsize": 1000
+      },
+      {
+        "subaccount": "My Subaccount Name",
+        "lastip": "55.67.22.14",
+        "used": 5,
+        "bytecount": 5000,
+        "avgsize": 1000
+      }
+    ]
+  }
+}

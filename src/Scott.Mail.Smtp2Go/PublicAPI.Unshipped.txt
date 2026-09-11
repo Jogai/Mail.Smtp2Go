@@ -72,7 +72,125 @@ Scott.Mail.Smtp2Go.EmailBatchRequest.EmailBatchRequest() -> void
 Scott.Mail.Smtp2Go.EmailBatchRequest.Emails.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailSendRequest!>!
 Scott.Mail.Smtp2Go.EmailBatchRequest.Emails.init -> void
 Scott.Mail.Smtp2Go.EmailBatchRequest.Equals(Scott.Mail.Smtp2Go.EmailBatchRequest? other) -> bool
+Scott.Mail.Smtp2Go.EmailBounces
+Scott.Mail.Smtp2Go.EmailBounces.<Clone>$() -> Scott.Mail.Smtp2Go.EmailBounces!
+Scott.Mail.Smtp2Go.EmailBounces.BouncePercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailBounces.BouncePercent.init -> void
+Scott.Mail.Smtp2Go.EmailBounces.EmailBounces() -> void
+Scott.Mail.Smtp2Go.EmailBounces.Emails.get -> long?
+Scott.Mail.Smtp2Go.EmailBounces.Emails.init -> void
+Scott.Mail.Smtp2Go.EmailBounces.Equals(Scott.Mail.Smtp2Go.EmailBounces? other) -> bool
+Scott.Mail.Smtp2Go.EmailBounces.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailBounces.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailBounces.HardBounces.get -> long?
+Scott.Mail.Smtp2Go.EmailBounces.HardBounces.init -> void
+Scott.Mail.Smtp2Go.EmailBounces.Rejects.get -> long?
+Scott.Mail.Smtp2Go.EmailBounces.Rejects.init -> void
+Scott.Mail.Smtp2Go.EmailBounces.SoftBounces.get -> long?
+Scott.Mail.Smtp2Go.EmailBounces.SoftBounces.init -> void
 Scott.Mail.Smtp2Go.EmailClientExtensions
+Scott.Mail.Smtp2Go.EmailCycle
+Scott.Mail.Smtp2Go.EmailCycle.<Clone>$() -> Scott.Mail.Smtp2Go.EmailCycle!
+Scott.Mail.Smtp2Go.EmailCycle.CycleEnd.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailCycle.CycleEnd.init -> void
+Scott.Mail.Smtp2Go.EmailCycle.CycleMax.get -> long?
+Scott.Mail.Smtp2Go.EmailCycle.CycleMax.init -> void
+Scott.Mail.Smtp2Go.EmailCycle.CycleRemaining.get -> long?
+Scott.Mail.Smtp2Go.EmailCycle.CycleRemaining.init -> void
+Scott.Mail.Smtp2Go.EmailCycle.CycleStart.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailCycle.CycleStart.init -> void
+Scott.Mail.Smtp2Go.EmailCycle.CycleUsed.get -> long?
+Scott.Mail.Smtp2Go.EmailCycle.CycleUsed.init -> void
+Scott.Mail.Smtp2Go.EmailCycle.EmailCycle() -> void
+Scott.Mail.Smtp2Go.EmailCycle.Equals(Scott.Mail.Smtp2Go.EmailCycle? other) -> bool
+Scott.Mail.Smtp2Go.EmailCycle.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailCycle.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailHistory
+Scott.Mail.Smtp2Go.EmailHistory.<Clone>$() -> Scott.Mail.Smtp2Go.EmailHistory!
+Scott.Mail.Smtp2Go.EmailHistory.BouncePercentTotal.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistory.BouncePercentTotal.init -> void
+Scott.Mail.Smtp2Go.EmailHistory.Count.get -> long?
+Scott.Mail.Smtp2Go.EmailHistory.Count.init -> void
+Scott.Mail.Smtp2Go.EmailHistory.EmailHistory() -> void
+Scott.Mail.Smtp2Go.EmailHistory.Equals(Scott.Mail.Smtp2Go.EmailHistory? other) -> bool
+Scott.Mail.Smtp2Go.EmailHistory.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailHistory.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailHistory.History.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailHistoryEntry!>?
+Scott.Mail.Smtp2Go.EmailHistory.History.init -> void
+Scott.Mail.Smtp2Go.EmailHistory.OpenPercentTotal.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistory.OpenPercentTotal.init -> void
+Scott.Mail.Smtp2Go.EmailHistory.RejectPercentTotal.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistory.RejectPercentTotal.init -> void
+Scott.Mail.Smtp2Go.EmailHistory.SpamPercentTotal.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistory.SpamPercentTotal.init -> void
+Scott.Mail.Smtp2Go.EmailHistory.UnsubscribePercentTotal.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistory.UnsubscribePercentTotal.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry
+Scott.Mail.Smtp2Go.EmailHistoryEntry.<Clone>$() -> Scott.Mail.Smtp2Go.EmailHistoryEntry!
+Scott.Mail.Smtp2Go.EmailHistoryEntry.AverageSize.get -> double?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.AverageSize.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.BouncePercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.BouncePercent.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Bounces.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Bounces.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.ByteCount.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.ByteCount.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Clicks.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Clicks.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Description.get -> string?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Description.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Domain.get -> string?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Domain.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.DomainVerified.get -> bool?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.DomainVerified.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.EmailAddress.get -> string?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.EmailHistoryEntry() -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Equals(Scott.Mail.Smtp2Go.EmailHistoryEntry? other) -> bool
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.LastIp.get -> string?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.LastIp.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.OpenPercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.OpenPercent.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Opens.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Opens.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.RejectPercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.RejectPercent.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Rejects.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Rejects.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Spam.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Spam.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.SpamPercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.SpamPercent.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Subaccount.get -> string?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Subaccount.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.UnsubscribePercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.UnsubscribePercent.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Unsubscribes.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Unsubscribes.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Used.get -> long?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Used.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Username.get -> string?
+Scott.Mail.Smtp2Go.EmailHistoryEntry.Username.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryGroupBy
+Scott.Mail.Smtp2Go.EmailHistoryGroupBy.Domain = 3 -> Scott.Mail.Smtp2Go.EmailHistoryGroupBy
+Scott.Mail.Smtp2Go.EmailHistoryGroupBy.EmailAddress = 1 -> Scott.Mail.Smtp2Go.EmailHistoryGroupBy
+Scott.Mail.Smtp2Go.EmailHistoryGroupBy.Subaccount = 4 -> Scott.Mail.Smtp2Go.EmailHistoryGroupBy
+Scott.Mail.Smtp2Go.EmailHistoryGroupBy.Unknown = 0 -> Scott.Mail.Smtp2Go.EmailHistoryGroupBy
+Scott.Mail.Smtp2Go.EmailHistoryGroupBy.Username = 2 -> Scott.Mail.Smtp2Go.EmailHistoryGroupBy
+Scott.Mail.Smtp2Go.EmailHistoryRequest
+Scott.Mail.Smtp2Go.EmailHistoryRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailHistoryRequest!
+Scott.Mail.Smtp2Go.EmailHistoryRequest.EmailHistoryRequest() -> void
+Scott.Mail.Smtp2Go.EmailHistoryRequest.EndDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailHistoryRequest.EndDate.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryRequest.Equals(Scott.Mail.Smtp2Go.EmailHistoryRequest? other) -> bool
+Scott.Mail.Smtp2Go.EmailHistoryRequest.GroupBy.get -> Scott.Mail.Smtp2Go.EmailHistoryGroupBy?
+Scott.Mail.Smtp2Go.EmailHistoryRequest.GroupBy.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryRequest.StartDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailHistoryRequest.StartDate.init -> void
+Scott.Mail.Smtp2Go.EmailHistoryRequest.Subaccounts.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.EmailHistoryRequest.Subaccounts.init -> void
 Scott.Mail.Smtp2Go.EmailMimeRequest
 Scott.Mail.Smtp2Go.EmailMimeRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailMimeRequest!
 Scott.Mail.Smtp2Go.EmailMimeRequest.EmailMimeRequest() -> void
@@ -175,6 +293,76 @@ Scott.Mail.Smtp2Go.EmailSendResult.ScheduleId.init -> void
 Scott.Mail.Smtp2Go.EmailSendResult.Succeeded.get -> int?
 Scott.Mail.Smtp2Go.EmailSendResult.Succeeded.init -> void
 Scott.Mail.Smtp2Go.EmailSendResultExtensions
+Scott.Mail.Smtp2Go.EmailSpam
+Scott.Mail.Smtp2Go.EmailSpam.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSpam!
+Scott.Mail.Smtp2Go.EmailSpam.EmailSpam() -> void
+Scott.Mail.Smtp2Go.EmailSpam.Emails.get -> long?
+Scott.Mail.Smtp2Go.EmailSpam.Emails.init -> void
+Scott.Mail.Smtp2Go.EmailSpam.Equals(Scott.Mail.Smtp2Go.EmailSpam? other) -> bool
+Scott.Mail.Smtp2Go.EmailSpam.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailSpam.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailSpam.Rejects.get -> long?
+Scott.Mail.Smtp2Go.EmailSpam.Rejects.init -> void
+Scott.Mail.Smtp2Go.EmailSpam.SpamPercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailSpam.SpamPercent.init -> void
+Scott.Mail.Smtp2Go.EmailSpam.Spams.get -> long?
+Scott.Mail.Smtp2Go.EmailSpam.Spams.init -> void
+Scott.Mail.Smtp2Go.EmailSummary
+Scott.Mail.Smtp2Go.EmailSummary.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSummary!
+Scott.Mail.Smtp2Go.EmailSummary.BouncePercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailSummary.BouncePercent.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.BounceRejects.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.BounceRejects.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.Clicks.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.Clicks.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.CycleEnd.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailSummary.CycleEnd.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.CycleMax.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.CycleMax.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.CycleRemaining.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.CycleRemaining.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.CycleStart.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailSummary.CycleStart.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.CycleUsed.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.CycleUsed.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.EmailCount.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.EmailCount.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.EmailSummary() -> void
+Scott.Mail.Smtp2Go.EmailSummary.Equals(Scott.Mail.Smtp2Go.EmailSummary? other) -> bool
+Scott.Mail.Smtp2Go.EmailSummary.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailSummary.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailSummary.HardBounces.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.HardBounces.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.Opens.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.Opens.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.Rejects.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.Rejects.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.SoftBounces.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.SoftBounces.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.SpamEmails.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.SpamEmails.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.SpamPercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailSummary.SpamPercent.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.SpamRejects.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.SpamRejects.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.UnsubscribePercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailSummary.UnsubscribePercent.init -> void
+Scott.Mail.Smtp2Go.EmailSummary.Unsubscribes.get -> long?
+Scott.Mail.Smtp2Go.EmailSummary.Unsubscribes.init -> void
+Scott.Mail.Smtp2Go.EmailUnsubscribes
+Scott.Mail.Smtp2Go.EmailUnsubscribes.<Clone>$() -> Scott.Mail.Smtp2Go.EmailUnsubscribes!
+Scott.Mail.Smtp2Go.EmailUnsubscribes.EmailUnsubscribes() -> void
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Emails.get -> long?
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Emails.init -> void
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Equals(Scott.Mail.Smtp2Go.EmailUnsubscribes? other) -> bool
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Rejects.get -> long?
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Rejects.init -> void
+Scott.Mail.Smtp2Go.EmailUnsubscribes.UnsubscribePercent.get -> Scott.Mail.Smtp2Go.Percentage?
+Scott.Mail.Smtp2Go.EmailUnsubscribes.UnsubscribePercent.init -> void
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Unsubscribes.get -> long?
+Scott.Mail.Smtp2Go.EmailUnsubscribes.Unsubscribes.init -> void
 Scott.Mail.Smtp2Go.FieldValidationError
 Scott.Mail.Smtp2Go.FieldValidationError.<Clone>$() -> Scott.Mail.Smtp2Go.FieldValidationError!
 Scott.Mail.Smtp2Go.FieldValidationError.Deconstruct(out string? FieldName, out string! Message) -> void
@@ -198,7 +386,16 @@ Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonE
 Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
+Scott.Mail.Smtp2Go.IStatsClient
+Scott.Mail.Smtp2Go.IStatsClient.GetBouncesAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailBounces!>!>!
+Scott.Mail.Smtp2Go.IStatsClient.GetCycleAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailCycle!>!>!
+Scott.Mail.Smtp2Go.IStatsClient.GetHistoryAsync(Scott.Mail.Smtp2Go.EmailHistoryRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailHistory!>!>!
+Scott.Mail.Smtp2Go.IStatsClient.GetQuotaAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.Quota!>!
+Scott.Mail.Smtp2Go.IStatsClient.GetSpamAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSpam!>!>!
+Scott.Mail.Smtp2Go.IStatsClient.GetSummaryAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSummary!>!>!
+Scott.Mail.Smtp2Go.IStatsClient.GetUnsubscribesAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailUnsubscribes!>!>!
 Scott.Mail.Smtp2Go.IWebhookClient
 Scott.Mail.Smtp2Go.IWebhookClient.AddAsync(Scott.Mail.Smtp2Go.WebhookAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
 Scott.Mail.Smtp2Go.IWebhookClient.AddOrUpdateByUrlAsync(Scott.Mail.Smtp2Go.WebhookAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
@@ -226,6 +423,24 @@ Scott.Mail.Smtp2Go.Percentage.Raw.get -> string?
 Scott.Mail.Smtp2Go.Percentage.Raw.init -> void
 Scott.Mail.Smtp2Go.Percentage.Value.get -> decimal?
 Scott.Mail.Smtp2Go.Percentage.Value.init -> void
+Scott.Mail.Smtp2Go.Quota
+Scott.Mail.Smtp2Go.Quota.<Clone>$() -> Scott.Mail.Smtp2Go.Quota!
+Scott.Mail.Smtp2Go.Quota.CycleEnd.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Quota.CycleEnd.init -> void
+Scott.Mail.Smtp2Go.Quota.CycleStart.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Quota.CycleStart.init -> void
+Scott.Mail.Smtp2Go.Quota.Deconstruct(out long Used, out long Remaining, out long Max, out System.DateTimeOffset? CycleStart, out System.DateTimeOffset? CycleEnd, out string! RequestId) -> void
+Scott.Mail.Smtp2Go.Quota.Equals(Scott.Mail.Smtp2Go.Quota? other) -> bool
+Scott.Mail.Smtp2Go.Quota.Max.get -> long
+Scott.Mail.Smtp2Go.Quota.Max.init -> void
+Scott.Mail.Smtp2Go.Quota.Quota(long Used, long Remaining, long Max, System.DateTimeOffset? CycleStart, System.DateTimeOffset? CycleEnd, string! RequestId) -> void
+Scott.Mail.Smtp2Go.Quota.Remaining.get -> long
+Scott.Mail.Smtp2Go.Quota.Remaining.init -> void
+Scott.Mail.Smtp2Go.Quota.RequestId.get -> string!
+Scott.Mail.Smtp2Go.Quota.RequestId.init -> void
+Scott.Mail.Smtp2Go.Quota.Used.get -> long
+Scott.Mail.Smtp2Go.Quota.Used.init -> void
+Scott.Mail.Smtp2Go.Quota.UsedFraction.get -> double
 Scott.Mail.Smtp2Go.Region
 Scott.Mail.Smtp2Go.Region.AU = 3 -> Scott.Mail.Smtp2Go.Region
 Scott.Mail.Smtp2Go.Region.EU = 2 -> Scott.Mail.Smtp2Go.Region
@@ -311,6 +526,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(System.Net.Http.HttpClient! httpClient, Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options, Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics? diagnostics = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(string! apiKey) -> void
+Scott.Mail.Smtp2Go.Smtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
@@ -687,6 +903,21 @@ override Scott.Mail.Smtp2Go.EmailBatchItem.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailBatchRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.EmailBatchRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailBatchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailBounces.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailBounces.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailBounces.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailCycle.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailCycle.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailCycle.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailHistory.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailHistory.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailHistory.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailHistoryEntry.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailHistoryEntry.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailHistoryEntry.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailHistoryRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailHistoryRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailHistoryRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailMimeRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.EmailMimeRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailMimeRequest.ToString() -> string!
@@ -702,6 +933,15 @@ override Scott.Mail.Smtp2Go.EmailSendRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailSendResult.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.EmailSendResult.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailSendResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailSpam.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailSpam.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailSpam.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailSummary.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailSummary.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailSummary.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailUnsubscribes.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailUnsubscribes.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailUnsubscribes.ToString() -> string!
 override Scott.Mail.Smtp2Go.FieldValidationError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.FieldValidationError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.FieldValidationError.ToString() -> string!
@@ -718,6 +958,9 @@ override Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.Write(S
 override Scott.Mail.Smtp2Go.Json.Converters.WebhookListConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Webhook!>?
 override Scott.Mail.Smtp2Go.Json.Converters.WebhookListConverter.Write(System.Text.Json.Utf8JsonWriter! writer, System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Webhook!>! value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Percentage.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Quota.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Quota.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Quota.ToString() -> string!
 override Scott.Mail.Smtp2Go.RequestOptions.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.RequestOptions.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.ToString() -> string!
@@ -821,8 +1064,18 @@ static Scott.Mail.Smtp2Go.EmailBatchItem.operator !=(Scott.Mail.Smtp2Go.EmailBat
 static Scott.Mail.Smtp2Go.EmailBatchItem.operator ==(Scott.Mail.Smtp2Go.EmailBatchItem? left, Scott.Mail.Smtp2Go.EmailBatchItem? right) -> bool
 static Scott.Mail.Smtp2Go.EmailBatchRequest.operator !=(Scott.Mail.Smtp2Go.EmailBatchRequest? left, Scott.Mail.Smtp2Go.EmailBatchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailBatchRequest.operator ==(Scott.Mail.Smtp2Go.EmailBatchRequest? left, Scott.Mail.Smtp2Go.EmailBatchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailBounces.operator !=(Scott.Mail.Smtp2Go.EmailBounces? left, Scott.Mail.Smtp2Go.EmailBounces? right) -> bool
+static Scott.Mail.Smtp2Go.EmailBounces.operator ==(Scott.Mail.Smtp2Go.EmailBounces? left, Scott.Mail.Smtp2Go.EmailBounces? right) -> bool
 static Scott.Mail.Smtp2Go.EmailClientExtensions.SendAsync(this Scott.Mail.Smtp2Go.IEmailClient! client, Scott.Mail.Smtp2Go.EmailAddress sender, Scott.Mail.Smtp2Go.EmailAddress to, string! subject, string? htmlBody, string? textBody = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 static Scott.Mail.Smtp2Go.EmailClientExtensions.SendTemplateAsync(this Scott.Mail.Smtp2Go.IEmailClient! client, Scott.Mail.Smtp2Go.EmailAddress sender, Scott.Mail.Smtp2Go.EmailAddress to, string! templateId, System.Collections.Generic.IReadOnlyDictionary<string!, object?>? templateData = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
+static Scott.Mail.Smtp2Go.EmailCycle.operator !=(Scott.Mail.Smtp2Go.EmailCycle? left, Scott.Mail.Smtp2Go.EmailCycle? right) -> bool
+static Scott.Mail.Smtp2Go.EmailCycle.operator ==(Scott.Mail.Smtp2Go.EmailCycle? left, Scott.Mail.Smtp2Go.EmailCycle? right) -> bool
+static Scott.Mail.Smtp2Go.EmailHistory.operator !=(Scott.Mail.Smtp2Go.EmailHistory? left, Scott.Mail.Smtp2Go.EmailHistory? right) -> bool
+static Scott.Mail.Smtp2Go.EmailHistory.operator ==(Scott.Mail.Smtp2Go.EmailHistory? left, Scott.Mail.Smtp2Go.EmailHistory? right) -> bool
+static Scott.Mail.Smtp2Go.EmailHistoryEntry.operator !=(Scott.Mail.Smtp2Go.EmailHistoryEntry? left, Scott.Mail.Smtp2Go.EmailHistoryEntry? right) -> bool
+static Scott.Mail.Smtp2Go.EmailHistoryEntry.operator ==(Scott.Mail.Smtp2Go.EmailHistoryEntry? left, Scott.Mail.Smtp2Go.EmailHistoryEntry? right) -> bool
+static Scott.Mail.Smtp2Go.EmailHistoryRequest.operator !=(Scott.Mail.Smtp2Go.EmailHistoryRequest? left, Scott.Mail.Smtp2Go.EmailHistoryRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailHistoryRequest.operator ==(Scott.Mail.Smtp2Go.EmailHistoryRequest? left, Scott.Mail.Smtp2Go.EmailHistoryRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailMimeRequest.FromBytes(byte[]! mimeMessage) -> Scott.Mail.Smtp2Go.EmailMimeRequest!
 static Scott.Mail.Smtp2Go.EmailMimeRequest.operator !=(Scott.Mail.Smtp2Go.EmailMimeRequest? left, Scott.Mail.Smtp2Go.EmailMimeRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailMimeRequest.operator ==(Scott.Mail.Smtp2Go.EmailMimeRequest? left, Scott.Mail.Smtp2Go.EmailMimeRequest? right) -> bool
@@ -835,6 +1088,12 @@ static Scott.Mail.Smtp2Go.EmailSendRequest.operator ==(Scott.Mail.Smtp2Go.EmailS
 static Scott.Mail.Smtp2Go.EmailSendResult.operator !=(Scott.Mail.Smtp2Go.EmailSendResult? left, Scott.Mail.Smtp2Go.EmailSendResult? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendResult.operator ==(Scott.Mail.Smtp2Go.EmailSendResult? left, Scott.Mail.Smtp2Go.EmailSendResult? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendResultExtensions.EnsureAccepted(this Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>! response) -> Scott.Mail.Smtp2Go.EmailSendResult!
+static Scott.Mail.Smtp2Go.EmailSpam.operator !=(Scott.Mail.Smtp2Go.EmailSpam? left, Scott.Mail.Smtp2Go.EmailSpam? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSpam.operator ==(Scott.Mail.Smtp2Go.EmailSpam? left, Scott.Mail.Smtp2Go.EmailSpam? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSummary.operator !=(Scott.Mail.Smtp2Go.EmailSummary? left, Scott.Mail.Smtp2Go.EmailSummary? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSummary.operator ==(Scott.Mail.Smtp2Go.EmailSummary? left, Scott.Mail.Smtp2Go.EmailSummary? right) -> bool
+static Scott.Mail.Smtp2Go.EmailUnsubscribes.operator !=(Scott.Mail.Smtp2Go.EmailUnsubscribes? left, Scott.Mail.Smtp2Go.EmailUnsubscribes? right) -> bool
+static Scott.Mail.Smtp2Go.EmailUnsubscribes.operator ==(Scott.Mail.Smtp2Go.EmailUnsubscribes? left, Scott.Mail.Smtp2Go.EmailUnsubscribes? right) -> bool
 static Scott.Mail.Smtp2Go.FieldValidationError.operator !=(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.FieldValidationError.operator ==(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Format(System.DateTimeOffset value) -> string!
@@ -843,6 +1102,9 @@ static Scott.Mail.Smtp2Go.Percentage.FromDecimal(decimal value) -> Scott.Mail.Sm
 static Scott.Mail.Smtp2Go.Percentage.FromString(string? raw) -> Scott.Mail.Smtp2Go.Percentage
 static Scott.Mail.Smtp2Go.Percentage.operator !=(Scott.Mail.Smtp2Go.Percentage left, Scott.Mail.Smtp2Go.Percentage right) -> bool
 static Scott.Mail.Smtp2Go.Percentage.operator ==(Scott.Mail.Smtp2Go.Percentage left, Scott.Mail.Smtp2Go.Percentage right) -> bool
+static Scott.Mail.Smtp2Go.Quota.From(Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailCycle!>! response) -> Scott.Mail.Smtp2Go.Quota!
+static Scott.Mail.Smtp2Go.Quota.operator !=(Scott.Mail.Smtp2Go.Quota? left, Scott.Mail.Smtp2Go.Quota? right) -> bool
+static Scott.Mail.Smtp2Go.Quota.operator ==(Scott.Mail.Smtp2Go.Quota? left, Scott.Mail.Smtp2Go.Quota? right) -> bool
 static Scott.Mail.Smtp2Go.RegionEndpoints.AU.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.EU.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.GetBaseUrl(Scott.Mail.Smtp2Go.Region region) -> System.Uri!

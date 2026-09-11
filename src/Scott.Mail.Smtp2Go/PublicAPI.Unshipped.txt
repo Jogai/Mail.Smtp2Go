@@ -502,6 +502,159 @@ Scott.Mail.Smtp2Go.WebhookSmsEvent.Rejected = 5 -> Scott.Mail.Smtp2Go.WebhookSms
 Scott.Mail.Smtp2Go.WebhookSmsEvent.Sending = 1 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
 Scott.Mail.Smtp2Go.WebhookSmsEvent.Submitted = 2 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
 Scott.Mail.Smtp2Go.WebhookSmsEvent.Unknown = 0 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.Webhooks.BounceType
+Scott.Mail.Smtp2Go.Webhooks.BounceType.Hard = 1 -> Scott.Mail.Smtp2Go.Webhooks.BounceType
+Scott.Mail.Smtp2Go.Webhooks.BounceType.Soft = 2 -> Scott.Mail.Smtp2Go.Webhooks.BounceType
+Scott.Mail.Smtp2Go.Webhooks.BounceType.Unknown = 0 -> Scott.Mail.Smtp2Go.Webhooks.BounceType
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.BounceRaw.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.BounceRaw.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.BounceType.get -> Scott.Mail.Smtp2Go.Webhooks.BounceType?
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.BounceType.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.EmailBounceEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.ClickUrl.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.ClickUrl.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.EmailClickEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.Link.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.Link.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.EmailDeliveredEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.Client.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.Client.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ClientDevice.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ClientDevice.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ClientOs.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ClientOs.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.EmailOpenEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.EmailOpenEvent(Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent! original) -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GeoCity.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GeoCity.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GeoContinent.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GeoContinent.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GeoCountry.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GeoCountry.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ReadSeconds.get -> int?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ReadSeconds.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.UserAgent.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.UserAgent.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.EmailProcessedEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.EmailRejectEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.EmailResubscribeEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.EmailSpamEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.EmailUnsubscribeEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Auth.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Auth.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Context.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Context.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.CustomHeaders.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.CustomHeaders.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.EmailId.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.EmailId.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.EmailWebhookEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.EmailWebhookEvent(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent! original) -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.From.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.From.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.FromAddress.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.FromAddress.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.FromName.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.FromName.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Host.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Host.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Message.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Message.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.MessageId.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.MessageId.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Recipient.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Recipient.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Recipients.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Recipients.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.SendTime.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.SendTime.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Sender.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Sender.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.SourceHost.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.SourceHost.init -> void
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Subject.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Subject.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.DestinationNumber.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.DestinationNumber.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.EmailSubject.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.EmailSubject.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.MessageContent.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.MessageContent.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.MessageId.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.MessageId.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.ReceivedTimestamp.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.ReceivedTimestamp.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.Region.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.Region.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.RetryCount.get -> int?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.RetryCount.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SenderEmail.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SenderEmail.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SmsStatusEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SourceNumber.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SourceNumber.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.StatusCode.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.StatusCode.init -> void
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SubmittedTimestamp.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.SubmittedTimestamp.init -> void
+Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent
+Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? other) -> bool
+Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.UnknownWebhookEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.EventRaw.get -> string!
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.EventRaw.init -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Extra.get -> System.Collections.Generic.IReadOnlyDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Extra.init -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Kind.get -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Kind.init -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Time.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Time.init -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.WebhookEvent() -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.WebhookEvent(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent! original) -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.WebhookId.get -> string?
+Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.WebhookId.init -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailBounce = 3 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailClick = 5 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailDelivered = 2 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailOpen = 4 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailProcessed = 1 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailReject = 9 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailResubscribe = 8 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailSpam = 6 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.EmailUnsubscribe = 7 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.SmsDelivered = 12 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.SmsFailed = 13 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.SmsOptOut = 15 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.SmsRejected = 14 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.SmsSending = 10 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.SmsSubmitted = 11 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind.Unknown = 0 -> Scott.Mail.Smtp2Go.Webhooks.WebhookEventKind
+Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions
+Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions.KnownCustomHeaders.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions.KnownCustomHeaders.init -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions.WebhookParserOptions() -> void
+abstract Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
 const Scott.Mail.Smtp2Go.EmailBatchRequest.MaxEmails = 1000 -> int
 const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
 const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
@@ -583,6 +736,61 @@ override Scott.Mail.Smtp2Go.WebhookEditRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.WebhookRemoveRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.WebhookRemoveRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.WebhookRemoveRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.EqualityContract.get -> System.Type!
+override Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.PrintMembers(System.Text.StringBuilder! builder) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.EqualityContract.get -> System.Type!
+override Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.PrintMembers(System.Text.StringBuilder! builder) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.ToString() -> string!
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? other) -> bool
+override sealed Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? other) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.Attachment.FromBase64(string! filename, string! fileblob, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
@@ -658,6 +866,37 @@ static Scott.Mail.Smtp2Go.WebhookEditRequest.operator !=(Scott.Mail.Smtp2Go.Webh
 static Scott.Mail.Smtp2Go.WebhookEditRequest.operator ==(Scott.Mail.Smtp2Go.WebhookEditRequest? left, Scott.Mail.Smtp2Go.WebhookEditRequest? right) -> bool
 static Scott.Mail.Smtp2Go.WebhookRemoveRequest.operator !=(Scott.Mail.Smtp2Go.WebhookRemoveRequest? left, Scott.Mail.Smtp2Go.WebhookRemoveRequest? right) -> bool
 static Scott.Mail.Smtp2Go.WebhookRemoveRequest.operator ==(Scott.Mail.Smtp2Go.WebhookRemoveRequest? left, Scott.Mail.Smtp2Go.WebhookRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent? left, Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent? left, Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? right) -> bool
+virtual Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? other) -> bool
+virtual Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
+virtual Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.EqualityContract.get -> System.Type!
+virtual Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? other) -> bool
+virtual Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.PrintMembers(System.Text.StringBuilder! builder) -> bool
 ~override Scott.Mail.Smtp2Go.EmailAddress.Equals(object obj) -> bool
 ~override Scott.Mail.Smtp2Go.Percentage.Equals(object obj) -> bool
 ~override Scott.Mail.Smtp2Go.Percentage.ToString() -> string

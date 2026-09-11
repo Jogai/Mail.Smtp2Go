@@ -1,0 +1,13 @@
+#nullable enable
+override Scott.Mail.Smtp2Go.Webhooks.EmailBounceEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailClickEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailDeliveredEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailProcessedEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailRejectEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailResubscribeEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailSpamEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.EmailUnsubscribeEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.SmsStatusEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+override abstract Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!

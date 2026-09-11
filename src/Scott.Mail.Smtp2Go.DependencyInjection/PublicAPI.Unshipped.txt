@@ -1,4 +1,5 @@
 #nullable enable
+Microsoft.Extensions.DependencyInjection.Smtp2GoServiceCollectionExtensions
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.BreakDuration.get -> System.TimeSpan
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.BreakDuration.set -> void
@@ -11,6 +12,12 @@ Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.MinimumThroughput.g
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.MinimumThroughput.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.SamplingDuration.get -> System.TimeSpan
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.SamplingDuration.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder
+Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder.HttpClientBuilder.get -> Microsoft.Extensions.DependencyInjection.IHttpClientBuilder!
+Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder.Name.get -> string!
+Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoClientFactory
+Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoClientFactory.Create(string! name) -> Scott.Mail.Smtp2Go.ISmtp2GoClient!
 Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics
 Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.EmailResult(int succeeded, int failed) -> void
 Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.LoggerDiagnostics(Microsoft.Extensions.Logging.ILoggerFactory! loggerFactory, Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics! metrics) -> void
@@ -99,3 +106,7 @@ const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.MeterName = "Scott.M
 const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.RequestDurationInstrument = "smtp2go.client.request.duration" -> string!
 const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.RequestsInstrument = "smtp2go.client.requests" -> string!
 const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.StatusCodeTag = "http.response.status_code" -> string!
+static Microsoft.Extensions.DependencyInjection.Smtp2GoServiceCollectionExtensions.AddSmtp2Go(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder!
+static Microsoft.Extensions.DependencyInjection.Smtp2GoServiceCollectionExtensions.AddSmtp2Go(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions!>! configure) -> Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder!
+static Microsoft.Extensions.DependencyInjection.Smtp2GoServiceCollectionExtensions.AddSmtp2Go(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! name, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder!
+static Microsoft.Extensions.DependencyInjection.Smtp2GoServiceCollectionExtensions.AddSmtp2Go(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! name, System.Action<Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions!>! configure) -> Scott.Mail.Smtp2Go.DependencyInjection.ISmtp2GoBuilder!

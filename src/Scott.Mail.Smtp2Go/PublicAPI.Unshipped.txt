@@ -526,6 +526,128 @@ Scott.Mail.Smtp2Go.DeliveryAttempt.SmtpResponse.get -> string?
 Scott.Mail.Smtp2Go.DeliveryAttempt.SmtpResponse.init -> void
 Scott.Mail.Smtp2Go.DeliveryAttempt.SmtpTime.get -> System.DateTimeOffset?
 Scott.Mail.Smtp2Go.DeliveryAttempt.SmtpTime.init -> void
+Scott.Mail.Smtp2Go.DomainAddRequest
+Scott.Mail.Smtp2Go.DomainAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.DomainAddRequest!
+Scott.Mail.Smtp2Go.DomainAddRequest.AutoVerify.get -> bool?
+Scott.Mail.Smtp2Go.DomainAddRequest.AutoVerify.init -> void
+Scott.Mail.Smtp2Go.DomainAddRequest.Domain.get -> string!
+Scott.Mail.Smtp2Go.DomainAddRequest.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainAddRequest.DomainAddRequest() -> void
+Scott.Mail.Smtp2Go.DomainAddRequest.Equals(Scott.Mail.Smtp2Go.DomainAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.DomainAddRequest.RequisitionSsl.get -> bool?
+Scott.Mail.Smtp2Go.DomainAddRequest.RequisitionSsl.init -> void
+Scott.Mail.Smtp2Go.DomainAddRequest.ReturnPathSubdomain.get -> string?
+Scott.Mail.Smtp2Go.DomainAddRequest.ReturnPathSubdomain.init -> void
+Scott.Mail.Smtp2Go.DomainAddRequest.SubaccountAccess.get -> Scott.Mail.Smtp2Go.DomainSubaccountAccess?
+Scott.Mail.Smtp2Go.DomainAddRequest.SubaccountAccess.init -> void
+Scott.Mail.Smtp2Go.DomainAddRequest.TrackingSubdomain.get -> string?
+Scott.Mail.Smtp2Go.DomainAddRequest.TrackingSubdomain.init -> void
+Scott.Mail.Smtp2Go.DomainDetails
+Scott.Mail.Smtp2Go.DomainDetails.<Clone>$() -> Scott.Mail.Smtp2Go.DomainDetails!
+Scott.Mail.Smtp2Go.DomainDetails.DkimSelector.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.DkimSelector.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.DkimStatus.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.DkimStatus.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.DkimValue.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.DkimValue.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.DkimVerified.get -> bool?
+Scott.Mail.Smtp2Go.DomainDetails.DkimVerified.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.Domain.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.DomainDetails() -> void
+Scott.Mail.Smtp2Go.DomainDetails.Equals(Scott.Mail.Smtp2Go.DomainDetails? other) -> bool
+Scott.Mail.Smtp2Go.DomainDetails.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.DomainDetails.Extra.set -> void
+Scott.Mail.Smtp2Go.DomainDetails.FullDomain.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.FullDomain.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathSelector.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathSelector.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathStatus.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathStatus.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathValue.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathValue.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathVerified.get -> bool?
+Scott.Mail.Smtp2Go.DomainDetails.ReturnPathVerified.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.SetupLink.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.SetupLink.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.Subdomain.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.Subdomain.init -> void
+Scott.Mail.Smtp2Go.DomainDetails.Suffix.get -> string?
+Scott.Mail.Smtp2Go.DomainDetails.Suffix.init -> void
+Scott.Mail.Smtp2Go.DomainReturnPathRequest
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.<Clone>$() -> Scott.Mail.Smtp2Go.DomainReturnPathRequest!
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.Domain.get -> string!
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.DomainReturnPathRequest() -> void
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.Equals(Scott.Mail.Smtp2Go.DomainReturnPathRequest? other) -> bool
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.NewSubdomain.get -> string!
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.NewSubdomain.init -> void
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.OldSubdomain.get -> string!
+Scott.Mail.Smtp2Go.DomainReturnPathRequest.OldSubdomain.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccess
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.<Clone>$() -> Scott.Mail.Smtp2Go.DomainSubaccountAccess!
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.DomainSubaccountAccess() -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.Equals(Scott.Mail.Smtp2Go.DomainSubaccountAccess? other) -> bool
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.Extra.set -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.FutureSubaccounts.get -> bool?
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.FutureSubaccounts.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.Subaccounts.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.DomainSubaccountAccess.Subaccounts.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.<Clone>$() -> Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest!
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.Domain.get -> string!
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.DomainSubaccountAccessRequest() -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.Equals(Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest? other) -> bool
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.FutureSubaccounts.get -> bool?
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.FutureSubaccounts.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.Subaccounts.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.Subaccounts.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.<Clone>$() -> Scott.Mail.Smtp2Go.DomainSubaccountAccessResult!
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Domain.get -> string?
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.DomainSubaccountAccessResult() -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Equals(Scott.Mail.Smtp2Go.DomainSubaccountAccessResult? other) -> bool
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Extra.set -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.FutureSubaccounts.get -> bool?
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.FutureSubaccounts.init -> void
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Subaccounts.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Subaccounts.init -> void
+Scott.Mail.Smtp2Go.DomainTrackingRequest
+Scott.Mail.Smtp2Go.DomainTrackingRequest.<Clone>$() -> Scott.Mail.Smtp2Go.DomainTrackingRequest!
+Scott.Mail.Smtp2Go.DomainTrackingRequest.Domain.get -> string!
+Scott.Mail.Smtp2Go.DomainTrackingRequest.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainTrackingRequest.DomainTrackingRequest() -> void
+Scott.Mail.Smtp2Go.DomainTrackingRequest.Equals(Scott.Mail.Smtp2Go.DomainTrackingRequest? other) -> bool
+Scott.Mail.Smtp2Go.DomainTrackingRequest.NewSubdomain.get -> string!
+Scott.Mail.Smtp2Go.DomainTrackingRequest.NewSubdomain.init -> void
+Scott.Mail.Smtp2Go.DomainTrackingRequest.OldSubdomain.get -> string!
+Scott.Mail.Smtp2Go.DomainTrackingRequest.OldSubdomain.init -> void
+Scott.Mail.Smtp2Go.DomainVerifyRequest
+Scott.Mail.Smtp2Go.DomainVerifyRequest.<Clone>$() -> Scott.Mail.Smtp2Go.DomainVerifyRequest!
+Scott.Mail.Smtp2Go.DomainVerifyRequest.Domain.get -> string!
+Scott.Mail.Smtp2Go.DomainVerifyRequest.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainVerifyRequest.DomainVerifyRequest() -> void
+Scott.Mail.Smtp2Go.DomainVerifyRequest.Equals(Scott.Mail.Smtp2Go.DomainVerifyRequest? other) -> bool
+Scott.Mail.Smtp2Go.DomainVerifyRequest.RequisitionSsl.get -> bool?
+Scott.Mail.Smtp2Go.DomainVerifyRequest.RequisitionSsl.init -> void
+Scott.Mail.Smtp2Go.DomainViewRequest
+Scott.Mail.Smtp2Go.DomainViewRequest.<Clone>$() -> Scott.Mail.Smtp2Go.DomainViewRequest!
+Scott.Mail.Smtp2Go.DomainViewRequest.Domain.get -> string?
+Scott.Mail.Smtp2Go.DomainViewRequest.Domain.init -> void
+Scott.Mail.Smtp2Go.DomainViewRequest.DomainViewRequest() -> void
+Scott.Mail.Smtp2Go.DomainViewRequest.Equals(Scott.Mail.Smtp2Go.DomainViewRequest? other) -> bool
+Scott.Mail.Smtp2Go.DomainViewResult
+Scott.Mail.Smtp2Go.DomainViewResult.<Clone>$() -> Scott.Mail.Smtp2Go.DomainViewResult!
+Scott.Mail.Smtp2Go.DomainViewResult.DomainViewResult() -> void
+Scott.Mail.Smtp2Go.DomainViewResult.Domains.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.SenderDomain!>?
+Scott.Mail.Smtp2Go.DomainViewResult.Domains.init -> void
+Scott.Mail.Smtp2Go.DomainViewResult.Equals(Scott.Mail.Smtp2Go.DomainViewResult? other) -> bool
+Scott.Mail.Smtp2Go.DomainViewResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.DomainViewResult.Extra.set -> void
 Scott.Mail.Smtp2Go.EmailAddress
 Scott.Mail.Smtp2Go.EmailAddress.Address.get -> string!
 Scott.Mail.Smtp2Go.EmailAddress.EmailAddress() -> void
@@ -865,6 +987,14 @@ Scott.Mail.Smtp2Go.IArchiveClient.DownloadOriginalAsync(Scott.Mail.Smtp2Go.Archi
 Scott.Mail.Smtp2Go.IArchiveClient.GetAsync(string! emailId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchivedEmail!>!>!
 Scott.Mail.Smtp2Go.IArchiveClient.SearchAllAsync(Scott.Mail.Smtp2Go.ArchiveSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ArchivedEmail!>!
 Scott.Mail.Smtp2Go.IArchiveClient.SearchAsync(Scott.Mail.Smtp2Go.ArchiveSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchiveSearchResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient
+Scott.Mail.Smtp2Go.IDomainClient.AddAsync(Scott.Mail.Smtp2Go.DomainAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient.RemoveAsync(string! domain, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient.SetReturnPathSubdomainAsync(Scott.Mail.Smtp2Go.DomainReturnPathRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient.SetSubaccountAccessAsync(Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainSubaccountAccessResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient.SetTrackingSubdomainAsync(Scott.Mail.Smtp2Go.DomainTrackingRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient.VerifyAsync(Scott.Mail.Smtp2Go.DomainVerifyRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
+Scott.Mail.Smtp2Go.IDomainClient.ViewAsync(Scott.Mail.Smtp2Go.DomainViewRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
 Scott.Mail.Smtp2Go.IEmailClient
 Scott.Mail.Smtp2Go.IEmailClient.RemoveScheduledAsync(string! scheduleId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Text.Json.JsonElement>!>!
 Scott.Mail.Smtp2Go.IEmailClient.SearchAsync(Scott.Mail.Smtp2Go.EmailSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSearchResult!>!>!
@@ -884,6 +1014,7 @@ Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Domains.get -> Scott.Mail.Smtp2Go.IDomainClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.IpAuth.get -> Scott.Mail.Smtp2Go.IIpAuthClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
@@ -1029,6 +1160,20 @@ Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSender.get -> string?
 Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSender.init -> void
 Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSubject.get -> string?
 Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSubject.init -> void
+Scott.Mail.Smtp2Go.SenderDomain
+Scott.Mail.Smtp2Go.SenderDomain.<Clone>$() -> Scott.Mail.Smtp2Go.SenderDomain!
+Scott.Mail.Smtp2Go.SenderDomain.Domain.get -> Scott.Mail.Smtp2Go.DomainDetails?
+Scott.Mail.Smtp2Go.SenderDomain.Domain.init -> void
+Scott.Mail.Smtp2Go.SenderDomain.Equals(Scott.Mail.Smtp2Go.SenderDomain? other) -> bool
+Scott.Mail.Smtp2Go.SenderDomain.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.SenderDomain.Extra.set -> void
+Scott.Mail.Smtp2Go.SenderDomain.FromMaster.get -> bool?
+Scott.Mail.Smtp2Go.SenderDomain.FromMaster.init -> void
+Scott.Mail.Smtp2Go.SenderDomain.SenderDomain() -> void
+Scott.Mail.Smtp2Go.SenderDomain.SubaccountAccess.get -> Scott.Mail.Smtp2Go.DomainSubaccountAccess?
+Scott.Mail.Smtp2Go.SenderDomain.SubaccountAccess.init -> void
+Scott.Mail.Smtp2Go.SenderDomain.Trackers.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.TrackingDomain!>?
+Scott.Mail.Smtp2Go.SenderDomain.Trackers.init -> void
 Scott.Mail.Smtp2Go.Smtp2GoApiException
 Scott.Mail.Smtp2Go.Smtp2GoApiException.Code.get -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
 Scott.Mail.Smtp2Go.Smtp2GoApiException.Error.get -> Scott.Mail.Smtp2Go.ApiError?
@@ -1051,6 +1196,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient
 Scott.Mail.Smtp2Go.Smtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Domains.get -> Scott.Mail.Smtp2Go.IDomainClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.IpAuth.get -> Scott.Mail.Smtp2Go.IIpAuthClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Options.get -> Scott.Mail.Smtp2Go.Smtp2GoClientOptions!
@@ -1513,6 +1659,28 @@ Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateVariables.get -> System.Collect
 Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateVariables.init -> void
 Scott.Mail.Smtp2Go.TemplateUpdateRequest.TextBody.get -> string?
 Scott.Mail.Smtp2Go.TemplateUpdateRequest.TextBody.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain
+Scott.Mail.Smtp2Go.TrackingDomain.<Clone>$() -> Scott.Mail.Smtp2Go.TrackingDomain!
+Scott.Mail.Smtp2Go.TrackingDomain.CnameStatus.get -> string?
+Scott.Mail.Smtp2Go.TrackingDomain.CnameStatus.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.CnameValue.get -> string?
+Scott.Mail.Smtp2Go.TrackingDomain.CnameValue.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.CnameVerified.get -> bool?
+Scott.Mail.Smtp2Go.TrackingDomain.CnameVerified.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.Domain.get -> string?
+Scott.Mail.Smtp2Go.TrackingDomain.Domain.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.Enabled.get -> bool?
+Scott.Mail.Smtp2Go.TrackingDomain.Enabled.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.Equals(Scott.Mail.Smtp2Go.TrackingDomain? other) -> bool
+Scott.Mail.Smtp2Go.TrackingDomain.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.TrackingDomain.Extra.set -> void
+Scott.Mail.Smtp2Go.TrackingDomain.FullDomain.get -> string?
+Scott.Mail.Smtp2Go.TrackingDomain.FullDomain.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.Subdomain.get -> string?
+Scott.Mail.Smtp2Go.TrackingDomain.Subdomain.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.Suffix.get -> string?
+Scott.Mail.Smtp2Go.TrackingDomain.Suffix.init -> void
+Scott.Mail.Smtp2Go.TrackingDomain.TrackingDomain() -> void
 Scott.Mail.Smtp2Go.Transport.Endpoint
 Scott.Mail.Smtp2Go.Transport.Endpoint.<Clone>$() -> Scott.Mail.Smtp2Go.Transport.Endpoint!
 Scott.Mail.Smtp2Go.Transport.Endpoint.AcceptsSubaccountId.get -> bool
@@ -1881,6 +2049,36 @@ override Scott.Mail.Smtp2Go.CustomHeader.ToString() -> string!
 override Scott.Mail.Smtp2Go.DeliveryAttempt.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.DeliveryAttempt.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.DeliveryAttempt.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainDetails.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainDetails.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainDetails.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainReturnPathRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainReturnPathRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainReturnPathRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainSubaccountAccess.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainSubaccountAccess.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainSubaccountAccess.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainTrackingRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainTrackingRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainTrackingRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainVerifyRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainVerifyRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainVerifyRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainViewRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainViewRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainViewRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.DomainViewResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DomainViewResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DomainViewResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailAddress.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailAddress.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailBatchItem.Equals(object? obj) -> bool
@@ -1965,6 +2163,9 @@ override Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SenderDomain.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SenderDomain.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SenderDomain.ToString() -> string!
 override Scott.Mail.Smtp2Go.SmtpUser.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.SmtpUser.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.SmtpUser.ToString() -> string!
@@ -2022,6 +2223,9 @@ override Scott.Mail.Smtp2Go.TemplateSearchResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.TemplateUpdateRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.TemplateUpdateRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.TemplateUpdateRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.TrackingDomain.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.TrackingDomain.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.TrackingDomain.ToString() -> string!
 override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
@@ -2141,6 +2345,26 @@ static Scott.Mail.Smtp2Go.CustomHeader.operator !=(Scott.Mail.Smtp2Go.CustomHead
 static Scott.Mail.Smtp2Go.CustomHeader.operator ==(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
 static Scott.Mail.Smtp2Go.DeliveryAttempt.operator !=(Scott.Mail.Smtp2Go.DeliveryAttempt? left, Scott.Mail.Smtp2Go.DeliveryAttempt? right) -> bool
 static Scott.Mail.Smtp2Go.DeliveryAttempt.operator ==(Scott.Mail.Smtp2Go.DeliveryAttempt? left, Scott.Mail.Smtp2Go.DeliveryAttempt? right) -> bool
+static Scott.Mail.Smtp2Go.DomainAddRequest.operator !=(Scott.Mail.Smtp2Go.DomainAddRequest? left, Scott.Mail.Smtp2Go.DomainAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainAddRequest.operator ==(Scott.Mail.Smtp2Go.DomainAddRequest? left, Scott.Mail.Smtp2Go.DomainAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainDetails.operator !=(Scott.Mail.Smtp2Go.DomainDetails? left, Scott.Mail.Smtp2Go.DomainDetails? right) -> bool
+static Scott.Mail.Smtp2Go.DomainDetails.operator ==(Scott.Mail.Smtp2Go.DomainDetails? left, Scott.Mail.Smtp2Go.DomainDetails? right) -> bool
+static Scott.Mail.Smtp2Go.DomainReturnPathRequest.operator !=(Scott.Mail.Smtp2Go.DomainReturnPathRequest? left, Scott.Mail.Smtp2Go.DomainReturnPathRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainReturnPathRequest.operator ==(Scott.Mail.Smtp2Go.DomainReturnPathRequest? left, Scott.Mail.Smtp2Go.DomainReturnPathRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainSubaccountAccess.operator !=(Scott.Mail.Smtp2Go.DomainSubaccountAccess? left, Scott.Mail.Smtp2Go.DomainSubaccountAccess? right) -> bool
+static Scott.Mail.Smtp2Go.DomainSubaccountAccess.operator ==(Scott.Mail.Smtp2Go.DomainSubaccountAccess? left, Scott.Mail.Smtp2Go.DomainSubaccountAccess? right) -> bool
+static Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.operator !=(Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest? left, Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest.operator ==(Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest? left, Scott.Mail.Smtp2Go.DomainSubaccountAccessRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.operator !=(Scott.Mail.Smtp2Go.DomainSubaccountAccessResult? left, Scott.Mail.Smtp2Go.DomainSubaccountAccessResult? right) -> bool
+static Scott.Mail.Smtp2Go.DomainSubaccountAccessResult.operator ==(Scott.Mail.Smtp2Go.DomainSubaccountAccessResult? left, Scott.Mail.Smtp2Go.DomainSubaccountAccessResult? right) -> bool
+static Scott.Mail.Smtp2Go.DomainTrackingRequest.operator !=(Scott.Mail.Smtp2Go.DomainTrackingRequest? left, Scott.Mail.Smtp2Go.DomainTrackingRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainTrackingRequest.operator ==(Scott.Mail.Smtp2Go.DomainTrackingRequest? left, Scott.Mail.Smtp2Go.DomainTrackingRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainVerifyRequest.operator !=(Scott.Mail.Smtp2Go.DomainVerifyRequest? left, Scott.Mail.Smtp2Go.DomainVerifyRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainVerifyRequest.operator ==(Scott.Mail.Smtp2Go.DomainVerifyRequest? left, Scott.Mail.Smtp2Go.DomainVerifyRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainViewRequest.operator !=(Scott.Mail.Smtp2Go.DomainViewRequest? left, Scott.Mail.Smtp2Go.DomainViewRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainViewRequest.operator ==(Scott.Mail.Smtp2Go.DomainViewRequest? left, Scott.Mail.Smtp2Go.DomainViewRequest? right) -> bool
+static Scott.Mail.Smtp2Go.DomainViewResult.operator !=(Scott.Mail.Smtp2Go.DomainViewResult? left, Scott.Mail.Smtp2Go.DomainViewResult? right) -> bool
+static Scott.Mail.Smtp2Go.DomainViewResult.operator ==(Scott.Mail.Smtp2Go.DomainViewResult? left, Scott.Mail.Smtp2Go.DomainViewResult? right) -> bool
 static Scott.Mail.Smtp2Go.EmailAddress.FromString(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.Parse(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.TryParse(string? text, out Scott.Mail.Smtp2Go.EmailAddress result) -> bool
@@ -2205,6 +2429,8 @@ static Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.operator !=(Scott.Mail.Smt
 static Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.operator ==(Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator !=(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator ==(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SenderDomain.operator !=(Scott.Mail.Smtp2Go.SenderDomain? left, Scott.Mail.Smtp2Go.SenderDomain? right) -> bool
+static Scott.Mail.Smtp2Go.SenderDomain.operator ==(Scott.Mail.Smtp2Go.SenderDomain? left, Scott.Mail.Smtp2Go.SenderDomain? right) -> bool
 static Scott.Mail.Smtp2Go.Smtp2GoClientOptions.IsWellFormedApiKey(string! apiKey) -> bool
 static Scott.Mail.Smtp2Go.SmtpUser.operator !=(Scott.Mail.Smtp2Go.SmtpUser? left, Scott.Mail.Smtp2Go.SmtpUser? right) -> bool
 static Scott.Mail.Smtp2Go.SmtpUser.operator ==(Scott.Mail.Smtp2Go.SmtpUser? left, Scott.Mail.Smtp2Go.SmtpUser? right) -> bool
@@ -2244,6 +2470,8 @@ static Scott.Mail.Smtp2Go.TemplateSearchResult.operator !=(Scott.Mail.Smtp2Go.Te
 static Scott.Mail.Smtp2Go.TemplateSearchResult.operator ==(Scott.Mail.Smtp2Go.TemplateSearchResult? left, Scott.Mail.Smtp2Go.TemplateSearchResult? right) -> bool
 static Scott.Mail.Smtp2Go.TemplateUpdateRequest.operator !=(Scott.Mail.Smtp2Go.TemplateUpdateRequest? left, Scott.Mail.Smtp2Go.TemplateUpdateRequest? right) -> bool
 static Scott.Mail.Smtp2Go.TemplateUpdateRequest.operator ==(Scott.Mail.Smtp2Go.TemplateUpdateRequest? left, Scott.Mail.Smtp2Go.TemplateUpdateRequest? right) -> bool
+static Scott.Mail.Smtp2Go.TrackingDomain.operator !=(Scott.Mail.Smtp2Go.TrackingDomain? left, Scott.Mail.Smtp2Go.TrackingDomain? right) -> bool
+static Scott.Mail.Smtp2Go.TrackingDomain.operator ==(Scott.Mail.Smtp2Go.TrackingDomain? left, Scott.Mail.Smtp2Go.TrackingDomain? right) -> bool
 static Scott.Mail.Smtp2Go.Transport.Endpoint.Patch.get -> System.Net.Http.HttpMethod!
 static Scott.Mail.Smtp2Go.Transport.Endpoint.operator !=(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool
 static Scott.Mail.Smtp2Go.Transport.Endpoint.operator ==(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool

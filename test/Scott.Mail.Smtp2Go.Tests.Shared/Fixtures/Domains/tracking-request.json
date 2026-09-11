@@ -1,0 +1,5 @@
+{
+  "domain": "exampledomain.com",
+  "old_subdomain": "track",
+  "new_subdomain": "newsubdomain"
+}

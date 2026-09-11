@@ -31,6 +31,9 @@ public interface ISmtp2GoClient
     /// <summary>Authenticated IPs: <c>ip_auth/view</c>, <c>edit</c> (PATCH), <c>remove</c>.</summary>
     IIpAuthClient IpAuth { get; }
 
+    /// <summary>Sender domains: <c>domain/view</c>, <c>add</c>, <c>verify</c>, <c>remove</c>, <c>tracking</c>, <c>returnpath</c>, <c>subaccount_access</c>.</summary>
+    IDomainClient Domains { get; }
+
     /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
     IArchiveClient Archive { get; }
 

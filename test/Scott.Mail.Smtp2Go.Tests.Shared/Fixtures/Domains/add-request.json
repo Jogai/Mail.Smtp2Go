@@ -1,0 +1,11 @@
+{
+  "domain": "example.com",
+  "tracking_subdomain": "link",
+  "returnpath_subdomain": "return",
+  "auto_verify": false,
+  "requisition_ssl": true,
+  "subaccount_access": {
+    "subaccounts": ["GnlKn5", "34l8oj"],
+    "future_subaccounts": true
+  }
+}

@@ -44,34 +44,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "domain/add",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "domain/remove",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "domain/returnpath",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "domain/subaccount_access",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "domain/tracking",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "domain/verify",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "domain/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "single_sender_emails/add",
       "reason": "pending plan 07 (account management and SMS)"
     },

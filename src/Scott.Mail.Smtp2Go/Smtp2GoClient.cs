@@ -50,6 +50,7 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
         ApiKeys = new ApiKeyClient(_connection);
         SmtpUsers = new SmtpUserClient(_connection);
         IpAuth = new IpAuthClient(_connection);
+        Domains = new DomainClient(_connection);
         Archive = new ArchiveClient(_connection);
     }
 
@@ -84,12 +85,15 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
     public IIpAuthClient IpAuth { get; }
 
     /// <inheritdoc />
+    public IDomainClient Domains { get; }
+
+    /// <inheritdoc />
     public IArchiveClient Archive { get; }
 
     /// <inheritdoc />
     public IRawClient Raw { get; }
 
-    // Remaining family clients (AllowedSenders, Domains, ..., Sms) are added here by plan 07 as properties over _connection.
+    // Remaining family clients (AllowedSenders, SingleSenders, ..., Sms) are added here by plan 07 as properties over _connection.
 
     private static Smtp2GoClientOptions CreateOptions(string apiKey)
     {

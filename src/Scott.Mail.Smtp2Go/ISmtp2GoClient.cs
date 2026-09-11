@@ -7,6 +7,9 @@ public interface ISmtp2GoClient
     // Email, Activity, Stats, Webhooks, Templates, Suppressions, AllowedSenders, AllowedRecipients, ApiKeys, SmtpUsers, IpAuth,
     // Domains, SingleSenders, Subaccounts, DedicatedIps, Archive, Sms. Until a family lands, reach its endpoints through Raw.
 
+    /// <summary>Sending: <c>email/send</c>, <c>email/mime</c>, <c>email/batch</c>, scheduled search and remove.</summary>
+    IEmailClient Email { get; }
+
     /// <summary>Calls any endpoint by path; the escape hatch for endpoints without a typed client.</summary>
     IRawClient Raw { get; }
 }

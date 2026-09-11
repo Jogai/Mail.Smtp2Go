@@ -33,6 +33,9 @@ internal sealed class Smtp2GoConnection
         _json = CreateJsonOptions(options.AdditionalJsonTypeInfoResolver);
     }
 
+    /// <summary>The client options, for family clients that apply defaults such as <see cref="Smtp2GoClientOptions.DefaultFastAccept"/>.</summary>
+    public Smtp2GoClientOptions Options => _options;
+
     /// <summary>The serializer options in effect: the library context, optionally combined with <see cref="Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver"/>.</summary>
     public JsonSerializerOptions JsonOptions => _json;
 

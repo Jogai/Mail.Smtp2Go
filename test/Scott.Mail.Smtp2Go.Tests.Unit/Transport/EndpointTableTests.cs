@@ -9,7 +9,7 @@ public class EndpointTableTests
     {
         Endpoint endpoint = EndpointTable.Get("email/search");
 
-        endpoint.Should().Be(new Endpoint("email/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.EmailSearch, Endpoint.EmailMaxBodyBytes));
+        endpoint.Should().Be(new Endpoint("email/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.EmailSearch, Endpoint.DefaultMaxBodyBytes));
     }
 
     [Theory]
@@ -40,7 +40,13 @@ public class EndpointTableTests
     {
         EndpointTable.All.Select(e => e.Path).Should().BeEquivalentTo(
             "email/send", "email/mime", "email/batch", "email/search", "email/scheduled/search", "email/scheduled/remove");
-        EndpointTable.All.Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.EmailMaxBodyBytes);
+        EndpointTable.All.Where(e => e.Path is "email/send" or "email/mime" or "email/batch").Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.EmailMaxBodyBytes && !e.Idempotent);
+        EndpointTable.All.Where(e => e.Path is "email/search" or "email/scheduled/search" or "email/scheduled/remove").Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.DefaultMaxBodyBytes);
+        EndpointTable.All.Where(e => e.Path is "email/search" or "email/scheduled/search").Should().OnlyContain(e => e.Idempotent);
+        EndpointTable.Get("email/scheduled/remove").Idempotent.Should().BeFalse();
+        EndpointTable.All.Should().OnlyContain(e => e.Method == HttpMethod.Post && !e.AcceptsSubaccountId);
+        EndpointTable.Get("email/search").RateLimit.Should().Be(RateLimitClass.EmailSearch);
+        EndpointTable.All.Where(e => e.Path != "email/search").Should().OnlyContain(e => e.RateLimit == RateLimitClass.None);
     }
 
     [Theory]

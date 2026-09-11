@@ -41,15 +41,19 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
         Options = options;
         _connection = new Smtp2GoConnection(httpClient, options, diagnostics);
         Raw = new RawClient(_connection);
+        Email = new EmailClient(_connection);
     }
 
     /// <summary>The options this client was created with.</summary>
     public Smtp2GoClientOptions Options { get; }
 
     /// <inheritdoc />
+    public IEmailClient Email { get; }
+
+    /// <inheritdoc />
     public IRawClient Raw { get; }
 
-    // Family clients (Email, Stats, Webhooks, ...) are added here by their plans as lazily created properties over _connection.
+    // Family clients (Stats, Webhooks, ...) are added here by their plans as properties over _connection.
 
     private static Smtp2GoClientOptions CreateOptions(string apiKey)
     {

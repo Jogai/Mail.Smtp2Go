@@ -55,6 +55,7 @@ Scott.Mail.Smtp2Go.EmailAddress.EmailAddress(string! address, string? name = nul
 Scott.Mail.Smtp2Go.EmailAddress.Equals(Scott.Mail.Smtp2Go.EmailAddress other) -> bool
 Scott.Mail.Smtp2Go.EmailAddress.IsEmpty.get -> bool
 Scott.Mail.Smtp2Go.EmailAddress.Name.get -> string?
+Scott.Mail.Smtp2Go.EmailClientExtensions
 Scott.Mail.Smtp2Go.EmailSendRequest
 Scott.Mail.Smtp2Go.EmailSendRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSendRequest!
 Scott.Mail.Smtp2Go.EmailSendRequest.Attachments.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Attachment!>?
@@ -116,10 +117,13 @@ Scott.Mail.Smtp2Go.FieldValidationError.FieldName.init -> void
 Scott.Mail.Smtp2Go.FieldValidationError.FieldValidationError(string? FieldName, string! Message) -> void
 Scott.Mail.Smtp2Go.FieldValidationError.Message.get -> string!
 Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
+Scott.Mail.Smtp2Go.IEmailClient
+Scott.Mail.Smtp2Go.IEmailClient.SendAsync(Scott.Mail.Smtp2Go.EmailSendRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 Scott.Mail.Smtp2Go.IRawClient
 Scott.Mail.Smtp2Go.IRawClient.SendAsync<TRequest, TResponse>(string! path, TRequest? body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<TResponse>!>!
 Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonElement body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Text.Json.JsonDocument!>!
 Scott.Mail.Smtp2Go.ISmtp2GoClient
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter
 Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.EmailAddressConverter() -> void
@@ -177,6 +181,7 @@ Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, System.Exception? innerException) -> void
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient
+Scott.Mail.Smtp2Go.Smtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Options.get -> Scott.Mail.Smtp2Go.Smtp2GoClientOptions!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options) -> void
@@ -329,6 +334,8 @@ static Scott.Mail.Smtp2Go.EmailAddress.TryParse(string? text, out Scott.Mail.Smt
 static Scott.Mail.Smtp2Go.EmailAddress.implicit operator Scott.Mail.Smtp2Go.EmailAddress(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.operator !=(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
 static Scott.Mail.Smtp2Go.EmailAddress.operator ==(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
+static Scott.Mail.Smtp2Go.EmailClientExtensions.SendAsync(this Scott.Mail.Smtp2Go.IEmailClient! client, Scott.Mail.Smtp2Go.EmailAddress sender, Scott.Mail.Smtp2Go.EmailAddress to, string! subject, string? htmlBody, string? textBody = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
+static Scott.Mail.Smtp2Go.EmailClientExtensions.SendTemplateAsync(this Scott.Mail.Smtp2Go.IEmailClient! client, Scott.Mail.Smtp2Go.EmailAddress sender, Scott.Mail.Smtp2Go.EmailAddress to, string! templateId, System.Collections.Generic.IReadOnlyDictionary<string!, object?>? templateData = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 static Scott.Mail.Smtp2Go.EmailSendRequest.operator !=(Scott.Mail.Smtp2Go.EmailSendRequest? left, Scott.Mail.Smtp2Go.EmailSendRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendRequest.operator ==(Scott.Mail.Smtp2Go.EmailSendRequest? left, Scott.Mail.Smtp2Go.EmailSendRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendResult.operator !=(Scott.Mail.Smtp2Go.EmailSendResult? left, Scott.Mail.Smtp2Go.EmailSendResult? right) -> bool

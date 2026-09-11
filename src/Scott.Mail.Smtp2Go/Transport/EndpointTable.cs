@@ -159,6 +159,12 @@ public static class EndpointTable
         Add(table, new Endpoint("single_sender_emails/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("single_sender_emails/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // Allowed senders (all four document subaccount_id)
+        Add(table, new Endpoint("allowed_senders/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("allowed_senders/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("allowed_senders/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("allowed_senders/update", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

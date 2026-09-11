@@ -24,22 +24,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "allowed_senders/add",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "allowed_senders/remove",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "allowed_senders/update",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "allowed_senders/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "dedicated_ips/view",
       "reason": "pending plan 07 (account management and SMS)"
     },

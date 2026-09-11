@@ -22,6 +22,9 @@ public interface ISmtp2GoClient
     /// <summary>Suppressions: <c>suppression/add</c>, <c>suppression/view</c>, <c>suppression/remove</c>.</summary>
     ISuppressionClient Suppressions { get; }
 
+    /// <summary>Allowed or restricted senders: <c>allowed_senders/view</c>, <c>add</c>, <c>remove</c>, <c>update</c>.</summary>
+    IAllowedSenderClient AllowedSenders { get; }
+
     /// <summary>API keys: <c>api_keys/view</c>, <c>add</c>, <c>edit</c> (POST and PATCH), <c>remove</c>, <c>permissions</c>.</summary>
     IApiKeyClient ApiKeys { get; }
 

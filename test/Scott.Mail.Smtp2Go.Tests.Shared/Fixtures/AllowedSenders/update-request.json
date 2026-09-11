@@ -1,0 +1,4 @@
+{
+  "allowed_senders": ["test-person@example.com", "otherexample.com"],
+  "mode": "whitelist"
+}

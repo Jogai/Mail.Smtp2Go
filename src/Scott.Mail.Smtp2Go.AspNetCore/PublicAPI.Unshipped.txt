@@ -1,1 +1,34 @@
 #nullable enable
+Microsoft.AspNetCore.Builder.Smtp2GoWebhookEndpointRouteBuilderExtensions
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.Add(System.Action<Microsoft.AspNetCore.Builder.EndpointBuilder!>! convention) -> void
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.Finally(System.Action<Microsoft.AspNetCore.Builder.EndpointBuilder!>! finallyConvention) -> void
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.WithOptions(System.Action<Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions!>! configure) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookMetadata
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookMetadata.Pattern.get -> string!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookMetadata.Smtp2GoWebhookMetadata(string! pattern, bool usesHandlerDispatch) -> void
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookMetadata.UsesHandlerDispatch.get -> bool
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.AllowedContentTypes.get -> System.Collections.Generic.ICollection<string!>!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.KnownCustomHeaders.get -> System.Collections.Generic.ICollection<string!>!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.MaxBodyBytes.get -> long
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.MaxBodyBytes.set -> void
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.ReturnStatusOnHandlerError.get -> int
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.ReturnStatusOnHandlerError.set -> void
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.Smtp2GoWebhookOptions() -> void
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.CallbackHandled = 501 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.CallbackReceived = 500 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.CategoryName = "Scott.Mail.Smtp2Go.AspNetCore" -> string!
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.HandlerFailed = 530 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.NoHandlerRegistered = 502 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.PayloadInvalid = 522 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.PayloadTooLarge = 521 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.SourceIpRejected = 511 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.SourceIpResolutionFailed = 512 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.SourceIpResolved = 540 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.SourceIpStaleCacheUsed = 541 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.Unauthorized = 510 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.UnsupportedMediaType = 520 -> int
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.DefaultMaxBodyBytes = 1048576 -> long
+static Microsoft.AspNetCore.Builder.Smtp2GoWebhookEndpointRouteBuilderExtensions.MapSmtp2GoWebhook(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string! pattern, System.Func<Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!, System.Threading.CancellationToken, System.Threading.Tasks.Task!>! handler) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!

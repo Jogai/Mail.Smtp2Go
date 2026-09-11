@@ -38,4 +38,8 @@
     <!-- Spec harvester (plan 08). Resolved on 2026-09-11: 2.0.12 is the latest stable release. -->
     <PackageVersion Include="System.CommandLine" Version="2.0.12" />
   </ItemGroup>
+  <ItemGroup Label="AspNetCore tests (resolved 2026-09-11)">
+    <!-- In-memory TestServer for the webhook endpoint tests; pinned to the shared framework's patch level. -->
+    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="10.0.12" />
+  </ItemGroup>
 </Project>

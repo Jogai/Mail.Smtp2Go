@@ -483,3 +483,6 @@ $RECYCLE.BIN/
 
 # Claude Code agent worktrees (other agents working on this repository)
 .claude/
+
+# vfox project SDK links (machine-local); .vfox.toml stays tracked as the version pin
+.vfox/

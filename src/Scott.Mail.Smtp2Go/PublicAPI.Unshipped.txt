@@ -1050,6 +1050,7 @@ Scott.Mail.Smtp2Go.Transport.EndpointTable
 Scott.Mail.Smtp2Go.Transport.IRequestValidator
 Scott.Mail.Smtp2Go.Transport.IRequestValidator.Validate(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Collections.Generic.ICollection<string!>! errors) -> void
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics
+Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.EmailResult(int succeeded, int failed) -> void
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestCompleted(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, int statusCode, string? requestId, System.TimeSpan elapsed) -> void
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestFailed(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Exception! exception, string? requestId) -> void
 Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics.RequestStarting(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, Scott.Mail.Smtp2Go.Region? region) -> void

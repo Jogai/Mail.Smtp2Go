@@ -28,4 +28,8 @@ internal sealed class NullSmtp2GoDiagnostics : ISmtp2GoDiagnostics
     public void SubaccountIdIgnored(Endpoint endpoint)
     {
     }
+
+    public void EmailResult(int succeeded, int failed)
+    {
+    }
 }

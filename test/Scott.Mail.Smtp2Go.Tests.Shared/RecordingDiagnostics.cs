@@ -15,6 +15,8 @@ public sealed class RecordingDiagnostics : ISmtp2GoDiagnostics
 
     public List<Endpoint> SubaccountIdIgnoredFor { get; } = [];
 
+    public List<(int Succeeded, int Failed)> EmailResults { get; } = [];
+
     public void RequestStarting(Endpoint endpoint, Region? region)
     {
         Started.Add((endpoint, region));
@@ -38,5 +40,10 @@ public sealed class RecordingDiagnostics : ISmtp2GoDiagnostics
     public void SubaccountIdIgnored(Endpoint endpoint)
     {
         SubaccountIdIgnoredFor.Add(endpoint);
+    }
+
+    public void EmailResult(int succeeded, int failed)
+    {
+        EmailResults.Add((succeeded, failed));
     }
 }

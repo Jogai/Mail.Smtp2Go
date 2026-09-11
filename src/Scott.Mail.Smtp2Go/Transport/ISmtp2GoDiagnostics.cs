@@ -21,4 +21,7 @@ public interface ISmtp2GoDiagnostics
 
     /// <summary>A subaccount id was supplied for an endpoint that does not document <c>subaccount_id</c>; it was not sent.</summary>
     void SubaccountIdIgnored(Endpoint endpoint);
+
+    /// <summary>A send call completed: <paramref name="succeeded"/> recipients were accepted and <paramref name="failed"/> were rejected by the server.</summary>
+    void EmailResult(int succeeded, int failed);
 }

@@ -1,0 +1,76 @@
+name: spec-drift
+
+# Re-harvests the SMTP2GO API docs weekly and opens a pull request when docs/api-spec changes. The PR body is the harvester's diff;
+# CI on the PR runs the contract tests, which show exactly which models now disagree with the API.
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - run: dotnet restore --locked-mode
+
+      - name: Build the harvester (and the core assembly it reflects over)
+        run: dotnet build src/tools/Scott.Mail.Smtp2Go.SpecHarvester -c Release --no-restore -warnaserror
+
+      - name: Harvest the published spec
+        run: dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -c Release --no-build -- harvest --out docs/api-spec
+
+      - name: Regenerate the coverage page
+        run: dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -c Release --no-build -- coverage
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- docs/api-spec docs/api-coverage.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No spec drift."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git --no-pager diff --stat -- docs/api-spec docs/api-coverage.md
+          fi
+
+      - name: Describe the drift
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          {
+            echo "Automated re-harvest of https://developers.smtp2go.com (\`spec-drift\` workflow, run ${{ github.run_id }})."
+            echo
+            echo "Review \`docs/api-spec/endpoints.json\`, update the models, and adjust \`docs/api-spec/known-unmodelled.json\` only with a reason; see docs/contributing.md, \"When the API changes\"."
+            echo
+            dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -c Release --no-build -- diff --against HEAD
+          } > "$RUNNER_TEMP/pr-body.md"
+          cat "$RUNNER_TEMP/pr-body.md"
+
+      - name: Open or update the pull request
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: spec-drift/harvest
+          delete-branch: true
+          title: 'docs: SMTP2GO API spec drift'
+          body-path: ${{ runner.temp }}/pr-body.md
+          commit-message: 'docs: re-harvest SMTP2GO API spec'
+          labels: spec-drift
+          add-paths: |
+            docs/api-spec
+            docs/api-coverage.md

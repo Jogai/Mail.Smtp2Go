@@ -69,6 +69,8 @@ Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AuthenticationScheme.get -
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AuthenticationScheme.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.BaseUrl.get -> System.Uri?
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.BaseUrl.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ClientSideRateLimiting.get -> bool
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ClientSideRateLimiting.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ClientSideValidation.get -> bool
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ClientSideValidation.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.DefaultFastAccept.get -> bool?

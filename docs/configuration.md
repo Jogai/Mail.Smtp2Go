@@ -12,7 +12,7 @@
 | `DefaultFastAccept` | unset | Applied to send requests that do not set `fastaccept` (plan 03). |
 | `DefaultSubaccountId` | unset | Merged as `subaccount_id` into every call on an endpoint that documents it; `RequestOptions.SubaccountId` wins per call. Endpoints that do not accept it ignore the value and raise `ISmtp2GoDiagnostics.SubaccountIdIgnored`. |
 | `ClientSideValidation` | `true` | Body-size limits (50 MB under `email/*`, 1 MB elsewhere) and request-model checks run before sending. |
-| `ClientSideRateLimiting` | `true` | A token bucket per `RateLimitClass` (60/min for `activity/search`) delays calls that would exceed the documented limit, so paging helpers never trip it. Turn off when a resilience pipeline throttles instead. |
+| `ClientSideRateLimiting` | `false` | The core client's own per-endpoint token buckets. Off by default here because `Resilience:RateLimiting` throttles the pipeline; turn it on only when that limiter is disabled. |
 | `AdditionalJsonTypeInfoResolver` | unset | A source-generated `JsonSerializerContext` registering your own types (and `ApiResponse<T>` for them) for `IRawClient.SendAsync<TRequest, TResponse>`. |
 
 `Validate()` throws `Smtp2GoValidationException` listing every problem; `GetValidationErrors()` and `GetValidationWarnings()` return them without throwing, for options validators.

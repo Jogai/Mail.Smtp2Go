@@ -36,6 +36,13 @@ public sealed class Smtp2GoOptions
     public bool ClientSideValidation { get; set; } = true;
 
     /// <summary>
+    /// Whether the core client throttles rate-limited endpoints itself with its own token buckets. Defaults to <see langword="false"/> here, unlike the core
+    /// default, because <see cref="ResilienceOptions.RateLimiting"/> already throttles every registered client's <c>HttpClient</c> pipeline; turn it on only
+    /// when <see cref="RateLimitingOptions.Enabled"/> is off and the documented limits still have to be respected.
+    /// </summary>
+    public bool ClientSideRateLimiting { get; set; }
+
+    /// <summary>
     /// An extra source-generated <see cref="System.Text.Json.Serialization.JsonSerializerContext"/> (or any resolver) whose types become usable with the raw
     /// client's typed overload. Not bindable from configuration; set it through the <c>Action&lt;Smtp2GoOptions&gt;</c> overload or <c>services.Configure</c>.
     /// </summary>
@@ -57,6 +64,7 @@ public sealed class Smtp2GoOptions
             DefaultFastAccept = DefaultFastAccept,
             DefaultSubaccountId = DefaultSubaccountId,
             ClientSideValidation = ClientSideValidation,
+            ClientSideRateLimiting = ClientSideRateLimiting,
             AdditionalJsonTypeInfoResolver = AdditionalJsonTypeInfoResolver,
         };
     }

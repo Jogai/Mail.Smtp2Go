@@ -27,11 +27,11 @@ jobs:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-dotnet@v5
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
 
@@ -71,7 +71,7 @@ jobs:
           dotnet build test/compat/Scott.Mail.Smtp2Go.Compat.Net48.csproj -c Release --no-restore -warnaserror
           dotnet run --project test/compat/Scott.Mail.Smtp2Go.Compat.Net48.csproj -c Release --no-build
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: runner.os == 'Linux'
         with:
           name: packages
@@ -87,13 +87,13 @@ jobs:
       contents: write # the GitHub release
       id-token: write # NuGet trusted publishing (OIDC token exchange in the NuGet/login step)
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-dotnet@v5
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: packages
           path: artifacts

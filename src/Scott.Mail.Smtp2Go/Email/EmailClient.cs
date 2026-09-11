@@ -7,6 +7,7 @@ internal sealed class EmailClient(Smtp2GoConnection connection) : IEmailClient
 {
     private static readonly Endpoint s_send = EndpointTable.Get("email/send");
     private static readonly Endpoint s_mime = EndpointTable.Get("email/mime");
+    private static readonly Endpoint s_batch = EndpointTable.Get("email/batch");
 
     public Task<ApiResponse<EmailSendResult>> SendAsync(EmailSendRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
     {
@@ -19,6 +20,12 @@ internal sealed class EmailClient(Smtp2GoConnection connection) : IEmailClient
         Argument.ThrowIfNull(request);
         EmailMimeRequest body = request.FastAccept is null && connection.Options.DefaultFastAccept is { } fastAccept ? request with { FastAccept = fastAccept } : request;
         return connection.SendAsync<EmailMimeRequest, EmailSendResult>(s_mime, body, options, cancellationToken);
+    }
+
+    public Task<ApiResponse<IReadOnlyList<EmailBatchItem>>> SendBatchAsync(EmailBatchRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
+    {
+        Argument.ThrowIfNull(request);
+        return connection.SendAsync<EmailBatchRequest, IReadOnlyList<EmailBatchItem>>(s_batch, request, options, cancellationToken);
     }
 
     /// <summary>Fills <c>fastaccept</c> from <see cref="Smtp2GoClientOptions.DefaultFastAccept"/> when the request leaves it unset.</summary>

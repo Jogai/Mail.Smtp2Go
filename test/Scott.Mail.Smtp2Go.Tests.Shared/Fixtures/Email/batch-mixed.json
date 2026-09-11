@@ -1,0 +1,17 @@
+{
+  "emails": [
+    {
+      "sender": "alice@example.com",
+      "to": ["bob@example.com"],
+      "subject": "Now",
+      "text_body": "Sent immediately."
+    },
+    {
+      "sender": "alice@example.com",
+      "to": ["carol@example.com", "dave@example.com"],
+      "template_id": "reminder",
+      "template_data": { "when": "tomorrow" },
+      "schedule": "2026-09-12T10:00:00Z"
+    }
+  ]
+}

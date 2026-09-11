@@ -55,6 +55,23 @@ Scott.Mail.Smtp2Go.EmailAddress.EmailAddress(string! address, string? name = nul
 Scott.Mail.Smtp2Go.EmailAddress.Equals(Scott.Mail.Smtp2Go.EmailAddress other) -> bool
 Scott.Mail.Smtp2Go.EmailAddress.IsEmpty.get -> bool
 Scott.Mail.Smtp2Go.EmailAddress.Name.get -> string?
+Scott.Mail.Smtp2Go.EmailBatchItem
+Scott.Mail.Smtp2Go.EmailBatchItem.<Clone>$() -> Scott.Mail.Smtp2Go.EmailBatchItem!
+Scott.Mail.Smtp2Go.EmailBatchItem.EmailBatchItem() -> void
+Scott.Mail.Smtp2Go.EmailBatchItem.EmailId.get -> string?
+Scott.Mail.Smtp2Go.EmailBatchItem.EmailId.init -> void
+Scott.Mail.Smtp2Go.EmailBatchItem.Equals(Scott.Mail.Smtp2Go.EmailBatchItem? other) -> bool
+Scott.Mail.Smtp2Go.EmailBatchItem.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailBatchItem.Extra.set -> void
+Scott.Mail.Smtp2Go.EmailBatchItem.IsScheduled.get -> bool
+Scott.Mail.Smtp2Go.EmailBatchItem.ScheduleId.get -> string?
+Scott.Mail.Smtp2Go.EmailBatchItem.ScheduleId.init -> void
+Scott.Mail.Smtp2Go.EmailBatchRequest
+Scott.Mail.Smtp2Go.EmailBatchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailBatchRequest!
+Scott.Mail.Smtp2Go.EmailBatchRequest.EmailBatchRequest() -> void
+Scott.Mail.Smtp2Go.EmailBatchRequest.Emails.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailSendRequest!>!
+Scott.Mail.Smtp2Go.EmailBatchRequest.Emails.init -> void
+Scott.Mail.Smtp2Go.EmailBatchRequest.Equals(Scott.Mail.Smtp2Go.EmailBatchRequest? other) -> bool
 Scott.Mail.Smtp2Go.EmailClientExtensions
 Scott.Mail.Smtp2Go.EmailMimeRequest
 Scott.Mail.Smtp2Go.EmailMimeRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailMimeRequest!
@@ -129,6 +146,7 @@ Scott.Mail.Smtp2Go.FieldValidationError.Message.get -> string!
 Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
 Scott.Mail.Smtp2Go.IEmailClient
 Scott.Mail.Smtp2Go.IEmailClient.SendAsync(Scott.Mail.Smtp2Go.EmailSendRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
+Scott.Mail.Smtp2Go.IEmailClient.SendBatchAsync(Scott.Mail.Smtp2Go.EmailBatchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailBatchItem!>!>!>!
 Scott.Mail.Smtp2Go.IEmailClient.SendMimeAsync(Scott.Mail.Smtp2Go.EmailMimeRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 Scott.Mail.Smtp2Go.IRawClient
 Scott.Mail.Smtp2Go.IRawClient.SendAsync<TRequest, TResponse>(string! path, TRequest? body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<TResponse>!>!
@@ -288,6 +306,7 @@ Scott.Mail.Smtp2Go.Transport.RateLimitClass.None = 0 -> Scott.Mail.Smtp2Go.Trans
 Scott.Mail.Smtp2Go.Transport.RateLimitClass.SubaccountAdd = 3 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.RequestOptionKeys
 Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource
+const Scott.Mail.Smtp2Go.EmailBatchRequest.MaxEmails = 1000 -> int
 const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
 const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
 const Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.AllowRetryKey = "Scott.Mail.Smtp2Go.AllowRetry" -> string!
@@ -304,6 +323,12 @@ override Scott.Mail.Smtp2Go.CustomHeader.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.CustomHeader.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailAddress.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailAddress.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailBatchItem.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailBatchItem.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailBatchItem.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailBatchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailBatchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailBatchRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailMimeRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.EmailMimeRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailMimeRequest.ToString() -> string!
@@ -348,6 +373,10 @@ static Scott.Mail.Smtp2Go.EmailAddress.TryParse(string? text, out Scott.Mail.Smt
 static Scott.Mail.Smtp2Go.EmailAddress.implicit operator Scott.Mail.Smtp2Go.EmailAddress(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.operator !=(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
 static Scott.Mail.Smtp2Go.EmailAddress.operator ==(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
+static Scott.Mail.Smtp2Go.EmailBatchItem.operator !=(Scott.Mail.Smtp2Go.EmailBatchItem? left, Scott.Mail.Smtp2Go.EmailBatchItem? right) -> bool
+static Scott.Mail.Smtp2Go.EmailBatchItem.operator ==(Scott.Mail.Smtp2Go.EmailBatchItem? left, Scott.Mail.Smtp2Go.EmailBatchItem? right) -> bool
+static Scott.Mail.Smtp2Go.EmailBatchRequest.operator !=(Scott.Mail.Smtp2Go.EmailBatchRequest? left, Scott.Mail.Smtp2Go.EmailBatchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailBatchRequest.operator ==(Scott.Mail.Smtp2Go.EmailBatchRequest? left, Scott.Mail.Smtp2Go.EmailBatchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailClientExtensions.SendAsync(this Scott.Mail.Smtp2Go.IEmailClient! client, Scott.Mail.Smtp2Go.EmailAddress sender, Scott.Mail.Smtp2Go.EmailAddress to, string! subject, string? htmlBody, string? textBody = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 static Scott.Mail.Smtp2Go.EmailClientExtensions.SendTemplateAsync(this Scott.Mail.Smtp2Go.IEmailClient! client, Scott.Mail.Smtp2Go.EmailAddress sender, Scott.Mail.Smtp2Go.EmailAddress to, string! templateId, System.Collections.Generic.IReadOnlyDictionary<string!, object?>? templateData = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 static Scott.Mail.Smtp2Go.EmailMimeRequest.FromBytes(byte[]! mimeMessage) -> Scott.Mail.Smtp2Go.EmailMimeRequest!

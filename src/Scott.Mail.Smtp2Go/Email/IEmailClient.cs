@@ -16,4 +16,9 @@ public interface IEmailClient
     /// <exception cref="Smtp2GoValidationException">The request fails client-side validation; nothing was sent.</exception>
     /// <exception cref="Smtp2GoApiException">The API answered with a non-success status.</exception>
     Task<ApiResponse<EmailSendResult>> SendMimeAsync(EmailMimeRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default);
+
+    /// <summary><c>POST /email/batch</c>: sends up to 1,000 emails in one call and returns one item per email, in request order.</summary>
+    /// <exception cref="Smtp2GoValidationException">The request fails client-side validation; nothing was sent.</exception>
+    /// <exception cref="Smtp2GoApiException">The API answered with a non-success status.</exception>
+    Task<ApiResponse<IReadOnlyList<EmailBatchItem>>> SendBatchAsync(EmailBatchRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default);
 }

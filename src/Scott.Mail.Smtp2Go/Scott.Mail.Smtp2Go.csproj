@@ -9,12 +9,14 @@
 
   <!--
     Derived records get a covariant <Clone>$ override on net8.0+ but a base-typed one on netstandard2.0 (no runtime support for covariant returns),
-    so those lines live in per-target supplements; the analyzer merges every additional file named PublicAPI.Unshipped.txt.
+    so those lines live in per-target supplements; the analyzer merges every additional file named PublicAPI.Shipped.txt or PublicAPI.Unshipped.txt.
   -->
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <AdditionalFiles Include="PublicAPI/netstandard2.0/PublicAPI.Shipped.txt" />
     <AdditionalFiles Include="PublicAPI/netstandard2.0/PublicAPI.Unshipped.txt" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <AdditionalFiles Include="PublicAPI/net8.0/PublicAPI.Shipped.txt" />
     <AdditionalFiles Include="PublicAPI/net8.0/PublicAPI.Unshipped.txt" />
   </ItemGroup>
 

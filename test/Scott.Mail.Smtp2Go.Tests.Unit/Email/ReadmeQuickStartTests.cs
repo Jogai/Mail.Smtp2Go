@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Scott.Mail.Smtp2Go;
 
 // Deliberately outside the Scott.Mail.Smtp2Go namespace so the README's `using Scott.Mail.Smtp2Go;` line above is required, exactly as it is for a consumer.
@@ -50,20 +49,25 @@ public class ReadmeQuickStartTests
         testBody.Should().Equal(readmeBody, because: "the quick start in {0} and the compiled copy in {1} must be identical", relativePath, nameof(QuickStart));
     }
 
-    private static string ThisFile([CallerFilePath] string path = "")
+    /// <summary>
+    ///   Path of this source file, derived from the repository root rather than <c>[CallerFilePath]</c>: deterministic builds
+    ///   (<c>ContinuousIntegrationBuild</c>, on for every GitHub Actions run) rewrite caller paths to <c>/_/...</c>.
+    /// </summary>
+    private static string ThisFile()
     {
-        return path;
+        return Path.Combine(RepositoryRoot(), "test", "Scott.Mail.Smtp2Go.Tests.Unit", "Email", "ReadmeQuickStartTests.cs");
     }
 
+    /// <summary>Walks up from the test assembly's output directory to the directory that holds the solution file.</summary>
     private static string RepositoryRoot()
     {
-        DirectoryInfo? directory = new FileInfo(ThisFile()).Directory;
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "README.md")))
+        DirectoryInfo? directory = new DirectoryInfo(AppContext.BaseDirectory);
+        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "Scott.Mail.Smtp2Go.slnx")))
         {
             directory = directory.Parent;
         }
 
-        return directory?.FullName ?? throw new FileNotFoundException("README.md not found above the test source file.");
+        return directory?.FullName ?? throw new FileNotFoundException("Scott.Mail.Smtp2Go.slnx not found above the test output directory " + AppContext.BaseDirectory);
     }
 
     private static string CodeBlockAfter(string markdown, string heading)

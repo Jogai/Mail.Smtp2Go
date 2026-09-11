@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    A .NET Framework 4.8 consumer of the packed core package, which exercises the netstandard2.0 asset the way a Framework application sees it.
+    Deliberately not in the solution: it restores Scott.Mail.Smtp2Go from ../../artifacts (nuget.config here), which exists only after
+    `dotnet pack -c Release -o artifacts`. The publish workflow builds and runs it on its Windows leg. It also builds on Linux through the
+    Microsoft.NETFramework.ReferenceAssemblies package, but a net48 executable only runs on Windows.
+
+    Two repository conventions are switched off on purpose: central package management (the package version is whatever this checkout
+    just packed, computed below from VersionPrefix and VersionSuffix, or passed as -p:CompatPackageVersion=1.2.3) and the lock file
+    (it would change with every release).
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <IsTestProject>false</IsTestProject>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+    <CompatPackageVersion Condition="'$(CompatPackageVersion)' == '' And '$(VersionSuffix)' != ''">$(VersionPrefix)-$(VersionSuffix)</CompatPackageVersion>
+    <CompatPackageVersion Condition="'$(CompatPackageVersion)' == ''">$(VersionPrefix)</CompatPackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Scott.Mail.Smtp2Go" Version="$(CompatPackageVersion)" />
+    <!-- Reference assemblies for net48 so the project also compiles where no .NET Framework targeting pack is installed (Linux, macOS). -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

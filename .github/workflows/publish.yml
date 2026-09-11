@@ -1,0 +1,129 @@
+name: publish
+
+# Tag-driven release (docs/contributing.md, "Releasing"): pushing v1.2.3 checks that the tag equals VersionPrefix and that no public API is
+# left unshipped, builds and tests on Linux and Windows, packs 1.2.3 with ContinuousIntegrationBuild, runs the net48 consumer in test/compat
+# against the packed core package (Windows), verifies the package contents, pushes the three packages to nuget.org and creates the GitHub
+# release from the matching CHANGELOG.md section.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Check that the tag matches VersionPrefix
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          prefix=$(sed -n 's/.*<VersionPrefix>\(.*\)<\/VersionPrefix>.*/\1/p' Directory.Build.props)
+          if [[ "$tag" != "$prefix" ]]; then
+            echo "::error file=Directory.Build.props::Tag $GITHUB_REF_NAME does not match VersionPrefix $prefix"
+            exit 1
+          fi
+          echo "Releasing $prefix"
+
+      - name: Check that every PublicAPI.Unshipped.txt is empty
+        run: eng/check-unshipped-api.sh
+
+      - run: dotnet restore --locked-mode
+
+      # The root Directory.Build.props already turns ContinuousIntegrationBuild on when GITHUB_ACTIONS is set; passing it keeps the intent visible.
+      - run: dotnet build -c Release --no-restore -warnaserror -p:ContinuousIntegrationBuild=true
+
+      - run: dotnet test -c Release --no-build
+
+      - run: dotnet pack -c Release --no-build -o artifacts -p:ContinuousIntegrationBuild=true
+
+      # `dotnet nuget verify` is not run: the packages are unsigned (nuget.org adds its repository signature on upload), so it would fail with NU3004.
+      - name: Verify package contents (README, icon, license, repository commit, symbols)
+        if: runner.os == 'Linux'
+        run: eng/verify-nupkg.sh artifacts
+
+      # netstandard2.0 consumer check: a .NET Framework 4.8 console that restores Scott.Mail.Smtp2Go from the artifacts just packed
+      # (test/compat/nuget.config). It is outside the solution and only runs on Windows, where a net48 executable can execute.
+      - name: Build and run the net48 consumer against the packed core package
+        if: runner.os == 'Windows'
+        run: |
+          dotnet restore test/compat/Scott.Mail.Smtp2Go.Compat.Net48.csproj
+          dotnet build test/compat/Scott.Mail.Smtp2Go.Compat.Net48.csproj -c Release --no-restore -warnaserror
+          dotnet run --project test/compat/Scott.Mail.Smtp2Go.Compat.Net48.csproj -c Release --no-build
+
+      - uses: actions/upload-artifact@v4
+        if: runner.os == 'Linux'
+        with:
+          name: packages
+          path: |
+            artifacts/*.nupkg
+            artifacts/*.snupkg
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the GitHub release
+      # id-token: write # uncomment together with the NuGet/login step below for trusted publishing
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: artifacts
+
+      # Alternative to the long-lived NUGET_API_KEY secret: NuGet trusted publishing (OIDC). Register this repository and workflow as a
+      # trusted publisher on the nuget.org account, grant `id-token: write` above, and exchange the token for a short-lived key:
+      #   - uses: NuGet/login@v1
+      #     id: nuget-login
+      #     with:
+      #       user: <nuget.org user name>
+      # then push with `--api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }}` and delete the repository secret.
+      - name: Push to nuget.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [[ -z "$NUGET_API_KEY" ]]; then
+            echo "::error::The NUGET_API_KEY repository secret is not set"
+            exit 1
+          fi
+          # The .snupkg next to each .nupkg is pushed with it.
+          dotnet nuget push 'artifacts/*.nupkg' --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate
+
+      - name: Extract the changelog section
+        run: eng/changelog-section.sh "${GITHUB_REF_NAME#v}" | tee "$RUNNER_TEMP/release-notes.md"
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prerelease=()
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then prerelease=(--prerelease); fi
+          gh release create "$GITHUB_REF_NAME" artifacts/*.nupkg artifacts/*.snupkg \
+            --verify-tag --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/release-notes.md" "${prerelease[@]}"

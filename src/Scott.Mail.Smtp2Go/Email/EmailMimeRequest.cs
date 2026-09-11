@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
@@ -6,7 +7,7 @@ namespace Scott.Mail.Smtp2Go;
 /// The body of <c>POST /email/mime</c>: a complete, Base64-encoded MIME message (for example one produced by MimeKit's <c>MimeMessage.WriteTo</c>).
 /// Recipients, subject and bodies come from the MIME headers; only scheduling and <c>fastaccept</c> are separate fields.
 /// </summary>
-public sealed record EmailMimeRequest
+public sealed record EmailMimeRequest : IRequestValidator
 {
     /// <summary>The raw MIME message, Base64-encoded.</summary>
     [JsonPropertyName("mime_email")]
@@ -25,5 +26,12 @@ public sealed record EmailMimeRequest
     {
         Argument.ThrowIfNull(mimeMessage);
         return new EmailMimeRequest { MimeEmail = Convert.ToBase64String(mimeMessage) };
+    }
+
+    /// <inheritdoc />
+    void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
+    {
+        Argument.ThrowIfNull(errors);
+        EmailRequestValidator.ValidateMime(this, errors);
     }
 }

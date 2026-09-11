@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
@@ -7,7 +8,7 @@ namespace Scott.Mail.Smtp2Go;
 /// <see cref="EmailSendRequest.Schedule"/>; the response lists one <see cref="EmailBatchItem"/> per email in request order. The documented
 /// per-email fields do not include <c>fastaccept</c>, so <see cref="Smtp2GoClientOptions.DefaultFastAccept"/> is not applied to batch items.
 /// </summary>
-public sealed record EmailBatchRequest
+public sealed record EmailBatchRequest : IRequestValidator
 {
     /// <summary>The documented maximum number of emails per call.</summary>
     public const int MaxEmails = 1000;
@@ -15,4 +16,11 @@ public sealed record EmailBatchRequest
     /// <summary>The emails to send, 1 to 1,000.</summary>
     [JsonPropertyName("emails")]
     public required IReadOnlyList<EmailSendRequest> Emails { get; init; }
+
+    /// <inheritdoc />
+    void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
+    {
+        Argument.ThrowIfNull(errors);
+        EmailRequestValidator.ValidateBatch(this, errors);
+    }
 }

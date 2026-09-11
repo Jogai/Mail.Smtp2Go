@@ -96,7 +96,7 @@ public class EmailSendRequestSerializationTests
     }
 
     [Fact]
-    public void Empty_collections_are_still_emitted_as_empty_arrays_so_the_validator_must_reject_them()
+    public void Empty_collections_serialise_as_empty_arrays_so_leave_them_null_to_omit_them()
     {
         // The serialiser cannot tell "no cc" from "cc = []"; keep Cc null rather than empty. This documents the behaviour the golden files rely on.
         EmailSendRequest request = new() { Sender = "a@example.com", To = ["b@example.com"], TextBody = "x", Cc = [] };

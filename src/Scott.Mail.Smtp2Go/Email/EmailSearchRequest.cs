@@ -1,10 +1,11 @@
 using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of the deprecated <c>POST /email/search</c>. SMTP2GO will remove the endpoint in a future API version; use the activity search instead.</summary>
 [Obsolete(ObsoleteMessages.EmailSearch)]
-public sealed record EmailSearchRequest
+public sealed record EmailSearchRequest : IRequestValidator
 {
     /// <summary>Start of the window (UTC). Server default: today at midnight.</summary>
     [JsonPropertyName("start_date")]
@@ -53,4 +54,11 @@ public sealed record EmailSearchRequest
     /// <summary>The token from a previous result to fetch the next page.</summary>
     [JsonPropertyName("continue_token")]
     public string? ContinueToken { get; init; }
+
+    /// <inheritdoc />
+    void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
+    {
+        Argument.ThrowIfNull(errors);
+        EmailRequestValidator.ValidateSearch(this, errors);
+    }
 }

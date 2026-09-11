@@ -1,13 +1,15 @@
 using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>
 /// The body of <c>POST /email/send</c>. Only <see cref="Sender"/> and <see cref="To"/> are required by the API: <see cref="Subject"/> and the bodies are
 /// ignored when <see cref="TemplateId"/> is set, and attachments may reference a URL instead of carrying a blob. Nulls are never serialised, so
-/// the payload contains exactly the fields you set.
+/// the payload contains exactly the fields you set. Documented limits (100 recipients per field, a body or template, allowed headers,
+/// attachment content, the three-day schedule window) are checked client-side before sending.
 /// </summary>
-public sealed record EmailSendRequest
+public sealed record EmailSendRequest : IRequestValidator
 {
     /// <summary>The sender, shown as <c>Name &lt;address&gt;</c>. Must be a verified sender domain or single sender on the account.</summary>
     [JsonPropertyName("sender")]
@@ -71,4 +73,11 @@ public sealed record EmailSendRequest
     /// </summary>
     [JsonPropertyName("fastaccept")]
     public bool? FastAccept { get; init; }
+
+    /// <inheritdoc />
+    void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
+    {
+        Argument.ThrowIfNull(errors);
+        EmailRequestValidator.ValidateSend(this, errors);
+    }
 }

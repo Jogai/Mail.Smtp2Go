@@ -1,9 +1,10 @@
 using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /email/scheduled/search</c>. Every field is optional; without filters the whole queue is listed, <see cref="Limit"/> (server default 1,000) at a time.</summary>
-public sealed record ScheduledEmailSearchRequest
+public sealed record ScheduledEmailSearchRequest : IRequestValidator
 {
     /// <summary>Find one queued email by the <c>schedule_id</c> returned from <c>/email/send</c> or <c>/email/mime</c>.</summary>
     [JsonPropertyName("schedule_id")]
@@ -28,4 +29,11 @@ public sealed record ScheduledEmailSearchRequest
     /// <summary>1-based page number.</summary>
     [JsonPropertyName("page")]
     public int? Page { get; init; }
+
+    /// <inheritdoc />
+    void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
+    {
+        Argument.ThrowIfNull(errors);
+        EmailRequestValidator.ValidateScheduledSearch(this, errors);
+    }
 }

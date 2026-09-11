@@ -11,6 +11,14 @@ Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.MinimumThroughput.g
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.MinimumThroughput.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.SamplingDuration.get -> System.TimeSpan
 Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.SamplingDuration.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.EmailResult(int succeeded, int failed) -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.LoggerDiagnostics(Microsoft.Extensions.Logging.ILoggerFactory! loggerFactory, Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics! metrics) -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.RequestCompleted(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, int statusCode, string? requestId, System.TimeSpan elapsed) -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.RequestFailed(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Exception! exception, string? requestId) -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.RequestStarting(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, Scott.Mail.Smtp2Go.Region? region) -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.SubaccountIdIgnored(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint) -> void
+Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.ValidationFailed(Scott.Mail.Smtp2Go.Transport.Endpoint! endpoint, System.Collections.Generic.IReadOnlyList<string!>! errors) -> void
 Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow
 Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.PermitLimit.get -> int
 Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.PermitLimit.set -> void
@@ -42,6 +50,7 @@ Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryOnSendEndpoints.ge
 Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryOnSendEndpoints.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.TotalTimeout.get -> System.TimeSpan
 Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.TotalTimeout.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.Smtp2GoMetrics(System.Diagnostics.Metrics.IMeterFactory! meterFactory) -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions
@@ -69,6 +78,19 @@ Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ToClientOptions() -> Scott
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator.Smtp2GoOptionsValidator() -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator.Validate(string? name, Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+const Scott.Mail.Smtp2Go.DependencyInjection.LoggerDiagnostics.CategoryName = "Scott.Mail.Smtp2Go" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.CircuitClosed = 402 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.CircuitHalfOpened = 403 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.CircuitOpened = 401 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.EmailResult = 102 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.PipelineTimeout = 405 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.RateLimitRejected = 404 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.RequestCompleted = 101 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.RequestFailed = 200 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.RequestStarting = 100 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.Retrying = 400 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.SubaccountIdIgnored = 301 -> int
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoEventIds.ValidationFailed = 300 -> int
 const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.EmailAcceptedInstrument = "smtp2go.email.accepted" -> string!
 const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.EmailFailedInstrument = "smtp2go.email.failed" -> string!
 const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.EndpointTag = "smtp2go.endpoint" -> string!

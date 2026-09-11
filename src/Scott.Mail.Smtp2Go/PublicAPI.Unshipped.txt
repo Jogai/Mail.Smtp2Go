@@ -526,6 +526,7 @@ Scott.Mail.Smtp2Go.ISmtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityCl
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Suppressions.get -> Scott.Mail.Smtp2Go.ISuppressionClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Templates.get -> Scott.Mail.Smtp2Go.ITemplateClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
 Scott.Mail.Smtp2Go.IStatsClient
@@ -536,6 +537,11 @@ Scott.Mail.Smtp2Go.IStatsClient.GetQuotaAsync(Scott.Mail.Smtp2Go.RequestOptions?
 Scott.Mail.Smtp2Go.IStatsClient.GetSpamAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSpam!>!>!
 Scott.Mail.Smtp2Go.IStatsClient.GetSummaryAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSummary!>!>!
 Scott.Mail.Smtp2Go.IStatsClient.GetUnsubscribesAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailUnsubscribes!>!>!
+Scott.Mail.Smtp2Go.ISuppressionClient
+Scott.Mail.Smtp2Go.ISuppressionClient.AddAsync(Scott.Mail.Smtp2Go.SuppressionAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SuppressionAddResult!>!>!
+Scott.Mail.Smtp2Go.ISuppressionClient.RemoveAsync(Scott.Mail.Smtp2Go.SuppressionRemoveRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SuppressionRemoveResult!>!>!
+Scott.Mail.Smtp2Go.ISuppressionClient.ViewAllAsync(Scott.Mail.Smtp2Go.SuppressionViewRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.Suppression!>!
+Scott.Mail.Smtp2Go.ISuppressionClient.ViewAsync(Scott.Mail.Smtp2Go.SuppressionViewRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SuppressionViewResult!>!>!
 Scott.Mail.Smtp2Go.ITemplateClient
 Scott.Mail.Smtp2Go.ITemplateClient.AddAsync(Scott.Mail.Smtp2Go.TemplateAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Template!>!>!
 Scott.Mail.Smtp2Go.ITemplateClient.RemoveAsync(string! id, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<string!>!>!
@@ -675,6 +681,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(Scott.Mail.Smtp2Go.Smtp2GoClientO
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(System.Net.Http.HttpClient! httpClient, Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options, Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics? diagnostics = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(string! apiKey) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Suppressions.get -> Scott.Mail.Smtp2Go.ISuppressionClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Templates.get -> Scott.Mail.Smtp2Go.ITemplateClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
@@ -739,6 +746,123 @@ Scott.Mail.Smtp2Go.SortDirection
 Scott.Mail.Smtp2Go.SortDirection.Asc = 1 -> Scott.Mail.Smtp2Go.SortDirection
 Scott.Mail.Smtp2Go.SortDirection.Desc = 2 -> Scott.Mail.Smtp2Go.SortDirection
 Scott.Mail.Smtp2Go.SortDirection.Unknown = 0 -> Scott.Mail.Smtp2Go.SortDirection
+Scott.Mail.Smtp2Go.Suppression
+Scott.Mail.Smtp2Go.Suppression.<Clone>$() -> Scott.Mail.Smtp2Go.Suppression!
+Scott.Mail.Smtp2Go.Suppression.BlockDescription.get -> string?
+Scott.Mail.Smtp2Go.Suppression.BlockDescription.init -> void
+Scott.Mail.Smtp2Go.Suppression.Complaint.get -> string?
+Scott.Mail.Smtp2Go.Suppression.Complaint.init -> void
+Scott.Mail.Smtp2Go.Suppression.EmailAddress.get -> string?
+Scott.Mail.Smtp2Go.Suppression.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.Suppression.Equals(Scott.Mail.Smtp2Go.Suppression? other) -> bool
+Scott.Mail.Smtp2Go.Suppression.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.Suppression.Extra.set -> void
+Scott.Mail.Smtp2Go.Suppression.Reason.get -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.Suppression.ReasonRaw.get -> string?
+Scott.Mail.Smtp2Go.Suppression.ReasonRaw.init -> void
+Scott.Mail.Smtp2Go.Suppression.Subject.get -> string?
+Scott.Mail.Smtp2Go.Suppression.Subject.init -> void
+Scott.Mail.Smtp2Go.Suppression.Suppression() -> void
+Scott.Mail.Smtp2Go.Suppression.Timestamp.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Suppression.Timestamp.init -> void
+Scott.Mail.Smtp2Go.SuppressionAddRequest
+Scott.Mail.Smtp2Go.SuppressionAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionAddRequest!
+Scott.Mail.Smtp2Go.SuppressionAddRequest.BlockDescription.get -> string?
+Scott.Mail.Smtp2Go.SuppressionAddRequest.BlockDescription.init -> void
+Scott.Mail.Smtp2Go.SuppressionAddRequest.EmailAddress.get -> string!
+Scott.Mail.Smtp2Go.SuppressionAddRequest.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.SuppressionAddRequest.Equals(Scott.Mail.Smtp2Go.SuppressionAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionAddRequest.SuppressionAddRequest() -> void
+Scott.Mail.Smtp2Go.SuppressionAddResult
+Scott.Mail.Smtp2Go.SuppressionAddResult.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionAddResult!
+Scott.Mail.Smtp2Go.SuppressionAddResult.Added.get -> bool?
+Scott.Mail.Smtp2Go.SuppressionAddResult.Added.init -> void
+Scott.Mail.Smtp2Go.SuppressionAddResult.BlockDescription.get -> string?
+Scott.Mail.Smtp2Go.SuppressionAddResult.BlockDescription.init -> void
+Scott.Mail.Smtp2Go.SuppressionAddResult.EmailAddress.get -> string?
+Scott.Mail.Smtp2Go.SuppressionAddResult.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.SuppressionAddResult.Equals(Scott.Mail.Smtp2Go.SuppressionAddResult? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionAddResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.SuppressionAddResult.Extra.set -> void
+Scott.Mail.Smtp2Go.SuppressionAddResult.SuppressionAddResult() -> void
+Scott.Mail.Smtp2Go.SuppressionRemoval
+Scott.Mail.Smtp2Go.SuppressionRemoval.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionRemoval!
+Scott.Mail.Smtp2Go.SuppressionRemoval.EmailAddress.get -> string?
+Scott.Mail.Smtp2Go.SuppressionRemoval.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.SuppressionRemoval.Equals(Scott.Mail.Smtp2Go.SuppressionRemoval? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionRemoval.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.SuppressionRemoval.Extra.set -> void
+Scott.Mail.Smtp2Go.SuppressionRemoval.Reason.get -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionRemoval.ReasonRaw.get -> string?
+Scott.Mail.Smtp2Go.SuppressionRemoval.ReasonRaw.init -> void
+Scott.Mail.Smtp2Go.SuppressionRemoval.Removed.get -> bool?
+Scott.Mail.Smtp2Go.SuppressionRemoval.Removed.init -> void
+Scott.Mail.Smtp2Go.SuppressionRemoval.SuppressionRemoval() -> void
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionRemoveRequest!
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.EmailAddress.get -> string!
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.Equals(Scott.Mail.Smtp2Go.SuppressionRemoveRequest? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.Reasons.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.SuppressionType>!
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.Reasons.init -> void
+Scott.Mail.Smtp2Go.SuppressionRemoveRequest.SuppressionRemoveRequest() -> void
+Scott.Mail.Smtp2Go.SuppressionRemoveResult
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionRemoveResult!
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.Equals(Scott.Mail.Smtp2Go.SuppressionRemoveResult? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.Extra.set -> void
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.SuppressionRemoveResult() -> void
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.Suppressions.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.SuppressionRemoval!>?
+Scott.Mail.Smtp2Go.SuppressionRemoveResult.Suppressions.init -> void
+Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionType.Bounce = 4 -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionType.Compliance = 5 -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionType.Manual = 1 -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionType.Spam = 2 -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionType.Unknown = 0 -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionType.Unsubscribe = 3 -> Scott.Mail.Smtp2Go.SuppressionType
+Scott.Mail.Smtp2Go.SuppressionViewRequest
+Scott.Mail.Smtp2Go.SuppressionViewRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionViewRequest!
+Scott.Mail.Smtp2Go.SuppressionViewRequest.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.EmailAddress.get -> string?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.EmailAddress.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.EndDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.EndDate.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Equals(Scott.Mail.Smtp2Go.SuppressionViewRequest? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Fuzzy.get -> bool?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Fuzzy.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Reason.get -> string?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Reason.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Reasons.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Reasons.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Recipient.get -> string?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Recipient.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Recipients.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Recipients.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Sort.get -> Scott.Mail.Smtp2Go.SortDirection?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Sort.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.StartDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.StartDate.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.SuppressionType.get -> Scott.Mail.Smtp2Go.SuppressionType?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.SuppressionType.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.SuppressionTypes.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.SuppressionType>?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.SuppressionTypes.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.SuppressionViewRequest() -> void
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Wildcard.get -> string?
+Scott.Mail.Smtp2Go.SuppressionViewRequest.Wildcard.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewResult
+Scott.Mail.Smtp2Go.SuppressionViewResult.<Clone>$() -> Scott.Mail.Smtp2Go.SuppressionViewResult!
+Scott.Mail.Smtp2Go.SuppressionViewResult.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.SuppressionViewResult.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewResult.Equals(Scott.Mail.Smtp2Go.SuppressionViewResult? other) -> bool
+Scott.Mail.Smtp2Go.SuppressionViewResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.SuppressionViewResult.Extra.set -> void
+Scott.Mail.Smtp2Go.SuppressionViewResult.Results.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Suppression!>?
+Scott.Mail.Smtp2Go.SuppressionViewResult.Results.init -> void
+Scott.Mail.Smtp2Go.SuppressionViewResult.SuppressionViewResult() -> void
+Scott.Mail.Smtp2Go.SuppressionViewResult.TotalResults.get -> long?
+Scott.Mail.Smtp2Go.SuppressionViewResult.TotalResults.init -> void
 Scott.Mail.Smtp2Go.Template
 Scott.Mail.Smtp2Go.Template.<Clone>$() -> Scott.Mail.Smtp2Go.Template!
 Scott.Mail.Smtp2Go.Template.DisplayName.get -> string?
@@ -1232,6 +1356,30 @@ override Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.Suppression.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Suppression.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Suppression.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionAddResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionAddResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionAddResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionRemoval.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionRemoval.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionRemoval.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionRemoveRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionRemoveRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionRemoveRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionRemoveResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionRemoveResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionRemoveResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionViewRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionViewRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionViewRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SuppressionViewResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SuppressionViewResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SuppressionViewResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.Template.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Template.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Template.ToString() -> string!
@@ -1401,6 +1549,22 @@ static Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.operator ==(Scott.Mail.Smt
 static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator !=(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator ==(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.Smtp2GoClientOptions.IsWellFormedApiKey(string! apiKey) -> bool
+static Scott.Mail.Smtp2Go.Suppression.operator !=(Scott.Mail.Smtp2Go.Suppression? left, Scott.Mail.Smtp2Go.Suppression? right) -> bool
+static Scott.Mail.Smtp2Go.Suppression.operator ==(Scott.Mail.Smtp2Go.Suppression? left, Scott.Mail.Smtp2Go.Suppression? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionAddRequest.operator !=(Scott.Mail.Smtp2Go.SuppressionAddRequest? left, Scott.Mail.Smtp2Go.SuppressionAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionAddRequest.operator ==(Scott.Mail.Smtp2Go.SuppressionAddRequest? left, Scott.Mail.Smtp2Go.SuppressionAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionAddResult.operator !=(Scott.Mail.Smtp2Go.SuppressionAddResult? left, Scott.Mail.Smtp2Go.SuppressionAddResult? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionAddResult.operator ==(Scott.Mail.Smtp2Go.SuppressionAddResult? left, Scott.Mail.Smtp2Go.SuppressionAddResult? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionRemoval.operator !=(Scott.Mail.Smtp2Go.SuppressionRemoval? left, Scott.Mail.Smtp2Go.SuppressionRemoval? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionRemoval.operator ==(Scott.Mail.Smtp2Go.SuppressionRemoval? left, Scott.Mail.Smtp2Go.SuppressionRemoval? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionRemoveRequest.operator !=(Scott.Mail.Smtp2Go.SuppressionRemoveRequest? left, Scott.Mail.Smtp2Go.SuppressionRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionRemoveRequest.operator ==(Scott.Mail.Smtp2Go.SuppressionRemoveRequest? left, Scott.Mail.Smtp2Go.SuppressionRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionRemoveResult.operator !=(Scott.Mail.Smtp2Go.SuppressionRemoveResult? left, Scott.Mail.Smtp2Go.SuppressionRemoveResult? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionRemoveResult.operator ==(Scott.Mail.Smtp2Go.SuppressionRemoveResult? left, Scott.Mail.Smtp2Go.SuppressionRemoveResult? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionViewRequest.operator !=(Scott.Mail.Smtp2Go.SuppressionViewRequest? left, Scott.Mail.Smtp2Go.SuppressionViewRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionViewRequest.operator ==(Scott.Mail.Smtp2Go.SuppressionViewRequest? left, Scott.Mail.Smtp2Go.SuppressionViewRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionViewResult.operator !=(Scott.Mail.Smtp2Go.SuppressionViewResult? left, Scott.Mail.Smtp2Go.SuppressionViewResult? right) -> bool
+static Scott.Mail.Smtp2Go.SuppressionViewResult.operator ==(Scott.Mail.Smtp2Go.SuppressionViewResult? left, Scott.Mail.Smtp2Go.SuppressionViewResult? right) -> bool
 static Scott.Mail.Smtp2Go.Template.operator !=(Scott.Mail.Smtp2Go.Template? left, Scott.Mail.Smtp2Go.Template? right) -> bool
 static Scott.Mail.Smtp2Go.Template.operator ==(Scott.Mail.Smtp2Go.Template? left, Scott.Mail.Smtp2Go.Template? right) -> bool
 static Scott.Mail.Smtp2Go.TemplateAddRequest.operator !=(Scott.Mail.Smtp2Go.TemplateAddRequest? left, Scott.Mail.Smtp2Go.TemplateAddRequest? right) -> bool

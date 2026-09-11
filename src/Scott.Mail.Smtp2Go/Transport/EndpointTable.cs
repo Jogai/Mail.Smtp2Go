@@ -80,6 +80,11 @@ public static class EndpointTable
         Add(table, new Endpoint("template/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("template/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // Suppressions (all three document subaccount_id)
+        Add(table, new Endpoint("suppression/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("suppression/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("suppression/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

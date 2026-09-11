@@ -46,6 +46,7 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
         Webhooks = new WebhookClient(_connection);
         Stats = new StatsClient(_connection);
         Templates = new TemplateClient(_connection);
+        Suppressions = new SuppressionClient(_connection);
     }
 
     /// <summary>The options this client was created with.</summary>
@@ -65,6 +66,9 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
 
     /// <inheritdoc />
     public ITemplateClient Templates { get; }
+
+    /// <inheritdoc />
+    public ISuppressionClient Suppressions { get; }
 
     /// <inheritdoc />
     public IRawClient Raw { get; }

@@ -82,6 +82,14 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(ApiResponse<TemplateSearchResult>))]
 [JsonSerializable(typeof(ApiResponse<string>))]
 
+// Suppressions
+[JsonSerializable(typeof(SuppressionAddRequest))]
+[JsonSerializable(typeof(SuppressionViewRequest))]
+[JsonSerializable(typeof(SuppressionRemoveRequest))]
+[JsonSerializable(typeof(ApiResponse<SuppressionAddResult>))]
+[JsonSerializable(typeof(ApiResponse<SuppressionViewResult>))]
+[JsonSerializable(typeof(ApiResponse<SuppressionRemoveResult>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

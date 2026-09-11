@@ -1,0 +1,15 @@
+{
+  "continue_token": "eyJwYWdlIjoyfQ==",
+  "email_address": "temp@example.com",
+  "start_date": "2026-08-01T00:00:00Z",
+  "end_date": "2026-09-01T00:00:00Z",
+  "fuzzy": true,
+  "reason": "manual",
+  "reasons": ["manual", "spam"],
+  "recipient": "temp",
+  "recipients": ["temp@example.com", "example.org"],
+  "sort": "desc",
+  "suppression_type": "manual",
+  "suppression_types": ["manual", "spam", "unsubscribe", "bounce", "compliance"],
+  "wildcard": "example"
+}

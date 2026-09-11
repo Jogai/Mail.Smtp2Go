@@ -19,6 +19,9 @@ public interface ISmtp2GoClient
     /// <summary>Email templates: <c>template/add</c>, <c>template/edit</c>, <c>template/delete</c>, <c>template/search</c>, <c>template/view</c>.</summary>
     ITemplateClient Templates { get; }
 
+    /// <summary>Suppressions: <c>suppression/add</c>, <c>suppression/view</c>, <c>suppression/remove</c>.</summary>
+    ISuppressionClient Suppressions { get; }
+
     /// <summary>Statistics: <c>stats/email_summary</c>, <c>email_cycle</c>, <c>email_bounces</c>, <c>email_spam</c>, <c>email_unsubs</c>, <c>email_history</c>.</summary>
     IStatsClient Stats { get; }
 

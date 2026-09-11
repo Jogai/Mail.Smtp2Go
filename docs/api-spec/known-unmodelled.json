@@ -8,10 +8,6 @@
       "reason": "Merged into the body by the transport from RequestOptions.SubaccountId when Endpoint.AcceptsSubaccountId is true; never a model property."
     },
     {
-      "endpoint": "activity/search",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
       "endpoint": "allowed_recipients/add",
       "reason": "pending plan 07 (account management and SMS)"
     },
@@ -68,14 +64,6 @@
     {
       "endpoint": "api_keys/view",
       "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "archive/email",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "archive/search",
-      "reason": "pending plan 04 (webhooks and reporting)"
     },
     {
       "endpoint": "dedicated_ips/view",
@@ -151,30 +139,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "stats/email_bounces",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "stats/email_cycle",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "stats/email_history",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "stats/email_spam",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "stats/email_summary",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "stats/email_unsubs",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
       "endpoint": "subaccount/add",
       "reason": "pending plan 07 (account management and SMS)"
     },
@@ -193,38 +157,6 @@
     {
       "endpoint": "subaccounts/search",
       "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "suppression/add",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "suppression/remove",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "suppression/view",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "template/add",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "template/delete",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "template/edit",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "template/search",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "template/view",
-      "reason": "pending plan 04 (webhooks and reporting)"
     },
     {
       "endpoint": "users/smtp/add",
@@ -249,28 +181,11 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "webhook/add",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "webhook/edit",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "webhook/remove",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
       "endpoint": "webhook/view",
-      "reason": "pending plan 04 (webhooks and reporting)"
-    },
-    {
-      "endpoint": "callbacks/email",
-      "reason": "pending plan 04 (WebhookEvent hierarchy)"
-    },
-    {
-      "endpoint": "callbacks/sms",
-      "reason": "pending plan 04 (WebhookEvent hierarchy)"
+      "scope": "response",
+      "field": "*",
+      "reason": "The docs example shows one webhook object under data, but the live endpoint returns an array of webhooks (docs/api-notes.md); IWebhookClient.ViewAsync is typed as IReadOnlyList<Webhook>, so the captured array shape is checked instead of the docs example.",
+      "fixture": "Webhooks/view-response-array.json"
     }
   ]
 }

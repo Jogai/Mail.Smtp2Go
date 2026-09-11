@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /webhook/edit</c>: <see cref="Id"/> plus any of the <c>webhook/add</c> fields to change. Omitted fields are left as they are.</summary>
+[Smtp2GoEndpoint("webhook/edit")]
 public sealed record WebhookEditRequest : IRequestValidator
 {
     /// <summary>The id of the webhook to change.</summary>

@@ -1,10 +1,12 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json;
 using Scott.Mail.Smtp2Go.Json.Converters;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>A configured webhook, as returned by every <c>webhook/*</c> operation.</summary>
+[Smtp2GoEndpoint("webhook/view")]
 public sealed record Webhook
 {
     /// <summary>The webhook id; pass it to <see cref="IWebhookClient.EditAsync"/> and <see cref="IWebhookClient.RemoveAsync"/>.</summary>

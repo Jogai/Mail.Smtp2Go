@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /template/add</c>. The API requires every field except <see cref="TemplateVariables"/> and <see cref="Tags"/>.</summary>
+[Smtp2GoEndpoint("template/add")]
 public sealed record TemplateAddRequest : IRequestValidator
 {
     /// <summary>The name, 1 to 64 characters.</summary>

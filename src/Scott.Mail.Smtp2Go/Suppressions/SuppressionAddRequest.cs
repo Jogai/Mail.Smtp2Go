@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /suppression/add</c>. <c>subaccount_id</c> is injected from <see cref="RequestOptions.SubaccountId"/>.</summary>
+[Smtp2GoEndpoint("suppression/add")]
 public sealed record SuppressionAddRequest : IRequestValidator
 {
     /// <summary>The address or domain to suppress.</summary>

@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /activity/search</c> (rate-limited to 60 calls per minute). Every field is optional; the default range is today from midnight UTC.</summary>
+[Smtp2GoEndpoint("activity/search")]
 public sealed record ActivitySearchRequest : IRequestValidator
 {
     /// <summary>The maximum <see cref="Limit"/>.</summary>

@@ -7,6 +7,7 @@ namespace Scott.Mail.Smtp2Go;
 /// The body of <c>POST /archive/search</c>. Every field is optional; the default range is today from midnight UTC to now, and sent mail takes around two minutes to
 /// become searchable. Requires Email Archiving to be enabled for the account (a paid-plan feature).
 /// </summary>
+[Smtp2GoEndpoint("archive/search")]
 public sealed record ArchiveSearchRequest : IRequestValidator
 {
     /// <summary>The maximum and server default <see cref="Limit"/>.</summary>

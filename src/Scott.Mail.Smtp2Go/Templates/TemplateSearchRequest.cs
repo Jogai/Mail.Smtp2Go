@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /template/search</c>. Every field is optional; without filters every template is listed, <see cref="PageSize"/> (server default 100) at a time.</summary>
+[Smtp2GoEndpoint("template/search")]
 public sealed record TemplateSearchRequest : IRequestValidator
 {
     /// <summary>Match <see cref="SearchTerms"/> with wildcards rather than exactly. Server default <see langword="false"/>.</summary>

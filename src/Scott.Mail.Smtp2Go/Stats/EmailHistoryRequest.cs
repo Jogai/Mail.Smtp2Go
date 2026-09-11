@@ -1,8 +1,10 @@
 using System.Text.Json.Serialization;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /stats/email_history</c>. Every field is optional; the default range is the last 30 days grouped by sender address.</summary>
+[Smtp2GoEndpoint("stats/email_history")]
 public sealed record EmailHistoryRequest
 {
     /// <summary>Row grouping. Server default: <see cref="EmailHistoryGroupBy.EmailAddress"/>.</summary>

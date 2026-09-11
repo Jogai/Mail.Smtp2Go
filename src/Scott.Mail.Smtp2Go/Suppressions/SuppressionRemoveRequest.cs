@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /suppression/remove</c>: the address or domain and which suppression types to lift. <c>subaccount_id</c> is injected from <see cref="RequestOptions.SubaccountId"/>.</summary>
+[Smtp2GoEndpoint("suppression/remove")]
 public sealed record SuppressionRemoveRequest : IRequestValidator
 {
     /// <summary>The address or domain to unsuppress.</summary>

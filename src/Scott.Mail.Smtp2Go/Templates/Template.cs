@@ -1,5 +1,6 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
@@ -7,6 +8,7 @@ namespace Scott.Mail.Smtp2Go;
 /// An email template. <c>template/add</c> and <c>template/edit</c> return the name as <c>template_name</c>; <c>template/search</c> and <c>template/view</c> return it as
 /// <c>name</c>; <see cref="DisplayName"/> reads whichever is present. Bodies and variables are only returned by add, edit and view.
 /// </summary>
+[Smtp2GoEndpoint("template/view")]
 public sealed record Template
 {
     /// <summary>The case-sensitive template id (5 to 24 characters), used as <c>template_id</c> when sending.</summary>

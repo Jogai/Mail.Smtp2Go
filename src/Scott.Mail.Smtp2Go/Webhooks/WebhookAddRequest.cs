@@ -7,6 +7,7 @@ namespace Scott.Mail.Smtp2Go;
 /// The body of <c>POST /webhook/add</c>. Only <see cref="Url"/> is required. <c>subaccount_id</c> is not a property: set it through
 /// <see cref="RequestOptions.SubaccountId"/> or <see cref="Smtp2GoClientOptions.DefaultSubaccountId"/> and the transport merges it in.
 /// </summary>
+[Smtp2GoEndpoint("webhook/add")]
 public sealed record WebhookAddRequest : IRequestValidator
 {
     /// <summary>The URL SMTP2GO posts callbacks to. Credentials in the URL (<c>https://user:pass@host/path</c>) are the documented alternative to <see cref="AuthHeaderType"/>.</summary>

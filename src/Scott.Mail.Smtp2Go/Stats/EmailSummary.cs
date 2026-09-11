@@ -1,9 +1,11 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The <c>data</c> of <c>stats/email_summary</c>: the cycle, bounce, spam and unsubscribe reports in one call (the docs note it may take longer).</summary>
+[Smtp2GoEndpoint("stats/email_summary")]
 public sealed record EmailSummary
 {
     /// <summary>Start of the billing cycle (UTC).</summary>

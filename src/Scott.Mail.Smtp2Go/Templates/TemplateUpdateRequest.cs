@@ -4,6 +4,7 @@ using Scott.Mail.Smtp2Go.Transport;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of <c>POST /template/edit</c>: the <see cref="Id"/> of the template plus the fields to change. Omitted fields are left as they are.</summary>
+[Smtp2GoEndpoint("template/edit")]
 public sealed record TemplateUpdateRequest : IRequestValidator
 {
     /// <summary>The id of the template to change.</summary>

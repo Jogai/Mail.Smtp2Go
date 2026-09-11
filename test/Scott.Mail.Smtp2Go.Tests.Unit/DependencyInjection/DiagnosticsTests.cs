@@ -90,10 +90,13 @@ public sealed class DiagnosticsTests
     {
         List<(string Instrument, long Value, Dictionary<string, object?> Tags)> counters = [];
         List<(string Instrument, double Value, Dictionary<string, object?> Tags)> histograms = [];
+        using DiTestHost host = DiTestHost.Create(options => options.Resilience.MaxRetries = 0);
+        // Every test host in the process publishes a meter with the same name; IMeterFactory sets itself as Meter.Scope, so only this host's meter is observed.
+        IMeterFactory meterFactory = host.Provider.GetRequiredService<IMeterFactory>();
         using MeterListener listener = new();
         listener.InstrumentPublished = (instrument, l) =>
         {
-            if (instrument.Meter.Name == Smtp2GoMetrics.MeterName)
+            if (instrument.Meter.Name == Smtp2GoMetrics.MeterName && ReferenceEquals(instrument.Meter.Scope, meterFactory))
             {
                 l.EnableMeasurementEvents(instrument);
             }
@@ -114,13 +117,10 @@ public sealed class DiagnosticsTests
         });
         listener.Start();
 
-        using DiTestHost host = DiTestHost.Create(options => options.Resilience.MaxRetries = 0);
         host.Handler.Respond(Endpoint, HttpStatusCode.OK, """{"request_id":"req-1","data":{}}""");
         host.Handler.Respond("email/send", HttpStatusCode.BadRequest, """{"request_id":"req-2","data":{"error":"bad"}}""");
         ISmtp2GoClient client = host.Client();
 
-        // The listener hears every Smtp2Go meter in the process, including other tests' hosts running in parallel, so the predicates
-        // must tolerate counters without a status code (transport failures) rather than index the tag dictionary.
         using JsonDocument document = await client.Raw.SendJsonAsync(Endpoint, default, cancellationToken: TestContext.Current.CancellationToken);
         Func<Task> failing = () => client.Raw.SendJsonAsync("email/send", default, cancellationToken: TestContext.Current.CancellationToken);
         await failing.Should().ThrowAsync<Smtp2GoApiException>();

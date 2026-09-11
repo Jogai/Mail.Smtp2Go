@@ -1,9 +1,11 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The <c>data</c> of <c>stats/email_cycle</c>: the current billing cycle and its allowance.</summary>
+[Smtp2GoEndpoint("stats/email_cycle")]
 public sealed record EmailCycle
 {
     /// <summary>Start of the cycle (UTC).</summary>

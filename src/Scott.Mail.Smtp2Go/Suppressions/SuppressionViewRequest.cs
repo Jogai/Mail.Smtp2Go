@@ -7,6 +7,7 @@ namespace Scott.Mail.Smtp2Go;
 /// The body of <c>POST /suppression/view</c>. Every field is optional. The endpoint pages by <c>continue_token</c> only; the docs list no page size.
 /// <c>subaccount_id</c> is injected from <see cref="RequestOptions.SubaccountId"/>.
 /// </summary>
+[Smtp2GoEndpoint("suppression/view")]
 public sealed record SuppressionViewRequest : IRequestValidator
 {
     /// <summary>The token from the previous page's <see cref="SuppressionViewResult.ContinueToken"/>. <see cref="ISuppressionClient.ViewAllAsync"/> manages it.</summary>

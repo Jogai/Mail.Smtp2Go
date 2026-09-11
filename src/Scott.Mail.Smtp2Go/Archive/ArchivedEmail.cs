@@ -1,10 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>One archived email, as returned by <c>archive/search</c> (in <c>emails[]</c>) and <c>archive/email</c>.</summary>
+[Smtp2GoEndpoint("archive/email")]
 public sealed record ArchivedEmail
 {
     /// <summary>The email id; pass it to <see cref="IArchiveClient.GetAsync"/>.</summary>

@@ -1,9 +1,11 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json;
+using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The <c>data</c> of <c>stats/email_bounces</c>: bounces and rejects for the last 30 days.</summary>
+[Smtp2GoEndpoint("stats/email_bounces")]
 public sealed record EmailBounces
 {
     /// <summary>Emails sent in the period.</summary>

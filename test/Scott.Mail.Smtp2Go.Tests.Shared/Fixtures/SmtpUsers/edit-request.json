@@ -1,0 +1,6 @@
+{
+  "username": "smtpuser@example.com",
+  "email_password": "new-password-Ab1!",
+  "description": "edited smtp user",
+  "status": "sandbox"
+}

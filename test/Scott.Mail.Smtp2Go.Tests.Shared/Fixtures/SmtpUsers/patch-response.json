@@ -1,0 +1,1 @@
+{"request_id":"f3e50113-deb2-4e54-9675-2ea497c3732e","data":[{"username":"my_user","description":"test smtp user","feedback_enabled":true,"feedback_html":"test_html","feedback_text":"test_text","ippool":1234,"bounce_notifications":"from","status":"allowed"}]}

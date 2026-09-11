@@ -1,0 +1,4 @@
+{
+  "username": "smtpuser@example.com",
+  "bounce_notifications": "drop"
+}

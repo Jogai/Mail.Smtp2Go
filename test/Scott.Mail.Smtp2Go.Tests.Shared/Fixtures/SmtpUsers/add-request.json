@@ -1,0 +1,19 @@
+{
+  "username": "smtpuser@example.com",
+  "email_password": "qet_^3qU1341%*ert",
+  "description": "test smtp user",
+  "custom_ratelimit": true,
+  "custom_ratelimit_value": 100,
+  "custom_ratelimit_period": "1 day",
+  "ip_pool": 1234,
+  "feedback_enabled": true,
+  "feedback_domain": "default",
+  "feedback_html": "test_html",
+  "feedback_text": "test_text",
+  "open_tracking_enabled": true,
+  "click_tracking_enabled": true,
+  "archive_enabled": false,
+  "audit_email": "audit@example.com",
+  "bounce_notifications": "from",
+  "status": "allowed"
+}

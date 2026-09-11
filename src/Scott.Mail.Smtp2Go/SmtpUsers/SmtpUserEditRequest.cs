@@ -3,15 +3,19 @@ using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
-/// <summary>The body of <c>PATCH /api_keys/edit</c>: a partial edit. Omitted fields are left unchanged. Same shape as <see cref="ApiKeyEditRequest"/>; the client sends it with <c>PATCH</c>.</summary>
-[Smtp2GoEndpoint("api_keys/edit")]
-public sealed record ApiKeyPatchRequest : IRequestValidator
+/// <summary>The body of <c>POST /users/smtp/edit</c>: a full edit. Fields you omit fall back to the documented defaults (for example the tracking flags to <see langword="false"/>). <c>subaccount_id</c> is injected from <see cref="RequestOptions.SubaccountId"/>.</summary>
+[Smtp2GoEndpoint("users/smtp/edit")]
+public sealed record SmtpUserEditRequest : IRequestValidator
 {
-    /// <summary>The full API key to change.</summary>
-    [JsonPropertyName("id")]
-    public required string Id { get; init; }
+    /// <summary>The username of the existing user to change.</summary>
+    [JsonPropertyName("username")]
+    public required string Username { get; init; }
 
-    /// <summary>A comment or description of the key.</summary>
+    /// <summary>The SMTP password. Leave empty for a generated one (returned in the response); otherwise at least 64 bits of entropy, ideally 12+ characters with a digit, a symbol, upper and lower case.</summary>
+    [JsonPropertyName("email_password")]
+    public string? EmailPassword { get; init; }
+
+    /// <summary>A comment or description of the user.</summary>
     [JsonPropertyName("description")]
     public string? Description { get; init; }
 
@@ -35,6 +39,10 @@ public sealed record ApiKeyPatchRequest : IRequestValidator
     [JsonPropertyName("feedback_enabled")]
     public bool? FeedbackEnabled { get; init; }
 
+    /// <summary>The domain for feedback links. Keep the server default <c>default</c> unless you handle feedback yourself: any other value stops SMTP2GO managing the responses.</summary>
+    [JsonPropertyName("feedback_domain")]
+    public string? FeedbackDomain { get; init; }
+
     /// <summary>HTML for the feedback email; <c>%UNSUBSCRIBE%</c> and <c>%EMAIL%</c> are substituted.</summary>
     [JsonPropertyName("feedback_html")]
     public string? FeedbackHtml { get; init; }
@@ -55,7 +63,7 @@ public sealed record ApiKeyPatchRequest : IRequestValidator
     [JsonPropertyName("archive_enabled")]
     public bool? ArchiveEnabled { get; init; }
 
-    /// <summary>An address to BCC on every email sent with the key.</summary>
+    /// <summary>An address to BCC on every email the user sends.</summary>
     [JsonPropertyName("audit_email")]
     public string? AuditEmail { get; init; }
 
@@ -63,23 +71,15 @@ public sealed record ApiKeyPatchRequest : IRequestValidator
     [JsonPropertyName("bounce_notifications")]
     public BounceNotifications? BounceNotifications { get; init; }
 
-    /// <summary>The key's status; the server default is <see cref="CredentialStatus.Allowed"/>.</summary>
+    /// <summary>The user's status; the server default is <see cref="CredentialStatus.Allowed"/>.</summary>
     [JsonPropertyName("status")]
     public CredentialStatus? Status { get; init; }
-
-    /// <summary>
-    /// The endpoints the key may call, for example <c>["/email/send"]</c> (the server default), wildcards such as <c>["/email/*"]</c>, or <c>["*"]</c> for everything.
-    /// Must be a subset of what the calling key may use; the list is available from <see cref="IApiKeyClient.GetPermissionsAsync"/>.
-    /// </summary>
-    [JsonPropertyName("endpoints")]
-    public IReadOnlyList<string>? Endpoints { get; init; }
 
     /// <inheritdoc />
     void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
     {
         Argument.ThrowIfNull(errors);
-        CredentialRequestValidator.ValidateRequired(Id, "id", errors);
+        SmtpUserRequestValidator.ValidateUsername(Username, checkLength: false, errors);
         CredentialRequestValidator.ValidateSettings(Status, CustomRateLimitValue, CustomRateLimitPeriod, errors);
-        CredentialRequestValidator.ValidateEndpoints(Endpoints, errors);
     }
 }

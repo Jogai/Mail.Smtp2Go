@@ -133,28 +133,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "users/smtp/add",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "users/smtp/edit",
-      "method": "PATCH",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "users/smtp/edit",
-      "method": "POST",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "users/smtp/remove",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "users/smtp/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "webhook/view",
       "scope": "response",
       "field": "*",
@@ -196,6 +174,36 @@
       "scope": "response",
       "field": "data",
       "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
+    },
+    {
+      "endpoint": "users/smtp/add",
+      "scope": "response",
+      "field": "results",
+      "reason": "The {results: [...]} wrapper of this endpoint is unwrapped by ResultsListConverter<SmtpUser> into IReadOnlyList<SmtpUser>; results is the wrapper's key, not a property of the SmtpUser items."
+    },
+    {
+      "endpoint": "users/smtp/edit",
+      "scope": "response",
+      "field": "results",
+      "reason": "The {results: [...]} wrapper of this endpoint is unwrapped by ResultsListConverter<SmtpUser> into IReadOnlyList<SmtpUser>; results is the wrapper's key, not a property of the SmtpUser items."
+    },
+    {
+      "endpoint": "users/smtp/remove",
+      "scope": "response",
+      "field": "results",
+      "reason": "The {results: [...]} wrapper of this endpoint is unwrapped by ResultsListConverter<SmtpUser> into IReadOnlyList<SmtpUser>; results is the wrapper's key, not a property of the SmtpUser items."
+    },
+    {
+      "endpoint": "users/smtp/edit",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by SmtpUser."
+    },
+    {
+      "endpoint": "users/smtp/edit",
+      "scope": "response",
+      "field": "data",
+      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by SmtpUser."
     }
   ]
 }

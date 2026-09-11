@@ -133,6 +133,13 @@ public static class EndpointTable
         Add(table, new Endpoint("api_keys/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("api_keys/permissions", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // SMTP users (every endpoint documents subaccount_id; edit is documented as POST (full edit) and PATCH (partial edit))
+        Add(table, new Endpoint("users/smtp/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("users/smtp/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("users/smtp/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("users/smtp/edit", Endpoint.Patch, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("users/smtp/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

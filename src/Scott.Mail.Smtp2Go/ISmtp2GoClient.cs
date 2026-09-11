@@ -25,6 +25,9 @@ public interface ISmtp2GoClient
     /// <summary>API keys: <c>api_keys/view</c>, <c>add</c>, <c>edit</c> (POST and PATCH), <c>remove</c>, <c>permissions</c>.</summary>
     IApiKeyClient ApiKeys { get; }
 
+    /// <summary>SMTP users: <c>users/smtp/view</c>, <c>add</c>, <c>edit</c> (POST and PATCH), <c>remove</c>.</summary>
+    ISmtpUserClient SmtpUsers { get; }
+
     /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
     IArchiveClient Archive { get; }
 

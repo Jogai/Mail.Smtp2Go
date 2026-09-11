@@ -11,6 +11,9 @@ internal static partial class Smtp2GoWebhookLog
     [LoggerMessage(EventId = Smtp2GoWebhookEventIds.CallbackHandled, Level = LogLevel.Information, Message = "SMTP2GO callback {Kind} (id {WebhookId}) handled in {ElapsedMs} ms")]
     public static partial void CallbackHandled(ILogger logger, string kind, string? webhookId, double elapsedMs);
 
+    [LoggerMessage(EventId = Smtp2GoWebhookEventIds.NoHandlerRegistered, Level = LogLevel.Debug, Message = "SMTP2GO callback {Kind} ({EventType}) matched no registered IWebhookEventHandler")]
+    public static partial void NoHandlerRegistered(ILogger logger, string kind, string eventType);
+
     [LoggerMessage(EventId = Smtp2GoWebhookEventIds.Unauthorized, Level = LogLevel.Warning, Message = "SMTP2GO callback at {Path} rejected with 401: no accepted credentials (presented scheme: {Scheme})")]
     public static partial void Unauthorized(ILogger logger, string path, string scheme);
 

@@ -3,6 +3,10 @@ Microsoft.AspNetCore.Builder.Smtp2GoWebhookEndpointRouteBuilderExtensions
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.Add(System.Action<Microsoft.AspNetCore.Builder.EndpointBuilder!>! convention) -> void
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.Finally(System.Action<Microsoft.AspNetCore.Builder.EndpointBuilder!>! finallyConvention) -> void
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBasicAuth(System.Func<System.IServiceProvider!, (string! Username, string! Password)>! credentials) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBasicAuth(string! username, string! password) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBearer(System.Func<System.IServiceProvider!, string!>! token) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBearer(string! token) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.WithOptions(System.Action<Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions!>! configure) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookMetadata

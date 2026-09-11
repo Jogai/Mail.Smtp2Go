@@ -23,6 +23,7 @@ internal sealed class Smtp2GoWebhookEndpoint
 
     private readonly Func<HttpContext, WebhookEvent, CancellationToken, Task> _handler;
     private readonly ILogger _logger;
+    private readonly List<WebhookCredential> _credentials = [];
     private WebhookPayloadParser? _parser;
 
     public Smtp2GoWebhookEndpoint(Smtp2GoWebhookOptions options, Func<HttpContext, WebhookEvent, CancellationToken, Task> handler, ILoggerFactory loggerFactory)
@@ -58,10 +59,28 @@ internal sealed class Smtp2GoWebhookEndpoint
         }
     }
 
+    /// <summary>Accepts one more <c>Authorization</c> value; the first call turns authentication on.</summary>
+    public void AddCredential(WebhookCredential credential)
+    {
+        _credentials.Add(credential);
+    }
+
     public async Task InvokeAsync(HttpContext context)
     {
         CancellationToken cancellationToken = context.RequestAborted;
         string path = context.Request.Path.Value ?? "/";
+
+        if (_credentials.Count > 0 && !WebhookAuthenticator.IsAuthorized(context.Request.Headers.Authorization, _credentials, context.RequestServices))
+        {
+            Smtp2GoWebhookLog.Unauthorized(_logger, path, PresentedScheme(context.Request.Headers.Authorization));
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            foreach (string challenge in _credentials.Select(credential => credential.Challenge).Distinct(StringComparer.Ordinal))
+            {
+                context.Response.Headers.Append(HeaderNames.WWWAuthenticate, challenge);
+            }
+
+            return;
+        }
 
         if (!TryGetPayloadFormat(context.Request, out PayloadFormat format, out string mediaType))
         {
@@ -133,6 +152,20 @@ internal sealed class Smtp2GoWebhookEndpoint
         double elapsedMs = Stopwatch.GetElapsedTime(started).TotalMilliseconds;
         Smtp2GoWebhookLog.CallbackHandled(_logger, kind, webhookEvent.WebhookId, elapsedMs);
         context.Response.StatusCode = StatusCodes.Status200OK;
+    }
+
+    /// <summary>The scheme word of the first Authorization value, for the log; never the credential itself.</summary>
+    private static string PresentedScheme(StringValues authorization)
+    {
+        string? first = authorization.Count > 0 ? authorization[0] : null;
+        if (string.IsNullOrWhiteSpace(first))
+        {
+            return "none";
+        }
+
+        string trimmed = first.Trim();
+        int space = trimmed.IndexOf(' ', StringComparison.Ordinal);
+        return space < 0 ? trimmed : trimmed.Substring(0, space);
     }
 
     private bool TryGetPayloadFormat(HttpRequest request, out PayloadFormat format, out string mediaType)

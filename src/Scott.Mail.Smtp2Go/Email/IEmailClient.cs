@@ -11,4 +11,9 @@ public interface IEmailClient
     /// <exception cref="Smtp2GoValidationException">The request fails client-side validation; nothing was sent.</exception>
     /// <exception cref="Smtp2GoApiException">The API answered with a non-success status.</exception>
     Task<ApiResponse<EmailSendResult>> SendAsync(EmailSendRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default);
+
+    /// <summary><c>POST /email/mime</c>: sends a complete Base64-encoded MIME message. Same response shape and <c>fastaccept</c> defaulting as <see cref="SendAsync"/>.</summary>
+    /// <exception cref="Smtp2GoValidationException">The request fails client-side validation; nothing was sent.</exception>
+    /// <exception cref="Smtp2GoApiException">The API answered with a non-success status.</exception>
+    Task<ApiResponse<EmailSendResult>> SendMimeAsync(EmailMimeRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default);
 }

@@ -41,6 +41,7 @@ namespace Scott.Mail.Smtp2Go.Json;
 // Email
 [JsonSerializable(typeof(EmailSendRequest))]
 [JsonSerializable(typeof(ApiResponse<EmailSendResult>))]
+[JsonSerializable(typeof(EmailMimeRequest))]
 
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext

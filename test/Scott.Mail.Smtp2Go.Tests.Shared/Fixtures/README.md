@@ -9,3 +9,4 @@ JSON request/response samples used by the unit and contract tests.
 - `Activity/`: the docs' `activity/search` 200 example, a full response built from its schema (every event property, delivery attempts, an unknown event name) and the request golden.
 - `Templates/`: the docs' 200 examples of the five `template/*` endpoints and the request goldens.
 - `Suppressions/`: the docs' 200 examples of the three `suppression/*` endpoints and the request goldens.
+- `Archive/`: the docs' 200 examples of `archive/search` and `archive/email` and the request goldens.

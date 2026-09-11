@@ -42,12 +42,6 @@ internal sealed class Smtp2GoConnection
     /// <summary>The serializer options in effect: the library context, optionally combined with <see cref="Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver"/>.</summary>
     public JsonSerializerOptions JsonOptions => _json;
 
-    /// <summary>The <see cref="HttpClient"/> this connection sends with, for family clients that fetch non-API URLs (archive downloads).</summary>
-    public HttpClient Http => _http;
-
-    /// <summary>The API key header name.</summary>
-    public static string ApiKeyHeader => ApiKeyHeaderName;
-
     /// <summary>The client-side throttle for <paramref name="rateLimitClass"/>, shared by every call through this connection; <see langword="null"/> when the class has no limit or <see cref="Smtp2GoClientOptions.ClientSideRateLimiting"/> is off.</summary>
     public RateLimitThrottle? GetThrottle(RateLimitClass rateLimitClass)
     {
@@ -68,11 +62,32 @@ internal sealed class Smtp2GoConnection
         }
     }
 
-    /// <summary>Resolves the API key the way a call would (per-call override, then options).</summary>
-    public string GetApiKey(RequestOptions? options)
+    /// <summary>
+    /// GETs a non-API URL (an archive download link) through the same <see cref="HttpClient"/> with the per-request timeout, optionally authenticated the way API calls are.
+    /// The caller owns the response and reads it as a stream; non-success statuses are returned, not thrown.
+    /// </summary>
+    public async Task<HttpResponseMessage> GetAsync(Uri url, RequestOptions? options, bool withApiKey, CancellationToken cancellationToken)
     {
-        return ResolveApiKey(options);
+        using HttpRequestMessage request = new(HttpMethod.Get, url);
+        if (withApiKey)
+        {
+            ApplyAuthentication(request, ResolveApiKey(options));
+        }
+
+        TimeSpan timeout = options?.Timeout ?? _options.Timeout;
+        using CancellationTokenSource? timeoutSource = timeout == Timeout.InfiniteTimeSpan ? null : CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        timeoutSource?.CancelAfter(timeout);
+        CancellationToken ct = timeoutSource?.Token ?? cancellationToken;
+        try
+        {
+            return await _http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException ex) when (timeoutSource is { IsCancellationRequested: true } && !cancellationToken.IsCancellationRequested)
+        {
+            throw new TimeoutException(FormattableString.Invariant($"Downloading '{url}' did not complete within {timeout}."), ex);
+        }
     }
+
 
     /// <summary>Sends <paramref name="body"/> to <paramref name="endpoint"/> and parses the envelope.</summary>
     /// <exception cref="Smtp2GoValidationException">Client-side validation failed; nothing was sent.</exception>
@@ -89,7 +104,7 @@ internal sealed class Smtp2GoConnection
             options,
             async (response, ct) =>
             {
-                using Stream stream = await ReadStreamAsync(response.Content, ct).ConfigureAwait(false);
+                using Stream stream = await ReadContentStreamAsync(response.Content, ct).ConfigureAwait(false);
                 ApiResponse<TResponse>? result;
                 try
                 {
@@ -130,7 +145,7 @@ internal sealed class Smtp2GoConnection
             options,
             async (response, ct) =>
             {
-                using Stream stream = await ReadStreamAsync(response.Content, ct).ConfigureAwait(false);
+                using Stream stream = await ReadContentStreamAsync(response.Content, ct).ConfigureAwait(false);
                 JsonDocument document = await JsonDocument.ParseAsync(stream, new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip }, ct).ConfigureAwait(false);
                 string? requestId = document.RootElement.ValueKind == JsonValueKind.Object
                     && document.RootElement.TryGetProperty("request_id", out JsonElement id)
@@ -370,7 +385,8 @@ internal sealed class Smtp2GoConnection
         return TimeSpan.FromSeconds((Stopwatch.GetTimestamp() - started) / (double)Stopwatch.Frequency);
     }
 
-    private static Task<Stream> ReadStreamAsync(HttpContent content, CancellationToken cancellationToken)
+    /// <summary>Reads a response body as a stream, honouring cancellation on every target.</summary>
+    internal static Task<Stream> ReadContentStreamAsync(HttpContent content, CancellationToken cancellationToken)
     {
 #if NET8_0_OR_GREATER
         return content.ReadAsStreamAsync(cancellationToken);

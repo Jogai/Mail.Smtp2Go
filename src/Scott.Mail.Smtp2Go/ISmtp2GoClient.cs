@@ -22,6 +22,9 @@ public interface ISmtp2GoClient
     /// <summary>Suppressions: <c>suppression/add</c>, <c>suppression/view</c>, <c>suppression/remove</c>.</summary>
     ISuppressionClient Suppressions { get; }
 
+    /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
+    IArchiveClient Archive { get; }
+
     /// <summary>Statistics: <c>stats/email_summary</c>, <c>email_cycle</c>, <c>email_bounces</c>, <c>email_spam</c>, <c>email_unsubs</c>, <c>email_history</c>.</summary>
     IStatsClient Stats { get; }
 

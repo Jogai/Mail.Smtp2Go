@@ -147,6 +147,74 @@ Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.get -> System.Collections.Generic.ID
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.set -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.get -> string!
 Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ArchiveSearchRequest!
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.ArchiveSearchRequest() -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.EndDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.EndDate.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.EnvelopeFrom.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.EnvelopeFrom.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Equals(Scott.Mail.Smtp2Go.ArchiveSearchRequest? other) -> bool
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Headers.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Headers.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Limit.get -> int?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Limit.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Recipient.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Recipient.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Sender.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Sender.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.StartDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.StartDate.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Subject.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Subject.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Username.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchRequest.Username.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchResult
+Scott.Mail.Smtp2Go.ArchiveSearchResult.<Clone>$() -> Scott.Mail.Smtp2Go.ArchiveSearchResult!
+Scott.Mail.Smtp2Go.ArchiveSearchResult.ArchiveSearchResult() -> void
+Scott.Mail.Smtp2Go.ArchiveSearchResult.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.ArchiveSearchResult.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchResult.EmailCount.get -> long?
+Scott.Mail.Smtp2Go.ArchiveSearchResult.EmailCount.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchResult.Emails.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.ArchivedEmail!>?
+Scott.Mail.Smtp2Go.ArchiveSearchResult.Emails.init -> void
+Scott.Mail.Smtp2Go.ArchiveSearchResult.Equals(Scott.Mail.Smtp2Go.ArchiveSearchResult? other) -> bool
+Scott.Mail.Smtp2Go.ArchiveSearchResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.ArchiveSearchResult.Extra.set -> void
+Scott.Mail.Smtp2Go.ArchivedEmail
+Scott.Mail.Smtp2Go.ArchivedEmail.<Clone>$() -> Scott.Mail.Smtp2Go.ArchivedEmail!
+Scott.Mail.Smtp2Go.ArchivedEmail.ArchivedEmail() -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.AttachmentCount.get -> long?
+Scott.Mail.Smtp2Go.ArchivedEmail.AttachmentCount.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Attachments.get -> System.Collections.Generic.IReadOnlyList<System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.ArchivedEmail.Attachments.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.ByteCount.get -> long?
+Scott.Mail.Smtp2Go.ArchivedEmail.ByteCount.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.EmailId.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.EmailId.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.EnvelopeFrom.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.EnvelopeFrom.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Equals(Scott.Mail.Smtp2Go.ArchivedEmail? other) -> bool
+Scott.Mail.Smtp2Go.ArchivedEmail.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.ArchivedEmail.Extra.set -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Headers.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.Headers.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Recipient.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.Recipient.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Sender.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.Sender.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Sent.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.ArchivedEmail.Sent.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Subject.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.Subject.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.To.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.To.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Url.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.Url.init -> void
+Scott.Mail.Smtp2Go.ArchivedEmail.Username.get -> string?
+Scott.Mail.Smtp2Go.ArchivedEmail.Username.init -> void
 Scott.Mail.Smtp2Go.Attachment
 Scott.Mail.Smtp2Go.Attachment.<Clone>$() -> Scott.Mail.Smtp2Go.Attachment!
 Scott.Mail.Smtp2Go.Attachment.Attachment() -> void
@@ -510,6 +578,11 @@ Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
 Scott.Mail.Smtp2Go.IActivityClient
 Scott.Mail.Smtp2Go.IActivityClient.SearchAllAsync(Scott.Mail.Smtp2Go.ActivitySearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ActivityEvent!>!
 Scott.Mail.Smtp2Go.IActivityClient.SearchAsync(Scott.Mail.Smtp2Go.ActivitySearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ActivitySearchResult!>!>!
+Scott.Mail.Smtp2Go.IArchiveClient
+Scott.Mail.Smtp2Go.IArchiveClient.DownloadOriginalAsync(Scott.Mail.Smtp2Go.ArchivedEmail! email, System.IO.Stream! destination, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<long>!
+Scott.Mail.Smtp2Go.IArchiveClient.GetAsync(string! emailId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchivedEmail!>!>!
+Scott.Mail.Smtp2Go.IArchiveClient.SearchAllAsync(Scott.Mail.Smtp2Go.ArchiveSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ArchivedEmail!>!
+Scott.Mail.Smtp2Go.IArchiveClient.SearchAsync(Scott.Mail.Smtp2Go.ArchiveSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchiveSearchResult!>!>!
 Scott.Mail.Smtp2Go.IEmailClient
 Scott.Mail.Smtp2Go.IEmailClient.RemoveScheduledAsync(string! scheduleId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Text.Json.JsonElement>!>!
 Scott.Mail.Smtp2Go.IEmailClient.SearchAsync(Scott.Mail.Smtp2Go.EmailSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSearchResult!>!>!
@@ -523,6 +596,7 @@ Scott.Mail.Smtp2Go.IRawClient.SendAsync<TRequest, TResponse>(string! path, TRequ
 Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonElement body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Text.Json.JsonDocument!>!
 Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
@@ -674,6 +748,7 @@ Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient
 Scott.Mail.Smtp2Go.Smtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Options.get -> Scott.Mail.Smtp2Go.Smtp2GoClientOptions!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
@@ -1251,6 +1326,7 @@ Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.ParseFormBody(string! body) -> 
 Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.WebhookPayloadParser(Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions? options = null) -> void
 abstract Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
 const Scott.Mail.Smtp2Go.ActivitySearchRequest.MaxLimit = 1000 -> int
+const Scott.Mail.Smtp2Go.ArchiveSearchRequest.MaxLimit = 5000 -> int
 const Scott.Mail.Smtp2Go.EmailBatchRequest.MaxEmails = 1000 -> int
 const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
 const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
@@ -1269,6 +1345,15 @@ override Scott.Mail.Smtp2Go.ActivitySearchResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.ApiError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ApiError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ApiError.ToString() -> string!
+override Scott.Mail.Smtp2Go.ArchiveSearchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ArchiveSearchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ArchiveSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.ArchiveSearchResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ArchiveSearchResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ArchiveSearchResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.ArchivedEmail.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ArchivedEmail.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ArchivedEmail.ToString() -> string!
 override Scott.Mail.Smtp2Go.Attachment.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Attachment.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Attachment.ToString() -> string!
@@ -1473,6 +1558,12 @@ static Scott.Mail.Smtp2Go.ActivitySearchResult.operator !=(Scott.Mail.Smtp2Go.Ac
 static Scott.Mail.Smtp2Go.ActivitySearchResult.operator ==(Scott.Mail.Smtp2Go.ActivitySearchResult? left, Scott.Mail.Smtp2Go.ActivitySearchResult? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
+static Scott.Mail.Smtp2Go.ArchiveSearchRequest.operator !=(Scott.Mail.Smtp2Go.ArchiveSearchRequest? left, Scott.Mail.Smtp2Go.ArchiveSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ArchiveSearchRequest.operator ==(Scott.Mail.Smtp2Go.ArchiveSearchRequest? left, Scott.Mail.Smtp2Go.ArchiveSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ArchiveSearchResult.operator !=(Scott.Mail.Smtp2Go.ArchiveSearchResult? left, Scott.Mail.Smtp2Go.ArchiveSearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.ArchiveSearchResult.operator ==(Scott.Mail.Smtp2Go.ArchiveSearchResult? left, Scott.Mail.Smtp2Go.ArchiveSearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.ArchivedEmail.operator !=(Scott.Mail.Smtp2Go.ArchivedEmail? left, Scott.Mail.Smtp2Go.ArchivedEmail? right) -> bool
+static Scott.Mail.Smtp2Go.ArchivedEmail.operator ==(Scott.Mail.Smtp2Go.ArchivedEmail? left, Scott.Mail.Smtp2Go.ArchivedEmail? right) -> bool
 static Scott.Mail.Smtp2Go.Attachment.FromBase64(string! filename, string! fileblob, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
 static Scott.Mail.Smtp2Go.Attachment.FromBytes(string! filename, byte[]! bytes, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
 static Scott.Mail.Smtp2Go.Attachment.FromFileAsync(string! path, string? mimetype = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.Attachment!>!

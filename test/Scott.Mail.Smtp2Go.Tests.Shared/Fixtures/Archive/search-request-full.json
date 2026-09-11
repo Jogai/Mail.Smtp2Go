@@ -1,0 +1,12 @@
+{
+  "start_date": "2026-09-11T00:00:00Z",
+  "end_date": "2026-09-12T00:00:00Z",
+  "limit": 5000,
+  "username": "api-12345678",
+  "recipient": "test@test.com",
+  "sender": "alice@example.com",
+  "envelope_from": "bounce@example.com",
+  "subject": "Scott.Mail.Smtp2Go demo",
+  "headers": "X-Campaign: spring",
+  "continue_token": "eyJwYWdlIjoyfQ=="
+}

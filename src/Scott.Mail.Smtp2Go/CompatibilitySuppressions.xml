@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/dotnet/fundamentals/package-validation/diagnostic-ids -->
+<!--
+  Abstract records: with covariant returns (net8.0+) the compiler redeclares <Clone>$ as an abstract override returning the derived type;
+  on netstandard2.0 the derived abstract record inherits the base declaration instead. Consumers deriving from the record are unaffected
+  (the compiler emits the override for them), so the difference is suppressed rather than the record made non-abstract.
+  Regenerate with `dotnet pack src/Scott.Mail.Smtp2Go -c Release /p:ApiCompatGenerateSuppressionFile=true` when another abstract record is added.
+-->
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Suppression>
+    <DiagnosticId>CP0005</DiagnosticId>
+    <Target>M:Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.{Clone}$</Target>
+    <Left>lib/netstandard2.0/Scott.Mail.Smtp2Go.dll</Left>
+    <Right>lib/net8.0/Scott.Mail.Smtp2Go.dll</Right>
+  </Suppression>
+</Suppressions>

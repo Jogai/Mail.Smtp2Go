@@ -38,6 +38,7 @@ The `demo/` project is the manual end-to-end check for the archive: see [archive
 
 - Central Package Management: versions live only in `Directory.Packages.props`; never put `Version=` on a `PackageReference`. Lock files (`packages.lock.json`) are committed.
 - Every public member of a package is listed in that project's `PublicAPI.Unshipped.txt`; the build fails otherwise. Move entries to `PublicAPI.Shipped.txt` at release time.
+- `dotnet pack` runs package validation across the core package's target frameworks (`EnablePackageValidation`). Abstract records trip it: net8.0+ redeclares `<Clone>$` with a covariant return that netstandard2.0 lacks. Such differences are suppressed in `src/Scott.Mail.Smtp2Go/CompatibilitySuppressions.xml`; regenerate it with `dotnet pack src/Scott.Mail.Smtp2Go -c Release /p:ApiCompatGenerateSuppressionFile=true` when a new abstract record is added and review the diff.
 - Warnings are errors, code style is enforced in the build, namespaces are file-scoped.
 - Commits use conventional-commit prefixes (`feat`, `fix`, `test`, `docs`, `chore`, `ci`) and stay small.
 

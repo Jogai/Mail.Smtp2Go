@@ -24,9 +24,30 @@ Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.get -> System.Collections.Generic.ID
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Extra.set -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.get -> string!
 Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.init -> void
+Scott.Mail.Smtp2Go.Attachment
+Scott.Mail.Smtp2Go.Attachment.<Clone>$() -> Scott.Mail.Smtp2Go.Attachment!
+Scott.Mail.Smtp2Go.Attachment.Attachment() -> void
+Scott.Mail.Smtp2Go.Attachment.Equals(Scott.Mail.Smtp2Go.Attachment? other) -> bool
+Scott.Mail.Smtp2Go.Attachment.Fileblob.get -> string?
+Scott.Mail.Smtp2Go.Attachment.Fileblob.init -> void
+Scott.Mail.Smtp2Go.Attachment.Filename.get -> string!
+Scott.Mail.Smtp2Go.Attachment.Filename.init -> void
+Scott.Mail.Smtp2Go.Attachment.Mimetype.get -> string?
+Scott.Mail.Smtp2Go.Attachment.Mimetype.init -> void
+Scott.Mail.Smtp2Go.Attachment.Url.get -> string?
+Scott.Mail.Smtp2Go.Attachment.Url.init -> void
 Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.ApiKeyHeader = 0 -> Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.Bearer = 1 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.CustomHeader
+Scott.Mail.Smtp2Go.CustomHeader.<Clone>$() -> Scott.Mail.Smtp2Go.CustomHeader!
+Scott.Mail.Smtp2Go.CustomHeader.CustomHeader(string! Header, string! Value) -> void
+Scott.Mail.Smtp2Go.CustomHeader.Deconstruct(out string! Header, out string! Value) -> void
+Scott.Mail.Smtp2Go.CustomHeader.Equals(Scott.Mail.Smtp2Go.CustomHeader? other) -> bool
+Scott.Mail.Smtp2Go.CustomHeader.Header.get -> string!
+Scott.Mail.Smtp2Go.CustomHeader.Header.init -> void
+Scott.Mail.Smtp2Go.CustomHeader.Value.get -> string!
+Scott.Mail.Smtp2Go.CustomHeader.Value.init -> void
 Scott.Mail.Smtp2Go.EmailAddress
 Scott.Mail.Smtp2Go.EmailAddress.Address.get -> string!
 Scott.Mail.Smtp2Go.EmailAddress.EmailAddress() -> void
@@ -199,6 +220,12 @@ const Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource.Name = "Scott.Mail.Smtp
 override Scott.Mail.Smtp2Go.ApiError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ApiError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ApiError.ToString() -> string!
+override Scott.Mail.Smtp2Go.Attachment.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Attachment.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Attachment.ToString() -> string!
+override Scott.Mail.Smtp2Go.CustomHeader.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.CustomHeader.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.CustomHeader.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailAddress.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailAddress.ToString() -> string!
 override Scott.Mail.Smtp2Go.FieldValidationError.Equals(object? obj) -> bool
@@ -221,6 +248,15 @@ override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
 static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
+static Scott.Mail.Smtp2Go.Attachment.FromBase64(string! filename, string! fileblob, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
+static Scott.Mail.Smtp2Go.Attachment.FromBytes(string! filename, byte[]! bytes, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
+static Scott.Mail.Smtp2Go.Attachment.FromFileAsync(string! path, string? mimetype = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.Attachment!>!
+static Scott.Mail.Smtp2Go.Attachment.FromStreamAsync(string! filename, System.IO.Stream! stream, string? mimetype = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.Attachment!>!
+static Scott.Mail.Smtp2Go.Attachment.FromUrl(string! filename, System.Uri! url, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
+static Scott.Mail.Smtp2Go.Attachment.operator !=(Scott.Mail.Smtp2Go.Attachment? left, Scott.Mail.Smtp2Go.Attachment? right) -> bool
+static Scott.Mail.Smtp2Go.Attachment.operator ==(Scott.Mail.Smtp2Go.Attachment? left, Scott.Mail.Smtp2Go.Attachment? right) -> bool
+static Scott.Mail.Smtp2Go.CustomHeader.operator !=(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
+static Scott.Mail.Smtp2Go.CustomHeader.operator ==(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
 static Scott.Mail.Smtp2Go.EmailAddress.FromString(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.Parse(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
 static Scott.Mail.Smtp2Go.EmailAddress.TryParse(string? text, out Scott.Mail.Smtp2Go.EmailAddress result) -> bool

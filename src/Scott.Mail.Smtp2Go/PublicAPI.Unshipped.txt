@@ -27,6 +27,13 @@ Scott.Mail.Smtp2Go.ApiResponse<TData>.RequestId.init -> void
 Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.ApiKeyHeader = 0 -> Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.Bearer = 1 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.EmailAddress
+Scott.Mail.Smtp2Go.EmailAddress.Address.get -> string!
+Scott.Mail.Smtp2Go.EmailAddress.EmailAddress() -> void
+Scott.Mail.Smtp2Go.EmailAddress.EmailAddress(string! address, string? name = null) -> void
+Scott.Mail.Smtp2Go.EmailAddress.Equals(Scott.Mail.Smtp2Go.EmailAddress other) -> bool
+Scott.Mail.Smtp2Go.EmailAddress.IsEmpty.get -> bool
+Scott.Mail.Smtp2Go.EmailAddress.Name.get -> string?
 Scott.Mail.Smtp2Go.FieldValidationError
 Scott.Mail.Smtp2Go.FieldValidationError.<Clone>$() -> Scott.Mail.Smtp2Go.FieldValidationError!
 Scott.Mail.Smtp2Go.FieldValidationError.Deconstruct(out string? FieldName, out string! Message) -> void
@@ -41,6 +48,8 @@ Scott.Mail.Smtp2Go.IRawClient.SendAsync<TRequest, TResponse>(string! path, TRequ
 Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonElement body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Text.Json.JsonDocument!>!
 Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
+Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter
+Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.EmailAddressConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.PercentageConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter
@@ -190,9 +199,13 @@ const Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource.Name = "Scott.Mail.Smtp
 override Scott.Mail.Smtp2Go.ApiError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ApiError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ApiError.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailAddress.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailAddress.ToString() -> string!
 override Scott.Mail.Smtp2Go.FieldValidationError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.FieldValidationError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.FieldValidationError.ToString() -> string!
+override Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.EmailAddress
+override Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.EmailAddress value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.Percentage
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.Percentage value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.DateTimeOffset
@@ -208,6 +221,12 @@ override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
 static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
+static Scott.Mail.Smtp2Go.EmailAddress.FromString(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
+static Scott.Mail.Smtp2Go.EmailAddress.Parse(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
+static Scott.Mail.Smtp2Go.EmailAddress.TryParse(string? text, out Scott.Mail.Smtp2Go.EmailAddress result) -> bool
+static Scott.Mail.Smtp2Go.EmailAddress.implicit operator Scott.Mail.Smtp2Go.EmailAddress(string! text) -> Scott.Mail.Smtp2Go.EmailAddress
+static Scott.Mail.Smtp2Go.EmailAddress.operator !=(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
+static Scott.Mail.Smtp2Go.EmailAddress.operator ==(Scott.Mail.Smtp2Go.EmailAddress left, Scott.Mail.Smtp2Go.EmailAddress right) -> bool
 static Scott.Mail.Smtp2Go.FieldValidationError.operator !=(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.FieldValidationError.operator ==(Scott.Mail.Smtp2Go.FieldValidationError? left, Scott.Mail.Smtp2Go.FieldValidationError? right) -> bool
 static Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Format(System.DateTimeOffset value) -> string!
@@ -233,5 +252,6 @@ static Scott.Mail.Smtp2Go.Transport.EndpointTable.Get(string! path) -> Scott.Mai
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.TryGet(string! path, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.GetAllowRetry(System.Net.Http.HttpRequestMessage! request) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.TryGetEndpoint(System.Net.Http.HttpRequestMessage! request, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
+~override Scott.Mail.Smtp2Go.EmailAddress.Equals(object obj) -> bool
 ~override Scott.Mail.Smtp2Go.Percentage.Equals(object obj) -> bool
 ~override Scott.Mail.Smtp2Go.Percentage.ToString() -> string

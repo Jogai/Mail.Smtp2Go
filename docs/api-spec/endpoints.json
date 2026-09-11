@@ -1,0 +1,5561 @@
+{
+  "source": "https://developers.smtp2go.com/llms.txt",
+  "apiVersion": "3.0.4",
+  "operations": [
+    {
+      "path": "activity/search",
+      "method": "POST",
+      "operationId": "search-activity",
+      "page": "search-activity",
+      "summary": "Search activity",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_email_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_recipient",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccounts",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "only_latest",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "only_latest_by_sent",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "event_types",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "include_headers",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "region",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "rateLimitNote": {
+        "limit": 60,
+        "per": "minute",
+        "text": "rate-limited to 60 requests per minute"
+      },
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "total_events",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "data": {
+          "events": [
+            {
+              "from": "rob@example.co.uk",
+              "recipient": "jo@another_example.com",
+              "subaccount_name": "Master account",
+              "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+              "date": "2022-11-12T07:44:58Z",
+              "event": "delivered",
+              "subject": "My Test Email",
+              "username": "api-5BFDE1E62529",
+              "sender": "rob@example.co.uk",
+              "to": "jo@another_example.com",
+              "bcc": "audit@example.co.uk",
+              "smtp_response": "250 Message received",
+              "host": "136.143.191.44",
+              "headers": "Content-Type: text/html\nTo: to@example.com...",
+              "custom_headers": {
+                "X-MyCustomID": "01HMSACEHXHDG4X1CZV89SQMP7"
+              }
+            }
+          ],
+          "total_events": 1,
+          "continue_token": null
+        },
+        "request_id": "4b661d88-6b2d-11eb-8bb3-f23c92bb31d2"
+      }
+    },
+    {
+      "path": "allowed_recipients/add",
+      "method": "POST",
+      "operationId": "add-allowed-recipients",
+      "page": "add-allowed-recipients",
+      "summary": "Add allowed recipients",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "allowed_recipients"
+      ],
+      "requestProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "b8f3c2b4-63ca-11ed-b66a-f23c9216ce11",
+        "data": {
+          "allowed_recipients": [
+            "test@test.com"
+          ],
+          "enabled": true
+        }
+      }
+    },
+    {
+      "path": "allowed_recipients/remove",
+      "method": "POST",
+      "operationId": "remove-allowed-recipients",
+      "page": "remove-allowed-recipients",
+      "summary": "Remove allowed recipients",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "allowed_recipients"
+      ],
+      "requestProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "40cbb6f2-935f-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "allowed_recipients": [
+            "test-person@example.com"
+          ],
+          "enabled": true
+        }
+      }
+    },
+    {
+      "path": "allowed_recipients/update",
+      "method": "POST",
+      "operationId": "update-allowed-recipients",
+      "page": "update-allowed-recipients",
+      "summary": "Update allowed recipients",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "allowed_recipients",
+        "enabled"
+      ],
+      "requestProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "40cbb6f2-935f-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "allowed_recipients": [
+            "test-person@example.com",
+            "otherexample.com"
+          ],
+          "enabled": true
+        }
+      }
+    },
+    {
+      "path": "allowed_recipients/view",
+      "method": "POST",
+      "operationId": "view-allowed-recipients",
+      "page": "view-allowed-recipients",
+      "summary": "View allowed recipients",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "40cbb6f2-935f-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "allowed_recipients": [
+            "test@test.com"
+          ],
+          "enabled": true
+        }
+      }
+    },
+    {
+      "path": "allowed_senders/add",
+      "method": "POST",
+      "operationId": "add-allowed-senders",
+      "page": "add-allowed-senders",
+      "summary": "Add allowed senders",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "allowed_senders"
+      ],
+      "requestProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "b8f3c2b4-63ca-11ed-b66a-f23c9216ce11",
+        "data": {
+          "allowed_senders": [
+            "test@test.com"
+          ],
+          "mode": "disabled"
+        }
+      }
+    },
+    {
+      "path": "allowed_senders/remove",
+      "method": "POST",
+      "operationId": "remove-allowed-senders",
+      "page": "remove-allowed-senders",
+      "summary": "Remove allowed senders",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "allowed_senders"
+      ],
+      "requestProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "40cbb6f2-935f-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "allowed_senders": [
+            "test-person@example.com"
+          ],
+          "mode": "disabled"
+        }
+      }
+    },
+    {
+      "path": "allowed_senders/update",
+      "method": "POST",
+      "operationId": "update-allowed-senders",
+      "page": "update-allowed-senders",
+      "summary": "Update allowed senders",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "allowed_senders",
+        "mode"
+      ],
+      "requestProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "40cbb6f2-935f-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "allowed_senders": [
+            "test-person@example.com",
+            "otherexample.com"
+          ],
+          "mode": "whitelist"
+        }
+      }
+    },
+    {
+      "path": "allowed_senders/view",
+      "method": "POST",
+      "operationId": "view-allowed-senders",
+      "page": "view-allowed-senders",
+      "summary": "View allowed senders",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "allowed_senders",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "40cbb6f2-935f-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "allowed_senders": [
+            "test@test.com"
+          ],
+          "mode": "disabled"
+        }
+      }
+    },
+    {
+      "path": "api_keys/add",
+      "method": "POST",
+      "operationId": "add-api-key",
+      "page": "add-api-key",
+      "summary": "Add a new API key",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "rateLimitNote": {
+        "limit": 5,
+        "per": "minute",
+        "text": "rate-limited to 5 requests per minute"
+      },
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "api_key": "api-00000000000000000000000000000000",
+            "description": "test api key",
+            "feedback_enabled": true,
+            "feedback_html": "test_html",
+            "feedback_text": "test_text",
+            "ippool": 1234,
+            "bounce_notifications": "from",
+            "status": "allowed",
+            "endpoints": [
+              "/email/send"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "api_keys/edit",
+      "method": "PATCH",
+      "operationId": "patch-api-key",
+      "page": "patch-api-key",
+      "summary": "Patch an API key",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "api_key": "api-000000000000********************",
+            "description": "test api key",
+            "feedback_enabled": true,
+            "feedback_html": "test_html",
+            "feedback_text": "test_text",
+            "ippool": 1234,
+            "bounce_notifications": "from",
+            "status": "allowed",
+            "endpoints": [
+              "/email/send"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "api_keys/edit",
+      "method": "POST",
+      "operationId": "edit-api-key",
+      "page": "edit-api-key",
+      "summary": "Edit an API key",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "api_key": "api-000000000000********************",
+            "description": "test api key",
+            "feedback_enabled": true,
+            "feedback_html": "test_html",
+            "feedback_text": "test_text",
+            "ippool": 1234,
+            "bounce_notifications": "from",
+            "status": "allowed",
+            "endpoints": [
+              "/email/send"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "api_keys/permissions",
+      "method": "POST",
+      "operationId": "view-api-key-permissions",
+      "page": "view-api-key-permissions",
+      "summary": "View Permissions",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [],
+      "acceptsSubaccountId": false,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          "/email/send",
+          "/api_keys/view"
+        ]
+      }
+    },
+    {
+      "path": "api_keys/remove",
+      "method": "POST",
+      "operationId": "remove-api-key",
+      "page": "remove-api-key",
+      "summary": "Remove an API key",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseProperties": []
+    },
+    {
+      "path": "api_keys/view",
+      "method": "POST",
+      "operationId": "view-api-keys",
+      "page": "view-api-keys",
+      "summary": "View API Keys",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "api_key": "api-000000000000********************",
+            "description": "test api key again",
+            "feedback_enabled": true,
+            "feedback_html": "test_html",
+            "feedback_text": "test_text",
+            "ippool": 1234,
+            "bounce_notifications": "from",
+            "status": "allowed",
+            "endpoints": [
+              "/email/send"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "archive/email",
+      "method": "POST",
+      "operationId": "view-an-archived-email",
+      "page": "view-an-archived-email",
+      "summary": "View an archived email",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "email_id"
+      ],
+      "requestProperties": [
+        {
+          "name": "email_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "attachment_count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "attachments",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "byte_count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "email_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "envelope_from",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "recipient",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sent",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "13dd3376-40fa-11ec-9fc6-f23c9216bf47",
+        "data": {
+          "attachment_count": 0,
+          "attachments": [],
+          "byte_count": 1428,
+          "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+          "envelope_from": "test@test.com",
+          "headers": "...",
+          "recipient": "test@test.com",
+          "sender": "test@test.com",
+          "sent": "2021-10-19T21:35:40Z",
+          "subject": "test",
+          "to": "test@test.com",
+          "url": "...",
+          "username": "api-12345678"
+        }
+      }
+    },
+    {
+      "path": "archive/search",
+      "method": "POST",
+      "operationId": "search-archived-pages",
+      "page": "search-archived-pages",
+      "summary": "Search archived content",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "recipient",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "envelope_from",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "email_count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "emails",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "6eb05270-40f9-11ec-9649-f23c9216bfca",
+        "data": {
+          "email_count": 1,
+          "emails": [
+            {
+              "attachment_count": 0,
+              "attachments": [],
+              "byte_count": 1422,
+              "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+              "envelope_from": "test@test.com",
+              "headers": "...",
+              "recipient": "test@test.com",
+              "sender": "test@test.com",
+              "sent": "2021-11-08T18:58:47Z",
+              "subject": "test",
+              "to": "test@test.com",
+              "url": "...",
+              "username": "api-12345678"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "dedicated_ips/view",
+      "method": "POST",
+      "operationId": "view-dedicated-ips",
+      "page": "view-dedicated-ips",
+      "summary": "View Dedicated IP Addresses",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [],
+      "acceptsSubaccountId": false,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_addresses",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "id": 1234,
+            "name": "Main Pool",
+            "ip_addresses": [
+              "127.0.0.1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "domain/add",
+      "method": "POST",
+      "operationId": "add-sender-domain",
+      "page": "add-sender-domain",
+      "summary": "Add a sender domain",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "domain"
+      ],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "tracking_subdomain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "returnpath_subdomain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auto_verify",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "requisition_ssl",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_access",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domains",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "e023461c-8c86-11e9-b984-408d5cce2644",
+        "data": {
+          "domains": [
+            {
+              "domain": {
+                "fulldomain": "example.com",
+                "subdomain": null,
+                "domain": "example",
+                "suffix": "com",
+                "dkim_selector": "s123456",
+                "dkim_verified": true,
+                "dkim_status": "",
+                "dkim_value": "dkim.smtp2go.net",
+                "rpath_selector": "em123456",
+                "rpath_verified": true,
+                "rpath_status": "",
+                "rpath_value": "return.smtp2go.net",
+                "setup_link": "<url>"
+              },
+              "trackers": [
+                {
+                  "fulldomain": "link.example.com",
+                  "subdomain": "link",
+                  "domain": "example",
+                  "suffix": "com",
+                  "cname_verified": false,
+                  "cname_status": "",
+                  "cname_value": "",
+                  "enabled": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "domain/remove",
+      "method": "POST",
+      "operationId": "remove-sender-domain",
+      "page": "remove-sender-domain",
+      "summary": "Remove a sender domain",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "domain"
+      ],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domains",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "117607da-8c88-11e9-96fa-408d5cce2644",
+        "data": {
+          "domains": []
+        }
+      }
+    },
+    {
+      "path": "domain/returnpath",
+      "method": "POST",
+      "operationId": "edit-return-path-domain",
+      "page": "edit-return-path-domain",
+      "summary": "Edit the return-path subdomain",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "domain",
+        "old_subdomain",
+        "new_subdomain"
+      ],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "old_subdomain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "new_subdomain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domains",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "86758976-934b-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "domains": [
+            {
+              "domain": {
+                "fulldomain": "example.com",
+                "subdomain": null,
+                "domain": "example",
+                "suffix": "com",
+                "dkim_selector": "s123456",
+                "dkim_verified": true,
+                "dkim_status": "",
+                "dkim_value": "dkim.smtp2go.net",
+                "rpath_selector": "returns",
+                "rpath_verified": true,
+                "rpath_status": "",
+                "rpath_value": "return.smtp2go.net"
+              },
+              "trackers": [
+                {
+                  "fulldomain": "link.example.co.uk",
+                  "subdomain": "link",
+                  "domain": "example",
+                  "suffix": "co.uk",
+                  "cname_verified": false,
+                  "cname_status": "Lookup CNAME(link.example.co.uk.) on ns1.falcoda.net returned no results\nLookup CNAME(link.example.co.uk.) on ns1.falcoda.net returned no results\nLookup CNAME(link.example.co.uk.) on ns2.falcoda.net returned no results\nLookup CNAME(link.example.co.uk.) on ns2.falcoda.net returned no results",
+                  "cname_value": "",
+                  "enabled": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "domain/subaccount_access",
+      "method": "POST",
+      "operationId": "edit-subaccount-access",
+      "page": "edit-subaccount-access",
+      "summary": "Edit subaccount access",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "domain",
+        "subaccounts"
+      ],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccounts",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "future_subaccounts",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccounts",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "future_subaccounts",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "6d4706c4-54c9-483d-b141-4f16a9c26879",
+        "data": {
+          "domain": "my-verified-domain.com",
+          "subaccounts": [],
+          "future_subaccounts": false
+        }
+      }
+    },
+    {
+      "path": "domain/tracking",
+      "method": "POST",
+      "operationId": "edit-tracking-domain",
+      "page": "edit-tracking-domain",
+      "summary": "Edit the tracking subdomain",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "domain",
+        "old_subdomain",
+        "new_subdomain"
+      ],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "old_subdomain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "new_subdomain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domains",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "86758976-934b-11e7-b5be-480fcf01a6f2",
+        "data": {
+          "domains": [
+            {
+              "domain": {
+                "fulldomain": "exampledomain.com",
+                "subdomain": "",
+                "domain": "exampledomain",
+                "suffix": "com",
+                "dkim_selector": "s123456",
+                "dkim_verified": true,
+                "dkim_status": "",
+                "dkim_value": "dkim.smtp2go.net",
+                "rpath_selector": "em744766",
+                "rpath_verified": true,
+                "rpath_status": "",
+                "rpath_value": "return.smtp2go.net"
+              },
+              "trackers": [
+                {
+                  "fulldomain": "newsubdomain.exampledomain.com",
+                  "subdomain": "newsubdomain",
+                  "domain": "exampledomain",
+                  "suffix": "com",
+                  "cname_verified": true,
+                  "cname_status": "",
+                  "cname_value": "track.smtp2go.com",
+                  "enabled": true
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "domain/verify",
+      "method": "POST",
+      "operationId": "verify-a-sender-domain",
+      "page": "verify-a-sender-domain",
+      "summary": "Verify a sender domain",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "domain"
+      ],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "requisition_ssl",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domains",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "e023461c-8c86-11e9-b984-408d5cce2644",
+        "data": {
+          "domains": [
+            {
+              "domain": {
+                "fulldomain": "example.com",
+                "subdomain": null,
+                "domain": "example",
+                "suffix": "com",
+                "dkim_selector": "s123456",
+                "dkim_verified": true,
+                "dkim_status": "",
+                "dkim_value": "dkim.smtp2go.net",
+                "rpath_selector": "em744766",
+                "rpath_verified": true,
+                "rpath_status": "",
+                "rpath_value": "return.smtp2go.net",
+                "setup_link": "<url>"
+              },
+              "trackers": [
+                {
+                  "fulldomain": "link.example.com",
+                  "subdomain": "link",
+                  "domain": "example",
+                  "suffix": "com",
+                  "cname_verified": false,
+                  "cname_status": "",
+                  "cname_value": "track.smtp2go.net",
+                  "enabled": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "domain/view",
+      "method": "POST",
+      "operationId": "view-sender-domains",
+      "page": "view-sender-domains",
+      "summary": "View sender domains",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "domains",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "e023461c-8c86-11e9-b984-408d5cce2644",
+        "data": {
+          "domains": [
+            {
+              "domain": {
+                "fulldomain": "example.com",
+                "subdomain": null,
+                "domain": "example",
+                "suffix": "com",
+                "dkim_selector": "s123456",
+                "dkim_verified": true,
+                "dkim_status": "",
+                "dkim_value": "dkim.smtp2go.net",
+                "rpath_selector": "em744766",
+                "rpath_verified": true,
+                "rpath_status": "",
+                "rpath_value": "return.smtp2go.net",
+                "setup_link": "<url>"
+              },
+              "trackers": [
+                {
+                  "fulldomain": "link.example.com",
+                  "subdomain": "link",
+                  "domain": "example",
+                  "suffix": "com",
+                  "cname_verified": true,
+                  "cname_status": "",
+                  "cname_value": "track.smtp2go.net",
+                  "enabled": true
+                }
+              ],
+              "subaccount_access": {
+                "subaccounts": [],
+                "future_subaccounts": false
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "email/batch",
+      "method": "POST",
+      "operationId": "send-email-batch",
+      "page": "send-email-batch",
+      "summary": "Send a batch of emails",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "emails"
+      ],
+      "requestProperties": [
+        {
+          "name": "emails",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "email_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+        "data": [
+          {
+            "email_id": "123456-1234-12"
+          },
+          {
+            "schedule_id": "188262b6-f6cc-4c98-bbe6-84c39d1c0ef4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "email/mime",
+      "method": "POST",
+      "operationId": "send-mime-email",
+      "page": "send-mime-email",
+      "summary": "Send a MIME email",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "mime_email"
+      ],
+      "requestProperties": [
+        {
+          "name": "mime_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "schedule",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "fastaccept",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "failed",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "failures",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "succeeded",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "email_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+        "data": {
+          "failed": 0,
+          "failures": [],
+          "succeeded": 1
+        }
+      }
+    },
+    {
+      "path": "email/scheduled/remove",
+      "method": "POST",
+      "operationId": "remove-scheduled-email",
+      "page": "remove-scheduled-emails",
+      "summary": "Remove a scheduled email",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "schedule_id"
+      ],
+      "requestProperties": [
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseProperties": []
+    },
+    {
+      "path": "email/scheduled/search",
+      "method": "POST",
+      "operationId": "search-scheduled-emails",
+      "page": "search-scheduled-emails",
+      "summary": "Search schedule emails",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_recipient",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "schedule",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "recipients",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "client_ip",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "c2dca1b4-89b9-4dc7-bd82-a86b83b29d84",
+        "data": [
+          {
+            "schedule_id": "4d3b03a7-8663-4592-899a-b479ba6fcba9",
+            "schedule": "2025-06-30T23:11:56Z",
+            "sender": "test@example.com",
+            "subject": "test 1",
+            "recipients": "test@example2.com",
+            "client_ip": "127.0.0.1"
+          },
+          {
+            "schedule_id": "188262b6-f6cc-4c98-bbe6-84c39d1c0ef4",
+            "schedule": "2025-06-30T23:11:56Z",
+            "sender": "test@example.com",
+            "subject": "test 2",
+            "recipients": "test@example2.com",
+            "client_ip": "127.0.0.1"
+          },
+          {
+            "schedule_id": "789db207-5aba-4895-801b-4ebf1843721e",
+            "schedule": "2025-06-30T23:11:56Z",
+            "sender": "test@example.com",
+            "subject": "test 3",
+            "recipients": "test@example2.com",
+            "client_ip": "127.0.0.1"
+          }
+        ]
+      }
+    },
+    {
+      "path": "email/search",
+      "method": "POST",
+      "operationId": "view-sent-emails",
+      "page": "view-sent-emails",
+      "summary": "View and search sent emails",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": true,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "status_counts",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "opened_only",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "clicked_only",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "ignore_case",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "filter_query",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email_id",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "rateLimitNote": {
+        "limit": 20,
+        "per": "minute",
+        "text": "rate-limited to 20 requests per minute"
+      },
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "emails",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "84fe4a7e-1487-4ddf-92cb-4c6f8e6b2070",
+        "data": {
+          "count": 1,
+          "emails": [
+            {
+              "sender": "test@example.com",
+              "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+              "smtpcode": 250,
+              "response": "250 2.0.0 OK 1466989602 87si22895035pfn.73 - gsmtp",
+              "process_status": "completed",
+              "host": "gmail-smtp-in.l.google.com [74.125.200.27]",
+              "recipient": "test2@example.com",
+              "delivered_at": "2016-06-27 01:06:42.668336+00:00",
+              "opens": [
+                {
+                  "user_agent": "Mozilla/5.0 (iPad; CPU OS 9_3_5 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13G36",
+                  "opened_at": "2018-04-02 19:26:53.010729+00:00",
+                  "read_secs": "10",
+                  "recipient": "test2@example.com",
+                  "ip_address": "x.x.x.x"
+                }
+              ],
+              "total_opens": 1,
+              "status": "delivered",
+              "email_ts": "2016-06-27 01:06:37.039400+00:00"
+            }
+          ],
+          "continue_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0Njc4NTY4ODEsImRhdCI6eyJvZmYiOjUsInFpZCI6MX0sImlzcyI6ImFwaS5zbXRwMmdvLmNvbSIsImlhdCI6MTQ2Nzg1NjU4MX0.Pgl5rl7hsgFrVIa9TTFDyi7Y8o_mCHDPE227qNINQd3_rZwgfnPAhDRmsyQMGqQDJHfr5NNF_V9cPTpWNkXikUUDFaEHoXnFkbDxAqtb6n40KA3pVjG1D8QDKTjONGBqDs3zOujUSb_CR9oYkQXnnFRfy2K-ZXoJuMpqIB3A1gbg3KdZCLjzKHi0hkvIUBCnkERksq9pdAB15dnAkkDliEUHOB2SpA05brBEHTRF_H7az9NkrVm1STPX7x3hq5Qg6gZPWCuwpNKpdP-MnHhThmq67Y8LVL7kmR4dKkON1uamf4UxDK3BK8hef7fty1x1K9BSa8ils5BeolV_2BU0aw"
+        }
+      }
+    },
+    {
+      "path": "email/send",
+      "method": "POST",
+      "operationId": "send-standard-email",
+      "page": "send-standard-email",
+      "summary": "Send a standard email",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "sender",
+        "to"
+      ],
+      "requestProperties": [
+        {
+          "name": "sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "to",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "cc",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "bcc",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "html_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "text_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "attachments",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "inlines",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "template_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_data",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "schedule",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "fastaccept",
+          "type": "boolean",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "failed",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "failures",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "succeeded",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "email_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "schedule_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+        "data": {
+          "succeeded": 1,
+          "failed": 0,
+          "failures": [],
+          "email_id": "1u0SwL-B9zBpi9ffUq-JAB2"
+        }
+      }
+    },
+    {
+      "path": "ip_auth/edit",
+      "method": "PATCH",
+      "operationId": "patch-ip-auth",
+      "page": "patch-ip-auth",
+      "summary": "Patch an IP Auth",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "ip_address"
+      ],
+      "requestProperties": [
+        {
+          "name": "ip_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "ip_address": "127.0.0.1",
+            "description": "test ip auth",
+            "feedback_enabled": true,
+            "feedback_html": "test_html",
+            "feedback_text": "test_text",
+            "ippool": 1234,
+            "bounce_notifications": "from",
+            "status": "allowed"
+          }
+        ]
+      }
+    },
+    {
+      "path": "ip_auth/remove",
+      "method": "POST",
+      "operationId": "remove-ip-auth",
+      "page": "remove-ip-auth",
+      "summary": "Remove an IP Auth entry",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "ip_address"
+      ],
+      "requestProperties": [
+        {
+          "name": "ip_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseProperties": []
+    },
+    {
+      "path": "ip_auth/view",
+      "method": "POST",
+      "operationId": "view-ip-auth",
+      "page": "view-ip-auth",
+      "summary": "View IP Auth",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "ip_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "results",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "ae4a8446-63c6-11ed-95d3-f23c92160e3c",
+        "data": {
+          "results": [
+            {
+              "ip_address": "127.0.0.1",
+              "sending_allowed": true,
+              "custom_ratelimit": false,
+              "custom_ratelimit_value": null,
+              "custom_ratelimit_period": "0:00:00",
+              "description": "",
+              "feedback_enabled": false,
+              "feedback_domain": "default",
+              "feedback_html": "",
+              "feedback_text": "",
+              "archive_enabled": false,
+              "open_tracking_enabled": false,
+              "audit_email": null,
+              "bounce_notifications": "from",
+              "status": "allowed"
+            }
+          ],
+          "default_ratelimit_value": 0,
+          "default_ratelimit_period": "unlimited"
+        }
+      }
+    },
+    {
+      "path": "single_sender_emails/add",
+      "method": "POST",
+      "operationId": "add-a-single-sender-email",
+      "page": "add-a-single-sender-email",
+      "summary": "Add a single sender email",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "email_address"
+      ],
+      "requestProperties": [
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseProperties": [],
+      "responseExample": {
+        "just_returns_this": "ok"
+      }
+    },
+    {
+      "path": "single_sender_emails/remove",
+      "method": "POST",
+      "operationId": "remove-a-single-sender-email",
+      "page": "remove-a-single-sender-email",
+      "summary": "Remove a single sender email",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "email_address"
+      ],
+      "requestProperties": [
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "string",
+      "responseProperties": [],
+      "responseExample": {
+        "just_returns_this": "OK"
+      }
+    },
+    {
+      "path": "single_sender_emails/view",
+      "method": "POST",
+      "operationId": "view-all-single-sender-emails",
+      "page": "view-all-single-sender-emails",
+      "summary": "View single sender emails",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "senders",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "data": {
+          "request_id": "e023461c-8c86-11e9-b984-408d5cce2644",
+          "senders": [
+            {
+              "email_address": "test@test.com",
+              "verified": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "sms/send",
+      "method": "POST",
+      "operationId": "send-sms",
+      "page": "send-sms",
+      "summary": "Send SMS",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "destination",
+        "content"
+      ],
+      "requestProperties": [
+        {
+          "name": "destination",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sender",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "statuses",
+          "type": "object",
+          "deprecated": false
+        },
+        {
+          "name": "total_sent",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "13ab6f3a-ddea-11eb-b4ce-1002b51e60a4",
+        "data": {
+          "statuses": {
+            "queued": 1
+          },
+          "total_sent": 1
+        }
+      }
+    },
+    {
+      "path": "sms/summary",
+      "method": "POST",
+      "operationId": "sms-summary",
+      "page": "sms-summary",
+      "summary": "SMS Summary",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "total_messages",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "total_units",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "total_cost",
+          "type": "number",
+          "deprecated": false
+        },
+        {
+          "name": "subaccounts",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "data": {
+          "total_messages": 123,
+          "total_units": 156,
+          "total_cost": 10.456,
+          "subaccounts": [
+            {
+              "subaccount_id": "6xKJ4",
+              "total_messages": 50,
+              "total_units": 60,
+              "total_cost": 5.25
+            },
+            {
+              "subaccount_id": "EqS3x",
+              "total_messages": 73,
+              "total_units": 96,
+              "total_cost": 5.206
+            }
+          ]
+        },
+        "request_id": "4b661d88-6b2d-11eb-8bb3-f23c92bb31d2"
+      }
+    },
+    {
+      "path": "sms/view-received",
+      "method": "POST",
+      "operationId": "view-received-sms",
+      "page": "view-received-sms",
+      "summary": "View received SMS",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "unix_start",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "unix_end",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "data": {
+          "request_id": "99b91538-53e4-4e97-8700-4284dcba148d",
+          "messages": [
+            {
+              "source_address": 15185550120,
+              "destination_address": 15185550141,
+              "timestamp": "2022-09-30T02:02:41.000Z",
+              "content": "Example content",
+              "message_id": "4c1d0952-1c91-48ab-9a72-5221281c0c95",
+              "username": "api-12345678"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "sms/view-sent",
+      "method": "POST",
+      "operationId": "view-sent-sms",
+      "page": "view-sent-sms",
+      "summary": "View sent SMS",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "messages",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "data": {
+          "request_id": "99b91538-53e4-4e97-8700-4284dcba148d",
+          "messages": [
+            {
+              "id": "11170632-25c9-4fbd-85b3-7491fa506d74",
+              "timestamp": "2025-06-08T19:05:25.830Z",
+              "username": "username",
+              "sender": "shared",
+              "sender_email": "test@example.com",
+              "destination_address": "+123456789",
+              "destination_address_country": "US",
+              "format": "SMS",
+              "status": "Message discarded",
+              "content": "Example content",
+              "units": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "stats/email_bounces",
+      "method": "POST",
+      "operationId": "email-bounces",
+      "page": "email-bounces",
+      "summary": "Email bounces",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "emails",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "hardbounces",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_percent",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "softbounces",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "rejects",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "ee9b9484-63eb-11ed-8da7-f23c9216ce11",
+        "data": {
+          "emails": 1,
+          "rejects": 0,
+          "softbounces": 0,
+          "hardbounces": 0,
+          "bounce_percent": "0.00"
+        }
+      }
+    },
+    {
+      "path": "stats/email_cycle",
+      "method": "POST",
+      "operationId": "email-cycle",
+      "page": "email-cycle",
+      "summary": "Email cycle",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "cycle_end",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_used",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_start",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_max",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_remaining",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "4b84c952-9bca-432f-a68e-585e4c7a969c",
+        "data": {
+          "cycle_start": "2022-11-01 00:00:00+00:00",
+          "cycle_end": "2022-11-30 00:00:00+00:00",
+          "cycle_used": 1,
+          "cycle_remaining": 9999,
+          "cycle_max": 10000
+        }
+      }
+    },
+    {
+      "path": "stats/email_history",
+      "method": "POST",
+      "operationId": "email-history",
+      "page": "email-history",
+      "summary": "Email history",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "group_by",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccounts",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_percent_total",
+          "type": "number",
+          "deprecated": false
+        },
+        {
+          "name": "open_percent_total",
+          "type": "number",
+          "deprecated": false
+        },
+        {
+          "name": "reject_percent_total",
+          "type": "number",
+          "deprecated": false
+        },
+        {
+          "name": "spam_percent_total",
+          "type": "number",
+          "deprecated": false
+        },
+        {
+          "name": "unsubscribe_percent_total",
+          "type": "number",
+          "deprecated": false
+        },
+        {
+          "name": "history",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3898083-f5d5-4512-86bd-e02bd1685840",
+        "data": {
+          "count": 1,
+          "history": [
+            {
+              "used": 1,
+              "bytecount": 1022,
+              "avgsize": 1022,
+              "email_address": "test3@example.com",
+              "lastip": "82.1.149.48",
+              "bounces": 0,
+              "clicks": 0,
+              "opens": 0,
+              "rejects": 0,
+              "spam": 0,
+              "unsubscribes": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "stats/email_spam",
+      "method": "POST",
+      "operationId": "email-spam",
+      "page": "email-spam",
+      "summary": "Email spam",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "spam_percent",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "emails",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "spams",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "rejects",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "0757ba83-9dfc-4584-bb0c-baa06a28a377",
+        "data": {
+          "emails": 1,
+          "rejects": 0,
+          "spams": 0,
+          "spam_percent": "0.00"
+        }
+      }
+    },
+    {
+      "path": "stats/email_summary",
+      "method": "POST",
+      "operationId": "email-summary",
+      "page": "email-summary",
+      "summary": "Email summary",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "cycle_end",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "spam_rejects",
+          "type": "integer",
+          "deprecated": true
+        },
+        {
+          "name": "bounce_percent",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "unsubscribes",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_rejects",
+          "type": "integer",
+          "deprecated": true
+        },
+        {
+          "name": "spam_percent",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "softbounces",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_max",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "spam_emails",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_remaining",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_start",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "unsubscribe_percent",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "cycle_used",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "hardbounces",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "email_count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "opens",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "clicks",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "rejects",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "72f48187-64d9-4a2f-ba9c-527a2a7911f7",
+        "data": {
+          "spam_emails": 0,
+          "cycle_start": "2022-11-01 00:00:00+00:00",
+          "cycle_end": "2022-11-30 00:00:00+00:00",
+          "cycle_used": 1,
+          "cycle_remaining": 9999,
+          "cycle_max": 10000,
+          "email_count": 1,
+          "bounce_rejects": 0,
+          "softbounces": 0,
+          "hardbounces": 0,
+          "bounce_percent": "0.00",
+          "spam_rejects": 0,
+          "spam_percent": "0.00",
+          "unsubscribes": 0,
+          "unsubscribe_percent": "0.0",
+          "opens": 0,
+          "clicks": 0,
+          "rejects": 0
+        }
+      }
+    },
+    {
+      "path": "stats/email_unsubs",
+      "method": "POST",
+      "operationId": "email-unsubscribes",
+      "page": "email-unsubscribes",
+      "summary": "Email unsubscribes",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "emails",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "unsubscribes",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "rejects",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "unsubscribe_percent",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "e6e94157-90c7-496d-abdf-a5fef899ad54",
+        "data": {
+          "emails": 1,
+          "rejects": 0,
+          "unsubscribes": 0,
+          "unsubscribe_percent": "0.00"
+        }
+      }
+    },
+    {
+      "path": "subaccount/add",
+      "method": "POST",
+      "operationId": "add-subaccount",
+      "page": "add-subaccount",
+      "summary": "Add a subaccount",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "fullname"
+      ],
+      "requestProperties": [
+        {
+          "name": "fullname",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "dedicated_ip",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archiving",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "enforce_2fa",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "enable_sms",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "sms_limit",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "rateLimitNote": {
+        "limit": 50,
+        "per": "hour",
+        "text": "rate limited to 50 calls per hour"
+      },
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "plan_size",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "plan_used",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "plan_remaining",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "dedicated_ip",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archiving",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "enforce_2fa",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "sms_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "sms_limit",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "8af53474-63fc-11ed-825f-f23c92160e3c",
+        "data": {
+          "name": "Test Person",
+          "id": "34l8oj",
+          "plan_size": 10000,
+          "plan_used": 0,
+          "plan_remaining": 10000,
+          "state": "Active",
+          "dedicated_ip": false,
+          "archiving": true,
+          "enforce_2fa": true,
+          "sms_enabled": true,
+          "sms_limit": 1000
+        }
+      }
+    },
+    {
+      "path": "subaccount/close",
+      "method": "POST",
+      "operationId": "close-a-subaccount",
+      "page": "close-a-subaccount",
+      "summary": "Close a subaccount",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "string",
+      "responseProperties": [],
+      "responseExample": {
+        "request_id": "d02ce100-2cfd-11eb-ab52-408d5cce2644",
+        "data": "Successfully closed subaccount test@example.com"
+      }
+    },
+    {
+      "path": "subaccount/edit",
+      "method": "POST",
+      "operationId": "update-a-subaccount",
+      "page": "update-a-subaccount",
+      "summary": "Update a subaccount",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "fullname",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "dedicated_ip",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archiving",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "enforce_2fa",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "enable_sms",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "sms_limit",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "plan_size",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "plan_used",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "plan_remaining",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "state",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "dedicated_ip",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archiving",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "enforce_2fa",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "sms_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "sms_limit",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "dc1b8a6a-63fc-11ed-b6de-f23c9216bfec",
+        "data": {
+          "name": "Test Person",
+          "id": "34l8oj",
+          "plan_size": 10000,
+          "plan_used": 0,
+          "plan_remaining": 10000,
+          "state": "Active",
+          "dedicated_ip": false,
+          "archiving": true,
+          "enforce_2fa": true,
+          "sms_enabled": true,
+          "sms_limit": 1000
+        }
+      }
+    },
+    {
+      "path": "subaccount/reopen",
+      "method": "POST",
+      "operationId": "reopen-a-closed-subaccount",
+      "page": "reopen-a-closed-subaccount",
+      "summary": "Reopen a closed subaccount",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "d02ce100-2cfd-11eb-ab52-408d5cce2644",
+        "data": "Successfully reopened subaccount test@example.com"
+      }
+    },
+    {
+      "path": "subaccounts/search",
+      "method": "POST",
+      "operationId": "search-subaccounts",
+      "page": "search-subaccounts",
+      "summary": "View subaccounts",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "fuzzy_search",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "search_terms",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "states",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sort_direction",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "page_size",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "continue_token",
+          "deprecated": false
+        },
+        {
+          "name": "total_count",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "subaccounts",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "169e0780-63fd-11ed-860d-f23c92160e3c",
+        "data": {
+          "continue_token": "",
+          "subaccounts": [
+            {
+              "name": "10000",
+              "email": "test@gmail.com",
+              "id": "GnlKn5",
+              "plan_size": 10000,
+              "plan_used": 0,
+              "plan_remaining": 10000,
+              "state": "Active",
+              "dedicated_ip": false
+            }
+          ],
+          "total_count": 1
+        }
+      }
+    },
+    {
+      "path": "suppression/add",
+      "method": "POST",
+      "operationId": "add-a-suppression",
+      "page": "add-a-suppression",
+      "summary": "Add a suppression",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "email_address"
+      ],
+      "requestProperties": [
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "block_description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "block_description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "added",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+        "data": {
+          "added": true,
+          "block_description": "",
+          "email_address": "temp@example.com"
+        }
+      }
+    },
+    {
+      "path": "suppression/remove",
+      "method": "POST",
+      "operationId": "remove-a-suppression",
+      "page": "remove-a-suppression",
+      "summary": "Remove a suppression",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "email_address",
+        "reasons"
+      ],
+      "requestProperties": [
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "reasons",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "suppressions",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "be4811ac-63f2-11ed-ab1c-f23c9216bfec",
+        "data": {
+          "suppressions": [
+            {
+              "email_address": "temp@test.com",
+              "reason": "manual",
+              "removed": true
+            },
+            {
+              "email_address": "temp@test.com",
+              "reason": "spam",
+              "removed": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "suppression/view",
+      "method": "POST",
+      "operationId": "view-suppressions",
+      "page": "view-suppressions",
+      "summary": "View suppressions",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email_address",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "fuzzy",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "reasons",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "recipient",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "recipients",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "start_date",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "suppression_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "suppression_types",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "wildcard",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "results",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "total_results",
+          "type": "integer",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "0d782ff6-63f2-11ed-9e11-f23c92160e3c",
+        "data": {
+          "continue_token": null,
+          "results": [
+            {
+              "block_description": "",
+              "complaint": "",
+              "email_address": "temp@example.com",
+              "reason": "manual",
+              "subject": null,
+              "timestamp": "2022-11-14 07:54:45"
+            }
+          ],
+          "total_results": 1
+        }
+      }
+    },
+    {
+      "path": "template/add",
+      "method": "POST",
+      "operationId": "add-an-email-template",
+      "page": "add-an-email-template",
+      "summary": "Add an email template",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "template_name",
+        "id",
+        "subject",
+        "html_body",
+        "text_body"
+      ],
+      "requestProperties": [
+        {
+          "name": "template_name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "html_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "text_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_variables",
+          "type": "object",
+          "deprecated": false
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "last_updated",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f00c0856-dde8-11eb-b4ce-1002b51e60a4",
+        "data": {
+          "template_name": "Shiny new name",
+          "id": "testid",
+          "subject": "Shiny new Subject",
+          "html_body": "Shiny HTML body. This is a {{ variable }}",
+          "text_body": "Shiny Text body",
+          "template_variables": {
+            "variable": "strawberries"
+          },
+          "tags": [
+            "tagged"
+          ]
+        }
+      }
+    },
+    {
+      "path": "template/delete",
+      "method": "POST",
+      "operationId": "remove-an-email-template",
+      "page": "remove-an-email-template",
+      "summary": "Remove an email template",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "string",
+      "responseProperties": [],
+      "responseExample": {
+        "request_id": "0ad5c75a-640f-11ed-83e8-f23c9216bf70",
+        "data": "Successfully deleted template 'example'"
+      }
+    },
+    {
+      "path": "template/edit",
+      "method": "POST",
+      "operationId": "update-an-email-template",
+      "page": "update-an-email-template",
+      "summary": "Update an email template",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "new_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "html_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "text_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_variables",
+          "type": "object",
+          "deprecated": false
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "last_updated",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "43ab454e-dde9-11eb-b4ce-1002b51e60a4",
+        "data": {
+          "template_name": "Shiny new name",
+          "id": "newid",
+          "subject": "Shiny new Subject",
+          "html_body": "Shiny HTML body. This is a {{ variable }}",
+          "text_body": "Shiny Text body",
+          "template_variables": {
+            "variable": "strawberries"
+          },
+          "tags": [
+            "tagged"
+          ]
+        }
+      }
+    },
+    {
+      "path": "template/search",
+      "method": "POST",
+      "operationId": "search-email-templates",
+      "page": "search-email-templates",
+      "summary": "View email templates",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "fuzzy_search",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "search_terms",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sort_direction",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "page_size",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "continue_token",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "continue_token",
+          "deprecated": false
+        },
+        {
+          "name": "templates",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "13ab6f3a-ddea-11eb-b4ce-1002b51e60a4",
+        "data": {
+          "continue_token": null,
+          "templates": [
+            {
+              "name": "Order receipt",
+              "id": "5355878",
+              "subject": "Order receipt for {{ product_name }}",
+              "tags": [
+                "one",
+                "two",
+                "five",
+                "four"
+              ],
+              "last_updated": "2024-01-01 12:00:00"
+            }
+          ],
+          "total_count": 1
+        }
+      }
+    },
+    {
+      "path": "template/view",
+      "method": "POST",
+      "operationId": "view-template-details",
+      "page": "view-template-details",
+      "summary": "View template details",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": false,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "html_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "tags",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "template_variables",
+          "type": "object",
+          "deprecated": false
+        },
+        {
+          "name": "text_body",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "last_updated",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "b0107930-6410-11ed-b1a0-f23c9216bf47",
+        "data": {
+          "name": "Shiny new name",
+          "id": "testid",
+          "subject": "Shiny new Subject",
+          "tags": [
+            "tag1",
+            "tag2"
+          ],
+          "html_body": "",
+          "text_body": "",
+          "template_variables": {
+            "variable": "strawberries"
+          },
+          "last_updated": "2024-01-01 12:00:00"
+        }
+      }
+    },
+    {
+      "path": "users/smtp/add",
+      "method": "POST",
+      "operationId": "add-an-smtp-user",
+      "page": "add-an-smtp-user",
+      "summary": "Add an SMTP user",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "username"
+      ],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email_password",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "results",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "1d95eb4c-63c2-11ed-a771-f23c9216ce11",
+        "data": {
+          "results": [
+            {
+              "username": "test@example.com",
+              "email_password": "aklkweiyasdaf",
+              "sending_allowed": true,
+              "custom_ratelimit": false,
+              "custom_ratelimit_value": null,
+              "custom_ratelimit_period": "0:00:00",
+              "description": "",
+              "feedback_enabled": false,
+              "feedback_domain": "default",
+              "feedback_html": "",
+              "feedback_text": "",
+              "archive_enabled": false,
+              "open_tracking_enabled": false,
+              "audit_email": null,
+              "bounce_notifications": "from",
+              "status": "allowed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "users/smtp/edit",
+      "method": "PATCH",
+      "operationId": "patch-smtp-user",
+      "page": "patch-an-smtp-user",
+      "summary": "Patch an SMTP user",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "username"
+      ],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email_password",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "array",
+      "responseProperties": [
+        {
+          "name": "request_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": [
+          {
+            "username": "my_user",
+            "description": "test smtp user",
+            "feedback_enabled": true,
+            "feedback_html": "test_html",
+            "feedback_text": "test_text",
+            "ippool": 1234,
+            "bounce_notifications": "from",
+            "status": "allowed"
+          }
+        ]
+      }
+    },
+    {
+      "path": "users/smtp/edit",
+      "method": "POST",
+      "operationId": "edit-an-smtp-user",
+      "page": "edit-an-smtp-user",
+      "summary": "Edit SMTP user details",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "username"
+      ],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "email_password",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_domain",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "results",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "2c1e4002-63c6-11ed-8bc9-f23c9216ceac",
+        "data": {
+          "results": [
+            {
+              "username": "smtpuser@example.com",
+              "email_password": "qet_^3qU1341%*ert",
+              "sending_allowed": true,
+              "custom_ratelimit": false,
+              "custom_ratelimit_value": null,
+              "custom_ratelimit_period": "0:00:00",
+              "description": "",
+              "feedback_enabled": false,
+              "feedback_domain": "default",
+              "feedback_html": "",
+              "feedback_text": "",
+              "archive_enabled": false,
+              "open_tracking_enabled": false,
+              "audit_email": null,
+              "bounce_notifications": "from",
+              "status": "allowed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "users/smtp/remove",
+      "method": "POST",
+      "operationId": "remove-an-smtp-user",
+      "page": "remove-an-smtp-user",
+      "summary": "Remove an SMTP user",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "username"
+      ],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "results",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "2fde4fc4-63c7-11ed-a210-f23c93560c0e",
+        "data": {
+          "results": [
+            {
+              "username": "temp2",
+              "email_password": "8dkK2djs",
+              "sending_allowed": true,
+              "custom_ratelimit": false,
+              "custom_ratelimit_value": null,
+              "custom_ratelimit_period": "0:00:00",
+              "description": "",
+              "feedback_enabled": false,
+              "feedback_domain": "default",
+              "feedback_html": "",
+              "feedback_text": "",
+              "archive_enabled": false,
+              "open_tracking_enabled": false,
+              "audit_email": null,
+              "bounce_notifications": "from",
+              "status": "allowed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "users/smtp/view",
+      "method": "POST",
+      "operationId": "view-smtp-users",
+      "page": "view-smtp-users",
+      "summary": "View SMTP users",
+      "docsUpdatedAt": "2026-09-02T03:29:14.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [],
+      "requestProperties": [
+        {
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "results",
+          "type": "array",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "ae4a8446-63c6-11ed-95d3-f23c92160e3c",
+        "data": {
+          "results": [
+            {
+              "username": "smtpuser@example.com",
+              "email_password": ",w0z9YFTT[izrH7>",
+              "sending_allowed": true,
+              "custom_ratelimit": false,
+              "custom_ratelimit_value": null,
+              "custom_ratelimit_period": "0:00:00",
+              "description": "",
+              "feedback_enabled": false,
+              "feedback_domain": "default",
+              "feedback_html": "",
+              "feedback_text": "",
+              "archive_enabled": false,
+              "open_tracking_enabled": false,
+              "audit_email": null,
+              "bounce_notifications": "from",
+              "status": "allowed"
+            }
+          ],
+          "default_ratelimit_value": 0,
+          "default_ratelimit_period": "unlimited"
+        }
+      }
+    },
+    {
+      "path": "webhook/add",
+      "method": "POST",
+      "operationId": "add-webhook",
+      "page": "add-webhook",
+      "summary": "Add a new Webhook",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "url"
+      ],
+      "requestProperties": [
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sms_events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_value",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sms_events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_value",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "5b6c5cf6-9517-44fd-a273-9a62efb12e57",
+        "data": {
+          "url": "https://example.com/test-webhook",
+          "id": 4320,
+          "events": [
+            "processed"
+          ],
+          "headers": "X-Test-Header",
+          "usernames": "MyUser1",
+          "sms_events": [
+            "sending"
+          ],
+          "output_format": "json"
+        }
+      }
+    },
+    {
+      "path": "webhook/edit",
+      "method": "POST",
+      "operationId": "edit-webhook",
+      "page": "edit-webhook",
+      "summary": "Edit a specified Webhook",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sms_events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_value",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sms_events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_value",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "5b6c5cf6-9517-44fd-a273-9a62efb12e57",
+        "data": {
+          "url": "https://example.com/test-webhook-2\"",
+          "id": 4320,
+          "events": [
+            "processed",
+            "open",
+            "spam"
+          ],
+          "headers": "X-Test-Header",
+          "usernames": "MyUser1",
+          "sms_events": [],
+          "output_format": "form"
+        }
+      }
+    },
+    {
+      "path": "webhook/remove",
+      "method": "POST",
+      "operationId": "remove-webhook",
+      "page": "remove-webhook",
+      "summary": "Remove a specified Webhook",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "id"
+      ],
+      "requestProperties": [
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sms_events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_value",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": {
+          "url": "https://example.com/webhook\"",
+          "id": 4317,
+          "events": [
+            "spam"
+          ],
+          "sms_events": [],
+          "headers": [],
+          "usernames": [],
+          "output_format": "json"
+        }
+      }
+    },
+    {
+      "path": "webhook/view",
+      "method": "POST",
+      "operationId": "view-webhook",
+      "page": "view-webhook",
+      "summary": "View Webhooks",
+      "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
+      "spec": "parsed",
+      "deprecated": false,
+      "required": [
+        "url"
+      ],
+      "requestProperties": [
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "acceptsSubaccountId": true,
+      "responseShape": "object",
+      "responseProperties": [
+        {
+          "name": "url",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "sms_events",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "headers",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "usernames",
+          "type": "array",
+          "deprecated": false
+        },
+        {
+          "name": "output_format",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_type",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "auth_header_value",
+          "type": "string",
+          "deprecated": false
+        }
+      ],
+      "responseExample": {
+        "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+        "data": {
+          "url": "https://example.com/webhook\"",
+          "id": 4317,
+          "events": [
+            "spam"
+          ],
+          "sms_events": [],
+          "headers": [],
+          "usernames": [],
+          "output_format": "json"
+        }
+      }
+    }
+  ],
+  "callbacks": [
+    {
+      "path": "callbacks/email",
+      "events": [
+        "Processed",
+        "Delivered",
+        "Open",
+        "Click",
+        "Bounce",
+        "Spam",
+        "Unsubscribe",
+        "Resubscribe",
+        "Reject"
+      ],
+      "eventValues": [
+        "processed",
+        "delivered",
+        "open",
+        "click",
+        "bounce",
+        "spam",
+        "unsubscribe",
+        "resubscribe",
+        "reject"
+      ],
+      "parameters": [
+        {
+          "name": "event",
+          "description": "What happened: \"processed\", \"delivered\", \"open\", \"click\", \"bounce\", \"spam\", \"unsubscribe\", \"resubscribe\", or \"reject\"."
+        },
+        {
+          "name": "time",
+          "description": "UTC timestamp of when the event happened."
+        },
+        {
+          "name": "sendtime",
+          "description": "UTC timestamp of when the email was sent to our server."
+        },
+        {
+          "name": "sender",
+          "description": "The 'envelope-from' email address."
+        },
+        {
+          "name": "from",
+          "description": "The display name (where available) and email address the email was sent from."
+        },
+        {
+          "name": "from_address",
+          "description": "The email address the email was sent from."
+        },
+        {
+          "name": "from_name",
+          "description": "The display name set to accompany the email address (where available)."
+        },
+        {
+          "name": "rcpt",
+          "description": "The email address the email was addressed to."
+        },
+        {
+          "name": "recipients",
+          "description": "The email addresses the email was sent to."
+        },
+        {
+          "name": "auth",
+          "description": "The SMTP Username, API Key or IP Address used to send the email."
+        },
+        {
+          "name": "host",
+          "description": "The recipient server that bounced the message (bounce only)."
+        },
+        {
+          "name": "message",
+          "description": "The error message we got (where available)."
+        },
+        {
+          "name": "context",
+          "description": "Contains additional information on the event (where available)."
+        },
+        {
+          "name": "email_id",
+          "description": "An identifier that uniquely identifies the email, which can be used to retrieve further details of the email delivery."
+        },
+        {
+          "name": "id",
+          "description": "The unique id for the webhook."
+        },
+        {
+          "name": "message-id",
+          "description": "The unique id from the sender."
+        },
+        {
+          "name": "bounce",
+          "description": "This parameter will be included for a bounce event, and will be either hard or soft, depending on how we classify the bounce type."
+        },
+        {
+          "name": "subject",
+          "description": "The subject of the email."
+        },
+        {
+          "name": "user-agent",
+          "description": "The \"User-Agent\" header of the device that opened the email (where applicable)"
+        },
+        {
+          "name": "read-secs",
+          "description": "The number of seconds an email was open - in five second increments up to a maximum of 30 (where applicable)."
+        },
+        {
+          "name": "client",
+          "description": "The reported client that clicked/opened the link (based on the User-Agent)."
+        },
+        {
+          "name": "client-device",
+          "description": "The reported device type of the User-Agent associated with the open/click event (where available)."
+        },
+        {
+          "name": "client-os",
+          "description": "The reported device operating system of the User-Agent associated with the open/click event (where available)."
+        },
+        {
+          "name": "geoip-continent",
+          "description": "A 2 character continent code based on a geoip lookup of the IP address associated with the open/click event (where available)."
+        },
+        {
+          "name": "geoip-country",
+          "description": "A 2 character country code based on a geoip lookup of the IP address associated with the open/click event (where available)."
+        },
+        {
+          "name": "geoip-city",
+          "description": "The name of the city based on a geoip lookup of the IP address associated with the open/click event (where available)."
+        },
+        {
+          "name": "srchost",
+          "description": "The IP address of the end-user associated with an open/click event (where available) or the IP address that submitted the email (for processed events)."
+        }
+      ]
+    },
+    {
+      "path": "callbacks/sms",
+      "events": [
+        "Sending",
+        "Submitted",
+        "Delivered",
+        "Failed",
+        "Rejected",
+        "Opt-Out"
+      ],
+      "eventValues": [
+        "sms_submitted",
+        "sms_delivered",
+        "sms_rejected",
+        "sms_sending",
+        "sms_failed"
+      ],
+      "parameters": [
+        {
+          "name": "event",
+          "description": "What happened: \"sms_submitted\", \"sms_delivered\", \"sms_rejected\", \"sms_sending\", or \"sms_failed\"."
+        },
+        {
+          "name": "destination_number",
+          "description": "The number the SMS is being sent to."
+        },
+        {
+          "name": "email_subject",
+          "description": "The subject of the email (if email to SMS)."
+        },
+        {
+          "name": "id",
+          "description": "The unique id for the webhook."
+        },
+        {
+          "name": "message_content",
+          "description": "The body content of the SMS message."
+        },
+        {
+          "name": "message_id",
+          "description": "The unique id for the SMS."
+        },
+        {
+          "name": "received_timestamp",
+          "description": "UTC timestamp of the event."
+        },
+        {
+          "name": "region",
+          "description": "The destination based on the number's country code."
+        },
+        {
+          "name": "retry_count",
+          "description": "The number of attempts to send the SMS."
+        },
+        {
+          "name": "sender_email",
+          "description": "The From email address."
+        },
+        {
+          "name": "source_number",
+          "description": "The pool/number the SMS was delivered from."
+        },
+        {
+          "name": "status_code",
+          "description": "The status code of the SMS."
+        },
+        {
+          "name": "submitted_timestamp",
+          "description": "UTC timestamp of when the SMS was submitted to the downstream provider."
+        }
+      ]
+    }
+  ],
+  "unparsedPages": [],
+  "pagesWithoutSpec": [
+    "authentication",
+    "changelog",
+    "email-archive",
+    "general-api-resources"
+  ]
+}

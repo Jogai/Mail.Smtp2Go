@@ -1,0 +1,276 @@
+{
+  "$comment": "Documented things the library deliberately does not model, each with a reason. An entry without 'scope' allow-lists a whole operation (no EndpointTable descriptor, no models yet): delete it when the family lands, CoverageTests fails on stale entries. 'scope' request/response/callback plus 'field' allow-lists one property ('*' for all of them); 'endpoint' '*' means every operation; 'method' narrows an operation entry where a path is documented with both POST and PATCH; a response entry with 'fixture' makes ResponseModelTests deserialise that fixture (under test/Scott.Mail.Smtp2Go.Tests.Shared/Fixtures) instead of the docs example, for pages whose example is known to be wrong.",
+  "entries": [
+    {
+      "endpoint": "*",
+      "scope": "request",
+      "field": "subaccount_id",
+      "reason": "Merged into the body by the transport from RequestOptions.SubaccountId when Endpoint.AcceptsSubaccountId is true; never a model property."
+    },
+    {
+      "endpoint": "activity/search",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "allowed_recipients/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_recipients/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_recipients/update",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_recipients/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_senders/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_senders/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_senders/update",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "allowed_senders/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "api_keys/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "api_keys/edit",
+      "method": "PATCH",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "api_keys/edit",
+      "method": "POST",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "api_keys/permissions",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "api_keys/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "api_keys/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "archive/email",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "archive/search",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "dedicated_ips/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/returnpath",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/subaccount_access",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/tracking",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/verify",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "domain/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "ip_auth/edit",
+      "method": "PATCH",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "ip_auth/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "ip_auth/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "single_sender_emails/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "single_sender_emails/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "single_sender_emails/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "sms/send",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "sms/summary",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "sms/view-received",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "sms/view-sent",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "stats/email_bounces",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "stats/email_cycle",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "stats/email_history",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "stats/email_spam",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "stats/email_summary",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "stats/email_unsubs",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "subaccount/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "subaccount/close",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "subaccount/edit",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "subaccount/reopen",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "subaccounts/search",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "suppression/add",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "suppression/remove",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "suppression/view",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "template/add",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "template/delete",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "template/edit",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "template/search",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "template/view",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "users/smtp/add",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "users/smtp/edit",
+      "method": "PATCH",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "users/smtp/edit",
+      "method": "POST",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "users/smtp/remove",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "users/smtp/view",
+      "reason": "pending plan 07 (account management and SMS)"
+    },
+    {
+      "endpoint": "webhook/add",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "webhook/edit",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "webhook/remove",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "webhook/view",
+      "reason": "pending plan 04 (webhooks and reporting)"
+    },
+    {
+      "endpoint": "callbacks/email",
+      "reason": "pending plan 04 (WebhookEvent hierarchy)"
+    },
+    {
+      "endpoint": "callbacks/sms",
+      "reason": "pending plan 04 (WebhookEvent hierarchy)"
+    }
+  ]
+}

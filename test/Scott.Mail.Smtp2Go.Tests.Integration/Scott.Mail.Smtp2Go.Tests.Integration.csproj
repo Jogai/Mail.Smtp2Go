@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+    <!-- Sandbox tests read the API key from the user secret Smtp2Go:ApiKey:Sandbox (or SMTP2GO_SANDBOX_API_KEY) and skip without it. -->
+    <UserSecretsId>Scott.Mail.Smtp2Go.Tests.Integration</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="AwesomeAssertions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
     <PackageReference Include="xunit.v3.mtp-v2" />
   </ItemGroup>

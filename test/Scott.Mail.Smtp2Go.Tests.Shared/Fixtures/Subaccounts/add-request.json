@@ -1,0 +1,10 @@
+{
+  "fullname": "Test Person",
+  "subaccount_email": "test@example.com",
+  "limit": 10000,
+  "dedicated_ip": false,
+  "archiving": true,
+  "enforce_2fa": true,
+  "enable_sms": true,
+  "sms_limit": 1000
+}

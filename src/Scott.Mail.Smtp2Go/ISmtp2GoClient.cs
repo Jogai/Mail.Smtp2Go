@@ -43,6 +43,9 @@ public interface ISmtp2GoClient
     /// <summary>Single sender emails: <c>single_sender_emails/view</c>, <c>add</c>, <c>remove</c>.</summary>
     ISingleSenderClient SingleSenders { get; }
 
+    /// <summary>Subaccounts: <c>subaccounts/search</c>, <c>subaccount/add</c>, <c>edit</c>, <c>close</c>, <c>reopen</c>.</summary>
+    ISubaccountClient Subaccounts { get; }
+
     /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
     IArchiveClient Archive { get; }
 

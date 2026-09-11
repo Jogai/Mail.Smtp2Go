@@ -171,6 +171,13 @@ public static class EndpointTable
         Add(table, new Endpoint("allowed_recipients/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("allowed_recipients/update", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // Subaccounts (master-account endpoints; none documents subaccount_id; add is limited to 50 per hour)
+        Add(table, new Endpoint("subaccounts/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("subaccount/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.SubaccountAdd, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("subaccount/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("subaccount/close", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("subaccount/reopen", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

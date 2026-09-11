@@ -1,0 +1,8 @@
+{
+  "fuzzy_search": false,
+  "search_terms": ["Test", "example.com"],
+  "states": "active",
+  "sort_direction": "desc",
+  "page_size": 50,
+  "continue_token": "eyJwYWdlIjoyfQ=="
+}

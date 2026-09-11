@@ -151,6 +151,15 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(AllowedRecipientsUpdateRequest))]
 [JsonSerializable(typeof(ApiResponse<AllowedRecipientsList>))]
 
+// Subaccounts (close and reopen return ApiResponse<string>, registered above)
+[JsonSerializable(typeof(SubaccountSearchRequest))]
+[JsonSerializable(typeof(SubaccountAddRequest))]
+[JsonSerializable(typeof(SubaccountEditRequest))]
+[JsonSerializable(typeof(SubaccountCloseRequest))]
+[JsonSerializable(typeof(SubaccountReopenRequest))]
+[JsonSerializable(typeof(ApiResponse<Subaccount>))]
+[JsonSerializable(typeof(ApiResponse<SubaccountSearchResult>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

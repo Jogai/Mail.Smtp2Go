@@ -1,0 +1,10 @@
+{
+  "id": "34l8oj",
+  "fullname": "Renamed Person",
+  "limit": 20000,
+  "dedicated_ip": false,
+  "archiving": false,
+  "enforce_2fa": false,
+  "enable_sms": false,
+  "sms_limit": 0
+}

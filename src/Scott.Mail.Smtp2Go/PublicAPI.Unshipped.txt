@@ -1106,6 +1106,7 @@ Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.SingleSenders.get -> Scott.Mail.Smtp2Go.ISingleSenderClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.SmtpUsers.get -> Scott.Mail.Smtp2Go.ISmtpUserClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Subaccounts.get -> Scott.Mail.Smtp2Go.ISubaccountClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Suppressions.get -> Scott.Mail.Smtp2Go.ISuppressionClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Templates.get -> Scott.Mail.Smtp2Go.ITemplateClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
@@ -1123,6 +1124,13 @@ Scott.Mail.Smtp2Go.IStatsClient.GetQuotaAsync(Scott.Mail.Smtp2Go.RequestOptions?
 Scott.Mail.Smtp2Go.IStatsClient.GetSpamAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSpam!>!>!
 Scott.Mail.Smtp2Go.IStatsClient.GetSummaryAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSummary!>!>!
 Scott.Mail.Smtp2Go.IStatsClient.GetUnsubscribesAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailUnsubscribes!>!>!
+Scott.Mail.Smtp2Go.ISubaccountClient
+Scott.Mail.Smtp2Go.ISubaccountClient.AddAsync(Scott.Mail.Smtp2Go.SubaccountAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Subaccount!>!>!
+Scott.Mail.Smtp2Go.ISubaccountClient.CloseAsync(Scott.Mail.Smtp2Go.SubaccountCloseRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<string!>!>!
+Scott.Mail.Smtp2Go.ISubaccountClient.EditAsync(Scott.Mail.Smtp2Go.SubaccountEditRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Subaccount!>!>!
+Scott.Mail.Smtp2Go.ISubaccountClient.ReopenAsync(Scott.Mail.Smtp2Go.SubaccountReopenRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<string!>!>!
+Scott.Mail.Smtp2Go.ISubaccountClient.SearchAllAsync(Scott.Mail.Smtp2Go.SubaccountSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.Subaccount!>!
+Scott.Mail.Smtp2Go.ISubaccountClient.SearchAsync(Scott.Mail.Smtp2Go.SubaccountSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SubaccountSearchResult!>!>!
 Scott.Mail.Smtp2Go.ISuppressionClient
 Scott.Mail.Smtp2Go.ISuppressionClient.AddAsync(Scott.Mail.Smtp2Go.SuppressionAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SuppressionAddResult!>!>!
 Scott.Mail.Smtp2Go.ISuppressionClient.RemoveAsync(Scott.Mail.Smtp2Go.SuppressionRemoveRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SuppressionRemoveResult!>!>!
@@ -1327,6 +1335,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(System.Net.Http.HttpClient! httpC
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(string! apiKey) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.SmtpUsers.get -> Scott.Mail.Smtp2Go.ISmtpUserClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Subaccounts.get -> Scott.Mail.Smtp2Go.ISubaccountClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Suppressions.get -> Scott.Mail.Smtp2Go.ISuppressionClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Templates.get -> Scott.Mail.Smtp2Go.ITemplateClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
@@ -1572,6 +1581,132 @@ Scott.Mail.Smtp2Go.SortDirection
 Scott.Mail.Smtp2Go.SortDirection.Asc = 1 -> Scott.Mail.Smtp2Go.SortDirection
 Scott.Mail.Smtp2Go.SortDirection.Desc = 2 -> Scott.Mail.Smtp2Go.SortDirection
 Scott.Mail.Smtp2Go.SortDirection.Unknown = 0 -> Scott.Mail.Smtp2Go.SortDirection
+Scott.Mail.Smtp2Go.Subaccount
+Scott.Mail.Smtp2Go.Subaccount.<Clone>$() -> Scott.Mail.Smtp2Go.Subaccount!
+Scott.Mail.Smtp2Go.Subaccount.Archiving.get -> bool?
+Scott.Mail.Smtp2Go.Subaccount.Archiving.init -> void
+Scott.Mail.Smtp2Go.Subaccount.DedicatedIp.get -> bool?
+Scott.Mail.Smtp2Go.Subaccount.DedicatedIp.init -> void
+Scott.Mail.Smtp2Go.Subaccount.Email.get -> string?
+Scott.Mail.Smtp2Go.Subaccount.Email.init -> void
+Scott.Mail.Smtp2Go.Subaccount.Enforce2fa.get -> bool?
+Scott.Mail.Smtp2Go.Subaccount.Enforce2fa.init -> void
+Scott.Mail.Smtp2Go.Subaccount.Equals(Scott.Mail.Smtp2Go.Subaccount? other) -> bool
+Scott.Mail.Smtp2Go.Subaccount.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.Subaccount.Extra.set -> void
+Scott.Mail.Smtp2Go.Subaccount.Id.get -> string?
+Scott.Mail.Smtp2Go.Subaccount.Id.init -> void
+Scott.Mail.Smtp2Go.Subaccount.Name.get -> string?
+Scott.Mail.Smtp2Go.Subaccount.Name.init -> void
+Scott.Mail.Smtp2Go.Subaccount.PlanRemaining.get -> long?
+Scott.Mail.Smtp2Go.Subaccount.PlanRemaining.init -> void
+Scott.Mail.Smtp2Go.Subaccount.PlanSize.get -> long?
+Scott.Mail.Smtp2Go.Subaccount.PlanSize.init -> void
+Scott.Mail.Smtp2Go.Subaccount.PlanUsed.get -> long?
+Scott.Mail.Smtp2Go.Subaccount.PlanUsed.init -> void
+Scott.Mail.Smtp2Go.Subaccount.SmsEnabled.get -> bool?
+Scott.Mail.Smtp2Go.Subaccount.SmsEnabled.init -> void
+Scott.Mail.Smtp2Go.Subaccount.SmsLimit.get -> long?
+Scott.Mail.Smtp2Go.Subaccount.SmsLimit.init -> void
+Scott.Mail.Smtp2Go.Subaccount.State.get -> Scott.Mail.Smtp2Go.SubaccountState
+Scott.Mail.Smtp2Go.Subaccount.StateRaw.get -> string?
+Scott.Mail.Smtp2Go.Subaccount.StateRaw.init -> void
+Scott.Mail.Smtp2Go.Subaccount.Subaccount() -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest
+Scott.Mail.Smtp2Go.SubaccountAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SubaccountAddRequest!
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Archiving.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Archiving.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.DedicatedIp.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.DedicatedIp.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.EnableSms.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.EnableSms.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Enforce2fa.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Enforce2fa.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Equals(Scott.Mail.Smtp2Go.SubaccountAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.SubaccountAddRequest.FullName.get -> string!
+Scott.Mail.Smtp2Go.SubaccountAddRequest.FullName.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Limit.get -> int?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.Limit.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.SmsLimit.get -> int?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.SmsLimit.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.SubaccountAddRequest() -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.SubaccountEmail.get -> string?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.SubaccountEmail.init -> void
+Scott.Mail.Smtp2Go.SubaccountCloseRequest
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SubaccountCloseRequest!
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.Email.get -> string?
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.Email.init -> void
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.Equals(Scott.Mail.Smtp2Go.SubaccountCloseRequest? other) -> bool
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.Id.init -> void
+Scott.Mail.Smtp2Go.SubaccountCloseRequest.SubaccountCloseRequest() -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest
+Scott.Mail.Smtp2Go.SubaccountEditRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SubaccountEditRequest!
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Archiving.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Archiving.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.DedicatedIp.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.DedicatedIp.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.EnableSms.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.EnableSms.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Enforce2fa.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Enforce2fa.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Equals(Scott.Mail.Smtp2Go.SubaccountEditRequest? other) -> bool
+Scott.Mail.Smtp2Go.SubaccountEditRequest.FullName.get -> string?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.FullName.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Id.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Limit.get -> int?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.Limit.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.SmsLimit.get -> int?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.SmsLimit.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.SubaccountEditRequest() -> void
+Scott.Mail.Smtp2Go.SubaccountReopenRequest
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SubaccountReopenRequest!
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.Email.get -> string?
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.Email.init -> void
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.Equals(Scott.Mail.Smtp2Go.SubaccountReopenRequest? other) -> bool
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.Id.init -> void
+Scott.Mail.Smtp2Go.SubaccountReopenRequest.SubaccountReopenRequest() -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.SubaccountSearchRequest!
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.Equals(Scott.Mail.Smtp2Go.SubaccountSearchRequest? other) -> bool
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.FuzzySearch.get -> bool?
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.FuzzySearch.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.PageSize.get -> int?
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.PageSize.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.SearchTerms.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.SearchTerms.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.SortDirection.get -> Scott.Mail.Smtp2Go.SortDirection?
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.SortDirection.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.States.get -> Scott.Mail.Smtp2Go.SubaccountStateFilter?
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.States.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchRequest.SubaccountSearchRequest() -> void
+Scott.Mail.Smtp2Go.SubaccountSearchResult
+Scott.Mail.Smtp2Go.SubaccountSearchResult.<Clone>$() -> Scott.Mail.Smtp2Go.SubaccountSearchResult!
+Scott.Mail.Smtp2Go.SubaccountSearchResult.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.SubaccountSearchResult.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchResult.Equals(Scott.Mail.Smtp2Go.SubaccountSearchResult? other) -> bool
+Scott.Mail.Smtp2Go.SubaccountSearchResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.SubaccountSearchResult.Extra.set -> void
+Scott.Mail.Smtp2Go.SubaccountSearchResult.SubaccountSearchResult() -> void
+Scott.Mail.Smtp2Go.SubaccountSearchResult.Subaccounts.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Subaccount!>?
+Scott.Mail.Smtp2Go.SubaccountSearchResult.Subaccounts.init -> void
+Scott.Mail.Smtp2Go.SubaccountSearchResult.TotalCount.get -> long?
+Scott.Mail.Smtp2Go.SubaccountSearchResult.TotalCount.init -> void
+Scott.Mail.Smtp2Go.SubaccountState
+Scott.Mail.Smtp2Go.SubaccountState.Active = 1 -> Scott.Mail.Smtp2Go.SubaccountState
+Scott.Mail.Smtp2Go.SubaccountState.Closed = 2 -> Scott.Mail.Smtp2Go.SubaccountState
+Scott.Mail.Smtp2Go.SubaccountState.Suspended = 3 -> Scott.Mail.Smtp2Go.SubaccountState
+Scott.Mail.Smtp2Go.SubaccountState.Unknown = 0 -> Scott.Mail.Smtp2Go.SubaccountState
+Scott.Mail.Smtp2Go.SubaccountStateFilter
+Scott.Mail.Smtp2Go.SubaccountStateFilter.Active = 2 -> Scott.Mail.Smtp2Go.SubaccountStateFilter
+Scott.Mail.Smtp2Go.SubaccountStateFilter.All = 1 -> Scott.Mail.Smtp2Go.SubaccountStateFilter
+Scott.Mail.Smtp2Go.SubaccountStateFilter.Closed = 3 -> Scott.Mail.Smtp2Go.SubaccountStateFilter
+Scott.Mail.Smtp2Go.SubaccountStateFilter.Suspended = 4 -> Scott.Mail.Smtp2Go.SubaccountStateFilter
+Scott.Mail.Smtp2Go.SubaccountStateFilter.Unknown = 0 -> Scott.Mail.Smtp2Go.SubaccountStateFilter
 Scott.Mail.Smtp2Go.Suppression
 Scott.Mail.Smtp2Go.Suppression.<Clone>$() -> Scott.Mail.Smtp2Go.Suppression!
 Scott.Mail.Smtp2Go.Suppression.BlockDescription.get -> string?
@@ -2341,6 +2476,27 @@ override Scott.Mail.Smtp2Go.SmtpUserViewRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.SmtpUserViewResult.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.SmtpUserViewResult.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.SmtpUserViewResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.Subaccount.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Subaccount.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Subaccount.ToString() -> string!
+override Scott.Mail.Smtp2Go.SubaccountAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SubaccountAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SubaccountAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SubaccountCloseRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SubaccountCloseRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SubaccountCloseRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SubaccountEditRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SubaccountEditRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SubaccountEditRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SubaccountReopenRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SubaccountReopenRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SubaccountReopenRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SubaccountSearchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SubaccountSearchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SubaccountSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.SubaccountSearchResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.SubaccountSearchResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.SubaccountSearchResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.Suppression.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Suppression.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Suppression.ToString() -> string!
@@ -2625,6 +2781,20 @@ static Scott.Mail.Smtp2Go.SmtpUserViewRequest.operator !=(Scott.Mail.Smtp2Go.Smt
 static Scott.Mail.Smtp2Go.SmtpUserViewRequest.operator ==(Scott.Mail.Smtp2Go.SmtpUserViewRequest? left, Scott.Mail.Smtp2Go.SmtpUserViewRequest? right) -> bool
 static Scott.Mail.Smtp2Go.SmtpUserViewResult.operator !=(Scott.Mail.Smtp2Go.SmtpUserViewResult? left, Scott.Mail.Smtp2Go.SmtpUserViewResult? right) -> bool
 static Scott.Mail.Smtp2Go.SmtpUserViewResult.operator ==(Scott.Mail.Smtp2Go.SmtpUserViewResult? left, Scott.Mail.Smtp2Go.SmtpUserViewResult? right) -> bool
+static Scott.Mail.Smtp2Go.Subaccount.operator !=(Scott.Mail.Smtp2Go.Subaccount? left, Scott.Mail.Smtp2Go.Subaccount? right) -> bool
+static Scott.Mail.Smtp2Go.Subaccount.operator ==(Scott.Mail.Smtp2Go.Subaccount? left, Scott.Mail.Smtp2Go.Subaccount? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountAddRequest.operator !=(Scott.Mail.Smtp2Go.SubaccountAddRequest? left, Scott.Mail.Smtp2Go.SubaccountAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountAddRequest.operator ==(Scott.Mail.Smtp2Go.SubaccountAddRequest? left, Scott.Mail.Smtp2Go.SubaccountAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountCloseRequest.operator !=(Scott.Mail.Smtp2Go.SubaccountCloseRequest? left, Scott.Mail.Smtp2Go.SubaccountCloseRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountCloseRequest.operator ==(Scott.Mail.Smtp2Go.SubaccountCloseRequest? left, Scott.Mail.Smtp2Go.SubaccountCloseRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountEditRequest.operator !=(Scott.Mail.Smtp2Go.SubaccountEditRequest? left, Scott.Mail.Smtp2Go.SubaccountEditRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountEditRequest.operator ==(Scott.Mail.Smtp2Go.SubaccountEditRequest? left, Scott.Mail.Smtp2Go.SubaccountEditRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountReopenRequest.operator !=(Scott.Mail.Smtp2Go.SubaccountReopenRequest? left, Scott.Mail.Smtp2Go.SubaccountReopenRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountReopenRequest.operator ==(Scott.Mail.Smtp2Go.SubaccountReopenRequest? left, Scott.Mail.Smtp2Go.SubaccountReopenRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountSearchRequest.operator !=(Scott.Mail.Smtp2Go.SubaccountSearchRequest? left, Scott.Mail.Smtp2Go.SubaccountSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountSearchRequest.operator ==(Scott.Mail.Smtp2Go.SubaccountSearchRequest? left, Scott.Mail.Smtp2Go.SubaccountSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountSearchResult.operator !=(Scott.Mail.Smtp2Go.SubaccountSearchResult? left, Scott.Mail.Smtp2Go.SubaccountSearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.SubaccountSearchResult.operator ==(Scott.Mail.Smtp2Go.SubaccountSearchResult? left, Scott.Mail.Smtp2Go.SubaccountSearchResult? right) -> bool
 static Scott.Mail.Smtp2Go.Suppression.operator !=(Scott.Mail.Smtp2Go.Suppression? left, Scott.Mail.Smtp2Go.Suppression? right) -> bool
 static Scott.Mail.Smtp2Go.Suppression.operator ==(Scott.Mail.Smtp2Go.Suppression? left, Scott.Mail.Smtp2Go.Suppression? right) -> bool
 static Scott.Mail.Smtp2Go.SuppressionAddRequest.operator !=(Scott.Mail.Smtp2Go.SuppressionAddRequest? left, Scott.Mail.Smtp2Go.SuppressionAddRequest? right) -> bool

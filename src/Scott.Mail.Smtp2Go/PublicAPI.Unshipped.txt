@@ -230,6 +230,21 @@ Scott.Mail.Smtp2Go.Attachment.Url.init -> void
 Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.ApiKeyHeader = 0 -> Scott.Mail.Smtp2Go.AuthenticationScheme
 Scott.Mail.Smtp2Go.AuthenticationScheme.Bearer = 1 -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.BounceNotifications
+Scott.Mail.Smtp2Go.BounceNotifications.<Clone>$() -> Scott.Mail.Smtp2Go.BounceNotifications!
+Scott.Mail.Smtp2Go.BounceNotifications.EmailAddress.get -> string?
+Scott.Mail.Smtp2Go.BounceNotifications.Equals(Scott.Mail.Smtp2Go.BounceNotifications? other) -> bool
+Scott.Mail.Smtp2Go.BounceNotifications.Kind.get -> Scott.Mail.Smtp2Go.BounceNotificationsKind
+Scott.Mail.Smtp2Go.BounceNotifications.Value.get -> string!
+Scott.Mail.Smtp2Go.BounceNotificationsKind
+Scott.Mail.Smtp2Go.BounceNotificationsKind.Drop = 1 -> Scott.Mail.Smtp2Go.BounceNotificationsKind
+Scott.Mail.Smtp2Go.BounceNotificationsKind.Email = 2 -> Scott.Mail.Smtp2Go.BounceNotificationsKind
+Scott.Mail.Smtp2Go.BounceNotificationsKind.From = 0 -> Scott.Mail.Smtp2Go.BounceNotificationsKind
+Scott.Mail.Smtp2Go.CredentialStatus
+Scott.Mail.Smtp2Go.CredentialStatus.Allowed = 1 -> Scott.Mail.Smtp2Go.CredentialStatus
+Scott.Mail.Smtp2Go.CredentialStatus.Blocked = 2 -> Scott.Mail.Smtp2Go.CredentialStatus
+Scott.Mail.Smtp2Go.CredentialStatus.Sandbox = 3 -> Scott.Mail.Smtp2Go.CredentialStatus
+Scott.Mail.Smtp2Go.CredentialStatus.Unknown = 0 -> Scott.Mail.Smtp2Go.CredentialStatus
 Scott.Mail.Smtp2Go.CustomHeader
 Scott.Mail.Smtp2Go.CustomHeader.<Clone>$() -> Scott.Mail.Smtp2Go.CustomHeader!
 Scott.Mail.Smtp2Go.CustomHeader.CustomHeader(string! Header, string! Value) -> void
@@ -629,10 +644,16 @@ Scott.Mail.Smtp2Go.IWebhookClient.AddOrUpdateByUrlAsync(Scott.Mail.Smtp2Go.Webho
 Scott.Mail.Smtp2Go.IWebhookClient.EditAsync(Scott.Mail.Smtp2Go.WebhookEditRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
 Scott.Mail.Smtp2Go.IWebhookClient.RemoveAsync(long id, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
 Scott.Mail.Smtp2Go.IWebhookClient.ViewAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Webhook!>!>!>!
+Scott.Mail.Smtp2Go.Json.Converters.BounceNotificationsConverter
+Scott.Mail.Smtp2Go.Json.Converters.BounceNotificationsConverter.BounceNotificationsConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter
 Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.EmailAddressConverter() -> void
+Scott.Mail.Smtp2Go.Json.Converters.NumberOrStringConverter
+Scott.Mail.Smtp2Go.Json.Converters.NumberOrStringConverter.NumberOrStringConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.PercentageConverter() -> void
+Scott.Mail.Smtp2Go.Json.Converters.ResultsListConverter<TItem>
+Scott.Mail.Smtp2Go.Json.Converters.ResultsListConverter<TItem>.ResultsListConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Smtp2GoDateTimeOffsetConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.StringOrStringArrayConverter
@@ -1361,6 +1382,9 @@ override Scott.Mail.Smtp2Go.ArchivedEmail.ToString() -> string!
 override Scott.Mail.Smtp2Go.Attachment.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Attachment.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Attachment.ToString() -> string!
+override Scott.Mail.Smtp2Go.BounceNotifications.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.BounceNotifications.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.BounceNotifications.ToString() -> string!
 override Scott.Mail.Smtp2Go.CustomHeader.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.CustomHeader.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.CustomHeader.ToString() -> string!
@@ -1417,10 +1441,16 @@ override Scott.Mail.Smtp2Go.EmailUnsubscribes.ToString() -> string!
 override Scott.Mail.Smtp2Go.FieldValidationError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.FieldValidationError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.FieldValidationError.ToString() -> string!
+override Scott.Mail.Smtp2Go.Json.Converters.BounceNotificationsConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.BounceNotifications?
+override Scott.Mail.Smtp2Go.Json.Converters.BounceNotificationsConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.BounceNotifications! value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.EmailAddress
 override Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.EmailAddress value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Json.Converters.NumberOrStringConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> string?
+override Scott.Mail.Smtp2Go.Json.Converters.NumberOrStringConverter.Write(System.Text.Json.Utf8JsonWriter! writer, string! value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> Scott.Mail.Smtp2Go.Percentage
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.Percentage value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Json.Converters.ResultsListConverter<TItem>.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.Collections.Generic.IReadOnlyList<TItem>?
+override Scott.Mail.Smtp2Go.Json.Converters.ResultsListConverter<TItem>.Write(System.Text.Json.Utf8JsonWriter! writer, System.Collections.Generic.IReadOnlyList<TItem>! value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.DateTimeOffset
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Write(System.Text.Json.Utf8JsonWriter! writer, System.DateTimeOffset value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.StringOrStringArrayConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.Collections.Generic.IReadOnlyList<string!>?
@@ -1575,6 +1605,12 @@ static Scott.Mail.Smtp2Go.Attachment.FromStreamAsync(string! filename, System.IO
 static Scott.Mail.Smtp2Go.Attachment.FromUrl(string! filename, System.Uri! url, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
 static Scott.Mail.Smtp2Go.Attachment.operator !=(Scott.Mail.Smtp2Go.Attachment? left, Scott.Mail.Smtp2Go.Attachment? right) -> bool
 static Scott.Mail.Smtp2Go.Attachment.operator ==(Scott.Mail.Smtp2Go.Attachment? left, Scott.Mail.Smtp2Go.Attachment? right) -> bool
+static Scott.Mail.Smtp2Go.BounceNotifications.Drop.get -> Scott.Mail.Smtp2Go.BounceNotifications!
+static Scott.Mail.Smtp2Go.BounceNotifications.Email(string! address) -> Scott.Mail.Smtp2Go.BounceNotifications!
+static Scott.Mail.Smtp2Go.BounceNotifications.From.get -> Scott.Mail.Smtp2Go.BounceNotifications!
+static Scott.Mail.Smtp2Go.BounceNotifications.Parse(string! value) -> Scott.Mail.Smtp2Go.BounceNotifications!
+static Scott.Mail.Smtp2Go.BounceNotifications.operator !=(Scott.Mail.Smtp2Go.BounceNotifications? left, Scott.Mail.Smtp2Go.BounceNotifications? right) -> bool
+static Scott.Mail.Smtp2Go.BounceNotifications.operator ==(Scott.Mail.Smtp2Go.BounceNotifications? left, Scott.Mail.Smtp2Go.BounceNotifications? right) -> bool
 static Scott.Mail.Smtp2Go.CustomHeader.operator !=(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
 static Scott.Mail.Smtp2Go.CustomHeader.operator ==(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
 static Scott.Mail.Smtp2Go.DeliveryAttempt.operator !=(Scott.Mail.Smtp2Go.DeliveryAttempt? left, Scott.Mail.Smtp2Go.DeliveryAttempt? right) -> bool

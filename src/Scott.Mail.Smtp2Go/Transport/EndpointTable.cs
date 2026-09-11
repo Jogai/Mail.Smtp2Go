@@ -140,6 +140,11 @@ public static class EndpointTable
         Add(table, new Endpoint("users/smtp/edit", Endpoint.Patch, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("users/smtp/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // IP authentication (every endpoint documents subaccount_id; edit is documented as PATCH only)
+        Add(table, new Endpoint("ip_auth/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("ip_auth/edit", Endpoint.Patch, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("ip_auth/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

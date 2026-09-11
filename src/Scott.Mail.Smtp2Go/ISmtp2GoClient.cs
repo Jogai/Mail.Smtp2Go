@@ -28,6 +28,9 @@ public interface ISmtp2GoClient
     /// <summary>SMTP users: <c>users/smtp/view</c>, <c>add</c>, <c>edit</c> (POST and PATCH), <c>remove</c>.</summary>
     ISmtpUserClient SmtpUsers { get; }
 
+    /// <summary>Authenticated IPs: <c>ip_auth/view</c>, <c>edit</c> (PATCH), <c>remove</c>.</summary>
+    IIpAuthClient IpAuth { get; }
+
     /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
     IArchiveClient Archive { get; }
 

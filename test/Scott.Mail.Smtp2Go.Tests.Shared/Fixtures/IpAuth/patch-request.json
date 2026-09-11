@@ -1,0 +1,17 @@
+{
+  "ip_address": "127.0.0.1",
+  "description": "office egress",
+  "custom_ratelimit": true,
+  "custom_ratelimit_value": 100,
+  "custom_ratelimit_period": "1 day",
+  "ip_pool": 1234,
+  "feedback_enabled": false,
+  "feedback_html": "",
+  "feedback_text": "",
+  "open_tracking_enabled": true,
+  "click_tracking_enabled": true,
+  "archive_enabled": true,
+  "audit_email": "audit@example.com",
+  "bounce_notifications": "drop",
+  "status": "blocked"
+}

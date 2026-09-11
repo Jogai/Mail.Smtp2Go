@@ -72,19 +72,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "ip_auth/edit",
-      "method": "PATCH",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "ip_auth/remove",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "ip_auth/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "single_sender_emails/add",
       "reason": "pending plan 07 (account management and SMS)"
     },
@@ -204,6 +191,18 @@
       "scope": "response",
       "field": "data",
       "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by SmtpUser."
+    },
+    {
+      "endpoint": "ip_auth/edit",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by AuthenticatedIp."
+    },
+    {
+      "endpoint": "ip_auth/edit",
+      "scope": "response",
+      "field": "data",
+      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by AuthenticatedIp."
     }
   ]
 }

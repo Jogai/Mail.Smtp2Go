@@ -16,7 +16,7 @@ namespace Scott.Mail.Smtp2Go.Json;
     PropertyNameCaseInsensitive = true,
     ReadCommentHandling = JsonCommentHandling.Skip,
     NumberHandling = JsonNumberHandling.AllowReadingFromString,
-    Converters = new[] { typeof(Smtp2GoDateTimeOffsetConverter), typeof(WebhookListConverter), typeof(ResultsListConverter<SmtpUser>) })]
+    Converters = new[] { typeof(Smtp2GoDateTimeOffsetConverter), typeof(WebhookListConverter), typeof(ResultsListConverter<SmtpUser>), typeof(ResultsListConverter<AuthenticatedIp>) })]
 
 // Raw payloads usable with IRawClient for endpoints that have no typed model yet.
 [JsonSerializable(typeof(JsonElement))]
@@ -114,6 +114,13 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(SmtpUserRemoveRequest))]
 [JsonSerializable(typeof(ApiResponse<SmtpUserViewResult>))]
 [JsonSerializable(typeof(ApiResponse<IReadOnlyList<SmtpUser>>))]
+
+// IP authentication (ResultsListConverter<AuthenticatedIp> reads the bare array of edit (PATCH) and any {results: [...]} wrapper)
+[JsonSerializable(typeof(AuthenticatedIpViewRequest))]
+[JsonSerializable(typeof(AuthenticatedIpPatchRequest))]
+[JsonSerializable(typeof(AuthenticatedIpRemoveRequest))]
+[JsonSerializable(typeof(ApiResponse<AuthenticatedIpViewResult>))]
+[JsonSerializable(typeof(ApiResponse<IReadOnlyList<AuthenticatedIp>>))]
 
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext

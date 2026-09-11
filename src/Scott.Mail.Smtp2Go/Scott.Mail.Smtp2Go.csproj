@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
     <Description>Client for the SMTP2GO v3 API: email sending, webhooks, reporting, templates, suppressions, archive, account management and SMS.</Description>
+    <PackageTags>smtp2go;email;transactional;api;webhooks;mail;client;sms</PackageTags>
     <!-- netstandard2.0: also polyfill the trimming annotations (DynamicallyAccessedMembers etc.) so the source compiles unchanged on every target. -->
     <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
   </PropertyGroup>

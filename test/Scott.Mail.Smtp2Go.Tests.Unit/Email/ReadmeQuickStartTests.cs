@@ -33,18 +33,21 @@ public class ReadmeQuickStartTests
         typeof(QuickStart).GetMethod(nameof(QuickStart.RunAsync))!.ReturnType.Should().Be<Task>();
     }
 
-    [Fact]
-    public void Readme_code_block_matches_the_compiled_quick_start()
+    /// <summary>The repository README and the NuGet package README (docs/nuget-readme.md, packed as README.md) carry the same quick start.</summary>
+    [Theory]
+    [InlineData("README.md")]
+    [InlineData("docs/nuget-readme.md")]
+    public void Readme_code_block_matches_the_compiled_quick_start(string relativePath)
     {
         string source = File.ReadAllText(ThisFile());
-        string readme = File.ReadAllText(Path.Combine(RepositoryRoot(), "README.md"));
+        string readme = File.ReadAllText(Path.Combine(RepositoryRoot(), relativePath));
 
         IReadOnlyList<string> readmeUsings = Lines(CodeBlockAfter(readme, "## Quick start")).Where(l => l.StartsWith("using ", StringComparison.Ordinal)).ToList();
         IReadOnlyList<string> readmeBody = Lines(CodeBlockAfter(readme, "## Quick start")).Where(l => !l.StartsWith("using ", StringComparison.Ordinal)).ToList();
         IReadOnlyList<string> testBody = Lines(Between(source, "// <quick-start>", "// </quick-start>"));
 
-        readmeUsings.Should().NotBeEmpty().And.AllSatisfy(u => source.Should().Contain(u, because: "the README's using directives must appear in this test file"));
-        testBody.Should().Equal(readmeBody, because: "the README quick start and the compiled copy in {0} must be identical", nameof(QuickStart));
+        readmeUsings.Should().NotBeEmpty().And.AllSatisfy(u => source.Should().Contain(u, because: "the using directives of {0} must appear in this test file", relativePath));
+        testBody.Should().Equal(readmeBody, because: "the quick start in {0} and the compiled copy in {1} must be identical", relativePath, nameof(QuickStart));
     }
 
     private static string ThisFile([CallerFilePath] string path = "")
@@ -66,7 +69,7 @@ public class ReadmeQuickStartTests
     private static string CodeBlockAfter(string markdown, string heading)
     {
         int start = markdown.IndexOf(heading, StringComparison.Ordinal);
-        start.Should().BeGreaterThanOrEqualTo(0, because: "README.md must have a '{0}' heading", heading);
+        start.Should().BeGreaterThanOrEqualTo(0, because: "the README must have a '{0}' heading", heading);
         return Between(markdown.Substring(start), "```csharp", "```");
     }
 

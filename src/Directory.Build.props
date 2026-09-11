@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Package content">
-    <None Include="$(MSBuildThisFileDirectory)../README.md" Pack="true" PackagePath="/" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)../docs/nuget-readme.md" Pack="true" PackagePath="/README.md" Visible="false" />
     <None Include="$(MSBuildThisFileDirectory)../icon.png" Pack="true" PackagePath="/" Visible="false" />
   </ItemGroup>
 

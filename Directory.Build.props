@@ -42,9 +42,10 @@
     <PackageProjectUrl>https://github.com/Jogai/Mail.Smtp2Go</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jogai/Mail.Smtp2Go</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <!-- docs/nuget-readme.md, packed as README.md by src/Directory.Build.props: the repository README trimmed to install, quick start and links. -->
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>smtp2go;email;mail;api;client</PackageTags>
+    <!-- PackageTags are set per project. -->
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>

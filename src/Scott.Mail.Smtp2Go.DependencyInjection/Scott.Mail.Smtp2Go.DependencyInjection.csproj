@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Description>Microsoft.Extensions.DependencyInjection integration for Scott.Mail.Smtp2Go: AddSmtp2Go, options binding and validation, resilience pipeline, named clients.</Description>
+    <PackageTags>smtp2go;email;transactional;api;webhooks;dependency-injection;resilience;hosting</PackageTags>
     <!-- Options binding is source generated (interceptors) so the package stays trim- and AOT-safe. -->
     <EnableConfigurationBindingGenerator>true</EnableConfigurationBindingGenerator>
     <!-- SYSLIB1100/1101: Smtp2GoOptions.AdditionalJsonTypeInfoResolver is an interface and deliberately not bindable from configuration; the generator skips it. -->

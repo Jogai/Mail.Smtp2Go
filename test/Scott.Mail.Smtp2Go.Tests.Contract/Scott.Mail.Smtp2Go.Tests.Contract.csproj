@@ -7,6 +7,9 @@
 
   <ItemGroup>
     <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+    <!-- The harvested API snapshot and the generated coverage page, copied next to the test assembly as api-spec/*. -->
+    <Content Include="..\..\docs\api-spec\*.json" Link="api-spec\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\docs\api-coverage.md" Link="api-spec\api-coverage.md" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +28,8 @@
     <ProjectReference Include="..\..\src\Scott.Mail.Smtp2Go\Scott.Mail.Smtp2Go.csproj" />
     <ProjectReference Include="..\..\src\Scott.Mail.Smtp2Go.DependencyInjection\Scott.Mail.Smtp2Go.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\src\Scott.Mail.Smtp2Go.AspNetCore\Scott.Mail.Smtp2Go.AspNetCore.csproj" />
+    <!-- The harvester's readers, model discovery and coverage report, so the tests and the tool agree on what "covered" means. -->
+    <ProjectReference Include="..\..\src\tools\Scott.Mail.Smtp2Go.SpecHarvester\Scott.Mail.Smtp2Go.SpecHarvester.csproj" />
   </ItemGroup>
 
 </Project>

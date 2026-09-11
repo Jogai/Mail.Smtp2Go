@@ -378,6 +378,13 @@
           "Scott.Mail.Smtp2Go": "[1.0.0, )"
         }
       },
+      "scott.mail.smtp2go.specharvester": {
+        "type": "Project",
+        "dependencies": {
+          "Scott.Mail.Smtp2Go": "[1.0.0, )",
+          "System.CommandLine": "[2.0.12, )"
+        }
+      },
       "scott.mail.smtp2go.tests.shared": {
         "type": "Project",
         "dependencies": {
@@ -452,6 +459,12 @@
           "Microsoft.Extensions.Options": "10.0.12",
           "Microsoft.Extensions.Primitives": "10.0.12"
         }
+      },
+      "System.CommandLine": {
+        "type": "CentralTransitive",
+        "requested": "[2.0.12, )",
+        "resolved": "2.0.12",
+        "contentHash": "FpW672e6qqrTd1EfKqsvUtFZaJWlTlszUR1o8tdakXhkzKbnEZVndtpfd4K3fUPCFcIs9UmcswMyYGJP1zp/rg=="
       }
     }
   }

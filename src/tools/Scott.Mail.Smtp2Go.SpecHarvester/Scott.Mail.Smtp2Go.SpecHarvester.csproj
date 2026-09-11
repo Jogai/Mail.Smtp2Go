@@ -3,7 +3,25 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Scott.Mail.Smtp2Go.SpecHarvester</RootNamespace>
     <Description>Harvests the SMTP2GO API specification from developers.smtp2go.com into docs/api-spec (plan 08).</Description>
+    <!--
+      src/Directory.Build.targets marks every src project trimmable and AOT-compatible. The coverage report reflects over the core
+      assembly (Assembly.GetTypes, interface scanning), which those analyzers flag; the tool is never trimmed or published AOT.
+    -->
+    <EnableTrimAnalyzer>false</EnableTrimAnalyzer>
+    <EnableAotAnalyzer>false</EnableAotAnalyzer>
+    <EnableSingleFileAnalyzer>false</EnableSingleFileAnalyzer>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The coverage command reflects over the built core assembly: EndpointTable.All, Smtp2GoEndpointAttribute and the client interfaces. -->
+    <ProjectReference Include="..\..\Scott.Mail.Smtp2Go\Scott.Mail.Smtp2Go.csproj" />
+  </ItemGroup>
 
 </Project>

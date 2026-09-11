@@ -1,0 +1,193 @@
+using System.Globalization;
+using System.Reflection;
+using System.Text;
+using Scott.Mail.Smtp2Go.Transport;
+
+namespace Scott.Mail.Smtp2Go.SpecHarvester;
+
+/// <summary>The coverage status of one documented operation.</summary>
+public enum CoverageStatus
+{
+    /// <summary>A model carries <see cref="Smtp2GoEndpointAttribute"/> for the path.</summary>
+    Typed,
+
+    /// <summary>An <see cref="Endpoint"/> descriptor exists but no model is annotated; reachable through <c>Raw</c>.</summary>
+    RawOnly,
+
+    /// <summary>No descriptor; the operation is allow-listed in <c>known-unmodelled.json</c> with a reason.</summary>
+    Pending,
+
+    /// <summary>No descriptor and no allow-list entry: the contract tests fail.</summary>
+    Missing,
+}
+
+/// <summary>One row of the coverage table.</summary>
+/// <param name="Operation">The documented operation.</param>
+/// <param name="Descriptor">The matching descriptor, by path and method, if any.</param>
+/// <param name="RequestModel">The annotated request model, if any.</param>
+/// <param name="ResponseModel">The response data type, if known.</param>
+/// <param name="Status">The status.</param>
+/// <param name="Note">The allow-list reason, or other remarks.</param>
+public sealed record CoverageRow(OperationSummary Operation, Endpoint? Descriptor, Type? RequestModel, Type? ResponseModel, CoverageStatus Status, string Note);
+
+/// <summary>Joins <c>endpoints.json</c> with the library, by reflection over the built core assembly, into <c>docs/api-coverage.md</c>.</summary>
+public static class CoverageReport
+{
+    /// <summary>Computes one row per documented operation.</summary>
+    public static IReadOnlyList<CoverageRow> Rows(EndpointsDocument endpoints, KnownUnmodelledDocument known, Assembly coreAssembly)
+    {
+        ArgumentNullException.ThrowIfNull(endpoints);
+        ArgumentNullException.ThrowIfNull(known);
+        IReadOnlyList<AnnotatedModel> models = ModelDiscovery.Find(coreAssembly);
+        IReadOnlyCollection<Endpoint> descriptors = Descriptors(coreAssembly);
+        List<CoverageRow> rows = [];
+
+        foreach (OperationSummary op in endpoints.Operations.OrderBy(o => o.Path, StringComparer.Ordinal).ThenBy(o => o.Method, StringComparer.Ordinal))
+        {
+            Endpoint? descriptor = descriptors.FirstOrDefault(e => string.Equals(e.Path, op.Path, StringComparison.Ordinal) && string.Equals(e.Method.Method, op.Method, StringComparison.OrdinalIgnoreCase));
+            AnnotatedModel? request = models.FirstOrDefault(m => m.Role == ModelRole.Request && string.Equals(m.Path, op.Path, StringComparison.Ordinal));
+            AnnotatedModel? response = models.FirstOrDefault(m => m.Role == ModelRole.Response && string.Equals(m.Path, op.Path, StringComparison.Ordinal));
+            Type? responseType = request?.ResponseDataType ?? response?.ResponseDataType;
+            KnownUnmodelledEntry? entry = known.ForOperation(op.Path, op.Method);
+
+            CoverageStatus status;
+            List<string> notes = [];
+            if (request is not null || response is not null)
+            {
+                status = CoverageStatus.Typed;
+            }
+            else if (descriptor is not null)
+            {
+                status = CoverageStatus.RawOnly;
+            }
+            else if (entry is not null)
+            {
+                status = CoverageStatus.Pending;
+            }
+            else
+            {
+                status = CoverageStatus.Missing;
+                notes.Add("no descriptor and no known-unmodelled.json entry");
+            }
+
+            if (entry is not null)
+            {
+                notes.Add(entry.Reason);
+            }
+
+            if (!op.IsParsed)
+            {
+                notes.Add("OpenAPI fragment did not parse");
+            }
+
+            if (op.Deprecated)
+            {
+                notes.Add("deprecated by SMTP2GO");
+            }
+
+            if (op.RateLimitNote is not null)
+            {
+                notes.Add(string.Create(CultureInfo.InvariantCulture, $"{op.RateLimitNote.Limit} per {op.RateLimitNote.Per}"));
+            }
+
+            rows.Add(new CoverageRow(op, descriptor, request?.Type, responseType, status, string.Join("; ", notes)));
+        }
+
+        return rows;
+    }
+
+    /// <summary>Renders the Markdown page.</summary>
+    public static string Generate(EndpointsDocument endpoints, KnownUnmodelledDocument known, Assembly coreAssembly)
+    {
+        ArgumentNullException.ThrowIfNull(endpoints);
+        ArgumentNullException.ThrowIfNull(known);
+        ArgumentNullException.ThrowIfNull(coreAssembly);
+
+        IReadOnlyList<CoverageRow> rows = Rows(endpoints, known, coreAssembly);
+        IReadOnlyList<Type> eventTypes = ModelDiscovery.WebhookEventTypes(coreAssembly);
+        HashSet<string> eventWireNames = new(eventTypes.SelectMany(ModelDiscovery.WireNames), StringComparer.Ordinal);
+
+        StringBuilder sb = new();
+        sb.Append("# API coverage\n\n");
+        sb.Append("Generated by `dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -- coverage` from `docs/api-spec/endpoints.json` ");
+        sb.Append("and the built `Scott.Mail.Smtp2Go` assembly; do not edit by hand. `CoverageTests` in the contract test project fails when this file is stale.\n\n");
+        sb.Append(Invariant($"SMTP2GO API v{endpoints.ApiVersion ?? "?"}: {rows.Count} documented operations. "));
+        sb.Append(Invariant($"{Count(rows, CoverageStatus.Typed)} typed, {Count(rows, CoverageStatus.RawOnly)} raw-only, {Count(rows, CoverageStatus.Pending)} pending, {Count(rows, CoverageStatus.Missing)} missing.\n\n"));
+        sb.Append("Status: **typed** = a model carries `[Smtp2GoEndpoint]` for the path; **raw-only** = an `EndpointTable` descriptor exists, call it through `client.Raw`; ");
+        sb.Append("**pending** = no descriptor yet, allow-listed in `docs/api-spec/known-unmodelled.json` with the reason shown; **missing** = neither, the contract tests fail.\n\n");
+
+        sb.Append("| Endpoint | Method | Descriptor | Request model | Response model | Status | Note |\n");
+        sb.Append("| :-- | :-- | :-- | :-- | :-- | :-- | :-- |\n");
+        foreach (CoverageRow row in rows)
+        {
+            sb.Append("| `").Append(row.Operation.Path).Append("` | ").Append(row.Operation.Method)
+              .Append(" | ").Append(row.Descriptor is null ? "no" : "yes")
+              .Append(" | ").Append(row.RequestModel is null ? "-" : "`" + ModelDiscovery.FriendlyName(row.RequestModel) + "`")
+              .Append(" | ").Append(row.ResponseModel is null ? "-" : "`" + ModelDiscovery.FriendlyName(row.ResponseModel) + "`")
+              .Append(" | ").Append(Label(row.Status))
+              .Append(" | ").Append(Escape(row.Note))
+              .Append(" |\n");
+        }
+
+        sb.Append("\n## Webhook callbacks\n\n");
+        sb.Append("Parameters documented on the webhooks overview page against the wire names of the `WebhookEvent` hierarchy");
+        sb.Append(eventTypes.Count == 0 ? " (not in the assembly yet).\n\n" : Invariant($" ({eventTypes.Count} types).\n\n"));
+        sb.Append("| Callback | Parameters | Modelled | Allow-listed | Status |\n");
+        sb.Append("| :-- | :-- | :-- | :-- | :-- |\n");
+        foreach (CallbackSummary callback in endpoints.Callbacks.OrderBy(c => c.Path, StringComparer.Ordinal))
+        {
+            int modelled = callback.Parameters.Count(p => eventWireNames.Contains(p.Name));
+            int allowListed = callback.Parameters.Count(p => !eventWireNames.Contains(p.Name) && (known.ForCallbackField(callback.Path, p.Name) is not null || known.ForOperation(callback.Path, "CALLBACK") is not null));
+            string status = modelled == callback.Parameters.Count ? "typed" : modelled + allowListed == callback.Parameters.Count ? (modelled == 0 ? "pending" : "partial") : "missing";
+            sb.Append("| `").Append(callback.Path).Append("` | ").Append(callback.Parameters.Count.ToString(CultureInfo.InvariantCulture))
+              .Append(" | ").Append(modelled.ToString(CultureInfo.InvariantCulture))
+              .Append(" | ").Append(allowListed.ToString(CultureInfo.InvariantCulture))
+              .Append(" | ").Append(status).Append(" |\n");
+        }
+
+        if (endpoints.UnparsedPages.Count > 0 || endpoints.PagesWithoutSpec.Count > 0)
+        {
+            sb.Append("\n## Pages\n\n");
+            foreach (PageNote page in endpoints.UnparsedPages)
+            {
+                sb.Append("- `").Append(page.Page).Append("`: OpenAPI block did not parse (").Append(Escape(page.Error)).Append(")\n");
+            }
+
+            if (endpoints.PagesWithoutSpec.Count > 0)
+            {
+                sb.Append("- Reference pages without an OpenAPI block: ").Append(string.Join(", ", endpoints.PagesWithoutSpec.Select(p => "`" + p + "`"))).Append('\n');
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    /// <summary>Reads <c>EndpointTable.All</c> from <paramref name="coreAssembly"/>.</summary>
+    public static IReadOnlyCollection<Endpoint> Descriptors(Assembly coreAssembly)
+    {
+        ArgumentNullException.ThrowIfNull(coreAssembly);
+        Type table = coreAssembly.GetType(typeof(EndpointTable).FullName!) ?? throw new InvalidOperationException("EndpointTable not found in " + coreAssembly.FullName);
+        PropertyInfo all = table.GetProperty(nameof(EndpointTable.All), BindingFlags.Public | BindingFlags.Static) ?? throw new InvalidOperationException("EndpointTable.All not found.");
+        return (IReadOnlyCollection<Endpoint>)all.GetValue(null)!;
+    }
+
+    private static int Count(IReadOnlyList<CoverageRow> rows, CoverageStatus status) => rows.Count(r => r.Status == status);
+
+    private static string Label(CoverageStatus status)
+    {
+        return status switch
+        {
+            CoverageStatus.Typed => "typed",
+            CoverageStatus.RawOnly => "raw-only",
+            CoverageStatus.Pending => "pending",
+            _ => "**missing**",
+        };
+    }
+
+    private static string Escape(string text)
+    {
+        return text.Replace("|", "\\|", StringComparison.Ordinal).Replace("\n", " ", StringComparison.Ordinal);
+    }
+
+    private static string Invariant(FormattableString value) => FormattableString.Invariant(value);
+}

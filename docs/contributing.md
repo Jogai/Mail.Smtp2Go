@@ -53,7 +53,7 @@ dotnet test --project test/Scott.Mail.Smtp2Go.Tests.Contract
 ```
 
 1. Read the diff: added or removed operations, request and response properties, deprecations, rate-limit notes, `subaccount_id` support, and the webhook callback parameters (`callbacks/email`, `callbacks/sms`).
-2. Update the models. Every request record carries `[Smtp2GoEndpoint("family/op")]` (for an endpoint without a request body, the response data record carries it); the tests find models through that attribute and the client interfaces, so a new property only needs its `[JsonPropertyName]`. Add or adjust the `EndpointTable` descriptor when the method, `subaccount_id` support or rate limit changed.
+2. Update the models. Every request record carries `[Smtp2GoEndpoint("family/op")]` (for an endpoint without a request body, the response data record carries it); the tests find models through that attribute and the client interfaces, so a new property only needs its `[JsonPropertyName]`. Add or adjust the `EndpointTable` descriptor when the method, `subaccount_id` support or rate limit changed; descriptors are keyed by path and method, so a path documented as both `POST` and `PATCH` gets two rows.
 3. Edit `docs/api-spec/known-unmodelled.json` only with a reason. A whole-operation entry (no `scope`) says "not implemented yet"; delete it when the family lands. A `request`, `response` or `callback` entry with a `field` says "documented, deliberately not modelled"; a `response` entry with `fixture` says "the docs example is wrong, test this live fixture instead". `CoverageTests` fails on stale entries.
 4. Regenerate the coverage page and commit it with the snapshot:
 

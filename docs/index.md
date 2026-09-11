@@ -8,6 +8,7 @@
 - [Webhooks](webhooks.md): registering webhooks, choosing JSON output, authentication, the callback parser and event types, docs-versus-live names.
 - [Reporting](reporting.md): `client.Stats` (six endpoints, `GetQuotaAsync`), `client.Activity` (search, paging, the 60/min throttle).
 - [Archive](archive.md): searching archived email, the indexing delay, downloading originals, the demo.
+- [Account management and SMS](account-management.md): API keys, SMTP users, authenticated IPs, sender domains, single senders, allowed senders and recipients, subaccounts, dedicated IPs, SMS.
 - [API notes](api-notes.md): every place the live API and the documentation disagree, with what the library does about it.
 - [API coverage](api-coverage.md): generated table of every SMTP2GO endpoint and the client member that covers it.
 - [Contributing](contributing.md): SDK setup, build, test, pack, release.

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <UserSecretsId>Scott.Mail.Smtp2Go.Demo.WebhookReceiver</UserSecretsId>
+    <!-- CA1848/CA1873: the sample logs with plain ILogger calls for readability; the package itself uses [LoggerMessage]. -->
+    <NoWarn>$(NoWarn);CA1848;CA1873</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Scott.Mail.Smtp2Go.AspNetCore\Scott.Mail.Smtp2Go.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

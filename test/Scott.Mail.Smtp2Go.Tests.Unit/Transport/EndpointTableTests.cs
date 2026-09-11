@@ -38,15 +38,31 @@ public class EndpointTableTests
     [Fact]
     public void Email_family_is_seeded()
     {
-        EndpointTable.All.Select(e => e.Path).Should().BeEquivalentTo(
+        IEnumerable<Endpoint> email = EndpointTable.All.Where(e => e.Path.StartsWith("email/", StringComparison.Ordinal));
+        email.Select(e => e.Path).Should().BeEquivalentTo(
             "email/send", "email/mime", "email/batch", "email/search", "email/scheduled/search", "email/scheduled/remove");
-        EndpointTable.All.Where(e => e.Path is "email/send" or "email/mime" or "email/batch").Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.EmailMaxBodyBytes && !e.Idempotent);
-        EndpointTable.All.Where(e => e.Path is "email/search" or "email/scheduled/search" or "email/scheduled/remove").Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.DefaultMaxBodyBytes);
-        EndpointTable.All.Where(e => e.Path is "email/search" or "email/scheduled/search").Should().OnlyContain(e => e.Idempotent);
+        email.Where(e => e.Path is "email/send" or "email/mime" or "email/batch").Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.EmailMaxBodyBytes && !e.Idempotent);
+        email.Where(e => e.Path is "email/search" or "email/scheduled/search" or "email/scheduled/remove").Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.DefaultMaxBodyBytes);
+        email.Where(e => e.Path is "email/search" or "email/scheduled/search").Should().OnlyContain(e => e.Idempotent);
         EndpointTable.Get("email/scheduled/remove").Idempotent.Should().BeFalse();
-        EndpointTable.All.Should().OnlyContain(e => e.Method == HttpMethod.Post && !e.AcceptsSubaccountId);
+        email.Should().OnlyContain(e => e.Method == HttpMethod.Post && !e.AcceptsSubaccountId);
         EndpointTable.Get("email/search").RateLimit.Should().Be(RateLimitClass.EmailSearch);
-        EndpointTable.All.Where(e => e.Path != "email/search").Should().OnlyContain(e => e.RateLimit == RateLimitClass.None);
+        email.Where(e => e.Path != "email/search").Should().OnlyContain(e => e.RateLimit == RateLimitClass.None);
+    }
+
+    [Fact]
+    public void Every_endpoint_outside_email_has_the_default_body_limit_and_posts()
+    {
+        EndpointTable.All.Where(e => !e.Path.StartsWith("email/", StringComparison.Ordinal)).Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.DefaultMaxBodyBytes && e.Method == HttpMethod.Post);
+    }
+
+    [Fact]
+    public void Webhook_family_is_seeded()
+    {
+        IEnumerable<Endpoint> webhooks = EndpointTable.All.Where(e => e.Path.StartsWith("webhook/", StringComparison.Ordinal));
+        webhooks.Select(e => e.Path).Should().BeEquivalentTo("webhook/view", "webhook/add", "webhook/edit", "webhook/remove");
+        webhooks.Should().OnlyContain(e => e.AcceptsSubaccountId && e.RateLimit == RateLimitClass.None);
+        webhooks.Where(e => e.Idempotent).Select(e => e.Path).Should().Equal("webhook/view");
     }
 
     [Theory]

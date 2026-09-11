@@ -1,0 +1,10 @@
+{
+  "url": "https://example.com/hooks/smtp2go",
+  "events": ["processed", "delivered", "bounce", "open", "click", "spam", "unsubscribe", "resubscribe", "reject"],
+  "sms_events": ["sending", "submitted", "delivered", "failed", "rejected", "opt_out"],
+  "headers": ["X-Campaign", "X-Customer-Id"],
+  "usernames": ["api-5BFDE1E62529", "smtpuser"],
+  "output_format": "json",
+  "auth_header_type": "bearer",
+  "auth_header_value": "s3cr3t-token"
+}

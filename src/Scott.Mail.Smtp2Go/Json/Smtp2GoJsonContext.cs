@@ -16,7 +16,7 @@ namespace Scott.Mail.Smtp2Go.Json;
     PropertyNameCaseInsensitive = true,
     ReadCommentHandling = JsonCommentHandling.Skip,
     NumberHandling = JsonNumberHandling.AllowReadingFromString,
-    Converters = new[] { typeof(Smtp2GoDateTimeOffsetConverter) })]
+    Converters = new[] { typeof(Smtp2GoDateTimeOffsetConverter), typeof(WebhookListConverter) })]
 
 // Raw payloads usable with IRawClient for endpoints that have no typed model yet.
 [JsonSerializable(typeof(JsonElement))]
@@ -51,6 +51,13 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(EmailSearchRequest))]
 [JsonSerializable(typeof(ApiResponse<EmailSearchResult>))]
 #pragma warning restore CS0618
+
+// Webhooks (management)
+[JsonSerializable(typeof(WebhookAddRequest))]
+[JsonSerializable(typeof(WebhookEditRequest))]
+[JsonSerializable(typeof(WebhookRemoveRequest))]
+[JsonSerializable(typeof(ApiResponse<Webhook>))]
+[JsonSerializable(typeof(ApiResponse<IReadOnlyList<Webhook>>))]
 
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext

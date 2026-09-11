@@ -1,0 +1,12 @@
+{
+  "request_id": "5b6c5cf6-9517-44fd-a273-9a62efb12e57",
+  "data": {
+    "url": "https://example.com/test-webhook-2",
+    "id": 4320,
+    "events": ["processed", "open", "spam"],
+    "headers": "X-Test-Header",
+    "usernames": "MyUser1",
+    "sms_events": [],
+    "output_format": "form"
+  }
+}

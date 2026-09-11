@@ -204,8 +204,12 @@ Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.PercentageConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter
 Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Smtp2GoDateTimeOffsetConverter() -> void
+Scott.Mail.Smtp2Go.Json.Converters.StringOrStringArrayConverter
+Scott.Mail.Smtp2Go.Json.Converters.StringOrStringArrayConverter.StringOrStringArrayConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>
 Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.TolerantEnumConverter() -> void
+Scott.Mail.Smtp2Go.Json.Converters.WebhookListConverter
+Scott.Mail.Smtp2Go.Json.Converters.WebhookListConverter.WebhookListConverter() -> void
 Scott.Mail.Smtp2Go.Percentage
 Scott.Mail.Smtp2Go.Percentage.Deconstruct(out decimal? Value, out string? Raw) -> void
 Scott.Mail.Smtp2Go.Percentage.Equals(Scott.Mail.Smtp2Go.Percentage other) -> bool
@@ -390,6 +394,106 @@ Scott.Mail.Smtp2Go.Transport.RateLimitClass.None = 0 -> Scott.Mail.Smtp2Go.Trans
 Scott.Mail.Smtp2Go.Transport.RateLimitClass.SubaccountAdd = 3 -> Scott.Mail.Smtp2Go.Transport.RateLimitClass
 Scott.Mail.Smtp2Go.Transport.RequestOptionKeys
 Scott.Mail.Smtp2Go.Transport.Smtp2GoActivitySource
+Scott.Mail.Smtp2Go.Webhook
+Scott.Mail.Smtp2Go.Webhook.<Clone>$() -> Scott.Mail.Smtp2Go.Webhook!
+Scott.Mail.Smtp2Go.Webhook.AuthHeaderType.get -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType?
+Scott.Mail.Smtp2Go.Webhook.AuthHeaderType.init -> void
+Scott.Mail.Smtp2Go.Webhook.AuthHeaderValue.get -> string?
+Scott.Mail.Smtp2Go.Webhook.AuthHeaderValue.init -> void
+Scott.Mail.Smtp2Go.Webhook.Equals(Scott.Mail.Smtp2Go.Webhook? other) -> bool
+Scott.Mail.Smtp2Go.Webhook.Events.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookEmailEvent>?
+Scott.Mail.Smtp2Go.Webhook.Events.init -> void
+Scott.Mail.Smtp2Go.Webhook.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.Webhook.Extra.set -> void
+Scott.Mail.Smtp2Go.Webhook.Headers.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.Webhook.Headers.init -> void
+Scott.Mail.Smtp2Go.Webhook.Id.get -> long?
+Scott.Mail.Smtp2Go.Webhook.Id.init -> void
+Scott.Mail.Smtp2Go.Webhook.OutputFormat.get -> Scott.Mail.Smtp2Go.WebhookOutputFormat?
+Scott.Mail.Smtp2Go.Webhook.OutputFormat.init -> void
+Scott.Mail.Smtp2Go.Webhook.SmsEvents.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookSmsEvent>?
+Scott.Mail.Smtp2Go.Webhook.SmsEvents.init -> void
+Scott.Mail.Smtp2Go.Webhook.Url.get -> string?
+Scott.Mail.Smtp2Go.Webhook.Url.init -> void
+Scott.Mail.Smtp2Go.Webhook.Usernames.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.Webhook.Usernames.init -> void
+Scott.Mail.Smtp2Go.Webhook.Webhook() -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest
+Scott.Mail.Smtp2Go.WebhookAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.WebhookAddRequest!
+Scott.Mail.Smtp2Go.WebhookAddRequest.AuthHeaderType.get -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType?
+Scott.Mail.Smtp2Go.WebhookAddRequest.AuthHeaderType.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.AuthHeaderValue.get -> string?
+Scott.Mail.Smtp2Go.WebhookAddRequest.AuthHeaderValue.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.Equals(Scott.Mail.Smtp2Go.WebhookAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.WebhookAddRequest.Events.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookEmailEvent>?
+Scott.Mail.Smtp2Go.WebhookAddRequest.Events.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.Headers.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.WebhookAddRequest.Headers.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.OutputFormat.get -> Scott.Mail.Smtp2Go.WebhookOutputFormat?
+Scott.Mail.Smtp2Go.WebhookAddRequest.OutputFormat.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.SmsEvents.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookSmsEvent>?
+Scott.Mail.Smtp2Go.WebhookAddRequest.SmsEvents.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.Url.get -> string!
+Scott.Mail.Smtp2Go.WebhookAddRequest.Url.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.Usernames.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.WebhookAddRequest.Usernames.init -> void
+Scott.Mail.Smtp2Go.WebhookAddRequest.WebhookAddRequest() -> void
+Scott.Mail.Smtp2Go.WebhookAuthHeaderType
+Scott.Mail.Smtp2Go.WebhookAuthHeaderType.Basic = 2 -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType
+Scott.Mail.Smtp2Go.WebhookAuthHeaderType.Bearer = 3 -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType
+Scott.Mail.Smtp2Go.WebhookAuthHeaderType.None = 1 -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType
+Scott.Mail.Smtp2Go.WebhookAuthHeaderType.Unknown = 0 -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType
+Scott.Mail.Smtp2Go.WebhookEditRequest
+Scott.Mail.Smtp2Go.WebhookEditRequest.<Clone>$() -> Scott.Mail.Smtp2Go.WebhookEditRequest!
+Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderType.get -> Scott.Mail.Smtp2Go.WebhookAuthHeaderType?
+Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderType.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderValue.get -> string?
+Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderValue.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.Equals(Scott.Mail.Smtp2Go.WebhookEditRequest? other) -> bool
+Scott.Mail.Smtp2Go.WebhookEditRequest.Events.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookEmailEvent>?
+Scott.Mail.Smtp2Go.WebhookEditRequest.Events.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.Headers.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.WebhookEditRequest.Headers.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.Id.get -> long
+Scott.Mail.Smtp2Go.WebhookEditRequest.Id.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.OutputFormat.get -> Scott.Mail.Smtp2Go.WebhookOutputFormat?
+Scott.Mail.Smtp2Go.WebhookEditRequest.OutputFormat.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.SmsEvents.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookSmsEvent>?
+Scott.Mail.Smtp2Go.WebhookEditRequest.SmsEvents.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.Url.get -> string?
+Scott.Mail.Smtp2Go.WebhookEditRequest.Url.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.Usernames.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.WebhookEditRequest.Usernames.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.WebhookEditRequest() -> void
+Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Bounce = 5 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Click = 4 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Delivered = 2 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Open = 3 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Processed = 1 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Reject = 9 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Resubscribe = 8 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Spam = 6 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Unknown = 0 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookEmailEvent.Unsubscribe = 7 -> Scott.Mail.Smtp2Go.WebhookEmailEvent
+Scott.Mail.Smtp2Go.WebhookOutputFormat
+Scott.Mail.Smtp2Go.WebhookOutputFormat.Form = 1 -> Scott.Mail.Smtp2Go.WebhookOutputFormat
+Scott.Mail.Smtp2Go.WebhookOutputFormat.Json = 2 -> Scott.Mail.Smtp2Go.WebhookOutputFormat
+Scott.Mail.Smtp2Go.WebhookOutputFormat.Unknown = 0 -> Scott.Mail.Smtp2Go.WebhookOutputFormat
+Scott.Mail.Smtp2Go.WebhookRemoveRequest
+Scott.Mail.Smtp2Go.WebhookRemoveRequest.<Clone>$() -> Scott.Mail.Smtp2Go.WebhookRemoveRequest!
+Scott.Mail.Smtp2Go.WebhookRemoveRequest.Equals(Scott.Mail.Smtp2Go.WebhookRemoveRequest? other) -> bool
+Scott.Mail.Smtp2Go.WebhookRemoveRequest.Id.get -> long
+Scott.Mail.Smtp2Go.WebhookRemoveRequest.Id.init -> void
+Scott.Mail.Smtp2Go.WebhookRemoveRequest.WebhookRemoveRequest() -> void
+Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.Delivered = 3 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.Failed = 4 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.OptOut = 6 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.Rejected = 5 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.Sending = 1 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.Submitted = 2 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
+Scott.Mail.Smtp2Go.WebhookSmsEvent.Unknown = 0 -> Scott.Mail.Smtp2Go.WebhookSmsEvent
 const Scott.Mail.Smtp2Go.EmailBatchRequest.MaxEmails = 1000 -> int
 const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
 const Scott.Mail.Smtp2Go.Transport.Endpoint.EmailMaxBodyBytes = 52428800 -> long
@@ -437,8 +541,12 @@ override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Read(ref System.
 override Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter.Write(System.Text.Json.Utf8JsonWriter! writer, Scott.Mail.Smtp2Go.Percentage value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.DateTimeOffset
 override Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter.Write(System.Text.Json.Utf8JsonWriter! writer, System.DateTimeOffset value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Json.Converters.StringOrStringArrayConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.Collections.Generic.IReadOnlyList<string!>?
+override Scott.Mail.Smtp2Go.Json.Converters.StringOrStringArrayConverter.Write(System.Text.Json.Utf8JsonWriter! writer, System.Collections.Generic.IReadOnlyList<string!>! value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> TEnum
 override Scott.Mail.Smtp2Go.Json.Converters.TolerantEnumConverter<TEnum>.Write(System.Text.Json.Utf8JsonWriter! writer, TEnum value, System.Text.Json.JsonSerializerOptions! options) -> void
+override Scott.Mail.Smtp2Go.Json.Converters.WebhookListConverter.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Webhook!>?
+override Scott.Mail.Smtp2Go.Json.Converters.WebhookListConverter.Write(System.Text.Json.Utf8JsonWriter! writer, System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Webhook!>! value, System.Text.Json.JsonSerializerOptions! options) -> void
 override Scott.Mail.Smtp2Go.Percentage.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.RequestOptions.GetHashCode() -> int
@@ -455,6 +563,18 @@ override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
+override Scott.Mail.Smtp2Go.Webhook.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Webhook.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Webhook.ToString() -> string!
+override Scott.Mail.Smtp2Go.WebhookAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.WebhookAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.WebhookAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.WebhookEditRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.WebhookEditRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.WebhookEditRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.WebhookRemoveRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.WebhookRemoveRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.WebhookRemoveRequest.ToString() -> string!
 static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.Attachment.FromBase64(string! filename, string! fileblob, string? mimetype = null) -> Scott.Mail.Smtp2Go.Attachment!
@@ -521,6 +641,15 @@ static Scott.Mail.Smtp2Go.Transport.EndpointTable.Get(string! path) -> Scott.Mai
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.TryGet(string! path, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.GetAllowRetry(System.Net.Http.HttpRequestMessage! request) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.TryGetEndpoint(System.Net.Http.HttpRequestMessage! request, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
+static Scott.Mail.Smtp2Go.Webhook.operator !=(Scott.Mail.Smtp2Go.Webhook? left, Scott.Mail.Smtp2Go.Webhook? right) -> bool
+static Scott.Mail.Smtp2Go.Webhook.operator ==(Scott.Mail.Smtp2Go.Webhook? left, Scott.Mail.Smtp2Go.Webhook? right) -> bool
+static Scott.Mail.Smtp2Go.WebhookAddRequest.operator !=(Scott.Mail.Smtp2Go.WebhookAddRequest? left, Scott.Mail.Smtp2Go.WebhookAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.WebhookAddRequest.operator ==(Scott.Mail.Smtp2Go.WebhookAddRequest? left, Scott.Mail.Smtp2Go.WebhookAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.WebhookEditRequest.From(long id, Scott.Mail.Smtp2Go.WebhookAddRequest! request) -> Scott.Mail.Smtp2Go.WebhookEditRequest!
+static Scott.Mail.Smtp2Go.WebhookEditRequest.operator !=(Scott.Mail.Smtp2Go.WebhookEditRequest? left, Scott.Mail.Smtp2Go.WebhookEditRequest? right) -> bool
+static Scott.Mail.Smtp2Go.WebhookEditRequest.operator ==(Scott.Mail.Smtp2Go.WebhookEditRequest? left, Scott.Mail.Smtp2Go.WebhookEditRequest? right) -> bool
+static Scott.Mail.Smtp2Go.WebhookRemoveRequest.operator !=(Scott.Mail.Smtp2Go.WebhookRemoveRequest? left, Scott.Mail.Smtp2Go.WebhookRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.WebhookRemoveRequest.operator ==(Scott.Mail.Smtp2Go.WebhookRemoveRequest? left, Scott.Mail.Smtp2Go.WebhookRemoveRequest? right) -> bool
 ~override Scott.Mail.Smtp2Go.EmailAddress.Equals(object obj) -> bool
 ~override Scott.Mail.Smtp2Go.Percentage.Equals(object obj) -> bool
 ~override Scott.Mail.Smtp2Go.Percentage.ToString() -> string

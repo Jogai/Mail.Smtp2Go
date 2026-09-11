@@ -1,0 +1,12 @@
+{
+  "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
+  "data": {
+    "url": "https://example.com/webhook",
+    "id": 4317,
+    "events": ["spam"],
+    "sms_events": [],
+    "headers": [],
+    "usernames": [],
+    "output_format": "json"
+  }
+}

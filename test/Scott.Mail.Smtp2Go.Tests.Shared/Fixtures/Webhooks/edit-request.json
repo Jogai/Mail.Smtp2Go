@@ -1,0 +1,8 @@
+{
+  "id": 4320,
+  "url": "https://example.com/hooks/smtp2go-v2",
+  "events": ["processed", "open", "spam"],
+  "output_format": "form",
+  "auth_header_type": "basic",
+  "auth_header_value": "dXNlcjpwYXNz"
+}

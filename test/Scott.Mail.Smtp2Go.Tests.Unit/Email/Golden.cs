@@ -9,13 +9,19 @@ internal static class Golden
 {
     private static readonly string[] s_forbiddenProperties = ["api_key", "version"];
 
-    /// <summary>Asserts <paramref name="actualJson"/> equals the fixture once both are normalised to compact form, and that it carries no forbidden content.</summary>
+    /// <summary>Asserts <paramref name="actualJson"/> equals the <c>Fixtures/Email/</c> fixture once both are normalised to compact form, and that it carries no forbidden content.</summary>
     public static void AssertMatches(string actualJson, string fixtureName)
     {
-        JsonNode actual = JsonNode.Parse(actualJson)!;
-        JsonNode expected = JsonNode.Parse(Fixture.Read("Email/" + fixtureName))!;
+        AssertMatchesFixture(actualJson, "Email/" + fixtureName);
+    }
 
-        actual.ToJsonString().Should().Be(expected.ToJsonString(), because: "the payload must match Fixtures/Email/{0} exactly", fixtureName);
+    /// <summary>Asserts <paramref name="actualJson"/> equals the fixture at <paramref name="relativePath"/> (under <c>Fixtures/</c>) once both are normalised to compact form, and that it carries no forbidden content.</summary>
+    public static void AssertMatchesFixture(string actualJson, string relativePath)
+    {
+        JsonNode actual = JsonNode.Parse(actualJson)!;
+        JsonNode expected = JsonNode.Parse(Fixture.Read(relativePath))!;
+
+        actual.ToJsonString().Should().Be(expected.ToJsonString(), because: "the payload must match Fixtures/{0} exactly", relativePath);
         AssertNothingUndocumented(actual);
     }
 

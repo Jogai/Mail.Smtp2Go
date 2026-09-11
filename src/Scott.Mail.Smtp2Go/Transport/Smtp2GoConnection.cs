@@ -24,13 +24,16 @@ internal sealed class Smtp2GoConnection
     private readonly Smtp2GoClientOptions _options;
     private readonly ISmtp2GoDiagnostics _diagnostics;
     private readonly JsonSerializerOptions _json;
+    private readonly TimeProvider _timeProvider;
+    private readonly Dictionary<RateLimitClass, RateLimitThrottle?> _throttles = new();
 
-    public Smtp2GoConnection(HttpClient http, Smtp2GoClientOptions options, ISmtp2GoDiagnostics? diagnostics)
+    public Smtp2GoConnection(HttpClient http, Smtp2GoClientOptions options, ISmtp2GoDiagnostics? diagnostics, TimeProvider? timeProvider = null)
     {
         _http = http;
         _options = options;
         _diagnostics = diagnostics ?? NullSmtp2GoDiagnostics.Instance;
         _json = CreateJsonOptions(options.AdditionalJsonTypeInfoResolver);
+        _timeProvider = timeProvider ?? TimeProvider.System;
     }
 
     /// <summary>The client options, for family clients that apply defaults such as <see cref="Smtp2GoClientOptions.DefaultFastAccept"/>.</summary>
@@ -38,6 +41,38 @@ internal sealed class Smtp2GoConnection
 
     /// <summary>The serializer options in effect: the library context, optionally combined with <see cref="Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver"/>.</summary>
     public JsonSerializerOptions JsonOptions => _json;
+
+    /// <summary>The <see cref="HttpClient"/> this connection sends with, for family clients that fetch non-API URLs (archive downloads).</summary>
+    public HttpClient Http => _http;
+
+    /// <summary>The API key header name.</summary>
+    public static string ApiKeyHeader => ApiKeyHeaderName;
+
+    /// <summary>The client-side throttle for <paramref name="rateLimitClass"/>, shared by every call through this connection; <see langword="null"/> when the class has no limit or <see cref="Smtp2GoClientOptions.ClientSideRateLimiting"/> is off.</summary>
+    public RateLimitThrottle? GetThrottle(RateLimitClass rateLimitClass)
+    {
+        if (!_options.ClientSideRateLimiting || rateLimitClass == RateLimitClass.None)
+        {
+            return null;
+        }
+
+        lock (_throttles)
+        {
+            if (!_throttles.TryGetValue(rateLimitClass, out RateLimitThrottle? throttle))
+            {
+                throttle = RateLimitThrottle.Create(rateLimitClass, _timeProvider);
+                _throttles[rateLimitClass] = throttle;
+            }
+
+            return throttle;
+        }
+    }
+
+    /// <summary>Resolves the API key the way a call would (per-call override, then options).</summary>
+    public string GetApiKey(RequestOptions? options)
+    {
+        return ResolveApiKey(options);
+    }
 
     /// <summary>Sends <paramref name="body"/> to <paramref name="endpoint"/> and parses the envelope.</summary>
     /// <exception cref="Smtp2GoValidationException">Client-side validation failed; nothing was sent.</exception>

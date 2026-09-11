@@ -10,6 +10,9 @@ public interface ISmtp2GoClient
     /// <summary>Sending: <c>email/send</c>, <c>email/mime</c>, <c>email/batch</c>, scheduled search and remove.</summary>
     IEmailClient Email { get; }
 
+    /// <summary>Activity search: <c>activity/search</c>, every event of every email.</summary>
+    IActivityClient Activity { get; }
+
     /// <summary>Webhook management: <c>webhook/view</c>, <c>webhook/add</c>, <c>webhook/edit</c>, <c>webhook/remove</c>.</summary>
     IWebhookClient Webhooks { get; }
 

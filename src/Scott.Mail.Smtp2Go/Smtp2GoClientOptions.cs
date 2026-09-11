@@ -33,6 +33,13 @@ public sealed class Smtp2GoClientOptions
     public bool ClientSideValidation { get; set; } = true;
 
     /// <summary>
+    /// Whether the client throttles calls to rate-limited endpoints itself (a token bucket per <see cref="Transport.RateLimitClass"/>, for example 60 per minute for
+    /// <c>activity/search</c>) so that paging helpers never trip the documented limits. Default <see langword="true"/>. Turn it off when a resilience pipeline
+    /// (the dependency injection package) does the throttling.
+    /// </summary>
+    public bool ClientSideRateLimiting { get; set; } = true;
+
+    /// <summary>
     /// An extra source-generated <see cref="System.Text.Json.Serialization.JsonSerializerContext"/> (or any resolver) whose types become usable with the raw
     /// client's typed overload, for endpoints this library has no model for. Register both the request type and <c>ApiResponse&lt;TResponse&gt;</c> in it.
     /// The library's own context is always consulted first.

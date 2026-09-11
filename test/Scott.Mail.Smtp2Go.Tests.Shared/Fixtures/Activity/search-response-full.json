@@ -1,0 +1,44 @@
+{
+  "request_id": "4b661d88-6b2d-11eb-8bb3-f23c92bb31d3",
+  "data": {
+    "continue_token": "eyJwYWdlIjoyfQ==",
+    "total_events": 23405,
+    "events": [
+      {
+        "from": "no-reply@example.com",
+        "recipient": "someone@example.com",
+        "subaccount_name": "Master account",
+        "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+        "date": "2021-02-09T12:18:53Z",
+        "event": "processed",
+        "recipients": ["someone@example.com", "someoneelse@example.com"],
+        "subject": "Booking Confirmation",
+        "username": "smtpuser",
+        "reply_to": "reply@example.com",
+        "sender": "no-reply@example.com",
+        "sender_full": "NoReply <no-reply@example.com>",
+        "to": "otherperson@example.com",
+        "cc": "cc@example.com",
+        "bcc": "bcc@example.com",
+        "smtp_response": "250 Message received",
+        "reason": "This was a spam email",
+        "host": "127.0.0.1",
+        "originating_host": "127.0.0.2",
+        "error": "i/o timeout",
+        "email_client": {"name": "Gmail", "device": "Desktop"},
+        "metadata": {"link": "https://example.com"},
+        "outbound_ip": "203.0.113.5",
+        "byte_size": 1422,
+        "headers": "Content-Type: text/html\nTo: to@example.com",
+        "custom_headers": {"X-MyCustomID": "01HMSACEHXHDG4X1CZV89SQMP7"},
+        "delivery_attempts": [
+          {"smtptime": "2021-02-09T12:18:54Z", "host": "mx.example.com", "smtpresponse": "451 4.7.1 try again later"},
+          {"smtptime": "2021-02-09T12:28:54Z", "host": "mx.example.com", "smtpresponse": "250 OK"}
+        ]
+      },
+      {"email_id": "1u0SwL-B9zBpi9ffUq-JAB3", "date": "2021-02-09T12:20:00Z", "event": "soft-bounced"},
+      {"email_id": "1u0SwL-B9zBpi9ffUq-JAB4", "date": "2021-02-09T12:21:00Z", "event": "hard-bounced"},
+      {"email_id": "1u0SwL-B9zBpi9ffUq-JAB5", "date": "2021-02-09T12:22:00Z", "event": "quarantined"}
+    ]
+  }
+}

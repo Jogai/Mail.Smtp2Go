@@ -6,3 +6,4 @@ JSON request/response samples used by the unit and contract tests.
 - `Json/timestamps.json`: every timestamp format observed in the API docs, with the expected UTC instant.
 - `Webhooks/`: the docs examples for `webhook/add`, `webhook/edit`, `webhook/view` and `webhook/remove` (plus the live array shape of `webhook/view`), and under `Webhooks/Docs/` and `Webhooks/Live/` the callback payloads in JSON and form encoding (see the README there).
 - `Stats/`: the docs' 200 examples of the six `stats/*` endpoints, a full `email_history` response built from its schema, and request goldens.
+- `Activity/`: the docs' `activity/search` 200 example, a full response built from its schema (every event property, delivery attempts, an unknown event name) and the request golden.

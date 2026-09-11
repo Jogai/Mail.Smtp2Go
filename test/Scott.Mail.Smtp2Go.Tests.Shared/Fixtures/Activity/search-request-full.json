@@ -1,0 +1,19 @@
+{
+  "start_date": "2026-09-01T00:00:00Z",
+  "end_date": "2026-09-11T00:00:00Z",
+  "search": "invoice | receipt",
+  "search_email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+  "search_subject": "Booking",
+  "search_sender": "no-reply@example.com",
+  "search_recipient": "someone@example.com",
+  "search_usernames": ["smtpuser", "api-5BFDE1E62529"],
+  "subaccounts": ["sub-1"],
+  "limit": 1000,
+  "continue_token": "eyJwYWdlIjoyfQ==",
+  "only_latest": true,
+  "only_latest_by_sent": false,
+  "event_types": ["processed", "soft-bounced", "hard-bounced", "rejected", "spam", "delivered", "unsubscribed", "resubscribed", "opened", "clicked"],
+  "include_headers": true,
+  "custom_headers": ["X-MyCustomID"],
+  "region": "eu"
+}

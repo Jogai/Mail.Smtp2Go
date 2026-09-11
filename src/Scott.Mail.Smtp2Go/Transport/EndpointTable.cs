@@ -70,6 +70,9 @@ public static class EndpointTable
         Add(table, new Endpoint("stats/email_unsubs", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("stats/email_history", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // Activity (filters by a subaccounts[] field, not subaccount_id; 60 requests per minute)
+        Add(table, new Endpoint("activity/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.ActivitySearch, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

@@ -11,6 +11,8 @@ permissions:
 env:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
   DOTNET_NOLOGO: 1
+  # Packages built here are previews (1.2.3-preview.N); releases come from publish.yml on a v* tag.
+  SMTP2GO_VERSION_SUFFIX: preview.${{ github.run_number }}
 
 jobs:
   build:

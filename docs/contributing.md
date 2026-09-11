@@ -62,3 +62,13 @@ dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -- coverage
 ```
 
 `harvest --cache <dir>` keeps the downloaded pages for offline re-runs; `harvest --source <dir>` reads a directory laid out like the site (`llms.txt`, `reference/*.md`, `docs/webhooks-overview.md`). A page whose OpenAPI block does not parse is listed under `unparsedPages` in `endpoints.json` with its prose, and the run still succeeds.
+
+## Releasing
+
+Versions are tag-driven. The three packages share one version, `VersionPrefix` in the root `Directory.Build.props`; every other build (the `ci` workflow, a local `dotnet pack`) appends the `SMTP2GO_VERSION_SUFFIX` environment variable when it is set (`ci` uses `preview.<run number>`), so only a tag build produces a stable version.
+
+1. Move every entry of each `PublicAPI.Unshipped.txt` (including the per-target supplements under `src/Scott.Mail.Smtp2Go/PublicAPI/`) into the `PublicAPI.Shipped.txt` next to it, leaving `#nullable enable` as the only line of the unshipped file. `eng/check-unshipped-api.sh` fails while anything is still unshipped; the publish workflow runs it on every tag build.
+2. Rename the `[Unreleased]` section of `CHANGELOG.md` to the version and today's date, and add an empty `[Unreleased]` above it.
+3. Set `VersionPrefix` to the version being released (it normally already is: bump it right after a release, so `master` builds carry the next version as a preview). After the first release, set `PackageValidationBaselineVersion` in `src/Directory.Build.props` to the previous release so package validation compares the new package against it.
+4. Commit, tag `v<version>` and push the tag: `git tag v1.0.0 && git push origin v1.0.0`. `publish.yml` restores in locked mode, builds and tests on Linux and Windows, packs with `ContinuousIntegrationBuild`, builds the `net48` consumer in `test/compat/` against the packed core package, verifies the package contents, pushes the three packages to nuget.org with the `NUGET_API_KEY` repository secret and creates the GitHub release from the changelog section.
+5. Bump `VersionPrefix` on `master` to the next planned version.

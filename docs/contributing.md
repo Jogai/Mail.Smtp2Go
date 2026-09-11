@@ -40,3 +40,24 @@ The `demo/` project is the manual end-to-end check for the archive: see [archive
 - Every public member of a package is listed in that project's `PublicAPI.Unshipped.txt`; the build fails otherwise. Move entries to `PublicAPI.Shipped.txt` at release time.
 - Warnings are errors, code style is enforced in the build, namespaces are file-scoped.
 - Commits use conventional-commit prefixes (`feat`, `fix`, `test`, `docs`, `chore`, `ci`) and stay small.
+
+## When the API changes
+
+`docs/api-spec/` is a snapshot of the published API reference, harvested from [developers.smtp2go.com](https://developers.smtp2go.com/llms.txt) by `src/tools/Scott.Mail.Smtp2Go.SpecHarvester`. The `spec-drift` workflow re-harvests weekly and opens a pull request when the snapshot changes; the contract tests (`test/Scott.Mail.Smtp2Go.Tests.Contract`) then show which models disagree with the docs. To do the same by hand:
+
+```shell
+dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -- harvest --out docs/api-spec
+dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -- diff --against HEAD
+dotnet test --project test/Scott.Mail.Smtp2Go.Tests.Contract
+```
+
+1. Read the diff: added or removed operations, request and response properties, deprecations, rate-limit notes, `subaccount_id` support, and the webhook callback parameters (`callbacks/email`, `callbacks/sms`).
+2. Update the models. Every request record carries `[Smtp2GoEndpoint("family/op")]` (for an endpoint without a request body, the response data record carries it); the tests find models through that attribute and the client interfaces, so a new property only needs its `[JsonPropertyName]`. Add or adjust the `EndpointTable` descriptor when the method, `subaccount_id` support or rate limit changed.
+3. Edit `docs/api-spec/known-unmodelled.json` only with a reason. A whole-operation entry (no `scope`) says "not implemented yet"; delete it when the family lands. A `request`, `response` or `callback` entry with a `field` says "documented, deliberately not modelled"; a `response` entry with `fixture` says "the docs example is wrong, test this live fixture instead". `CoverageTests` fails on stale entries.
+4. Regenerate the coverage page and commit it with the snapshot:
+
+```shell
+dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -- coverage
+```
+
+`harvest --cache <dir>` keeps the downloaded pages for offline re-runs; `harvest --source <dir>` reads a directory laid out like the site (`llms.txt`, `reference/*.md`, `docs/webhooks-overview.md`). A page whose OpenAPI block does not parse is listed under `unparsedPages` in `endpoints.json` with its prose, and the run still succeeds.

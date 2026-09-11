@@ -34,6 +34,9 @@ public interface ISmtp2GoClient
     /// <summary>Sender domains: <c>domain/view</c>, <c>add</c>, <c>verify</c>, <c>remove</c>, <c>tracking</c>, <c>returnpath</c>, <c>subaccount_access</c>.</summary>
     IDomainClient Domains { get; }
 
+    /// <summary>Single sender emails: <c>single_sender_emails/view</c>, <c>add</c>, <c>remove</c>.</summary>
+    ISingleSenderClient SingleSenders { get; }
+
     /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
     IArchiveClient Archive { get; }
 

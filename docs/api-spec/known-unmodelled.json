@@ -44,18 +44,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "single_sender_emails/add",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "single_sender_emails/remove",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "single_sender_emails/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "sms/send",
       "reason": "pending plan 07 (account management and SMS)"
     },
@@ -175,6 +163,27 @@
       "scope": "response",
       "field": "data",
       "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by AuthenticatedIp."
+    },
+    {
+      "endpoint": "single_sender_emails/view",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The docs example nests request_id inside data and has no top-level request_id; the live envelope carries it at the top level like every other endpoint, so the fixture is the example with request_id moved up.",
+      "fixture": "SingleSenders/view-response.json"
+    },
+    {
+      "endpoint": "single_sender_emails/add",
+      "scope": "response",
+      "field": "just_returns_this",
+      "reason": "The docs example is the placeholder {\"just_returns_this\": \"ok\"} without an envelope and the schema lists request_id only; the real data shape is undocumented, so AddAsync returns it as JsonElement and the fixture wraps the placeholder in the standard envelope.",
+      "fixture": "SingleSenders/add-response.json"
+    },
+    {
+      "endpoint": "single_sender_emails/remove",
+      "scope": "response",
+      "field": "just_returns_this",
+      "reason": "The docs example is the placeholder {\"just_returns_this\": \"OK\"} without an envelope while the schema types data as a string; RemoveAsync returns ApiResponse<string> and the fixture is the documented string in the standard envelope.",
+      "fixture": "SingleSenders/remove-response.json"
     }
   ]
 }

@@ -133,6 +133,12 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(ApiResponse<DomainViewResult>))]
 [JsonSerializable(typeof(ApiResponse<DomainSubaccountAccessResult>))]
 
+// Single sender emails (add returns ApiResponse<JsonElement>, remove ApiResponse<string>; both are registered above)
+[JsonSerializable(typeof(SingleSenderViewRequest))]
+[JsonSerializable(typeof(SingleSenderAddRequest))]
+[JsonSerializable(typeof(SingleSenderRemoveRequest))]
+[JsonSerializable(typeof(ApiResponse<SingleSenderViewResult>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

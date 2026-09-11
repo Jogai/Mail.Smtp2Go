@@ -57,6 +57,7 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
         Subaccounts = new SubaccountClient(_connection);
         DedicatedIps = new DedicatedIpClient(_connection);
         Archive = new ArchiveClient(_connection);
+        Sms = new SmsClient(_connection);
     }
 
     /// <summary>The options this client was created with.</summary>
@@ -111,9 +112,10 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
     public IArchiveClient Archive { get; }
 
     /// <inheritdoc />
-    public IRawClient Raw { get; }
+    public ISmsClient Sms { get; }
 
-    // Sms is added here by plan 07 as a property over _connection.
+    /// <inheritdoc />
+    public IRawClient Raw { get; }
 
     private static Smtp2GoClientOptions CreateOptions(string apiKey)
     {

@@ -163,7 +163,15 @@ namespace Scott.Mail.Smtp2Go.Json;
 // Dedicated IPs
 [JsonSerializable(typeof(ApiResponse<IReadOnlyList<DedicatedIpPool>>))]
 
-// Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
+// SMS
+[JsonSerializable(typeof(SmsSendRequest))]
+[JsonSerializable(typeof(SmsSummaryRequest))]
+[JsonSerializable(typeof(SmsReceivedRequest))]
+[JsonSerializable(typeof(SmsSentRequest))]
+[JsonSerializable(typeof(ApiResponse<SmsSendResult>))]
+[JsonSerializable(typeof(ApiResponse<SmsSummary>))]
+[JsonSerializable(typeof(ApiResponse<SmsReceivedResult>))]
+[JsonSerializable(typeof(ApiResponse<SmsSentResult>))]
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {
 }

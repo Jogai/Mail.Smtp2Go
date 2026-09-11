@@ -8,22 +8,6 @@
       "reason": "Merged into the body by the transport from RequestOptions.SubaccountId when Endpoint.AcceptsSubaccountId is true; never a model property."
     },
     {
-      "endpoint": "sms/send",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "sms/summary",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "sms/view-received",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "sms/view-sent",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "webhook/view",
       "scope": "response",
       "field": "*",
@@ -128,6 +112,20 @@
       "field": "just_returns_this",
       "reason": "The docs example is the placeholder {\"just_returns_this\": \"OK\"} without an envelope while the schema types data as a string; RemoveAsync returns ApiResponse<string> and the fixture is the documented string in the standard envelope.",
       "fixture": "SingleSenders/remove-response.json"
+    },
+    {
+      "endpoint": "sms/view-received",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The docs example nests request_id inside data and has no top-level request_id; the live envelope carries it at the top level like every other endpoint, so the fixture is the example with request_id moved up.",
+      "fixture": "Sms/view-received-response.json"
+    },
+    {
+      "endpoint": "sms/view-sent",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The docs example nests request_id inside data and has no top-level request_id; the live envelope carries it at the top level like every other endpoint, so the fixture is the example with request_id moved up.",
+      "fixture": "Sms/view-sent-response.json"
     }
   ]
 }

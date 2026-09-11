@@ -3,6 +3,8 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
+    <!-- Microsoft.NET.Sdk.Web (the webhook receiver) warns when a solution-wide pack skips a non-packable project; the demos are never packed. -->
+    <WarnOnPackingNonPackableProject>false</WarnOnPackingNonPackableProject>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 </Project>

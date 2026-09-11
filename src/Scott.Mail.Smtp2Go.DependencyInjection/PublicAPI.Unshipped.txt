@@ -42,6 +42,8 @@ Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryOnSendEndpoints.ge
 Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryOnSendEndpoints.set -> void
 Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.TotalTimeout.get -> System.TimeSpan
 Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.TotalTimeout.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.Smtp2GoMetrics(System.Diagnostics.Metrics.IMeterFactory! meterFactory) -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AdditionalJsonTypeInfoResolver.set -> void
@@ -67,3 +69,11 @@ Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ToClientOptions() -> Scott
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator.Smtp2GoOptionsValidator() -> void
 Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator.Validate(string? name, Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.EmailAcceptedInstrument = "smtp2go.email.accepted" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.EmailFailedInstrument = "smtp2go.email.failed" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.EndpointTag = "smtp2go.endpoint" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.ErrorTypeTag = "error.type" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.MeterName = "Scott.Mail.Smtp2Go" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.RequestDurationInstrument = "smtp2go.client.request.duration" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.RequestsInstrument = "smtp2go.client.requests" -> string!
+const Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoMetrics.StatusCodeTag = "http.response.status_code" -> string!

@@ -5,6 +5,7 @@ namespace Scott.Mail.Smtp2Go;
 
 /// <summary>The body of the deprecated <c>POST /email/search</c>. SMTP2GO will remove the endpoint in a future API version; use the activity search instead.</summary>
 [Obsolete(ObsoleteMessages.EmailSearch)]
+[Smtp2GoEndpoint("email/search")]
 public sealed record EmailSearchRequest : IRequestValidator
 {
     /// <summary>Start of the window (UTC). Server default: today at midnight.</summary>

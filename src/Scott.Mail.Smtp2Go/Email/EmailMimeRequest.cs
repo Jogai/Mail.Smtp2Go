@@ -7,6 +7,7 @@ namespace Scott.Mail.Smtp2Go;
 /// The body of <c>POST /email/mime</c>: a complete, Base64-encoded MIME message (for example one produced by MimeKit's <c>MimeMessage.WriteTo</c>).
 /// Recipients, subject and bodies come from the MIME headers; only scheduling and <c>fastaccept</c> are separate fields.
 /// </summary>
+[Smtp2GoEndpoint("email/mime")]
 public sealed record EmailMimeRequest : IRequestValidator
 {
     /// <summary>The raw MIME message, Base64-encoded.</summary>

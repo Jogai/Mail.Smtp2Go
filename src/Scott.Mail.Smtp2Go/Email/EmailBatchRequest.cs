@@ -8,6 +8,7 @@ namespace Scott.Mail.Smtp2Go;
 /// <see cref="EmailSendRequest.Schedule"/>; the response lists one <see cref="EmailBatchItem"/> per email in request order. The documented
 /// per-email fields do not include <c>fastaccept</c>, so <see cref="Smtp2GoClientOptions.DefaultFastAccept"/> is not applied to batch items.
 /// </summary>
+[Smtp2GoEndpoint("email/batch")]
 public sealed record EmailBatchRequest : IRequestValidator
 {
     /// <summary>The documented maximum number of emails per call.</summary>

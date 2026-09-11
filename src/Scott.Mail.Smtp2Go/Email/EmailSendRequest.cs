@@ -9,6 +9,7 @@ namespace Scott.Mail.Smtp2Go;
 /// the payload contains exactly the fields you set. Documented limits (100 recipients per field, a body or template, allowed headers,
 /// attachment content, the three-day schedule window) are checked client-side before sending.
 /// </summary>
+[Smtp2GoEndpoint("email/send")]
 public sealed record EmailSendRequest : IRequestValidator
 {
     /// <summary>The sender, shown as <c>Name &lt;address&gt;</c>. Must be a verified sender domain or single sender on the account.</summary>

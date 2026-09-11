@@ -119,16 +119,18 @@ public sealed class DiagnosticsTests
         host.Handler.Respond("email/send", HttpStatusCode.BadRequest, """{"request_id":"req-2","data":{"error":"bad"}}""");
         ISmtp2GoClient client = host.Client();
 
+        // The listener hears every Smtp2Go meter in the process, including other tests' hosts running in parallel, so the predicates
+        // must tolerate counters without a status code (transport failures) rather than index the tag dictionary.
         using JsonDocument document = await client.Raw.SendJsonAsync(Endpoint, default, cancellationToken: TestContext.Current.CancellationToken);
         Func<Task> failing = () => client.Raw.SendJsonAsync("email/send", default, cancellationToken: TestContext.Current.CancellationToken);
         await failing.Should().ThrowAsync<Smtp2GoApiException>();
         host.Provider.GetRequiredService<ISmtp2GoDiagnostics>().EmailResult(succeeded: 3, failed: 1);
 
         counters.Should().Contain(c => c.Instrument == Smtp2GoMetrics.RequestsInstrument && c.Value == 1
-            && Equals(c.Tags[Smtp2GoMetrics.EndpointTag], Endpoint) && Equals(c.Tags[Smtp2GoMetrics.StatusCodeTag], 200));
+            && Equals(c.Tags.GetValueOrDefault(Smtp2GoMetrics.EndpointTag), Endpoint) && Equals(c.Tags.GetValueOrDefault(Smtp2GoMetrics.StatusCodeTag), 200));
         counters.Should().Contain(c => c.Instrument == Smtp2GoMetrics.RequestsInstrument && c.Value == 1
-            && Equals(c.Tags[Smtp2GoMetrics.EndpointTag], "email/send") && Equals(c.Tags[Smtp2GoMetrics.StatusCodeTag], 400) && Equals(c.Tags[Smtp2GoMetrics.ErrorTypeTag], nameof(Smtp2GoApiException)));
-        histograms.Should().ContainSingle(h => h.Instrument == Smtp2GoMetrics.RequestDurationInstrument && Equals(h.Tags[Smtp2GoMetrics.EndpointTag], Endpoint))
+            && Equals(c.Tags.GetValueOrDefault(Smtp2GoMetrics.EndpointTag), "email/send") && Equals(c.Tags.GetValueOrDefault(Smtp2GoMetrics.StatusCodeTag), 400) && Equals(c.Tags.GetValueOrDefault(Smtp2GoMetrics.ErrorTypeTag), nameof(Smtp2GoApiException)));
+        histograms.Should().ContainSingle(h => h.Instrument == Smtp2GoMetrics.RequestDurationInstrument && Equals(h.Tags.GetValueOrDefault(Smtp2GoMetrics.EndpointTag), Endpoint))
             .Which.Value.Should().BeGreaterThanOrEqualTo(0);
         counters.Should().Contain(c => c.Instrument == Smtp2GoMetrics.EmailAcceptedInstrument && c.Value == 3);
         counters.Should().Contain(c => c.Instrument == Smtp2GoMetrics.EmailFailedInstrument && c.Value == 1);

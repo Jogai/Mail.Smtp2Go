@@ -1,0 +1,13 @@
+{
+  "request_id": "c2dca1b4-89b9-4dc7-bd82-a86b83b29d84",
+  "data": [
+    {
+      "schedule_id": "4d3b03a7-8663-4592-899a-b479ba6fcba9",
+      "schedule": "2025-06-30T23:11:56Z",
+      "sender": "test@example.com",
+      "subject": "test 1",
+      "recipients": "test@example2.com",
+      "client_ip": "127.0.0.1"
+    }
+  ]
+}

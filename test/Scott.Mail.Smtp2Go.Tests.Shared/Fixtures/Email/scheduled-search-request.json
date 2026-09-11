@@ -1,0 +1,8 @@
+{
+  "schedule_id": "8fb29ea3-286d-493e-83c5-401f76859bb1",
+  "search_subject": "test 1",
+  "search_recipient": "recipient@example.com",
+  "search_sender": "test@example.com",
+  "limit": 100,
+  "page": 2
+}

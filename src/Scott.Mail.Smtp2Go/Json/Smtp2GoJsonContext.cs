@@ -44,6 +44,13 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(EmailMimeRequest))]
 [JsonSerializable(typeof(EmailBatchRequest))]
 [JsonSerializable(typeof(ApiResponse<IReadOnlyList<EmailBatchItem>>))]
+[JsonSerializable(typeof(ScheduledEmailSearchRequest))]
+[JsonSerializable(typeof(ApiResponse<IReadOnlyList<ScheduledEmail>>))]
+[JsonSerializable(typeof(ScheduledEmailRemoveRequest))]
+#pragma warning disable CS0618 // The deprecated email/search endpoint is still served and its models must stay serialisable.
+[JsonSerializable(typeof(EmailSearchRequest))]
+[JsonSerializable(typeof(ApiResponse<EmailSearchResult>))]
+#pragma warning restore CS0618
 
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext

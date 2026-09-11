@@ -1,0 +1,31 @@
+{
+  "request_id": "5f0b4d1c-8b3a-4b6e-9c2d-7e1f2a3b4c5d",
+  "data": {
+    "count": 1,
+    "emails": [
+      {
+        "sender": "test@example.com",
+        "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+        "smtpcode": 250,
+        "response": "250 2.0.0 OK 1466989602 87si22895035pfn.73 - gsmtp",
+        "process_status": "completed",
+        "host": "gmail-smtp-in.l.google.com [74.125.200.27]",
+        "recipient": "test2@example.com",
+        "delivered_at": "2016-06-27 01:06:42.668336+00:00",
+        "opens": [
+          {
+            "user_agent": "Mozilla/5.0 (iPad; CPU OS 9_3_5 like Mac OS X)",
+            "opened_at": "2018-04-02 19:26:53.010729+00:00",
+            "read_secs": "10",
+            "recipient": "test2@example.com",
+            "ip_address": "x.x.x.x"
+          }
+        ],
+        "total_opens": 1,
+        "status": "delivered",
+        "email_ts": "2016-06-27 01:06:37.039400+00:00"
+      }
+    ],
+    "continue_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+}

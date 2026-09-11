@@ -83,6 +83,46 @@ Scott.Mail.Smtp2Go.EmailMimeRequest.MimeEmail.get -> string!
 Scott.Mail.Smtp2Go.EmailMimeRequest.MimeEmail.init -> void
 Scott.Mail.Smtp2Go.EmailMimeRequest.Schedule.get -> System.DateTimeOffset?
 Scott.Mail.Smtp2Go.EmailMimeRequest.Schedule.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest
+Scott.Mail.Smtp2Go.EmailSearchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSearchRequest!
+Scott.Mail.Smtp2Go.EmailSearchRequest.ClickedOnly.get -> bool?
+Scott.Mail.Smtp2Go.EmailSearchRequest.ClickedOnly.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.EmailSearchRequest.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.EmailId.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.EmailSearchRequest.EmailId.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.EmailSearchRequest() -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.EndDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailSearchRequest.EndDate.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.Equals(Scott.Mail.Smtp2Go.EmailSearchRequest? other) -> bool
+Scott.Mail.Smtp2Go.EmailSearchRequest.FilterQuery.get -> string?
+Scott.Mail.Smtp2Go.EmailSearchRequest.FilterQuery.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.Headers.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.EmailSearchRequest.Headers.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.IgnoreCase.get -> bool?
+Scott.Mail.Smtp2Go.EmailSearchRequest.IgnoreCase.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.Limit.get -> int?
+Scott.Mail.Smtp2Go.EmailSearchRequest.Limit.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.OpenedOnly.get -> bool?
+Scott.Mail.Smtp2Go.EmailSearchRequest.OpenedOnly.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.StartDate.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.EmailSearchRequest.StartDate.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.StatusCounts.get -> bool?
+Scott.Mail.Smtp2Go.EmailSearchRequest.StatusCounts.init -> void
+Scott.Mail.Smtp2Go.EmailSearchRequest.Username.get -> string?
+Scott.Mail.Smtp2Go.EmailSearchRequest.Username.init -> void
+Scott.Mail.Smtp2Go.EmailSearchResult
+Scott.Mail.Smtp2Go.EmailSearchResult.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSearchResult!
+Scott.Mail.Smtp2Go.EmailSearchResult.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.EmailSearchResult.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.EmailSearchResult.Count.get -> int?
+Scott.Mail.Smtp2Go.EmailSearchResult.Count.init -> void
+Scott.Mail.Smtp2Go.EmailSearchResult.EmailSearchResult() -> void
+Scott.Mail.Smtp2Go.EmailSearchResult.Emails.get -> System.Collections.Generic.IReadOnlyList<System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailSearchResult.Emails.init -> void
+Scott.Mail.Smtp2Go.EmailSearchResult.Equals(Scott.Mail.Smtp2Go.EmailSearchResult? other) -> bool
+Scott.Mail.Smtp2Go.EmailSearchResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.EmailSearchResult.Extra.set -> void
 Scott.Mail.Smtp2Go.EmailSendRequest
 Scott.Mail.Smtp2Go.EmailSendRequest.<Clone>$() -> Scott.Mail.Smtp2Go.EmailSendRequest!
 Scott.Mail.Smtp2Go.EmailSendRequest.Attachments.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Attachment!>?
@@ -145,6 +185,10 @@ Scott.Mail.Smtp2Go.FieldValidationError.FieldValidationError(string? FieldName, 
 Scott.Mail.Smtp2Go.FieldValidationError.Message.get -> string!
 Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
 Scott.Mail.Smtp2Go.IEmailClient
+Scott.Mail.Smtp2Go.IEmailClient.RemoveScheduledAsync(string! scheduleId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Text.Json.JsonElement>!>!
+Scott.Mail.Smtp2Go.IEmailClient.SearchAsync(Scott.Mail.Smtp2Go.EmailSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSearchResult!>!>!
+Scott.Mail.Smtp2Go.IEmailClient.SearchScheduledAllAsync(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ScheduledEmail!>!
+Scott.Mail.Smtp2Go.IEmailClient.SearchScheduledAsync(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.ScheduledEmail!>!>!>!
 Scott.Mail.Smtp2Go.IEmailClient.SendAsync(Scott.Mail.Smtp2Go.EmailSendRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
 Scott.Mail.Smtp2Go.IEmailClient.SendBatchAsync(Scott.Mail.Smtp2Go.EmailBatchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.EmailBatchItem!>!>!>!
 Scott.Mail.Smtp2Go.IEmailClient.SendMimeAsync(Scott.Mail.Smtp2Go.EmailMimeRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSendResult!>!>!
@@ -191,6 +235,46 @@ Scott.Mail.Smtp2Go.RequestOptions.SubaccountId.get -> string?
 Scott.Mail.Smtp2Go.RequestOptions.SubaccountId.init -> void
 Scott.Mail.Smtp2Go.RequestOptions.Timeout.get -> System.TimeSpan?
 Scott.Mail.Smtp2Go.RequestOptions.Timeout.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmail
+Scott.Mail.Smtp2Go.ScheduledEmail.<Clone>$() -> Scott.Mail.Smtp2Go.ScheduledEmail!
+Scott.Mail.Smtp2Go.ScheduledEmail.ClientIp.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmail.ClientIp.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.Equals(Scott.Mail.Smtp2Go.ScheduledEmail? other) -> bool
+Scott.Mail.Smtp2Go.ScheduledEmail.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.ScheduledEmail.Extra.set -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.Recipients.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmail.Recipients.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.Schedule.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.ScheduledEmail.Schedule.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.ScheduleId.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmail.ScheduleId.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.ScheduledEmail() -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.Sender.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmail.Sender.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmail.Subject.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmail.Subject.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest
+Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest!
+Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.Equals(Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? other) -> bool
+Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ScheduleId.get -> string!
+Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ScheduleId.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ScheduledEmailRemoveRequest() -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest!
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Equals(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? other) -> bool
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Limit.get -> int?
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Limit.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Page.get -> int?
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Page.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ScheduleId.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ScheduleId.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ScheduledEmailSearchRequest() -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchRecipient.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchRecipient.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSender.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSender.init -> void
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSubject.get -> string?
+Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.SearchSubject.init -> void
 Scott.Mail.Smtp2Go.Smtp2GoApiException
 Scott.Mail.Smtp2Go.Smtp2GoApiException.Code.get -> Scott.Mail.Smtp2Go.Smtp2GoErrorCode
 Scott.Mail.Smtp2Go.Smtp2GoApiException.Error.get -> Scott.Mail.Smtp2Go.ApiError?
@@ -332,6 +416,12 @@ override Scott.Mail.Smtp2Go.EmailBatchRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailMimeRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.EmailMimeRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailMimeRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailSearchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailSearchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.EmailSearchResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.EmailSearchResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.EmailSearchResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.EmailSendRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.EmailSendRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.EmailSendRequest.ToString() -> string!
@@ -353,6 +443,15 @@ override Scott.Mail.Smtp2Go.Percentage.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.RequestOptions.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.RequestOptions.ToString() -> string!
+override Scott.Mail.Smtp2Go.ScheduledEmail.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ScheduledEmail.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ScheduledEmail.ToString() -> string!
+override Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
@@ -382,6 +481,10 @@ static Scott.Mail.Smtp2Go.EmailClientExtensions.SendTemplateAsync(this Scott.Mai
 static Scott.Mail.Smtp2Go.EmailMimeRequest.FromBytes(byte[]! mimeMessage) -> Scott.Mail.Smtp2Go.EmailMimeRequest!
 static Scott.Mail.Smtp2Go.EmailMimeRequest.operator !=(Scott.Mail.Smtp2Go.EmailMimeRequest? left, Scott.Mail.Smtp2Go.EmailMimeRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailMimeRequest.operator ==(Scott.Mail.Smtp2Go.EmailMimeRequest? left, Scott.Mail.Smtp2Go.EmailMimeRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSearchRequest.operator !=(Scott.Mail.Smtp2Go.EmailSearchRequest? left, Scott.Mail.Smtp2Go.EmailSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSearchRequest.operator ==(Scott.Mail.Smtp2Go.EmailSearchRequest? left, Scott.Mail.Smtp2Go.EmailSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSearchResult.operator !=(Scott.Mail.Smtp2Go.EmailSearchResult? left, Scott.Mail.Smtp2Go.EmailSearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.EmailSearchResult.operator ==(Scott.Mail.Smtp2Go.EmailSearchResult? left, Scott.Mail.Smtp2Go.EmailSearchResult? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendRequest.operator !=(Scott.Mail.Smtp2Go.EmailSendRequest? left, Scott.Mail.Smtp2Go.EmailSendRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendRequest.operator ==(Scott.Mail.Smtp2Go.EmailSendRequest? left, Scott.Mail.Smtp2Go.EmailSendRequest? right) -> bool
 static Scott.Mail.Smtp2Go.EmailSendResult.operator !=(Scott.Mail.Smtp2Go.EmailSendResult? left, Scott.Mail.Smtp2Go.EmailSendResult? right) -> bool
@@ -402,6 +505,12 @@ static Scott.Mail.Smtp2Go.RegionEndpoints.Global.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RegionEndpoints.US.get -> System.Uri!
 static Scott.Mail.Smtp2Go.RequestOptions.operator !=(Scott.Mail.Smtp2Go.RequestOptions? left, Scott.Mail.Smtp2Go.RequestOptions? right) -> bool
 static Scott.Mail.Smtp2Go.RequestOptions.operator ==(Scott.Mail.Smtp2Go.RequestOptions? left, Scott.Mail.Smtp2Go.RequestOptions? right) -> bool
+static Scott.Mail.Smtp2Go.ScheduledEmail.operator !=(Scott.Mail.Smtp2Go.ScheduledEmail? left, Scott.Mail.Smtp2Go.ScheduledEmail? right) -> bool
+static Scott.Mail.Smtp2Go.ScheduledEmail.operator ==(Scott.Mail.Smtp2Go.ScheduledEmail? left, Scott.Mail.Smtp2Go.ScheduledEmail? right) -> bool
+static Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.operator !=(Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.operator ==(Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator !=(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator ==(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.Smtp2GoClientOptions.IsWellFormedApiKey(string! apiKey) -> bool
 static Scott.Mail.Smtp2Go.Transport.Endpoint.Patch.get -> System.Net.Http.HttpMethod!
 static Scott.Mail.Smtp2Go.Transport.Endpoint.operator !=(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool

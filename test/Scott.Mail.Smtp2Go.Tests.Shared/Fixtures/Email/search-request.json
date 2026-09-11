@@ -1,0 +1,14 @@
+{
+  "start_date": "2016-06-27T00:00:00Z",
+  "end_date": "2016-06-28T00:00:00Z",
+  "limit": 50,
+  "status_counts": true,
+  "opened_only": false,
+  "clicked_only": false,
+  "ignore_case": true,
+  "filter_query": "status:delivered",
+  "email_id": ["1u0SwL-B9zBpi9ffUq-JAB2"],
+  "username": "smtpuser@example.com",
+  "headers": ["X-Campaign"],
+  "continue_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
+}

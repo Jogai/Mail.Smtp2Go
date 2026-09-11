@@ -1,0 +1,9 @@
+{
+  "template_name": "Order receipt",
+  "id": "order-receipt",
+  "subject": "Order receipt for {{ product_name }}",
+  "html_body": "<p>Thanks for buying {{ product_name }}</p>",
+  "text_body": "Thanks for buying {{ product_name }}",
+  "template_variables": {"product_name": "Widget"},
+  "tags": ["orders", "transactional"]
+}

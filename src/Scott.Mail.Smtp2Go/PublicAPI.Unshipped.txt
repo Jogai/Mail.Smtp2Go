@@ -526,6 +526,7 @@ Scott.Mail.Smtp2Go.ISmtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityCl
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Templates.get -> Scott.Mail.Smtp2Go.ITemplateClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
 Scott.Mail.Smtp2Go.IStatsClient
 Scott.Mail.Smtp2Go.IStatsClient.GetBouncesAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailBounces!>!>!
@@ -535,6 +536,13 @@ Scott.Mail.Smtp2Go.IStatsClient.GetQuotaAsync(Scott.Mail.Smtp2Go.RequestOptions?
 Scott.Mail.Smtp2Go.IStatsClient.GetSpamAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSpam!>!>!
 Scott.Mail.Smtp2Go.IStatsClient.GetSummaryAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailSummary!>!>!
 Scott.Mail.Smtp2Go.IStatsClient.GetUnsubscribesAsync(string? username = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.EmailUnsubscribes!>!>!
+Scott.Mail.Smtp2Go.ITemplateClient
+Scott.Mail.Smtp2Go.ITemplateClient.AddAsync(Scott.Mail.Smtp2Go.TemplateAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Template!>!>!
+Scott.Mail.Smtp2Go.ITemplateClient.RemoveAsync(string! id, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<string!>!>!
+Scott.Mail.Smtp2Go.ITemplateClient.SearchAllAsync(Scott.Mail.Smtp2Go.TemplateSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.Template!>!
+Scott.Mail.Smtp2Go.ITemplateClient.SearchAsync(Scott.Mail.Smtp2Go.TemplateSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.TemplateSearchResult!>!>!
+Scott.Mail.Smtp2Go.ITemplateClient.UpdateAsync(Scott.Mail.Smtp2Go.TemplateUpdateRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Template!>!>!
+Scott.Mail.Smtp2Go.ITemplateClient.ViewAsync(string! id, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Template!>!>!
 Scott.Mail.Smtp2Go.IWebhookClient
 Scott.Mail.Smtp2Go.IWebhookClient.AddAsync(Scott.Mail.Smtp2Go.WebhookAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
 Scott.Mail.Smtp2Go.IWebhookClient.AddOrUpdateByUrlAsync(Scott.Mail.Smtp2Go.WebhookAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
@@ -667,6 +675,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(Scott.Mail.Smtp2Go.Smtp2GoClientO
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(System.Net.Http.HttpClient! httpClient, Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options, Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics? diagnostics = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(string! apiKey) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Stats.get -> Scott.Mail.Smtp2Go.IStatsClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.Templates.get -> Scott.Mail.Smtp2Go.ITemplateClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
@@ -726,6 +735,101 @@ Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException() -> vo
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message) -> void
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message, System.Collections.Generic.IReadOnlyList<string!>! errors) -> void
 Scott.Mail.Smtp2Go.Smtp2GoValidationException.Smtp2GoValidationException(string! message, System.Exception? innerException) -> void
+Scott.Mail.Smtp2Go.SortDirection
+Scott.Mail.Smtp2Go.SortDirection.Asc = 1 -> Scott.Mail.Smtp2Go.SortDirection
+Scott.Mail.Smtp2Go.SortDirection.Desc = 2 -> Scott.Mail.Smtp2Go.SortDirection
+Scott.Mail.Smtp2Go.SortDirection.Unknown = 0 -> Scott.Mail.Smtp2Go.SortDirection
+Scott.Mail.Smtp2Go.Template
+Scott.Mail.Smtp2Go.Template.<Clone>$() -> Scott.Mail.Smtp2Go.Template!
+Scott.Mail.Smtp2Go.Template.DisplayName.get -> string?
+Scott.Mail.Smtp2Go.Template.Equals(Scott.Mail.Smtp2Go.Template? other) -> bool
+Scott.Mail.Smtp2Go.Template.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.Template.Extra.set -> void
+Scott.Mail.Smtp2Go.Template.HtmlBody.get -> string?
+Scott.Mail.Smtp2Go.Template.HtmlBody.init -> void
+Scott.Mail.Smtp2Go.Template.Id.get -> string?
+Scott.Mail.Smtp2Go.Template.Id.init -> void
+Scott.Mail.Smtp2Go.Template.LastUpdated.get -> System.DateTimeOffset?
+Scott.Mail.Smtp2Go.Template.LastUpdated.init -> void
+Scott.Mail.Smtp2Go.Template.Name.get -> string?
+Scott.Mail.Smtp2Go.Template.Name.init -> void
+Scott.Mail.Smtp2Go.Template.Subject.get -> string?
+Scott.Mail.Smtp2Go.Template.Subject.init -> void
+Scott.Mail.Smtp2Go.Template.Tags.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.Template.Tags.init -> void
+Scott.Mail.Smtp2Go.Template.Template() -> void
+Scott.Mail.Smtp2Go.Template.TemplateName.get -> string?
+Scott.Mail.Smtp2Go.Template.TemplateName.init -> void
+Scott.Mail.Smtp2Go.Template.TemplateVariables.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+Scott.Mail.Smtp2Go.Template.TemplateVariables.init -> void
+Scott.Mail.Smtp2Go.Template.TextBody.get -> string?
+Scott.Mail.Smtp2Go.Template.TextBody.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest
+Scott.Mail.Smtp2Go.TemplateAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.TemplateAddRequest!
+Scott.Mail.Smtp2Go.TemplateAddRequest.Equals(Scott.Mail.Smtp2Go.TemplateAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.TemplateAddRequest.HtmlBody.get -> string!
+Scott.Mail.Smtp2Go.TemplateAddRequest.HtmlBody.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.TemplateAddRequest.Id.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.Subject.get -> string!
+Scott.Mail.Smtp2Go.TemplateAddRequest.Subject.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.Tags.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.TemplateAddRequest.Tags.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.TemplateAddRequest() -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.TemplateName.get -> string!
+Scott.Mail.Smtp2Go.TemplateAddRequest.TemplateName.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.TemplateVariables.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+Scott.Mail.Smtp2Go.TemplateAddRequest.TemplateVariables.init -> void
+Scott.Mail.Smtp2Go.TemplateAddRequest.TextBody.get -> string!
+Scott.Mail.Smtp2Go.TemplateAddRequest.TextBody.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest
+Scott.Mail.Smtp2Go.TemplateSearchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.TemplateSearchRequest!
+Scott.Mail.Smtp2Go.TemplateSearchRequest.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.TemplateSearchRequest.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest.Equals(Scott.Mail.Smtp2Go.TemplateSearchRequest? other) -> bool
+Scott.Mail.Smtp2Go.TemplateSearchRequest.FuzzySearch.get -> bool?
+Scott.Mail.Smtp2Go.TemplateSearchRequest.FuzzySearch.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest.PageSize.get -> int?
+Scott.Mail.Smtp2Go.TemplateSearchRequest.PageSize.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest.SearchTerms.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.TemplateSearchRequest.SearchTerms.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest.SortDirection.get -> Scott.Mail.Smtp2Go.SortDirection?
+Scott.Mail.Smtp2Go.TemplateSearchRequest.SortDirection.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest.Tags.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.TemplateSearchRequest.Tags.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchRequest.TemplateSearchRequest() -> void
+Scott.Mail.Smtp2Go.TemplateSearchResult
+Scott.Mail.Smtp2Go.TemplateSearchResult.<Clone>$() -> Scott.Mail.Smtp2Go.TemplateSearchResult!
+Scott.Mail.Smtp2Go.TemplateSearchResult.ContinueToken.get -> string?
+Scott.Mail.Smtp2Go.TemplateSearchResult.ContinueToken.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchResult.Equals(Scott.Mail.Smtp2Go.TemplateSearchResult? other) -> bool
+Scott.Mail.Smtp2Go.TemplateSearchResult.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.TemplateSearchResult.Extra.set -> void
+Scott.Mail.Smtp2Go.TemplateSearchResult.TemplateSearchResult() -> void
+Scott.Mail.Smtp2Go.TemplateSearchResult.Templates.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Template!>?
+Scott.Mail.Smtp2Go.TemplateSearchResult.Templates.init -> void
+Scott.Mail.Smtp2Go.TemplateSearchResult.TotalCount.get -> long?
+Scott.Mail.Smtp2Go.TemplateSearchResult.TotalCount.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.<Clone>$() -> Scott.Mail.Smtp2Go.TemplateUpdateRequest!
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Equals(Scott.Mail.Smtp2Go.TemplateUpdateRequest? other) -> bool
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.HtmlBody.get -> string?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.HtmlBody.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Id.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.NewId.get -> string?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.NewId.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Subject.get -> string?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Subject.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Tags.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.Tags.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateName.get -> string?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateName.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateUpdateRequest() -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateVariables.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TemplateVariables.init -> void
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TextBody.get -> string?
+Scott.Mail.Smtp2Go.TemplateUpdateRequest.TextBody.init -> void
 Scott.Mail.Smtp2Go.Transport.Endpoint
 Scott.Mail.Smtp2Go.Transport.Endpoint.<Clone>$() -> Scott.Mail.Smtp2Go.Transport.Endpoint!
 Scott.Mail.Smtp2Go.Transport.Endpoint.AcceptsSubaccountId.get -> bool
@@ -1128,6 +1232,21 @@ override Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.Template.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.Template.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.Template.ToString() -> string!
+override Scott.Mail.Smtp2Go.TemplateAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.TemplateAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.TemplateAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.TemplateSearchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.TemplateSearchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.TemplateSearchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.TemplateSearchResult.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.TemplateSearchResult.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.TemplateSearchResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.TemplateUpdateRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.TemplateUpdateRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.TemplateUpdateRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.Transport.Endpoint.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.Transport.Endpoint.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.Transport.Endpoint.ToString() -> string!
@@ -1282,6 +1401,16 @@ static Scott.Mail.Smtp2Go.ScheduledEmailRemoveRequest.operator ==(Scott.Mail.Smt
 static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator !=(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest.operator ==(Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? left, Scott.Mail.Smtp2Go.ScheduledEmailSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.Smtp2GoClientOptions.IsWellFormedApiKey(string! apiKey) -> bool
+static Scott.Mail.Smtp2Go.Template.operator !=(Scott.Mail.Smtp2Go.Template? left, Scott.Mail.Smtp2Go.Template? right) -> bool
+static Scott.Mail.Smtp2Go.Template.operator ==(Scott.Mail.Smtp2Go.Template? left, Scott.Mail.Smtp2Go.Template? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateAddRequest.operator !=(Scott.Mail.Smtp2Go.TemplateAddRequest? left, Scott.Mail.Smtp2Go.TemplateAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateAddRequest.operator ==(Scott.Mail.Smtp2Go.TemplateAddRequest? left, Scott.Mail.Smtp2Go.TemplateAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateSearchRequest.operator !=(Scott.Mail.Smtp2Go.TemplateSearchRequest? left, Scott.Mail.Smtp2Go.TemplateSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateSearchRequest.operator ==(Scott.Mail.Smtp2Go.TemplateSearchRequest? left, Scott.Mail.Smtp2Go.TemplateSearchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateSearchResult.operator !=(Scott.Mail.Smtp2Go.TemplateSearchResult? left, Scott.Mail.Smtp2Go.TemplateSearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateSearchResult.operator ==(Scott.Mail.Smtp2Go.TemplateSearchResult? left, Scott.Mail.Smtp2Go.TemplateSearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateUpdateRequest.operator !=(Scott.Mail.Smtp2Go.TemplateUpdateRequest? left, Scott.Mail.Smtp2Go.TemplateUpdateRequest? right) -> bool
+static Scott.Mail.Smtp2Go.TemplateUpdateRequest.operator ==(Scott.Mail.Smtp2Go.TemplateUpdateRequest? left, Scott.Mail.Smtp2Go.TemplateUpdateRequest? right) -> bool
 static Scott.Mail.Smtp2Go.Transport.Endpoint.Patch.get -> System.Net.Http.HttpMethod!
 static Scott.Mail.Smtp2Go.Transport.Endpoint.operator !=(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool
 static Scott.Mail.Smtp2Go.Transport.Endpoint.operator ==(Scott.Mail.Smtp2Go.Transport.Endpoint? left, Scott.Mail.Smtp2Go.Transport.Endpoint? right) -> bool

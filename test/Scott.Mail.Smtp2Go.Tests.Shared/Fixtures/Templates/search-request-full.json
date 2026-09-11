@@ -1,0 +1,8 @@
+{
+  "fuzzy_search": true,
+  "search_terms": ["receipt", "order"],
+  "tags": ["orders"],
+  "sort_direction": "desc",
+  "page_size": 50,
+  "continue_token": "eyJwYWdlIjoyfQ=="
+}

@@ -16,6 +16,9 @@ public interface ISmtp2GoClient
     /// <summary>Webhook management: <c>webhook/view</c>, <c>webhook/add</c>, <c>webhook/edit</c>, <c>webhook/remove</c>.</summary>
     IWebhookClient Webhooks { get; }
 
+    /// <summary>Email templates: <c>template/add</c>, <c>template/edit</c>, <c>template/delete</c>, <c>template/search</c>, <c>template/view</c>.</summary>
+    ITemplateClient Templates { get; }
+
     /// <summary>Statistics: <c>stats/email_summary</c>, <c>email_cycle</c>, <c>email_bounces</c>, <c>email_spam</c>, <c>email_unsubs</c>, <c>email_history</c>.</summary>
     IStatsClient Stats { get; }
 

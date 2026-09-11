@@ -65,7 +65,7 @@ public class ApiResponseTests
         Smtp2GoJsonContext.Default.GetTypeInfo(typeof(ApiResponse<JsonObject>)).Should().NotBeNull();
         Smtp2GoJsonContext.Default.GetTypeInfo(typeof(ApiResponse<JsonArray>)).Should().NotBeNull();
         Smtp2GoJsonContext.Default.GetTypeInfo(typeof(JsonElement)).Should().NotBeNull();
-        Smtp2GoJsonContext.Default.GetTypeInfo(typeof(ApiResponse<string>)).Should().BeNull();
+        Smtp2GoJsonContext.Default.GetTypeInfo(typeof(ApiResponse<Guid>)).Should().BeNull();
         Smtp2GoJsonContext.Default.Options.PropertyNamingPolicy.Should().Be(JsonNamingPolicy.SnakeCaseLower);
         Smtp2GoJsonContext.Default.Options.NumberHandling.Should().Be(System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString);
         Smtp2GoJsonContext.Default.Options.Converters.Should().ContainSingle(c => c is Scott.Mail.Smtp2Go.Json.Converters.Smtp2GoDateTimeOffsetConverter);

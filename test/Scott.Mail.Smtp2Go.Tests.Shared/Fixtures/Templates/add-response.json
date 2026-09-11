@@ -1,0 +1,1 @@
+{"request_id":"f00c0856-dde8-11eb-b4ce-1002b51e60a4","data":{"template_name":"Shiny new name","id":"testid","subject":"Shiny new Subject","html_body":"Shiny HTML body. This is a {{ variable }}","text_body":"Shiny Text body","template_variables":{"variable":"strawberries"},"tags":["tagged"]}}

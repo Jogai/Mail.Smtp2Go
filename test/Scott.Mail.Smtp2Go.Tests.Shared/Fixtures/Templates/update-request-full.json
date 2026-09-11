@@ -1,0 +1,10 @@
+{
+  "id": "order-receipt",
+  "new_id": "order-receipt-v2",
+  "template_name": "Order receipt v2",
+  "subject": "Your receipt",
+  "html_body": "<p>v2</p>",
+  "text_body": "v2",
+  "template_variables": {"product_name": "Gadget"},
+  "tags": ["orders"]
+}

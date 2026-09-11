@@ -1,0 +1,1 @@
+{"request_id":"13ab6f3a-ddea-11eb-b4ce-1002b51e60a4","data":{"continue_token":null,"templates":[{"name":"Order receipt","id":"5355878","subject":"Order receipt for {{ product_name }}","tags":["one","two","five","four"],"last_updated":"2024-01-01 12:00:00"}],"total_count":1}}

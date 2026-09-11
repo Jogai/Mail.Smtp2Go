@@ -48,6 +48,7 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
         Templates = new TemplateClient(_connection);
         Suppressions = new SuppressionClient(_connection);
         AllowedSenders = new AllowedSenderClient(_connection);
+        AllowedRecipients = new AllowedRecipientClient(_connection);
         ApiKeys = new ApiKeyClient(_connection);
         SmtpUsers = new SmtpUserClient(_connection);
         IpAuth = new IpAuthClient(_connection);
@@ -81,6 +82,9 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
     public IAllowedSenderClient AllowedSenders { get; }
 
     /// <inheritdoc />
+    public IAllowedRecipientClient AllowedRecipients { get; }
+
+    /// <inheritdoc />
     public IApiKeyClient ApiKeys { get; }
 
     /// <inheritdoc />
@@ -101,7 +105,7 @@ public sealed class Smtp2GoClient : ISmtp2GoClient
     /// <inheritdoc />
     public IRawClient Raw { get; }
 
-    // Remaining family clients (AllowedRecipients, Subaccounts, DedicatedIps, Sms) are added here by plan 07 as properties over _connection.
+    // Remaining family clients (Subaccounts, DedicatedIps, Sms) are added here by plan 07 as properties over _connection.
 
     private static Smtp2GoClientOptions CreateOptions(string apiKey)
     {

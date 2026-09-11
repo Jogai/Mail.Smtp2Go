@@ -145,6 +145,12 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(AllowedSendersUpdateRequest))]
 [JsonSerializable(typeof(ApiResponse<AllowedSendersList>))]
 
+// Allowed recipients
+[JsonSerializable(typeof(AllowedRecipientsAddRequest))]
+[JsonSerializable(typeof(AllowedRecipientsRemoveRequest))]
+[JsonSerializable(typeof(AllowedRecipientsUpdateRequest))]
+[JsonSerializable(typeof(ApiResponse<AllowedRecipientsList>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

@@ -122,6 +122,40 @@ Scott.Mail.Smtp2Go.ActivitySearchResult.Extra.get -> System.Collections.Generic.
 Scott.Mail.Smtp2Go.ActivitySearchResult.Extra.set -> void
 Scott.Mail.Smtp2Go.ActivitySearchResult.TotalEvents.get -> long?
 Scott.Mail.Smtp2Go.ActivitySearchResult.TotalEvents.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest!
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.AllowedRecipients.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.AllowedRecipients.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.AllowedRecipientsAddRequest() -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.Enabled.get -> bool?
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.Enabled.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.Equals(Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.AllowedRecipientsList
+Scott.Mail.Smtp2Go.AllowedRecipientsList.<Clone>$() -> Scott.Mail.Smtp2Go.AllowedRecipientsList!
+Scott.Mail.Smtp2Go.AllowedRecipientsList.AllowedRecipients.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.AllowedRecipientsList.AllowedRecipients.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsList.AllowedRecipientsList() -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsList.Enabled.get -> bool?
+Scott.Mail.Smtp2Go.AllowedRecipientsList.Enabled.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsList.Equals(Scott.Mail.Smtp2Go.AllowedRecipientsList? other) -> bool
+Scott.Mail.Smtp2Go.AllowedRecipientsList.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.AllowedRecipientsList.Extra.set -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.<Clone>$() -> Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest!
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.AllowedRecipients.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.AllowedRecipients.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.AllowedRecipientsRemoveRequest() -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.Enabled.get -> bool?
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.Enabled.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.Equals(Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest? other) -> bool
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.<Clone>$() -> Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest!
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.AllowedRecipients.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.AllowedRecipients.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.AllowedRecipientsUpdateRequest() -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.Enabled.get -> bool
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.Enabled.init -> void
+Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.Equals(Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest? other) -> bool
 Scott.Mail.Smtp2Go.AllowedSendersAddRequest
 Scott.Mail.Smtp2Go.AllowedSendersAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.AllowedSendersAddRequest!
 Scott.Mail.Smtp2Go.AllowedSendersAddRequest.AllowedSenders.get -> System.Collections.Generic.IReadOnlyList<string!>!
@@ -1010,6 +1044,11 @@ Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
 Scott.Mail.Smtp2Go.IActivityClient
 Scott.Mail.Smtp2Go.IActivityClient.SearchAllAsync(Scott.Mail.Smtp2Go.ActivitySearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ActivityEvent!>!
 Scott.Mail.Smtp2Go.IActivityClient.SearchAsync(Scott.Mail.Smtp2Go.ActivitySearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ActivitySearchResult!>!>!
+Scott.Mail.Smtp2Go.IAllowedRecipientClient
+Scott.Mail.Smtp2Go.IAllowedRecipientClient.AddAsync(Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.AllowedRecipientsList!>!>!
+Scott.Mail.Smtp2Go.IAllowedRecipientClient.RemoveAsync(Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.AllowedRecipientsList!>!>!
+Scott.Mail.Smtp2Go.IAllowedRecipientClient.UpdateAsync(Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.AllowedRecipientsList!>!>!
+Scott.Mail.Smtp2Go.IAllowedRecipientClient.ViewAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.AllowedRecipientsList!>!>!
 Scott.Mail.Smtp2Go.IAllowedSenderClient
 Scott.Mail.Smtp2Go.IAllowedSenderClient.AddAsync(Scott.Mail.Smtp2Go.AllowedSendersAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.AllowedSendersList!>!>!
 Scott.Mail.Smtp2Go.IAllowedSenderClient.RemoveAsync(Scott.Mail.Smtp2Go.AllowedSendersRemoveRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.AllowedSendersList!>!>!
@@ -1056,6 +1095,7 @@ Scott.Mail.Smtp2Go.ISingleSenderClient.RemoveAsync(string! emailAddress, Scott.M
 Scott.Mail.Smtp2Go.ISingleSenderClient.ViewAsync(Scott.Mail.Smtp2Go.SingleSenderViewRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.SingleSenderViewResult!>!>!
 Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.AllowedRecipients.get -> Scott.Mail.Smtp2Go.IAllowedRecipientClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.AllowedSenders.get -> Scott.Mail.Smtp2Go.IAllowedSenderClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
@@ -1272,6 +1312,7 @@ Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient
 Scott.Mail.Smtp2Go.Smtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.AllowedRecipients.get -> Scott.Mail.Smtp2Go.IAllowedRecipientClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.AllowedSenders.get -> Scott.Mail.Smtp2Go.IAllowedSenderClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
@@ -2078,6 +2119,18 @@ override Scott.Mail.Smtp2Go.ActivitySearchRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.ActivitySearchResult.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ActivitySearchResult.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ActivitySearchResult.ToString() -> string!
+override Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.AllowedRecipientsList.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.AllowedRecipientsList.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.AllowedRecipientsList.ToString() -> string!
+override Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.AllowedSendersAddRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.AllowedSendersAddRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.AllowedSendersAddRequest.ToString() -> string!
@@ -2406,6 +2459,14 @@ static Scott.Mail.Smtp2Go.ActivitySearchRequest.operator !=(Scott.Mail.Smtp2Go.A
 static Scott.Mail.Smtp2Go.ActivitySearchRequest.operator ==(Scott.Mail.Smtp2Go.ActivitySearchRequest? left, Scott.Mail.Smtp2Go.ActivitySearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ActivitySearchResult.operator !=(Scott.Mail.Smtp2Go.ActivitySearchResult? left, Scott.Mail.Smtp2Go.ActivitySearchResult? right) -> bool
 static Scott.Mail.Smtp2Go.ActivitySearchResult.operator ==(Scott.Mail.Smtp2Go.ActivitySearchResult? left, Scott.Mail.Smtp2Go.ActivitySearchResult? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.operator !=(Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest? left, Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest.operator ==(Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest? left, Scott.Mail.Smtp2Go.AllowedRecipientsAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsList.operator !=(Scott.Mail.Smtp2Go.AllowedRecipientsList? left, Scott.Mail.Smtp2Go.AllowedRecipientsList? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsList.operator ==(Scott.Mail.Smtp2Go.AllowedRecipientsList? left, Scott.Mail.Smtp2Go.AllowedRecipientsList? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.operator !=(Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest? left, Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest.operator ==(Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest? left, Scott.Mail.Smtp2Go.AllowedRecipientsRemoveRequest? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.operator !=(Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest? left, Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest? right) -> bool
+static Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest.operator ==(Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest? left, Scott.Mail.Smtp2Go.AllowedRecipientsUpdateRequest? right) -> bool
 static Scott.Mail.Smtp2Go.AllowedSendersAddRequest.operator !=(Scott.Mail.Smtp2Go.AllowedSendersAddRequest? left, Scott.Mail.Smtp2Go.AllowedSendersAddRequest? right) -> bool
 static Scott.Mail.Smtp2Go.AllowedSendersAddRequest.operator ==(Scott.Mail.Smtp2Go.AllowedSendersAddRequest? left, Scott.Mail.Smtp2Go.AllowedSendersAddRequest? right) -> bool
 static Scott.Mail.Smtp2Go.AllowedSendersList.operator !=(Scott.Mail.Smtp2Go.AllowedSendersList? left, Scott.Mail.Smtp2Go.AllowedSendersList? right) -> bool

@@ -1,0 +1,4 @@
+{
+  "allowed_recipients": ["test-person@example.com", "otherexample.com"],
+  "enabled": true
+}

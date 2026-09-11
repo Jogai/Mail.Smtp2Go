@@ -16,9 +16,9 @@ internal sealed class RawClient(Smtp2GoConnection connection) : IRawClient
         return connection.SendRawAsync(Resolve(path, method), body, options, cancellationToken);
     }
 
+    /// <summary>The registered descriptor for the path (and method, when given); an unregistered method gets the path's default flags with that method.</summary>
     private static Endpoint Resolve(string path, HttpMethod? method)
     {
-        Endpoint endpoint = EndpointTable.Get(path);
-        return method is null || method == endpoint.Method ? endpoint : endpoint with { Method = method };
+        return method is null ? EndpointTable.Get(path) : EndpointTable.Get(path, method);
     }
 }

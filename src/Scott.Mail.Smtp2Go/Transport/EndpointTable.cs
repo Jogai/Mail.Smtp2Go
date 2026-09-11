@@ -1,27 +1,63 @@
 namespace Scott.Mail.Smtp2Go.Transport;
 
 /// <summary>
-/// Registry of known <see cref="Endpoint"/> descriptors. Unknown paths get a conservative default so the raw client can reach
-/// endpoints that have no descriptor yet. Each API family adds its rows to <see cref="Seed"/> when its typed client lands.
+/// Registry of known <see cref="Endpoint"/> descriptors, keyed by path and HTTP method: <c>api_keys/edit</c>, <c>users/smtp/edit</c> and
+/// <c>ip_auth/edit</c> are documented with both <c>POST</c> (full edit) and <c>PATCH</c> (partial edit), so a path may carry two descriptors.
+/// Unknown paths get a conservative default so the raw client can reach endpoints that have no descriptor yet. Each API family adds its rows to
+/// <see cref="Seed"/> when its typed client lands.
 /// </summary>
 public static class EndpointTable
 {
-    private static readonly Dictionary<string, Endpoint> s_endpoints = Seed();
+    private static readonly Dictionary<(string Path, string Method), Endpoint> s_endpoints = Seed();
 
     /// <summary>Every registered descriptor.</summary>
     public static IReadOnlyCollection<Endpoint> All => s_endpoints.Values;
 
-    /// <summary>Returns the descriptor for <paramref name="path"/>, or <see cref="CreateDefault"/> when the path is not registered.</summary>
+    /// <summary>
+    /// Returns the descriptor for <paramref name="path"/>: the <c>POST</c> one when the path is registered with several methods, otherwise the only
+    /// registered one, or <see cref="CreateDefault"/> when the path is not registered.
+    /// </summary>
     public static Endpoint Get(string path)
     {
         return TryGet(path, out Endpoint? endpoint) ? endpoint : CreateDefault(path);
     }
 
-    /// <summary>Returns the registered descriptor for <paramref name="path"/>, if any.</summary>
+    /// <summary>Returns the descriptor registered for <paramref name="path"/> and <paramref name="method"/>, or <see cref="CreateDefault"/> with that method when none is.</summary>
+    public static Endpoint Get(string path, HttpMethod method)
+    {
+        Argument.ThrowIfNull(method);
+        return TryGet(path, method, out Endpoint? endpoint) ? endpoint : CreateDefault(path) with { Method = method };
+    }
+
+    /// <summary>Returns the registered descriptor for <paramref name="path"/>, if any: the <c>POST</c> one when several methods are registered, otherwise the only one.</summary>
     public static bool TryGet(string path, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out Endpoint? endpoint)
     {
         Argument.ThrowIfNullOrWhiteSpace(path);
-        return s_endpoints.TryGetValue(Normalize(path), out endpoint);
+        string normalized = Normalize(path);
+        if (s_endpoints.TryGetValue((normalized, HttpMethod.Post.Method), out endpoint))
+        {
+            return true;
+        }
+
+        foreach (KeyValuePair<(string Path, string Method), Endpoint> entry in s_endpoints)
+        {
+            if (string.Equals(entry.Key.Path, normalized, StringComparison.Ordinal))
+            {
+                endpoint = entry.Value;
+                return true;
+            }
+        }
+
+        endpoint = null;
+        return false;
+    }
+
+    /// <summary>Returns the descriptor registered for <paramref name="path"/> and <paramref name="method"/>, if any.</summary>
+    public static bool TryGet(string path, HttpMethod method, [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out Endpoint? endpoint)
+    {
+        Argument.ThrowIfNullOrWhiteSpace(path);
+        Argument.ThrowIfNull(method);
+        return s_endpoints.TryGetValue((Normalize(path), method.Method.ToUpperInvariant()), out endpoint);
     }
 
     /// <summary>
@@ -44,9 +80,9 @@ public static class EndpointTable
     }
 
     // One Add per endpoint. Family plans append their rows here, grouped by family, in the order of comparison.md section 4.
-    private static Dictionary<string, Endpoint> Seed()
+    private static Dictionary<(string Path, string Method), Endpoint> Seed()
     {
-        Dictionary<string, Endpoint> table = new(StringComparer.Ordinal);
+        Dictionary<(string Path, string Method), Endpoint> table = [];
 
         // Email
         Add(table, new Endpoint("email/send", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
@@ -92,8 +128,8 @@ public static class EndpointTable
         return table;
     }
 
-    private static void Add(Dictionary<string, Endpoint> table, Endpoint endpoint)
+    private static void Add(Dictionary<(string Path, string Method), Endpoint> table, Endpoint endpoint)
     {
-        table.Add(endpoint.Path, endpoint);
+        table.Add((endpoint.Path, endpoint.Method.Method.ToUpperInvariant()), endpoint);
     }
 }

@@ -51,9 +51,40 @@ public class EndpointTableTests
     }
 
     [Fact]
-    public void Every_endpoint_outside_email_has_the_default_body_limit_and_posts()
+    public void Every_endpoint_outside_email_has_the_default_body_limit_and_posts_or_patches()
     {
-        EndpointTable.All.Where(e => !e.Path.StartsWith("email/", StringComparison.Ordinal)).Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.DefaultMaxBodyBytes && e.Method == HttpMethod.Post);
+        // The three partial-edit endpoints are documented as PATCH; everything else is POST.
+        string[] patchPaths = ["api_keys/edit", "users/smtp/edit", "ip_auth/edit"];
+        EndpointTable.All.Where(e => !e.Path.StartsWith("email/", StringComparison.Ordinal)).Should().OnlyContain(e => e.MaxBodyBytes == Endpoint.DefaultMaxBodyBytes);
+        EndpointTable.All.Where(e => e.Method != HttpMethod.Post).Should().OnlyContain(e => e.Method == Endpoint.Patch && patchPaths.Contains(e.Path));
+    }
+
+    [Fact]
+    public void Descriptors_are_keyed_by_path_and_method()
+    {
+        EndpointTable.TryGet("email/send", HttpMethod.Post, out Endpoint? post).Should().BeTrue();
+        post!.Path.Should().Be("email/send");
+        EndpointTable.TryGet("/email/send", Endpoint.Patch, out Endpoint? patch).Should().BeFalse();
+        patch.Should().BeNull();
+
+        EndpointTable.Get("email/send", HttpMethod.Post).Should().BeSameAs(post);
+        Endpoint fallback = EndpointTable.Get("email/send", Endpoint.Patch);
+        fallback.Method.Should().Be(Endpoint.Patch);
+        fallback.Idempotent.Should().BeFalse(because: "an unregistered method gets the conservative default with that method");
+        fallback.MaxBodyBytes.Should().Be(Endpoint.EmailMaxBodyBytes);
+
+        EndpointTable.All.Select(e => (e.Path, e.Method.Method)).Should().OnlyHaveUniqueItems();
+    }
+
+    [Fact]
+    public void Get_by_path_prefers_the_post_descriptor_and_falls_back_to_the_only_registered_method()
+    {
+        foreach (Endpoint endpoint in EndpointTable.All)
+        {
+            Endpoint byPath = EndpointTable.Get(endpoint.Path);
+            bool hasPost = EndpointTable.TryGet(endpoint.Path, HttpMethod.Post, out _);
+            byPath.Method.Should().Be(hasPost ? HttpMethod.Post : endpoint.Method, because: "{0} is registered with {1}", endpoint.Path, endpoint.Method);
+        }
     }
 
     [Fact]

@@ -23,7 +23,7 @@ Per-call overrides: `SubaccountId`, `ApiKeyOverride`, `Region`, `Timeout`, `Allo
 
 ## Endpoint descriptors
 
-`Scott.Mail.Smtp2Go.Transport.EndpointTable` holds one `Endpoint` per known path: HTTP method, idempotency, whether `subaccount_id` is accepted, the documented `RateLimitClass` and the body limit. Unknown paths get a conservative default (`POST`, not idempotent, no subaccount, 1 MB, or 50 MB under `email/`). The descriptor travels on each `HttpRequestMessage` under `RequestOptionKeys.EndpointKey` so a `DelegatingHandler` pipeline can read it with `RequestOptionKeys.TryGetEndpoint(request, out var endpoint)`.
+`Scott.Mail.Smtp2Go.Transport.EndpointTable` holds one `Endpoint` per known path and HTTP method: idempotency, whether `subaccount_id` is accepted, the documented `RateLimitClass` and the body limit. `Get(path)` returns the `POST` descriptor (or the only registered one, for the `PATCH`-only `ip_auth/edit`); `Get(path, method)` picks a specific one, which is how `api_keys/edit` and `users/smtp/edit` carry both a `POST` (full edit) and a `PATCH` (partial edit) descriptor. Unknown paths get a conservative default (`POST`, not idempotent, no subaccount, 1 MB, or 50 MB under `email/`). The descriptor travels on each `HttpRequestMessage` under `RequestOptionKeys.EndpointKey` so a `DelegatingHandler` pipeline can read it with `RequestOptionKeys.TryGetEndpoint(request, out var endpoint)`.
 
 ## Diagnostics and tracing
 

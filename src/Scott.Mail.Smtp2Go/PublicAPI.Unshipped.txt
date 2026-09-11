@@ -1676,6 +1676,8 @@ static Scott.Mail.Smtp2Go.Transport.Endpoint.operator ==(Scott.Mail.Smtp2Go.Tran
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.All.get -> System.Collections.Generic.IReadOnlyCollection<Scott.Mail.Smtp2Go.Transport.Endpoint!>!
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.CreateDefault(string! path) -> Scott.Mail.Smtp2Go.Transport.Endpoint!
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.Get(string! path) -> Scott.Mail.Smtp2Go.Transport.Endpoint!
+static Scott.Mail.Smtp2Go.Transport.EndpointTable.Get(string! path, System.Net.Http.HttpMethod! method) -> Scott.Mail.Smtp2Go.Transport.Endpoint!
+static Scott.Mail.Smtp2Go.Transport.EndpointTable.TryGet(string! path, System.Net.Http.HttpMethod! method, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
 static Scott.Mail.Smtp2Go.Transport.EndpointTable.TryGet(string! path, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.GetAllowRetry(System.Net.Http.HttpRequestMessage! request) -> bool
 static Scott.Mail.Smtp2Go.Transport.RequestOptionKeys.TryGetEndpoint(System.Net.Http.HttpRequestMessage! request, out Scott.Mail.Smtp2Go.Transport.Endpoint? endpoint) -> bool

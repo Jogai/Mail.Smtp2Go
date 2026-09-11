@@ -40,32 +40,6 @@
       "reason": "pending plan 07 (account management and SMS)"
     },
     {
-      "endpoint": "api_keys/add",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "api_keys/edit",
-      "method": "PATCH",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "api_keys/edit",
-      "method": "POST",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "api_keys/permissions",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "api_keys/remove",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
-      "endpoint": "api_keys/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "dedicated_ips/view",
       "reason": "pending plan 07 (account management and SMS)"
     },
@@ -186,6 +160,42 @@
       "field": "*",
       "reason": "The docs example shows one webhook object under data, but the live endpoint returns an array of webhooks (docs/api-notes.md); IWebhookClient.ViewAsync is typed as IReadOnlyList<Webhook>, so the captured array shape is checked instead of the docs example.",
       "fixture": "Webhooks/view-response-array.json"
+    },
+    {
+      "endpoint": "api_keys/add",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
+    },
+    {
+      "endpoint": "api_keys/add",
+      "scope": "response",
+      "field": "data",
+      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
+    },
+    {
+      "endpoint": "api_keys/edit",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
+    },
+    {
+      "endpoint": "api_keys/edit",
+      "scope": "response",
+      "field": "data",
+      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
+    },
+    {
+      "endpoint": "api_keys/view",
+      "scope": "response",
+      "field": "request_id",
+      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
+    },
+    {
+      "endpoint": "api_keys/view",
+      "scope": "response",
+      "field": "data",
+      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
     }
   ]
 }

@@ -96,6 +96,16 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(ApiResponse<ArchiveSearchResult>))]
 [JsonSerializable(typeof(ApiResponse<ArchivedEmail>))]
 
+// API keys
+[JsonSerializable(typeof(ApiKeyViewRequest))]
+[JsonSerializable(typeof(ApiKeyAddRequest))]
+[JsonSerializable(typeof(ApiKeyEditRequest))]
+[JsonSerializable(typeof(ApiKeyPatchRequest))]
+[JsonSerializable(typeof(ApiKeyRemoveRequest))]
+[JsonSerializable(typeof(ApiKeyPermissionsRequest))]
+[JsonSerializable(typeof(ApiResponse<IReadOnlyList<ApiKey>>))]
+[JsonSerializable(typeof(ApiResponse<IReadOnlyList<string>>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

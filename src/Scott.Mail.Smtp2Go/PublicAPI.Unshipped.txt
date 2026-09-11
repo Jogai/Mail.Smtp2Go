@@ -139,6 +139,168 @@ Scott.Mail.Smtp2Go.ApiError.RawBody.get -> string?
 Scott.Mail.Smtp2Go.ApiError.RawBody.init -> void
 Scott.Mail.Smtp2Go.ApiError.RequestId.get -> string?
 Scott.Mail.Smtp2Go.ApiError.RequestId.init -> void
+Scott.Mail.Smtp2Go.ApiKey
+Scott.Mail.Smtp2Go.ApiKey.<Clone>$() -> Scott.Mail.Smtp2Go.ApiKey!
+Scott.Mail.Smtp2Go.ApiKey.ApiKey() -> void
+Scott.Mail.Smtp2Go.ApiKey.ArchiveEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKey.ArchiveEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKey.AuditEmail.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.AuditEmail.init -> void
+Scott.Mail.Smtp2Go.ApiKey.BounceNotifications.get -> Scott.Mail.Smtp2Go.BounceNotifications?
+Scott.Mail.Smtp2Go.ApiKey.BounceNotifications.init -> void
+Scott.Mail.Smtp2Go.ApiKey.ClickTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKey.ClickTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKey.CustomRateLimit.get -> bool?
+Scott.Mail.Smtp2Go.ApiKey.CustomRateLimit.init -> void
+Scott.Mail.Smtp2Go.ApiKey.CustomRateLimitPeriod.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.CustomRateLimitPeriod.init -> void
+Scott.Mail.Smtp2Go.ApiKey.CustomRateLimitValue.get -> int?
+Scott.Mail.Smtp2Go.ApiKey.CustomRateLimitValue.init -> void
+Scott.Mail.Smtp2Go.ApiKey.DefaultRateLimitPeriod.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.DefaultRateLimitPeriod.init -> void
+Scott.Mail.Smtp2Go.ApiKey.DefaultRateLimitValue.get -> int?
+Scott.Mail.Smtp2Go.ApiKey.DefaultRateLimitValue.init -> void
+Scott.Mail.Smtp2Go.ApiKey.Description.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.Description.init -> void
+Scott.Mail.Smtp2Go.ApiKey.Endpoints.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.ApiKey.Endpoints.init -> void
+Scott.Mail.Smtp2Go.ApiKey.Equals(Scott.Mail.Smtp2Go.ApiKey? other) -> bool
+Scott.Mail.Smtp2Go.ApiKey.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.ApiKey.Extra.set -> void
+Scott.Mail.Smtp2Go.ApiKey.FeedbackDomain.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.FeedbackDomain.init -> void
+Scott.Mail.Smtp2Go.ApiKey.FeedbackEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKey.FeedbackEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKey.FeedbackHtml.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.FeedbackHtml.init -> void
+Scott.Mail.Smtp2Go.ApiKey.FeedbackText.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.FeedbackText.init -> void
+Scott.Mail.Smtp2Go.ApiKey.IpPool.get -> int?
+Scott.Mail.Smtp2Go.ApiKey.IpPool.init -> void
+Scott.Mail.Smtp2Go.ApiKey.Key.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.Key.init -> void
+Scott.Mail.Smtp2Go.ApiKey.OpenTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKey.OpenTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKey.SendingAllowed.get -> bool?
+Scott.Mail.Smtp2Go.ApiKey.SendingAllowed.init -> void
+Scott.Mail.Smtp2Go.ApiKey.Status.get -> Scott.Mail.Smtp2Go.CredentialStatus?
+Scott.Mail.Smtp2Go.ApiKey.Status.init -> void
+Scott.Mail.Smtp2Go.ApiKey.Username.get -> string?
+Scott.Mail.Smtp2Go.ApiKey.Username.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ApiKeyAddRequest!
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.ApiKeyAddRequest() -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.ArchiveEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.ArchiveEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.AuditEmail.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.AuditEmail.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.BounceNotifications.get -> Scott.Mail.Smtp2Go.BounceNotifications?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.BounceNotifications.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.ClickTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.ClickTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.CustomRateLimit.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.CustomRateLimit.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.CustomRateLimitPeriod.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.CustomRateLimitPeriod.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.CustomRateLimitValue.get -> int?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.CustomRateLimitValue.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Description.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Description.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Endpoints.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Endpoints.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Equals(Scott.Mail.Smtp2Go.ApiKeyAddRequest? other) -> bool
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.FeedbackEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.FeedbackEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.FeedbackHtml.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.FeedbackHtml.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.FeedbackText.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.FeedbackText.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.IpPool.get -> int?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.IpPool.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.OpenTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.OpenTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Status.get -> Scott.Mail.Smtp2Go.CredentialStatus?
+Scott.Mail.Smtp2Go.ApiKeyAddRequest.Status.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ApiKeyEditRequest!
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.ApiKeyEditRequest() -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.ArchiveEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.ArchiveEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.AuditEmail.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.AuditEmail.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.BounceNotifications.get -> Scott.Mail.Smtp2Go.BounceNotifications?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.BounceNotifications.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.ClickTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.ClickTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.CustomRateLimit.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.CustomRateLimit.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.CustomRateLimitPeriod.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.CustomRateLimitPeriod.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.CustomRateLimitValue.get -> int?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.CustomRateLimitValue.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Description.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Description.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Endpoints.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Endpoints.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Equals(Scott.Mail.Smtp2Go.ApiKeyEditRequest? other) -> bool
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.FeedbackEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.FeedbackEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.FeedbackHtml.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.FeedbackHtml.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.FeedbackText.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.FeedbackText.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Id.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.IpPool.get -> int?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.IpPool.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.OpenTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.OpenTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Status.get -> Scott.Mail.Smtp2Go.CredentialStatus?
+Scott.Mail.Smtp2Go.ApiKeyEditRequest.Status.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ApiKeyPatchRequest!
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.ApiKeyPatchRequest() -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.ArchiveEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.ArchiveEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.AuditEmail.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.AuditEmail.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.BounceNotifications.get -> Scott.Mail.Smtp2Go.BounceNotifications?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.BounceNotifications.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.ClickTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.ClickTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.CustomRateLimit.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.CustomRateLimit.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.CustomRateLimitPeriod.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.CustomRateLimitPeriod.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.CustomRateLimitValue.get -> int?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.CustomRateLimitValue.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Description.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Description.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Endpoints.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Endpoints.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Equals(Scott.Mail.Smtp2Go.ApiKeyPatchRequest? other) -> bool
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.FeedbackEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.FeedbackEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.FeedbackHtml.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.FeedbackHtml.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.FeedbackText.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.FeedbackText.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Id.get -> string!
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Id.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.IpPool.get -> int?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.IpPool.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.OpenTrackingEnabled.get -> bool?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.OpenTrackingEnabled.init -> void
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Status.get -> Scott.Mail.Smtp2Go.CredentialStatus?
+Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Status.init -> void
+Scott.Mail.Smtp2Go.ApiKeyViewRequest
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.<Clone>$() -> Scott.Mail.Smtp2Go.ApiKeyViewRequest!
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.ApiKeyViewRequest() -> void
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.Equals(Scott.Mail.Smtp2Go.ApiKeyViewRequest? other) -> bool
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.Id.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.Id.init -> void
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.Search.get -> string?
+Scott.Mail.Smtp2Go.ApiKeyViewRequest.Search.init -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>
 Scott.Mail.Smtp2Go.ApiResponse<TData>.ApiResponse() -> void
 Scott.Mail.Smtp2Go.ApiResponse<TData>.Data.get -> TData
@@ -593,6 +755,13 @@ Scott.Mail.Smtp2Go.FieldValidationError.Message.init -> void
 Scott.Mail.Smtp2Go.IActivityClient
 Scott.Mail.Smtp2Go.IActivityClient.SearchAllAsync(Scott.Mail.Smtp2Go.ActivitySearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ActivityEvent!>!
 Scott.Mail.Smtp2Go.IActivityClient.SearchAsync(Scott.Mail.Smtp2Go.ActivitySearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ActivitySearchResult!>!>!
+Scott.Mail.Smtp2Go.IApiKeyClient
+Scott.Mail.Smtp2Go.IApiKeyClient.AddAsync(Scott.Mail.Smtp2Go.ApiKeyAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.ApiKey!>!>!>!
+Scott.Mail.Smtp2Go.IApiKeyClient.EditAsync(Scott.Mail.Smtp2Go.ApiKeyEditRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.ApiKey!>!>!>!
+Scott.Mail.Smtp2Go.IApiKeyClient.GetPermissionsAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<string!>!>!>!
+Scott.Mail.Smtp2Go.IApiKeyClient.PatchAsync(Scott.Mail.Smtp2Go.ApiKeyPatchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.ApiKey!>!>!>!
+Scott.Mail.Smtp2Go.IApiKeyClient.RemoveAsync(string! id, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Text.Json.JsonElement>!>!
+Scott.Mail.Smtp2Go.IApiKeyClient.ViewAsync(Scott.Mail.Smtp2Go.ApiKeyViewRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.ApiKey!>!>!>!
 Scott.Mail.Smtp2Go.IArchiveClient
 Scott.Mail.Smtp2Go.IArchiveClient.DownloadOriginalAsync(Scott.Mail.Smtp2Go.ArchivedEmail! email, System.IO.Stream! destination, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<long>!
 Scott.Mail.Smtp2Go.IArchiveClient.GetAsync(string! emailId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchivedEmail!>!>!
@@ -611,6 +780,7 @@ Scott.Mail.Smtp2Go.IRawClient.SendAsync<TRequest, TResponse>(string! path, TRequ
 Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonElement body, System.Net.Http.HttpMethod? method = null, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Text.Json.JsonDocument!>!
 Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
@@ -769,6 +939,7 @@ Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException
 Scott.Mail.Smtp2Go.Smtp2GoAuthenticationException.Smtp2GoAuthenticationException(string! message, int statusCode, string? path, Scott.Mail.Smtp2Go.ApiError? error, System.Exception? innerException = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient
 Scott.Mail.Smtp2Go.Smtp2GoClient.Activity.get -> Scott.Mail.Smtp2Go.IActivityClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Options.get -> Scott.Mail.Smtp2Go.Smtp2GoClientOptions!
@@ -1370,6 +1541,21 @@ override Scott.Mail.Smtp2Go.ActivitySearchResult.ToString() -> string!
 override Scott.Mail.Smtp2Go.ApiError.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ApiError.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ApiError.ToString() -> string!
+override Scott.Mail.Smtp2Go.ApiKey.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ApiKey.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ApiKey.ToString() -> string!
+override Scott.Mail.Smtp2Go.ApiKeyAddRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ApiKeyAddRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ApiKeyAddRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.ApiKeyEditRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ApiKeyEditRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ApiKeyEditRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.ApiKeyPatchRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ApiKeyPatchRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ApiKeyPatchRequest.ToString() -> string!
+override Scott.Mail.Smtp2Go.ApiKeyViewRequest.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.ApiKeyViewRequest.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.ApiKeyViewRequest.ToString() -> string!
 override Scott.Mail.Smtp2Go.ArchiveSearchRequest.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.ArchiveSearchRequest.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.ArchiveSearchRequest.ToString() -> string!
@@ -1592,6 +1778,16 @@ static Scott.Mail.Smtp2Go.ActivitySearchResult.operator !=(Scott.Mail.Smtp2Go.Ac
 static Scott.Mail.Smtp2Go.ActivitySearchResult.operator ==(Scott.Mail.Smtp2Go.ActivitySearchResult? left, Scott.Mail.Smtp2Go.ActivitySearchResult? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator !=(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
 static Scott.Mail.Smtp2Go.ApiError.operator ==(Scott.Mail.Smtp2Go.ApiError? left, Scott.Mail.Smtp2Go.ApiError? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKey.operator !=(Scott.Mail.Smtp2Go.ApiKey? left, Scott.Mail.Smtp2Go.ApiKey? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKey.operator ==(Scott.Mail.Smtp2Go.ApiKey? left, Scott.Mail.Smtp2Go.ApiKey? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyAddRequest.operator !=(Scott.Mail.Smtp2Go.ApiKeyAddRequest? left, Scott.Mail.Smtp2Go.ApiKeyAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyAddRequest.operator ==(Scott.Mail.Smtp2Go.ApiKeyAddRequest? left, Scott.Mail.Smtp2Go.ApiKeyAddRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyEditRequest.operator !=(Scott.Mail.Smtp2Go.ApiKeyEditRequest? left, Scott.Mail.Smtp2Go.ApiKeyEditRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyEditRequest.operator ==(Scott.Mail.Smtp2Go.ApiKeyEditRequest? left, Scott.Mail.Smtp2Go.ApiKeyEditRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyPatchRequest.operator !=(Scott.Mail.Smtp2Go.ApiKeyPatchRequest? left, Scott.Mail.Smtp2Go.ApiKeyPatchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyPatchRequest.operator ==(Scott.Mail.Smtp2Go.ApiKeyPatchRequest? left, Scott.Mail.Smtp2Go.ApiKeyPatchRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyViewRequest.operator !=(Scott.Mail.Smtp2Go.ApiKeyViewRequest? left, Scott.Mail.Smtp2Go.ApiKeyViewRequest? right) -> bool
+static Scott.Mail.Smtp2Go.ApiKeyViewRequest.operator ==(Scott.Mail.Smtp2Go.ApiKeyViewRequest? left, Scott.Mail.Smtp2Go.ApiKeyViewRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ArchiveSearchRequest.operator !=(Scott.Mail.Smtp2Go.ArchiveSearchRequest? left, Scott.Mail.Smtp2Go.ArchiveSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ArchiveSearchRequest.operator ==(Scott.Mail.Smtp2Go.ArchiveSearchRequest? left, Scott.Mail.Smtp2Go.ArchiveSearchRequest? right) -> bool
 static Scott.Mail.Smtp2Go.ArchiveSearchResult.operator !=(Scott.Mail.Smtp2Go.ArchiveSearchResult? left, Scott.Mail.Smtp2Go.ArchiveSearchResult? right) -> bool

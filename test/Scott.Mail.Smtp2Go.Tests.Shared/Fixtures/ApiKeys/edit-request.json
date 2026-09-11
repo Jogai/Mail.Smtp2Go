@@ -1,0 +1,7 @@
+{
+  "id": "api-00000000000000000000000000000000",
+  "description": "edited key",
+  "bounce_notifications": "drop",
+  "status": "allowed",
+  "endpoints": ["*"]
+}

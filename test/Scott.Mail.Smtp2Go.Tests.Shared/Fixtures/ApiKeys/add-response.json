@@ -1,0 +1,1 @@
+{"request_id":"f3e50113-deb2-4e54-9675-2ea497c3732e","data":[{"api_key":"api-00000000000000000000000000000000","description":"test api key","feedback_enabled":true,"feedback_html":"test_html","feedback_text":"test_text","ippool":1234,"bounce_notifications":"from","status":"allowed","endpoints":["/email/send"]}]}

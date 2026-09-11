@@ -1,0 +1,17 @@
+{
+  "description": "test api key",
+  "custom_ratelimit": true,
+  "custom_ratelimit_value": 500,
+  "custom_ratelimit_period": "1 hour",
+  "ip_pool": 1234,
+  "feedback_enabled": true,
+  "feedback_html": "test_html",
+  "feedback_text": "test_text",
+  "open_tracking_enabled": true,
+  "click_tracking_enabled": false,
+  "archive_enabled": true,
+  "audit_email": "audit@example.com",
+  "bounce_notifications": "bounces@example.com",
+  "status": "sandbox",
+  "endpoints": ["/email/send", "/stats/*"]
+}

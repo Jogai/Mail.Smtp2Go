@@ -178,6 +178,9 @@ public static class EndpointTable
         Add(table, new Endpoint("subaccount/close", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
         Add(table, new Endpoint("subaccount/reopen", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
+        // Dedicated IPs (no subaccount_id)
+        Add(table, new Endpoint("dedicated_ips/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+
         return table;
     }
 

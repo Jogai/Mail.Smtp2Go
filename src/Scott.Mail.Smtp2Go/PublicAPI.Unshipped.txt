@@ -583,6 +583,18 @@ Scott.Mail.Smtp2Go.CustomHeader.Header.get -> string!
 Scott.Mail.Smtp2Go.CustomHeader.Header.init -> void
 Scott.Mail.Smtp2Go.CustomHeader.Value.get -> string!
 Scott.Mail.Smtp2Go.CustomHeader.Value.init -> void
+Scott.Mail.Smtp2Go.DedicatedIpPool
+Scott.Mail.Smtp2Go.DedicatedIpPool.<Clone>$() -> Scott.Mail.Smtp2Go.DedicatedIpPool!
+Scott.Mail.Smtp2Go.DedicatedIpPool.DedicatedIpPool() -> void
+Scott.Mail.Smtp2Go.DedicatedIpPool.Equals(Scott.Mail.Smtp2Go.DedicatedIpPool? other) -> bool
+Scott.Mail.Smtp2Go.DedicatedIpPool.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Scott.Mail.Smtp2Go.DedicatedIpPool.Extra.set -> void
+Scott.Mail.Smtp2Go.DedicatedIpPool.Id.get -> long?
+Scott.Mail.Smtp2Go.DedicatedIpPool.Id.init -> void
+Scott.Mail.Smtp2Go.DedicatedIpPool.IpAddresses.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Scott.Mail.Smtp2Go.DedicatedIpPool.IpAddresses.init -> void
+Scott.Mail.Smtp2Go.DedicatedIpPool.Name.get -> string?
+Scott.Mail.Smtp2Go.DedicatedIpPool.Name.init -> void
 Scott.Mail.Smtp2Go.DeliveryAttempt
 Scott.Mail.Smtp2Go.DeliveryAttempt.<Clone>$() -> Scott.Mail.Smtp2Go.DeliveryAttempt!
 Scott.Mail.Smtp2Go.DeliveryAttempt.DeliveryAttempt() -> void
@@ -1066,6 +1078,8 @@ Scott.Mail.Smtp2Go.IArchiveClient.DownloadOriginalAsync(Scott.Mail.Smtp2Go.Archi
 Scott.Mail.Smtp2Go.IArchiveClient.GetAsync(string! emailId, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchivedEmail!>!>!
 Scott.Mail.Smtp2Go.IArchiveClient.SearchAllAsync(Scott.Mail.Smtp2Go.ArchiveSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Collections.Generic.IAsyncEnumerable<Scott.Mail.Smtp2Go.ArchivedEmail!>!
 Scott.Mail.Smtp2Go.IArchiveClient.SearchAsync(Scott.Mail.Smtp2Go.ArchiveSearchRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.ArchiveSearchResult!>!>!
+Scott.Mail.Smtp2Go.IDedicatedIpClient
+Scott.Mail.Smtp2Go.IDedicatedIpClient.ViewAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.DedicatedIpPool!>!>!>!
 Scott.Mail.Smtp2Go.IDomainClient
 Scott.Mail.Smtp2Go.IDomainClient.AddAsync(Scott.Mail.Smtp2Go.DomainAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
 Scott.Mail.Smtp2Go.IDomainClient.RemoveAsync(string! domain, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.DomainViewResult!>!>!
@@ -1099,6 +1113,7 @@ Scott.Mail.Smtp2Go.ISmtp2GoClient.AllowedRecipients.get -> Scott.Mail.Smtp2Go.IA
 Scott.Mail.Smtp2Go.ISmtp2GoClient.AllowedSenders.get -> Scott.Mail.Smtp2Go.IAllowedSenderClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.DedicatedIps.get -> Scott.Mail.Smtp2Go.IDedicatedIpClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Domains.get -> Scott.Mail.Smtp2Go.IDomainClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.IpAuth.get -> Scott.Mail.Smtp2Go.IIpAuthClient!
@@ -1324,6 +1339,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient.AllowedRecipients.get -> Scott.Mail.Smtp2Go.IAl
 Scott.Mail.Smtp2Go.Smtp2GoClient.AllowedSenders.get -> Scott.Mail.Smtp2Go.IAllowedSenderClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.ApiKeys.get -> Scott.Mail.Smtp2Go.IApiKeyClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Archive.get -> Scott.Mail.Smtp2Go.IArchiveClient!
+Scott.Mail.Smtp2Go.Smtp2GoClient.DedicatedIps.get -> Scott.Mail.Smtp2Go.IDedicatedIpClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Domains.get -> Scott.Mail.Smtp2Go.IDomainClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.IpAuth.get -> Scott.Mail.Smtp2Go.IIpAuthClient!
@@ -2326,6 +2342,9 @@ override Scott.Mail.Smtp2Go.BounceNotifications.ToString() -> string!
 override Scott.Mail.Smtp2Go.CustomHeader.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.CustomHeader.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.CustomHeader.ToString() -> string!
+override Scott.Mail.Smtp2Go.DedicatedIpPool.Equals(object? obj) -> bool
+override Scott.Mail.Smtp2Go.DedicatedIpPool.GetHashCode() -> int
+override Scott.Mail.Smtp2Go.DedicatedIpPool.ToString() -> string!
 override Scott.Mail.Smtp2Go.DeliveryAttempt.Equals(object? obj) -> bool
 override Scott.Mail.Smtp2Go.DeliveryAttempt.GetHashCode() -> int
 override Scott.Mail.Smtp2Go.DeliveryAttempt.ToString() -> string!
@@ -2672,6 +2691,8 @@ static Scott.Mail.Smtp2Go.BounceNotifications.operator !=(Scott.Mail.Smtp2Go.Bou
 static Scott.Mail.Smtp2Go.BounceNotifications.operator ==(Scott.Mail.Smtp2Go.BounceNotifications? left, Scott.Mail.Smtp2Go.BounceNotifications? right) -> bool
 static Scott.Mail.Smtp2Go.CustomHeader.operator !=(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
 static Scott.Mail.Smtp2Go.CustomHeader.operator ==(Scott.Mail.Smtp2Go.CustomHeader? left, Scott.Mail.Smtp2Go.CustomHeader? right) -> bool
+static Scott.Mail.Smtp2Go.DedicatedIpPool.operator !=(Scott.Mail.Smtp2Go.DedicatedIpPool? left, Scott.Mail.Smtp2Go.DedicatedIpPool? right) -> bool
+static Scott.Mail.Smtp2Go.DedicatedIpPool.operator ==(Scott.Mail.Smtp2Go.DedicatedIpPool? left, Scott.Mail.Smtp2Go.DedicatedIpPool? right) -> bool
 static Scott.Mail.Smtp2Go.DeliveryAttempt.operator !=(Scott.Mail.Smtp2Go.DeliveryAttempt? left, Scott.Mail.Smtp2Go.DeliveryAttempt? right) -> bool
 static Scott.Mail.Smtp2Go.DeliveryAttempt.operator ==(Scott.Mail.Smtp2Go.DeliveryAttempt? left, Scott.Mail.Smtp2Go.DeliveryAttempt? right) -> bool
 static Scott.Mail.Smtp2Go.DomainAddRequest.operator !=(Scott.Mail.Smtp2Go.DomainAddRequest? left, Scott.Mail.Smtp2Go.DomainAddRequest? right) -> bool

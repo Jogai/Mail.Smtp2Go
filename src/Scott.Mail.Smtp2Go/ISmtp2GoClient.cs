@@ -46,6 +46,9 @@ public interface ISmtp2GoClient
     /// <summary>Subaccounts: <c>subaccounts/search</c>, <c>subaccount/add</c>, <c>edit</c>, <c>close</c>, <c>reopen</c>.</summary>
     ISubaccountClient Subaccounts { get; }
 
+    /// <summary>Dedicated IP pools: <c>dedicated_ips/view</c>.</summary>
+    IDedicatedIpClient DedicatedIps { get; }
+
     /// <summary>Email archive: <c>archive/search</c>, <c>archive/email</c> and downloading originals.</summary>
     IArchiveClient Archive { get; }
 

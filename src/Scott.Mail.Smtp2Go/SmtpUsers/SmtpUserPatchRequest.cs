@@ -31,7 +31,7 @@ public sealed record SmtpUserPatchRequest : IRequestValidator
     [JsonPropertyName("custom_ratelimit_period")]
     public string? CustomRateLimitPeriod { get; init; }
 
-    /// <summary>The dedicated IP pool to send from; ids come from <c>dedicated_ips/view</c>.</summary>
+    /// <summary>The dedicated IP pool to send from; ids come from <see cref="IDedicatedIpClient.ViewAsync"/>.</summary>
     [JsonPropertyName("ip_pool")]
     public int? IpPool { get; init; }
 

@@ -8,10 +8,6 @@
       "reason": "Merged into the body by the transport from RequestOptions.SubaccountId when Endpoint.AcceptsSubaccountId is true; never a model property."
     },
     {
-      "endpoint": "dedicated_ips/view",
-      "reason": "pending plan 07 (account management and SMS)"
-    },
-    {
       "endpoint": "sms/send",
       "reason": "pending plan 07 (account management and SMS)"
     },

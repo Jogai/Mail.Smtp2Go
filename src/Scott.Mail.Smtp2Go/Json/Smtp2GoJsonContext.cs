@@ -160,6 +160,9 @@ namespace Scott.Mail.Smtp2Go.Json;
 [JsonSerializable(typeof(ApiResponse<Subaccount>))]
 [JsonSerializable(typeof(ApiResponse<SubaccountSearchResult>))]
 
+// Dedicated IPs
+[JsonSerializable(typeof(ApiResponse<IReadOnlyList<DedicatedIpPool>>))]
+
 // Family plans add their request models and ApiResponse<TData> instantiations below, grouped by family.
 internal sealed partial class Smtp2GoJsonContext : JsonSerializerContext
 {

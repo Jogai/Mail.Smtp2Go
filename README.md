@@ -32,7 +32,7 @@ The quick start above is compiled by a unit test so it stays in sync with the AP
 
 ## Status
 
-Core transport is in place: construction, header authentication, regional endpoints, subaccount injection, client-side validation, the response envelope, typed errors, tracing and the `client.Raw` escape hatch that can call any endpoint today (see [docs/getting-started.md](docs/getting-started.md)). `client.Email` covers sending (JSON, MIME, batch), scheduled-email search and removal, and the deprecated email search. The remaining typed family clients land in the following plans.
+Core transport is in place: construction, header authentication, regional endpoints, subaccount injection, client-side validation, the response envelope, typed errors, tracing and the `client.Raw` escape hatch that can call any endpoint today (see [docs/getting-started.md](docs/getting-started.md)). `client.Email` covers sending (JSON, MIME, batch), scheduled-email search and removal, and the deprecated email search. `client.Webhooks` manages webhooks and `Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser` parses their JSON and form callbacks ([docs/webhooks.md](docs/webhooks.md)); `client.Stats`, `client.Activity`, `client.Templates` and `client.Suppressions` cover reporting, templates and suppressions ([docs/reporting.md](docs/reporting.md)); `client.Archive` searches the email archive and downloads originals ([docs/archive.md](docs/archive.md)). The full round trip, send then find in the archive then download the `.eml`, is the runnable [demo](demo/Scott.Mail.Smtp2Go.Demo/Program.cs). Account management and SMS follow in later plans.
 
 ## License
 

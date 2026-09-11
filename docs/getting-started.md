@@ -1,6 +1,6 @@
 # Getting started
 
-Install the core package and construct a client with an API key. `client.Email` sends email (see [sending](sending.md)); the other typed family clients (`client.Stats`, `client.Webhooks`, ...) land with their plans, and until then every endpoint is reachable through `client.Raw`, which applies the same authentication, regional routing, validation, error mapping and diagnostics the typed clients use.
+Install the core package and construct a client with an API key. `client.Email` sends email (see [sending](sending.md)); `client.Webhooks`, `client.Stats`, `client.Activity`, `client.Templates`, `client.Suppressions` and `client.Archive` cover webhook management and reporting (see [webhooks](webhooks.md), [reporting](reporting.md) and [archive](archive.md)); the account-management and SMS families land with plan 07, and until then every endpoint is reachable through `client.Raw`, which applies the same authentication, regional routing, validation, error mapping and diagnostics the typed clients use.
 
 ```shell
 dotnet package add Scott.Mail.Smtp2Go

@@ -30,6 +30,10 @@ dotnet user-secrets set "Smtp2Go:ApiKey:Sandbox" "api-..." --project test/Scott.
 dotnet test --project test/Scott.Mail.Smtp2Go.Tests.Integration
 ```
 
+Tests marked `[Trait("Category", "Live")]` send real email and need a live key with Email Archiving, a verified sender and a recipient: `SMTP2GO_LIVE_API_KEY`, `SMTP2GO_SENDER`, `SMTP2GO_RECIPIENT` (or the user secrets `Smtp2Go:ApiKey:Live`, `Smtp2Go:Live:Sender`, `Smtp2Go:Live:Recipient`). The webhook capture test additionally needs `cloudflared` on the PATH and, with `SMTP2GO_CAPTURE=1`, overwrites the fixtures in `test/Scott.Mail.Smtp2Go.Tests.Shared/Fixtures/Webhooks/Live/` with the callbacks it receives. Run them on purpose: `dotnet test --project test/Scott.Mail.Smtp2Go.Tests.Integration -- --filter-trait Category=Live`.
+
+The `demo/` project is the manual end-to-end check for the archive: see [archive.md](archive.md).
+
 ## Conventions
 
 - Central Package Management: versions live only in `Directory.Packages.props`; never put `Version=` on a `PackageReference`. Lock files (`packages.lock.json`) are committed.

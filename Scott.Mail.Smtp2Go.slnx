@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/demo/">
+    <Project Path="demo/Scott.Mail.Smtp2Go.Demo.Hosting/Scott.Mail.Smtp2Go.Demo.Hosting.csproj" />
     <Project Path="demo/Scott.Mail.Smtp2Go.Demo/Scott.Mail.Smtp2Go.Demo.csproj" />
   </Folder>
   <Folder Name="/src/">

@@ -83,6 +83,10 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    # The nuget.org trusted-publishing policy for this repository is bound to the 'production' environment; the OIDC token
+    # must carry that environment claim or the token exchange fails with "Environment mismatch". GitHub creates the
+    # environment on first use; add reviewers or branch/tag protection rules on it in the repository settings if wanted.
+    environment: production
     permissions:
       contents: write # the GitHub release
       id-token: write # NuGet trusted publishing (OIDC token exchange in the NuGet/login step)

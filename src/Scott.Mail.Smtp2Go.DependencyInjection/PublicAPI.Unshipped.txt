@@ -1,1 +1,69 @@
 #nullable enable
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.BreakDuration.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.BreakDuration.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.CircuitBreakerOptions() -> void
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.Enabled.get -> bool
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.Enabled.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.FailureRatio.get -> double
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.FailureRatio.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.MinimumThroughput.get -> int
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.MinimumThroughput.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.SamplingDuration.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions.SamplingDuration.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.PermitLimit.get -> int
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.PermitLimit.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.QueueLimit.get -> int
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.QueueLimit.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.RateLimitWindow() -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.Window.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow.Window.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.Enabled.get -> bool
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.Enabled.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.GlobalConcurrency.get -> int
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.GlobalConcurrency.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.GlobalQueueLimit.get -> int
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.GlobalQueueLimit.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.Overrides.get -> System.Collections.Generic.Dictionary<Scott.Mail.Smtp2Go.Transport.RateLimitClass, Scott.Mail.Smtp2Go.DependencyInjection.RateLimitWindow!>!
+Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions.RateLimitingOptions() -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.AttemptTimeout.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.AttemptTimeout.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.CircuitBreaker.get -> Scott.Mail.Smtp2Go.DependencyInjection.CircuitBreakerOptions!
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.MaxRetries.get -> int
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.MaxRetries.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RateLimiting.get -> Scott.Mail.Smtp2Go.DependencyInjection.RateLimitingOptions!
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.ResilienceOptions() -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryBaseDelay.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryBaseDelay.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryOnSendEndpoints.get -> bool
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.RetryOnSendEndpoints.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.TotalTimeout.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions.TotalTimeout.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AdditionalJsonTypeInfoResolver.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ApiKey.get -> string?
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ApiKey.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AuthenticationScheme.get -> Scott.Mail.Smtp2Go.AuthenticationScheme
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.AuthenticationScheme.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.BaseUrl.get -> System.Uri?
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.BaseUrl.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ClientSideValidation.get -> bool
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ClientSideValidation.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.DefaultFastAccept.get -> bool?
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.DefaultFastAccept.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.DefaultSubaccountId.get -> string?
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.DefaultSubaccountId.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.Region.get -> Scott.Mail.Smtp2Go.Region?
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.Region.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.Resilience.get -> Scott.Mail.Smtp2Go.DependencyInjection.ResilienceOptions!
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.Smtp2GoOptions() -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.Timeout.get -> System.TimeSpan
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.Timeout.set -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions.ToClientOptions() -> Scott.Mail.Smtp2Go.Smtp2GoClientOptions!
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator.Smtp2GoOptionsValidator() -> void
+Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptionsValidator.Validate(string? name, Scott.Mail.Smtp2Go.DependencyInjection.Smtp2GoOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!

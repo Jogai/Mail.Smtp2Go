@@ -198,6 +198,13 @@ Scott.Mail.Smtp2Go.IRawClient.SendJsonAsync(string! path, System.Text.Json.JsonE
 Scott.Mail.Smtp2Go.ISmtp2GoClient
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Email.get -> Scott.Mail.Smtp2Go.IEmailClient!
 Scott.Mail.Smtp2Go.ISmtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
+Scott.Mail.Smtp2Go.ISmtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
+Scott.Mail.Smtp2Go.IWebhookClient
+Scott.Mail.Smtp2Go.IWebhookClient.AddAsync(Scott.Mail.Smtp2Go.WebhookAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
+Scott.Mail.Smtp2Go.IWebhookClient.AddOrUpdateByUrlAsync(Scott.Mail.Smtp2Go.WebhookAddRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
+Scott.Mail.Smtp2Go.IWebhookClient.EditAsync(Scott.Mail.Smtp2Go.WebhookEditRequest! request, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
+Scott.Mail.Smtp2Go.IWebhookClient.RemoveAsync(long id, Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<Scott.Mail.Smtp2Go.Webhook!>!>!
+Scott.Mail.Smtp2Go.IWebhookClient.ViewAsync(Scott.Mail.Smtp2Go.RequestOptions? options = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.ApiResponse<System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.Webhook!>!>!>!
 Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter
 Scott.Mail.Smtp2Go.Json.Converters.EmailAddressConverter.EmailAddressConverter() -> void
 Scott.Mail.Smtp2Go.Json.Converters.PercentageConverter
@@ -304,6 +311,7 @@ Scott.Mail.Smtp2Go.Smtp2GoClient.Raw.get -> Scott.Mail.Smtp2Go.IRawClient!
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(System.Net.Http.HttpClient! httpClient, Scott.Mail.Smtp2Go.Smtp2GoClientOptions! options, Scott.Mail.Smtp2Go.Transport.ISmtp2GoDiagnostics? diagnostics = null) -> void
 Scott.Mail.Smtp2Go.Smtp2GoClient.Smtp2GoClient(string! apiKey) -> void
+Scott.Mail.Smtp2Go.Smtp2GoClient.Webhooks.get -> Scott.Mail.Smtp2Go.IWebhookClient!
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.get -> System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver?
 Scott.Mail.Smtp2Go.Smtp2GoClientOptions.AdditionalJsonTypeInfoResolver.set -> void

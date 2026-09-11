@@ -10,6 +10,9 @@ public interface ISmtp2GoClient
     /// <summary>Sending: <c>email/send</c>, <c>email/mime</c>, <c>email/batch</c>, scheduled search and remove.</summary>
     IEmailClient Email { get; }
 
+    /// <summary>Webhook management: <c>webhook/view</c>, <c>webhook/add</c>, <c>webhook/edit</c>, <c>webhook/remove</c>.</summary>
+    IWebhookClient Webhooks { get; }
+
     /// <summary>Calls any endpoint by path; the escape hatch for endpoints without a typed client.</summary>
     IRawClient Raw { get; }
 }

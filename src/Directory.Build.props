@@ -10,8 +10,8 @@
       `dotnet restore` with the force-evaluate switch (the baseline package is downloaded at restore time and lands in the lock files). From then on
       `dotnet pack` also compares each package against that release and fails on a binary or source breaking change (CP0001..CP0009);
       an intentional break goes into the project's CompatibilitySuppressions.xml with a comment. Bump the value after every release.
-      It is commented out until the first release exists because there is no published 1.0.0 to compare against yet.
-    <PackageValidationBaselineVersion>1.0.0</PackageValidationBaselineVersion>
+      It is commented out until the first release exists because there is no published 1.3.5 to compare against yet.
+    <PackageValidationBaselineVersion>1.3.5</PackageValidationBaselineVersion>
     -->
   </PropertyGroup>
 

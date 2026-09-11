@@ -6,7 +6,7 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-09-11
+## [1.3.5] - 2026-09-11
 
 First release.
 
@@ -23,7 +23,7 @@ First release.
 
 ### API compatibility
 
-- Public API tracked with `Microsoft.CodeAnalysis.PublicApiAnalyzers`; the shipped surface for this release is in each project's `PublicAPI.Shipped.txt`. Package validation runs across target frameworks on every pack; a baseline against 1.0.0 is enabled from the next release.
+- Public API tracked with `Microsoft.CodeAnalysis.PublicApiAnalyzers`; the shipped surface for this release is in each project's `PublicAPI.Shipped.txt`. Package validation runs across target frameworks on every pack; a baseline against 1.3.5 is enabled from the next release.
 
-[Unreleased]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/Jogai/Mail.Smtp2Go/releases/tag/v1.0.0
+[Unreleased]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.3.5...HEAD
+[1.3.5]: https://github.com/Jogai/Mail.Smtp2Go/releases/tag/v1.3.5

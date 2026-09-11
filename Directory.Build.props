@@ -17,7 +17,7 @@
       tag equals VersionPrefix and publishes 1.2.3. Anything else that packs (the ci workflow, a local pack) gets a pre-release suffix from the
       SMTP2GO_VERSION_SUFFIX environment variable (ci sets preview.<run number>); leave it unset for a release build. See docs/contributing.md, "Releasing".
     -->
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>1.3.5</VersionPrefix>
     <VersionSuffix Condition="'$(SMTP2GO_VERSION_SUFFIX)' != ''">$(SMTP2GO_VERSION_SUFFIX)</VersionSuffix>
   </PropertyGroup>
 

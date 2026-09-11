@@ -1,0 +1,7 @@
+{
+  "event": "bounce",
+  "time": "2026-02-07T18:18:00Z",
+  "rcpt": "user@example.com",
+  "bounce": "soft",
+  "context": "DATA: 452 Mailbox full"
+}

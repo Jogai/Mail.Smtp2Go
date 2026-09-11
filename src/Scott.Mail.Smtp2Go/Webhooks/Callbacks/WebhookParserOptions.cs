@@ -1,6 +1,6 @@
 namespace Scott.Mail.Smtp2Go.Webhooks;
 
-/// <summary>Settings for <c>WebhookPayloadParser</c>.</summary>
+/// <summary>Settings for <see cref="WebhookPayloadParser"/>.</summary>
 public sealed class WebhookParserOptions
 {
     /// <summary>

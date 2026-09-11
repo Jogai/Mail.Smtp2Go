@@ -1,0 +1,17 @@
+{
+  "event": "reject",
+  "time": "2026-09-10T08:00:01Z",
+  "sendtime": "2026-09-10T08:00:00Z",
+  "sender": "bounce@example.com",
+  "from": "Alice <alice@example.com>",
+  "from_address": "alice@example.com",
+  "from_name": "Alice",
+  "rcpt": "suppressed@example.org",
+  "auth": "api-5BFDE1E62529",
+  "message": "Recipient address is on the suppression list",
+  "context": "unsubscribe",
+  "email_id": "1u0SwL-B9zBpi9ffUq-JAB4",
+  "id": "61c2a27d8e9f0a1b2c3d4e5f60718293",
+  "message-id": "<E1u0SwL-B9zBpi9ffUq-JAB4@message-id.smtpcorp.com>",
+  "subject": "Docs reject"
+}

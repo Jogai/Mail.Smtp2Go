@@ -3,7 +3,7 @@ using System.Text.Json;
 namespace Scott.Mail.Smtp2Go.Webhooks;
 
 /// <summary>
-/// Base of every parsed callback. <c>WebhookPayloadParser</c> returns the concrete subtype for <see cref="Kind"/>; switch on the type or on
+/// Base of every parsed callback. <see cref="WebhookPayloadParser"/> returns the concrete subtype for <see cref="Kind"/>; switch on the type or on
 /// <see cref="Kind"/>. Fields the subtype does not model are kept in <see cref="Extra"/> so nothing the API sends is lost.
 /// </summary>
 public abstract record WebhookEvent

@@ -1,0 +1,16 @@
+{
+  "message-id": "<E1w4x2g-FnQW0hPru7M-NRRC@message-id.smtpcorp.com>",
+  "subject": "Webhook Delivery Test - b83d60289ef94e028a45a905198ad9b7",
+  "id": "e57b42854a69ee377c4221c22e08e5e7",
+  "auth": "api-597435AE4E55",
+  "srchost": "146.70.170.30",
+  "email_id": "1vomg2-abc123",
+  "event": "processed",
+  "time": "2026-02-07T18:05:02Z",
+  "from": "noreply@example.com",
+  "from_address": "noreply@example.com",
+  "from_name": "",
+  "sender": "noreply@example.com",
+  "recipients": ["user@example.com", "user2@example.com"],
+  "sendtime": "2026-02-07T18:05:02.199324+00:00"
+}

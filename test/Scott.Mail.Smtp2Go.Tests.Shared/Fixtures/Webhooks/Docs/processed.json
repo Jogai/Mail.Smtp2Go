@@ -1,0 +1,16 @@
+{
+  "event": "processed",
+  "time": "2026-09-10T08:00:01Z",
+  "sendtime": "2026-09-10T08:00:00Z",
+  "sender": "bounce@example.com",
+  "from": "Alice <alice@example.com>",
+  "from_address": "alice@example.com",
+  "from_name": "Alice",
+  "recipients": ["bob@example.org", "carol@example.org"],
+  "auth": "api-5BFDE1E62529",
+  "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+  "id": "e57b42854a69ee377c4221c22e08e5e7",
+  "message-id": "<E1u0SwL-B9zBpi9ffUq-JAB2@message-id.smtpcorp.com>",
+  "subject": "Docs processed",
+  "srchost": "203.0.113.10"
+}

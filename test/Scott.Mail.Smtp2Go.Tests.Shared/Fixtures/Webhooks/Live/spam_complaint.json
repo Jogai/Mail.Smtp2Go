@@ -1,0 +1,6 @@
+{
+  "event": "spam_complaint",
+  "time": "2026-02-07T19:00:00Z",
+  "rcpt": "user@example.com",
+  "email_id": "1vomg2-abc123"
+}

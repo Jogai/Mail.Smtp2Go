@@ -1,0 +1,19 @@
+{
+  "Message-Id": "<E1w4x2g-FnQW0hPru7M-NRRC@message-id.smtpcorp.com>",
+  "Subject": "Webhook Delivery Test - b83d60289ef94e028a45a905198ad9b7",
+  "id": "6dfa7d3b4514c1f5f0e916bc0cc0395c",
+  "auth": "api-597435AE4E55",
+  "srchost": "146.70.170.30",
+  "email_id": "1vomg2-abc123",
+  "event": "delivered",
+  "time": "2026-02-07T18:05:06Z",
+  "rcpt": "user@example.com",
+  "from": "noreply@alos.app",
+  "from_address": "noreply@alos.app",
+  "from_name": "",
+  "sender": "noreply@alos.app",
+  "host": "mail.protonmail.ch [176.119.200.128]",
+  "context": "Unavailable",
+  "message": "250 2.0.0 Ok: 2788 bytes queued as 4f7f4b3tWbzKy",
+  "sendtime": "2026-02-07T18:05:06.215451+00:00"
+}

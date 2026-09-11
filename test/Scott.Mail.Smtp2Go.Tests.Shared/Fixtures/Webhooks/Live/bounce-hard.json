@@ -1,0 +1,10 @@
+{
+  "email_id": "bounce-456",
+  "event": "bounce",
+  "time": "2026-02-07T18:15:00Z",
+  "rcpt": "invalid@nonexistent.com",
+  "sender": "noreply@alos.app",
+  "bounce": "hard",
+  "context": "RCPT TO:<invalid@nonexistent.com>",
+  "host": "gmail-smtp-in.l.google.com [209.85.233.26]"
+}

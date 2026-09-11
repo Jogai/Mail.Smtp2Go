@@ -1,0 +1,18 @@
+{
+  "event": "delivered",
+  "time": "2026-09-10T08:00:05Z",
+  "sendtime": "2026-09-10T08:00:00Z",
+  "sender": "bounce@example.com",
+  "from": "Alice <alice@example.com>",
+  "from_address": "alice@example.com",
+  "from_name": "Alice",
+  "rcpt": "bob@example.org",
+  "auth": "api-5BFDE1E62529",
+  "host": "mx.example.org [198.51.100.25]",
+  "message": "250 2.0.0 Ok: queued as 4f7f4b3tWbzKy",
+  "context": "Unavailable",
+  "email_id": "1u0SwL-B9zBpi9ffUq-JAB2",
+  "id": "6dfa7d3b4514c1f5f0e916bc0cc0395c",
+  "message-id": "<E1u0SwL-B9zBpi9ffUq-JAB2@message-id.smtpcorp.com>",
+  "subject": "Docs delivered"
+}

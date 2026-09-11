@@ -1,0 +1,1 @@
+event=sms_sending&destination_number=%2B31612345678&email_subject=Docs+SMS&id=72d3b38e9f0a1b2c3d4e5f6071829304&message_content=Your+code+is+123456&message_id=sms-9c1f2e3d&received_timestamp=2026-09-10T10%3A00%3A00Z&region=NL&retry_count=1&sender_email=alerts%40example.com&source_number=%2B3197010000000&status_code=sending&submitted_timestamp=2026-09-10T10%3A00%3A01Z

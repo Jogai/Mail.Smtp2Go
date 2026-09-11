@@ -1,6 +1,6 @@
 namespace Scott.Mail.Smtp2Go;
 
-/// <summary>The <c>webhook/*</c> family: list, add, edit and remove the webhooks that deliver callbacks. Parsing the callbacks themselves is <c>WebhookPayloadParser</c>.</summary>
+/// <summary>The <c>webhook/*</c> family: list, add, edit and remove the webhooks that deliver callbacks. Parsing the callbacks themselves is <see cref="Webhooks.WebhookPayloadParser"/>.</summary>
 public interface IWebhookClient
 {
     /// <summary><c>POST /webhook/view</c>: every configured webhook. The live API returns an array; a single object (the docs example) is read as a one-item list.</summary>

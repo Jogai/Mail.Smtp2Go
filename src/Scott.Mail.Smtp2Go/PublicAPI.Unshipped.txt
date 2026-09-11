@@ -654,6 +654,15 @@ Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions
 Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions.KnownCustomHeaders.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions.KnownCustomHeaders.init -> void
 Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions.WebhookParserOptions() -> void
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.Options.get -> Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.Parse(System.ReadOnlySpan<byte> utf8Json) -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.Parse(string! body, string? contentType) -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.Parse(string! json) -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.ParseAsync(System.IO.Stream! utf8Json, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!>!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.ParseForm(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, string?>>! pairs) -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.ParseFormBody(string! body) -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
+Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.WebhookPayloadParser(Scott.Mail.Smtp2Go.Webhooks.WebhookParserOptions? options = null) -> void
 abstract Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.<Clone>$() -> Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!
 const Scott.Mail.Smtp2Go.EmailBatchRequest.MaxEmails = 1000 -> int
 const Scott.Mail.Smtp2Go.Transport.Endpoint.DefaultMaxBodyBytes = 1048576 -> long
@@ -892,6 +901,7 @@ static Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.operator !=(Scott.Mail.Sm
 static Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.UnknownWebhookEvent? right) -> bool
 static Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.operator !=(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? right) -> bool
 static Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.operator ==(Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? left, Scott.Mail.Smtp2Go.Webhooks.WebhookEvent? right) -> bool
+static Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser.Default.get -> Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser!
 virtual Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailOpenEvent? other) -> bool
 virtual Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent.Equals(Scott.Mail.Smtp2Go.Webhooks.EmailWebhookEvent? other) -> bool
 virtual Scott.Mail.Smtp2Go.Webhooks.WebhookEvent.EqualityContract.get -> System.Type!

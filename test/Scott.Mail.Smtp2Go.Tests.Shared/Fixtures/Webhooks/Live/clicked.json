@@ -1,0 +1,7 @@
+{
+  "event": "clicked",
+  "time": "2026-02-07T18:20:00Z",
+  "rcpt": "user@example.com",
+  "click_url": "https://alos.app/dashboard",
+  "link": "https://track.smtp2go.com/abc123"
+}

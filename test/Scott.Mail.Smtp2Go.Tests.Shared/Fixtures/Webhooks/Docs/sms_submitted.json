@@ -1,0 +1,15 @@
+{
+  "event": "sms_submitted",
+  "destination_number": "+31612345678",
+  "email_subject": "Docs SMS",
+  "id": "72d3b38e9f0a1b2c3d4e5f6071829304",
+  "message_content": "Your code is 123456",
+  "message_id": "sms-9c1f2e3d",
+  "received_timestamp": "2026-09-10T10:00:00Z",
+  "region": "NL",
+  "retry_count": "1",
+  "sender_email": "alerts@example.com",
+  "source_number": "+3197010000000",
+  "status_code": "submitted",
+  "submitted_timestamp": "2026-09-10T10:00:01Z"
+}

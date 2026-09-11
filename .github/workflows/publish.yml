@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # the GitHub release
-      # id-token: write # uncomment together with the NuGet/login step below for trusted publishing
+      id-token: write # NuGet trusted publishing (OIDC token exchange in the NuGet/login step)
     steps:
       - uses: actions/checkout@v5
 
@@ -98,21 +98,18 @@ jobs:
           name: packages
           path: artifacts
 
-      # Alternative to the long-lived NUGET_API_KEY secret: NuGet trusted publishing (OIDC). Register this repository and workflow as a
-      # trusted publisher on the nuget.org account, grant `id-token: write` above, and exchange the token for a short-lived key:
-      #   - uses: NuGet/login@v1
-      #     id: nuget-login
-      #     with:
-      #       user: <nuget.org user name>
-      # then push with `--api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }}` and delete the repository secret.
+      # NuGet trusted publishing: this repository and this workflow file are registered as a trusted publisher on the nuget.org
+      # account named by the NUGET_USER repository secret. The step exchanges the GitHub OIDC token for a short-lived push key,
+      # so no long-lived nuget.org API key is stored anywhere.
+      - uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Push to nuget.org
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
         run: |
-          if [[ -z "$NUGET_API_KEY" ]]; then
-            echo "::error::The NUGET_API_KEY repository secret is not set"
-            exit 1
-          fi
           # The .snupkg next to each .nupkg is pushed with it.
           dotnet nuget push 'artifacts/*.nupkg' --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate
 

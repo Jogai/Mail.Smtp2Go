@@ -14,6 +14,18 @@ internal static partial class Smtp2GoWebhookLog
     [LoggerMessage(EventId = Smtp2GoWebhookEventIds.Unauthorized, Level = LogLevel.Warning, Message = "SMTP2GO callback at {Path} rejected with 401: no accepted credentials (presented scheme: {Scheme})")]
     public static partial void Unauthorized(ILogger logger, string path, string scheme);
 
+    [LoggerMessage(EventId = Smtp2GoWebhookEventIds.SourceIpRejected, Level = LogLevel.Warning, Message = "SMTP2GO callback at {Path} rejected with 403: {RemoteIp} is not an address of {HostName}")]
+    public static partial void SourceIpRejected(ILogger logger, string path, string remoteIp, string hostName);
+
+    [LoggerMessage(EventId = Smtp2GoWebhookEventIds.SourceIpResolutionFailed, Level = LogLevel.Error, Message = "SMTP2GO callback at {Path} answered with 503: the addresses of {HostName} could not be resolved")]
+    public static partial void SourceIpResolutionFailed(ILogger logger, Exception exception, string path, string hostName);
+
+    [LoggerMessage(EventId = Smtp2GoWebhookEventIds.SourceIpResolved, Level = LogLevel.Debug, Message = "Resolved {HostName} to {Count} address(es); cached until {Expires}")]
+    public static partial void SourceIpResolved(ILogger logger, string hostName, int count, DateTimeOffset expires);
+
+    [LoggerMessage(EventId = Smtp2GoWebhookEventIds.SourceIpStaleCacheUsed, Level = LogLevel.Warning, Message = "Resolving {HostName} failed; serving the previous {Count} address(es) until the next attempt")]
+    public static partial void SourceIpStaleCacheUsed(ILogger logger, Exception exception, string hostName, int count);
+
     [LoggerMessage(EventId = Smtp2GoWebhookEventIds.UnsupportedMediaType, Level = LogLevel.Warning, Message = "SMTP2GO callback at {Path} rejected with 415: media type '{MediaType}' is not accepted")]
     public static partial void UnsupportedMediaType(ILogger logger, string path, string mediaType);
 

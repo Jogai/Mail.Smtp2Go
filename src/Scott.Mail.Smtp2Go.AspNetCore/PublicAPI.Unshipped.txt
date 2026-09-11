@@ -1,5 +1,10 @@
 #nullable enable
 Microsoft.AspNetCore.Builder.Smtp2GoWebhookEndpointRouteBuilderExtensions
+Scott.Mail.Smtp2Go.AspNetCore.ISmtp2GoSourceIpResolver
+Scott.Mail.Smtp2Go.AspNetCore.ISmtp2GoSourceIpResolver.GetAddressesAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<System.Collections.Generic.IReadOnlyCollection<System.Net.IPAddress!>!>
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver.GetAddressesAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.ValueTask<System.Collections.Generic.IReadOnlyCollection<System.Net.IPAddress!>!>
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver.Smtp2GoSourceIpResolver(System.TimeProvider? timeProvider = null, Microsoft.Extensions.Logging.ILoggerFactory? loggerFactory = null) -> void
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.Add(System.Action<Microsoft.AspNetCore.Builder.EndpointBuilder!>! convention) -> void
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.Finally(System.Action<Microsoft.AspNetCore.Builder.EndpointBuilder!>! finallyConvention) -> void
@@ -7,6 +12,7 @@ Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBas
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBasicAuth(string! username, string! password) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBearer(System.Func<System.IServiceProvider!, string!>! token) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireBearer(string! token) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
+Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.RequireSmtp2GoSourceIp() -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder.WithOptions(System.Action<Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions!>! configure) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookMetadata
@@ -21,6 +27,7 @@ Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.MaxBodyBytes.set -> void
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.ReturnStatusOnHandlerError.get -> int
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.ReturnStatusOnHandlerError.set -> void
 Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.Smtp2GoWebhookOptions() -> void
+const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver.HostName = "webhooks.smtp2go.com" -> string!
 const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.CallbackHandled = 501 -> int
 const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.CallbackReceived = 500 -> int
 const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.CategoryName = "Scott.Mail.Smtp2Go.AspNetCore" -> string!
@@ -36,3 +43,6 @@ const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.Unauthorized = 510 ->
 const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEventIds.UnsupportedMediaType = 520 -> int
 const Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookOptions.DefaultMaxBodyBytes = 1048576 -> long
 static Microsoft.AspNetCore.Builder.Smtp2GoWebhookEndpointRouteBuilderExtensions.MapSmtp2GoWebhook(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string! pattern, System.Func<Scott.Mail.Smtp2Go.Webhooks.WebhookEvent!, System.Threading.CancellationToken, System.Threading.Tasks.Task!>! handler) -> Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoWebhookEndpointConventionBuilder!
+static readonly Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver.CacheDuration -> System.TimeSpan
+static readonly Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver.RetryAfterFailure -> System.TimeSpan
+virtual Scott.Mail.Smtp2Go.AspNetCore.Smtp2GoSourceIpResolver.LookupAsync(string! hostName, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<System.Net.IPAddress![]!>!

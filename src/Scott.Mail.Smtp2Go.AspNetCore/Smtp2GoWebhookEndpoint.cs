@@ -1,8 +1,10 @@
 using System.Buffers;
 using System.Diagnostics;
+using System.Net;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Net.Http.Headers;
@@ -22,16 +24,22 @@ internal sealed class Smtp2GoWebhookEndpoint
     private const string MultipartFormData = "multipart/form-data";
 
     private readonly Func<HttpContext, WebhookEvent, CancellationToken, Task> _handler;
+    private readonly ILoggerFactory _loggerFactory;
     private readonly ILogger _logger;
     private readonly List<WebhookCredential> _credentials = [];
     private WebhookPayloadParser? _parser;
+    private Smtp2GoSourceIpResolver? _defaultResolver;
 
     public Smtp2GoWebhookEndpoint(Smtp2GoWebhookOptions options, Func<HttpContext, WebhookEvent, CancellationToken, Task> handler, ILoggerFactory loggerFactory)
     {
         Options = options;
         _handler = handler;
+        _loggerFactory = loggerFactory;
         _logger = loggerFactory.CreateLogger(Smtp2GoWebhookEventIds.CategoryName);
     }
+
+    /// <summary>Whether the connection's remote address must be one of <c>webhooks.smtp2go.com</c>'s.</summary>
+    public bool RequireSourceIp { get; set; }
 
     private enum PayloadFormat
     {
@@ -69,6 +77,11 @@ internal sealed class Smtp2GoWebhookEndpoint
     {
         CancellationToken cancellationToken = context.RequestAborted;
         string path = context.Request.Path.Value ?? "/";
+
+        if (RequireSourceIp && !await IsFromSmtp2GoAsync(context, path, cancellationToken).ConfigureAwait(false))
+        {
+            return;
+        }
 
         if (_credentials.Count > 0 && !WebhookAuthenticator.IsAuthorized(context.Request.Headers.Authorization, _credentials, context.RequestServices))
         {
@@ -152,6 +165,38 @@ internal sealed class Smtp2GoWebhookEndpoint
         double elapsedMs = Stopwatch.GetElapsedTime(started).TotalMilliseconds;
         Smtp2GoWebhookLog.CallbackHandled(_logger, kind, webhookEvent.WebhookId, elapsedMs);
         context.Response.StatusCode = StatusCodes.Status200OK;
+    }
+
+    /// <summary>Compares the remote address (as Kestrel or a configured forwarded-headers middleware set it) with the resolver's list; writes 403 or 503 and returns <see langword="false"/> otherwise.</summary>
+    private async Task<bool> IsFromSmtp2GoAsync(HttpContext context, string path, CancellationToken cancellationToken)
+    {
+        IReadOnlyCollection<IPAddress> allowed;
+        try
+        {
+            ISmtp2GoSourceIpResolver resolver = context.RequestServices.GetService<ISmtp2GoSourceIpResolver>() ?? (_defaultResolver ??= new Smtp2GoSourceIpResolver(TimeProvider.System, _loggerFactory));
+            allowed = await resolver.GetAddressesAsync(cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            Smtp2GoWebhookLog.SourceIpResolutionFailed(_logger, exception, path, Smtp2GoSourceIpResolver.HostName);
+            context.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
+            return false;
+        }
+
+        IPAddress? remote = context.Connection.RemoteIpAddress;
+        if (remote is { IsIPv4MappedToIPv6: true })
+        {
+            remote = remote.MapToIPv4();
+        }
+
+        if (remote is not null && allowed.Contains(remote))
+        {
+            return true;
+        }
+
+        Smtp2GoWebhookLog.SourceIpRejected(_logger, path, remote?.ToString() ?? "unknown", Smtp2GoSourceIpResolver.HostName);
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return false;
     }
 
     /// <summary>The scheme word of the first Authorization value, for the log; never the credential itself.</summary>

@@ -39,6 +39,18 @@ public sealed class Smtp2GoWebhookEndpointConventionBuilder : IEndpointConventio
     }
 
     /// <summary>
+    /// Answers 403 unless the connection's remote address is one of <c>webhooks.smtp2go.com</c>'s (resolved by the registered <see cref="ISmtp2GoSourceIpResolver"/>,
+    /// or a default <see cref="Smtp2GoSourceIpResolver"/> caching for an hour), checked before authentication; 503 when the addresses cannot be resolved.
+    /// Defence in depth, not a replacement for <see cref="RequireBasicAuth(string, string)"/> or <see cref="RequireBearer(string)"/>. Behind a proxy or load balancer the
+    /// application must run <c>ForwardedHeadersMiddleware</c> (configured with its known proxies) before routing, otherwise the proxy's address is what gets checked.
+    /// </summary>
+    public Smtp2GoWebhookEndpointConventionBuilder RequireSmtp2GoSourceIp()
+    {
+        _endpoint.RequireSourceIp = true;
+        return this;
+    }
+
+    /// <summary>
     /// Requires <c>Authorization: Basic</c> with these credentials: the webhook's <c>auth_header_type: basic</c> setting, or credentials in the webhook URL
     /// (<c>https://user:pass@host/path</c>), which SMTP2GO sends as the same header. Compared in constant time. Calling this and <see cref="RequireBearer(string)"/>
     /// accepts either; calling it twice accepts either pair (useful while rotating).

@@ -2914,6 +2914,10 @@
                     "description": "The unique email_id of the archived email you wish to retrieve",
                     "example": "1u0SwL-B9zBpi9ffUq-JAB2",
                     "type": "string"
+                  },
+                  "subaccount_id": {
+                    "description": "If you wish to make this API call on behalf of a subaccount then include its unique ID here",
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -3113,6 +3117,10 @@
                   },
                   "start_date": {
                     "description": "ISO-8601 formatted datetime which defaults to current date at midnight. The range will be inclusive of start_date and exclusive of end_date. Timezone is UTC.",
+                    "type": "string"
+                  },
+                  "subaccount_id": {
+                    "description": "If you wish to make this API call on behalf of a subaccount then include its unique ID here",
                     "type": "string"
                   },
                   "subject": {

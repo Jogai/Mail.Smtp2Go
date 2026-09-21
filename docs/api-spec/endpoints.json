@@ -1077,9 +1077,14 @@
           "name": "email_id",
           "type": "string",
           "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
         }
       ],
-      "acceptsSubaccountId": false,
+      "acceptsSubaccountId": true,
       "responseShape": "object",
       "responseProperties": [
         {
@@ -1227,9 +1232,14 @@
           "name": "continue_token",
           "type": "string",
           "deprecated": false
+        },
+        {
+          "name": "subaccount_id",
+          "type": "string",
+          "deprecated": false
         }
       ],
-      "acceptsSubaccountId": false,
+      "acceptsSubaccountId": true,
       "responseShape": "object",
       "responseProperties": [
         {

@@ -25,7 +25,7 @@ public class EmailMimeTests
     {
         EmailMimeRequest request = EmailMimeRequest.FromBytes(Encoding.ASCII.GetBytes(RawMessage)) with
         {
-            Schedule = new DateTimeOffset(2026, 9, 12, 10, 0, 0, TimeSpan.Zero),
+            Schedule = new DateTimeOffset(2038, 1, 19, 3, 14, 7, TimeSpan.Zero),
             FastAccept = true,
         };
 

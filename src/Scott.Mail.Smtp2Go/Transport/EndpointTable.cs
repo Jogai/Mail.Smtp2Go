@@ -122,8 +122,8 @@ public static class EndpointTable
         Add(table, new Endpoint("suppression/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
         // Archive (neither documents subaccount_id)
-        Add(table, new Endpoint("archive/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("archive/email", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("archive/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
+        Add(table, new Endpoint("archive/email", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
 
         // API keys (every endpoint but permissions documents subaccount_id; add is limited to 5 per minute; edit is documented as POST (full edit) and PATCH (partial edit))
         Add(table, new Endpoint("api_keys/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));

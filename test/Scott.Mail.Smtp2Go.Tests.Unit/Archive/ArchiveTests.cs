@@ -19,7 +19,7 @@ public class ArchiveTests
         IEnumerable<Endpoint> family = EndpointTable.All.Where(e => e.Path.StartsWith("archive/", StringComparison.Ordinal));
 
         family.Select(e => e.Path).Should().BeEquivalentTo("archive/search", "archive/email");
-        family.Should().OnlyContain(e => e.Idempotent && !e.AcceptsSubaccountId && e.RateLimit == RateLimitClass.None);
+        family.Should().OnlyContain(e => e.Idempotent && e.AcceptsSubaccountId && e.RateLimit == RateLimitClass.None);
     }
 
     [Fact]
@@ -107,6 +107,22 @@ public class ArchiveTests
         Golden.AssertMatchesFixture(handler.Requests[1].Body!, "Archive/email-request.json");
         search.Data.EmailCount.Should().Be(1);
         email.Data.EmailId.Should().Be("1u0SwL-B9zBpi9ffUq-JAB2");
+    }
+
+    [Fact]
+    public async Task SearchAsync_and_GetAsync_send_the_subaccount_id_when_asked()
+    {
+        FakeHttpMessageHandler handler = new FakeHttpMessageHandler()
+            .Respond("archive/search", HttpStatusCode.OK, Fixture.Read("Archive/search-response.json"))
+            .Respond("archive/email", HttpStatusCode.OK, Fixture.Read("Archive/email-response.json"));
+        Smtp2GoClient client = TestClient.Create(handler);
+        RequestOptions onBehalfOf = new() { SubaccountId = "sub-1" };
+
+        await client.Archive.SearchAsync(new ArchiveSearchRequest { Subject = "test" }, onBehalfOf);
+        handler.LastRequest.Body.Should().Be("""{"subject":"test","subaccount_id":"sub-1"}""");
+
+        await client.Archive.GetAsync("1u0SwL-B9zBpi9ffUq-JAB2", onBehalfOf);
+        handler.LastRequest.Body.Should().Be("""{"email_id":"1u0SwL-B9zBpi9ffUq-JAB2","subaccount_id":"sub-1"}""");
     }
 
     [Fact]

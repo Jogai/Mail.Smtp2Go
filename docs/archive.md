@@ -37,6 +37,18 @@ Sent mail takes time to become searchable; the documentation says to allow aroun
 ApiResponse<ArchivedEmail> one = await client.Archive.GetAsync("1u0SwL-B9zBpi9ffUq-JAB2");
 ```
 
+## Subaccounts
+
+Both archive endpoints accept `subaccount_id` (documented since September 2026). Pass it through `RequestOptions` to search or fetch a subaccount's archive with the master account's key:
+
+```csharp
+RequestOptions onBehalfOf = new() { SubaccountId = "GnlKn5" };
+ApiResponse<ArchiveSearchResult> found = await client.Archive.SearchAsync(new ArchiveSearchRequest { Subject = "Invoice" }, onBehalfOf);
+ApiResponse<ArchivedEmail> one = await client.Archive.GetAsync(found.Data.Emails![0].EmailId!, onBehalfOf);
+```
+
+`DefaultSubaccountId` on the client options applies here too.
+
 ## Download the original
 
 ```csharp

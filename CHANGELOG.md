@@ -6,6 +6,19 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+### Added
+
+- `archive/search` and `archive/email` accept `subaccount_id`: `client.Archive.SearchAsync`, `SearchAllAsync` and `GetAsync` send `RequestOptions.SubaccountId` (or `DefaultSubaccountId`), so a master account key can read a subaccount's archive.
+
+### Fixed
+
+- The spec harvester reads the grouped `## API Reference: GROUP` headings that `llms.txt` uses since September 2026; with the old single-section parser it found no reference pages and harvested nothing.
+- Test fixtures no longer expire: outgoing `schedule` values in the tests are fixed at 2038-01-19T03:14:07Z instead of a date in September 2026.
+
+### API compatibility
+
+- SMTP2GO documented `subaccount_id` on `archive/search` and `archive/email` (spec snapshot of 2026-09-21).
+
 ## [1.3.5] - 2026-09-11
 
 First release.

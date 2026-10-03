@@ -34,7 +34,18 @@ public static partial class LlmsIndex
     /// <summary>The changelog page.</summary>
     public const string ChangelogPath = "reference/changelog.md";
 
-    /// <summary>Returns the links of the <c>## API Reference</c> section, in document order.</summary>
+    private const string ReferenceHeading = "## API Reference";
+
+    private static bool IsReferenceHeading(string line)
+    {
+        string heading = line.Trim();
+        return string.Equals(heading, ReferenceHeading, StringComparison.Ordinal) || heading.StartsWith(ReferenceHeading + ":", StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    /// Returns the links under every API reference heading, in document order. The index had one <c>## API Reference</c> section until
+    /// September 2026 and one <c>## API Reference: GROUP</c> section per endpoint family since; both forms are read.
+    /// </summary>
     public static IReadOnlyList<IndexEntry> ParseReferenceSection(string llmsText)
     {
         ArgumentNullException.ThrowIfNull(llmsText);
@@ -45,7 +56,7 @@ public static partial class LlmsIndex
             string line = rawLine.TrimEnd('\r');
             if (line.StartsWith("## ", StringComparison.Ordinal))
             {
-                inSection = string.Equals(line.Trim(), "## API Reference", StringComparison.Ordinal);
+                inSection = IsReferenceHeading(line);
                 continue;
             }
 

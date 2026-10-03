@@ -1,7 +1,7 @@
 # Scott.Mail.Smtp2Go
 
 [![ci](https://flat.badgen.net/github/checks/Jogai/Mail.Smtp2Go/master?style=flat&label=ci)](https://github.com/Jogai/Mail.Smtp2Go/actions/workflows/ci.yml)
-[![NuGet](https://flat.badgen.net/nuget/v/Scott.Mail.Smtp2Go?style=flat)](https://www.nuget.org/packages/Scott.Mail.Smtp2Go)
+[![NuGet](https://flat.badgen.net/nuget/v/Scott.Mail.Smtp2Go?style=flat)](https://www.nuget.org/packages?q=Tags%3Asmtp2go+id%3AScott.Mail)
 [![License: LGPL-3.0-or-later](https://flat.badgen.net/static/license/LGPL-3.0-or-later/blue?style=flat)](LICENSE)
 
 A .NET client for the whole [SMTP2GO](https://www.smtp2go.com/) v3 API: sending (JSON, MIME, batch, scheduled), webhooks, reporting and statistics, templates, suppressions, allowed senders and recipients, API keys, SMTP users, domains, subaccounts, email archiving and SMS. Targets `netstandard2.0`, `net8.0` and `net10.0`, is trim- and AOT-compatible, sends the API key in a header rather than the body, surfaces the API's own error payloads as typed exceptions, and ships opt-in packages for `Microsoft.Extensions.DependencyInjection` and ASP.NET Core webhook endpoints.

@@ -32,11 +32,27 @@ var response = await client.Email.SendAsync(new EmailSendRequest
 Console.WriteLine($"Sent: {response.Data.Succeeded} succeeded, {response.Data.Failed} failed ({response.RequestId})");
 ```
 
-The quick start above is compiled by a unit test so it stays in sync with the API. See [docs/sending.md](docs/sending.md) for MIME and batch sends, `fastaccept`, scheduling, attachments, templates and `EnsureAccepted()`, and [docs/index.md](docs/index.md) for configuration, dependency injection, webhooks and API coverage.
+The quick start above is compiled by a unit test so it stays in sync with the API.
 
-## Status
+## Documentation
 
-Core transport is in place: construction, header authentication, regional endpoints, subaccount injection, client-side validation, the response envelope, typed errors, tracing and the `client.Raw` escape hatch that can call any endpoint today (see [docs/getting-started.md](docs/getting-started.md)). `client.Email` covers sending (JSON, MIME, batch), scheduled-email search and removal, and the deprecated email search. `client.Webhooks` manages webhooks and `Scott.Mail.Smtp2Go.Webhooks.WebhookPayloadParser` parses their JSON and form callbacks ([docs/webhooks.md](docs/webhooks.md)); `client.Stats`, `client.Activity`, `client.Templates` and `client.Suppressions` cover reporting, templates and suppressions ([docs/reporting.md](docs/reporting.md)); `client.Archive` searches the email archive and downloads originals ([docs/archive.md](docs/archive.md)). The full round trip, send then find in the archive then download the `.eml`, is the runnable [demo](demo/Scott.Mail.Smtp2Go.Demo/Program.cs). `client.ApiKeys`, `client.SmtpUsers`, `client.IpAuth`, `client.Domains`, `client.SingleSenders`, `client.AllowedSenders`, `client.AllowedRecipients`, `client.Subaccounts`, `client.DedicatedIps` and `client.Sms` cover account management and SMS ([docs/account-management.md](docs/account-management.md)); every operation in the published reference has a typed client ([docs/api-coverage.md](docs/api-coverage.md)).
+Start with [Getting started](docs/getting-started.md), then pick what you need:
+
+| Document | Covers |
+| :-- | :-- |
+| [Sending email](docs/sending.md) | JSON, MIME and batch sends, `fastaccept`, scheduling, attachments, templates, `EnsureAccepted()` |
+| [Webhooks](docs/webhooks.md) | Managing webhooks, parsing callbacks, receiving them in ASP.NET Core |
+| [Reporting](docs/reporting.md) | Statistics, quota, activity search and paging |
+| [Archive](docs/archive.md) | Searching archived email and downloading the original message |
+| [Account management and SMS](docs/account-management.md) | API keys, SMTP users, domains, senders, allowed lists, subaccounts, dedicated IPs, SMS |
+| [Configuration](docs/configuration.md) | Client options, regions, authentication, dependency injection, resilience |
+| [Observability](docs/observability.md) | Logging, metrics and tracing |
+| [Errors](docs/errors.md) | The exception types and how API responses map to them |
+| [API coverage](docs/api-coverage.md) | Every SMTP2GO endpoint and the client member that calls it |
+| [API notes](docs/api-notes.md) | Where the live API and its documentation disagree |
+| [Contributing](docs/contributing.md) | Building, testing and releasing |
+
+Runnable examples are in [demo/](demo): a send, archive search and download [round trip](demo/Scott.Mail.Smtp2Go.Demo/Program.cs), a [generic host](demo/Scott.Mail.Smtp2Go.Demo.Hosting/Program.cs) with dependency injection, and a [webhook receiver](demo/Scott.Mail.Smtp2Go.Demo.WebhookReceiver/Program.cs). Release history is in the [changelog](CHANGELOG.md).
 
 ## Security
 

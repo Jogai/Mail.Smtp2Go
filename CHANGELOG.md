@@ -6,6 +6,8 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+## [1.3.6] - 2026-10-03
+
 ### Added
 
 - `archive/search` and `archive/email` accept `subaccount_id`: `client.Archive.SearchAsync`, `SearchAllAsync` and `GetAsync` send `RequestOptions.SubaccountId` (or `DefaultSubaccountId`), so a master account key can read a subaccount's archive.
@@ -38,5 +40,6 @@ First release.
 
 - Public API tracked with `Microsoft.CodeAnalysis.PublicApiAnalyzers`; the shipped surface for this release is in each project's `PublicAPI.Shipped.txt`. Package validation runs across target frameworks on every pack; a baseline against 1.3.5 is enabled from the next release.
 
-[Unreleased]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.3.5...HEAD
+[Unreleased]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.3.6...HEAD
+[1.3.6]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.3.5...v1.3.6
 [1.3.5]: https://github.com/Jogai/Mail.Smtp2Go/releases/tag/v1.3.5

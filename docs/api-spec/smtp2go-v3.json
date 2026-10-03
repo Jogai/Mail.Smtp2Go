@@ -83,7 +83,7 @@
                     "type": "string"
                   },
                   "search": {
-                    "description": "If passed, will return all events for emails containing this string in any search fields. To return events with one or more text values, separate the text with '|' (e.g. 'text1 | text2')",
+                    "description": "If passed, will return all events for emails containing this string in any search fields. To return events with one or more text values, separate the text with '|' (e.g. 'text1 | text2'). Matching is case-insensitive.",
                     "type": "string"
                   },
                   "search_email_id": {
@@ -91,15 +91,15 @@
                     "type": "string"
                   },
                   "search_recipient": {
-                    "description": "If passed, will return all events for emails containing this string in the email recipient",
+                    "description": "If passed, will return all events for emails containing this string in the email recipient. Matching is case-insensitive.",
                     "type": "string"
                   },
                   "search_sender": {
-                    "description": "If passed, will return all events for emails containing this string in the email sender",
+                    "description": "If passed, will return all events for emails containing this string in the email sender. Matching is case-insensitive.",
                     "type": "string"
                   },
                   "search_subject": {
-                    "description": "If passed, will return all events for emails containing this string in the email subject",
+                    "description": "If passed, will return all events for emails containing this string in the email subject. Matching is case-insensitive.",
                     "type": "string"
                   },
                   "search_usernames": {

@@ -37,6 +37,8 @@
   <ItemGroup Label="Tools">
     <!-- Spec harvester (plan 08). Resolved on 2026-09-11: 2.0.12 is the latest stable release. -->
     <PackageVersion Include="System.CommandLine" Version="2.0.12" />
+    <!-- Validates the merged OpenAPI document before the harvester writes it (resolved 2026-10-03). -->
+    <PackageVersion Include="Microsoft.OpenApi" Version="3.10.2" />
   </ItemGroup>
   <ItemGroup Label="AspNetCore tests (resolved 2026-09-11)">
     <!-- In-memory TestServer for the webhook endpoint tests; pinned to the shared framework's patch level. -->

@@ -14,6 +14,8 @@ namespace Scott.Mail.Smtp2Go.SpecHarvester;
     AllowTrailingCommas = true)]
 [JsonSerializable(typeof(EndpointsDocument))]
 [JsonSerializable(typeof(KnownUnmodelledDocument))]
+[JsonSerializable(typeof(ValidationDocument))]
+[JsonSerializable(typeof(ValidationBaselineDocument))]
 [JsonSerializable(typeof(JsonNode))]
 internal sealed partial class HarvesterJsonContext : JsonSerializerContext
 {

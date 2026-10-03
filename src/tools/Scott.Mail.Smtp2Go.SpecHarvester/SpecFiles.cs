@@ -18,6 +18,12 @@ public static class SpecFiles
     /// <summary>The docs changelog page as of the harvest.</summary>
     public const string ChangelogSnapshot = "changelog-snapshot.md";
 
+    /// <summary>What the OpenAPI validator reported for <see cref="MergedSpec"/>; written by <c>harvest</c>.</summary>
+    public const string Validation = "validation.json";
+
+    /// <summary>The hand-maintained list of validator findings the project accepts, each with a reason.</summary>
+    public const string ValidationBaseline = "validation-baseline.json";
+
     /// <summary>Reads <see cref="Endpoints"/> from <paramref name="specDirectory"/>.</summary>
     public static EndpointsDocument ReadEndpoints(string specDirectory)
     {
@@ -43,6 +49,36 @@ public static class SpecFiles
     {
         return JsonSerializer.Deserialize(json, HarvesterJsonContext.Default.KnownUnmodelledDocument)
             ?? throw new InvalidDataException("known-unmodelled.json is empty.");
+    }
+
+    /// <summary>Reads <see cref="MergedSpec"/> as text, with LF line endings, exactly as <c>harvest</c> validated it.</summary>
+    public static string ReadMergedSpec(string specDirectory)
+    {
+        return File.ReadAllText(Path.Combine(specDirectory, MergedSpec)).Replace("\r\n", "\n", StringComparison.Ordinal);
+    }
+
+    /// <summary>Reads <see cref="Validation"/> from <paramref name="specDirectory"/>; <c>null</c> when the file does not exist.</summary>
+    public static ValidationDocument? ReadValidation(string specDirectory)
+    {
+        string path = Path.Combine(specDirectory, Validation);
+        return File.Exists(path)
+            ? JsonSerializer.Deserialize(File.ReadAllText(path), HarvesterJsonContext.Default.ValidationDocument) ?? throw new InvalidDataException("validation.json is empty.")
+            : null;
+    }
+
+    /// <summary>Reads <see cref="ValidationBaseline"/> from <paramref name="specDirectory"/>; an absent file means nothing is accepted.</summary>
+    public static ValidationBaselineDocument ReadValidationBaseline(string specDirectory)
+    {
+        string path = Path.Combine(specDirectory, ValidationBaseline);
+        return File.Exists(path)
+            ? JsonSerializer.Deserialize(File.ReadAllText(path), HarvesterJsonContext.Default.ValidationBaselineDocument) ?? throw new InvalidDataException("validation-baseline.json is empty.")
+            : new ValidationBaselineDocument();
+    }
+
+    /// <summary>Serialises <paramref name="document"/> the way <c>harvest</c> writes <see cref="Validation"/>.</summary>
+    public static string ToJson(ValidationDocument document)
+    {
+        return JsonSerializer.Serialize(document, HarvesterJsonContext.File.ValidationDocument) + "\n";
     }
 
     /// <summary>Serialises <paramref name="document"/> the way <c>harvest</c> writes it (indented, LF, trailing newline).</summary>

@@ -25,6 +25,6 @@
     "customer": { "name": "Bob" },
     "meta": { "source": "json-element" }
   },
-  "schedule": "2026-09-12T10:00:00Z",
+  "schedule": "2038-01-19T03:14:07Z",
   "fastaccept": true
 }

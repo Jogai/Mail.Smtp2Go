@@ -36,7 +36,7 @@ public class EmailSendRequestSerializationTests
                 ["customer"] = new JsonObject { ["name"] = "Bob" },
                 ["meta"] = meta.RootElement.Clone(),
             },
-            Schedule = new DateTimeOffset(2026, 9, 12, 12, 0, 0, TimeSpan.FromHours(2)),
+            Schedule = new DateTimeOffset(2038, 1, 19, 5, 14, 7, TimeSpan.FromHours(2)),
             FastAccept = true,
         };
     }
@@ -112,10 +112,10 @@ public class EmailSendRequestSerializationTests
             Sender = "a@example.com",
             To = ["b@example.com"],
             TextBody = "x",
-            Schedule = new DateTimeOffset(2026, 9, 10, 13, 15, 0, TimeSpan.FromHours(12)),
+            Schedule = new DateTimeOffset(2038, 1, 19, 15, 14, 7, TimeSpan.FromHours(12)),
         };
 
-        JsonNode.Parse(Serialize(request))!["schedule"]!.GetValue<string>().Should().Be("2026-09-10T01:15:00Z");
+        JsonNode.Parse(Serialize(request))!["schedule"]!.GetValue<string>().Should().Be("2038-01-19T03:14:07Z");
     }
 
     [Fact]

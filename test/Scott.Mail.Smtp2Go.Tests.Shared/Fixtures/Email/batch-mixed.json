@@ -11,7 +11,7 @@
       "to": ["carol@example.com", "dave@example.com"],
       "template_id": "reminder",
       "template_data": { "when": "tomorrow" },
-      "schedule": "2026-09-12T10:00:00Z"
+      "schedule": "2038-01-19T03:14:07Z"
     }
   ]
 }

@@ -6,6 +6,10 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+### Added
+
+- The spec harvester validates the merged OpenAPI document with `Microsoft.OpenApi` before writing it, plus three checks of its own (OpenAPI 3.x, at least one operation, unique `operationId`s). Findings are recorded in `docs/api-spec/validation.json`; `validation-baseline.json` lists the accepted ones, the contract tests fail on any other, `harvest --strict` turns them into a failing exit code and a new `validate` command re-checks the committed snapshot. The current snapshot has no findings.
+
 ## [1.3.6] - 2026-10-03
 
 ### Added

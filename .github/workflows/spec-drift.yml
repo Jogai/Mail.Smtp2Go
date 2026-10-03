@@ -58,6 +58,13 @@ jobs:
             echo "Review \`docs/api-spec/endpoints.json\`, update the models, and adjust \`docs/api-spec/known-unmodelled.json\` only with a reason; see docs/contributing.md, \"When the API changes\"."
             echo
             dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -c Release --no-build -- diff --against HEAD
+            echo
+            echo "### OpenAPI validation"
+            echo
+            echo '```'
+            # Findings must not stop the pull request: they are part of what it reports. The contract tests fail on unaccepted ones.
+            dotnet run --project src/tools/Scott.Mail.Smtp2Go.SpecHarvester -c Release --no-build -- validate 2>&1 || true
+            echo '```'
           } > "$RUNNER_TEMP/pr-body.md"
           cat "$RUNNER_TEMP/pr-body.md"
 

@@ -12840,6 +12840,11 @@
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                           "type": "string"
                         },
+                        "disabled": {
+                          "default": false,
+                          "description": "The status of the webhook.",
+                          "type": "boolean"
+                        },
                         "events": {
                           "description": "A list of events the webhook will receive, from this list [<code>delivered</code>,<code>unsubscribe</code>,<code>spam</code>,<code>bounce</code>,<code>processed</code>,<code>reject</code>,<code>click</code>,<code>open</code>].",
                           "items": {
@@ -12967,6 +12972,11 @@
                     "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                     "type": "string"
                   },
+                  "disabled": {
+                    "default": false,
+                    "description": "The status of the webhook.",
+                    "type": "boolean"
+                  },
                   "events": {
                     "description": "A list of events the webhook will receive, from this list [<code>delivered</code>,<code>unsubscribe</code>,<code>spam</code>,<code>bounce</code>,<code>processed</code>,<code>reject</code>,<code>click</code>,<code>open</code>].",
                     "items": {
@@ -13051,13 +13061,18 @@
                       "properties": {
                         "auth_header_type": {
                           "default": "",
-                          "description": "The type of authentiction header, Either <code>bearer</code> or <code>basic</code>.",
+                          "description": "The type of authentiction header, Either <code>bearer</code>, <code>basic</code> or <code>custom</code>.",
                           "type": "string"
                         },
                         "auth_header_value": {
                           "default": "",
-                          "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
+                          "description": "The value of authentiction header, Either <code>base64(user:pass)</code>, <code>a custom token</code> or <code>Header:Value</code> if type is 'custom'.",
                           "type": "string"
+                        },
+                        "disabled": {
+                          "default": false,
+                          "description": "The status of the webhook.",
+                          "type": "boolean"
                         },
                         "events": {
                           "description": "A list of events the webhook will receive, from this list [<code>delivered</code>,<code>unsubscribe</code>,<code>spam</code>,<code>bounce</code>,<code>processed</code>,<code>reject</code>,<code>click</code>,<code>open</code>].",
@@ -13229,6 +13244,11 @@
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                           "type": "string"
                         },
+                        "disabled": {
+                          "default": false,
+                          "description": "The status of the webhook.",
+                          "type": "boolean"
+                        },
                         "events": {
                           "description": "A list of events the webhook will receive, from this list [<code>delivered</code>,<code>unsubscribe</code>,<code>spam</code>,<code>bounce</code>,<code>processed</code>,<code>reject</code>,<code>click</code>,<code>open</code>].",
                           "items": {
@@ -13394,6 +13414,11 @@
                           "default": "",
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                           "type": "string"
+                        },
+                        "disabled": {
+                          "default": false,
+                          "description": "The status of the webhook.",
+                          "type": "boolean"
                         },
                         "events": {
                           "description": "A list of events the webhook will receive, from this list [<code>delivered</code>,<code>unsubscribe</code>,<code>spam</code>,<code>bounce</code>,<code>processed</code>,<code>reject</code>,<code>click</code>,<code>open</code>].",

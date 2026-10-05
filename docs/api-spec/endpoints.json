@@ -5031,6 +5031,11 @@
           "name": "auth_header_value",
           "type": "string",
           "deprecated": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "deprecated": false
         }
       ],
       "responseExample": {
@@ -5112,6 +5117,11 @@
           "name": "auth_header_value",
           "type": "string",
           "deprecated": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "deprecated": false
         }
       ],
       "acceptsSubaccountId": true,
@@ -5160,6 +5170,11 @@
         {
           "name": "auth_header_value",
           "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
           "deprecated": false
         }
       ],
@@ -5251,6 +5266,11 @@
           "name": "auth_header_value",
           "type": "string",
           "deprecated": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "deprecated": false
         }
       ],
       "responseExample": {
@@ -5333,6 +5353,11 @@
         {
           "name": "auth_header_value",
           "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
           "deprecated": false
         }
       ],

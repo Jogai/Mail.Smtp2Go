@@ -16,5 +16,6 @@ public sealed class Smtp2GoGenerator : IIncrementalGenerator
         GenerationAttributes.Register(context);
         IncrementalValueProvider<EndpointSnapshot> snapshot = EndpointSnapshot.Provide(context);
         EndpointTablePipeline.Register(context, snapshot);
+        ClientPipeline.Register(context, snapshot);
     }
 }

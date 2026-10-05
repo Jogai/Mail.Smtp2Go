@@ -1,9 +1,11 @@
+using Scott.Mail.Smtp2Go.Generation;
 using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>Default <see cref="IActivityClient"/> over the shared connection.</summary>
-internal sealed class ActivityClient(Smtp2GoConnection connection) : IActivityClient
+[GeneratedClient]
+internal sealed partial class ActivityClient(Smtp2GoConnection connection) : IActivityClient
 {
     private static readonly Endpoint s_search = EndpointTable.Get("activity/search");
 

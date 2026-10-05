@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Roslyn components load inside the compiler, so they target netstandard2.0 whatever the consuming project targets. -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Compile-time source generators for Scott.Mail.Smtp2Go: the endpoint table from docs/api-spec/endpoints.json, the pass-through client methods, enum wire names and the webhook event tables. Build-time only; never packed.</Description>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <!-- Generated code is compiled into the consuming assembly; the generator never ships, so it needs no package validation or public API tracking. -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      The compiler API version is the oldest one the generators need, not the newest available: a generator built against a newer Roslyn than
+      the host compiler fails to load (CS9057). 4.14.0 is the .NET 9 SDK compiler; the pinned .NET 10 SDK and current IDEs are newer.
+    -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
+    <!-- Records and init-only setters on netstandard2.0, as in the core project. -->
+    <PackageReference Include="PolySharp" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+  </ItemGroup>
+
+</Project>

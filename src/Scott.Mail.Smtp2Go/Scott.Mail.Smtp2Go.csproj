@@ -21,6 +21,17 @@
     <AdditionalFiles Include="PublicAPI/net8.0/PublicAPI.Unshipped.txt" />
   </ItemGroup>
 
+  <!--
+    Compile-time generation (src/tools/Scott.Mail.Smtp2Go.Generators): the endpoint table rows come from the harvested snapshot, the
+    pass-through client methods from the client interfaces, the enum wire names from the enums and the webhook record update from the event
+    hierarchy. The generator runs inside the compiler only: ReferenceOutputAssembly="false" keeps it out of the references and
+    PrivateAssets="all" out of the package's dependencies.
+  -->
+  <ItemGroup Label="Compile-time generation">
+    <ProjectReference Include="..\tools\Scott.Mail.Smtp2Go.Generators\Scott.Mail.Smtp2Go.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <AdditionalFiles Include="..\..\docs\api-spec\endpoints.json" Link="endpoints.json" Visible="false" />
+  </ItemGroup>
+
   <ItemGroup>
     <InternalsVisibleTo Include="Scott.Mail.Smtp2Go.Tests.Unit" />
     <InternalsVisibleTo Include="Scott.Mail.Smtp2Go.Tests.Contract" />

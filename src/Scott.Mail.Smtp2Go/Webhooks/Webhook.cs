@@ -47,6 +47,13 @@ public sealed record Webhook
     [JsonPropertyName("auth_header_value")]
     public string? AuthHeaderValue { get; init; }
 
+    /// <summary>
+    /// Whether the webhook is switched off and receives no callbacks. SMTP2GO documents the field since October 2026 with a default of
+    /// <c>false</c>; it is <c>null</c> when a response leaves it out.
+    /// </summary>
+    [JsonPropertyName("disabled")]
+    public bool? Disabled { get; init; }
+
     /// <summary>Any field this library does not model.</summary>
     [JsonExtensionData]
     public IDictionary<string, JsonElement>? Extra { get; set; }

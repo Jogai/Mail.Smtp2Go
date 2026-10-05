@@ -27,7 +27,13 @@ await client.Webhooks.EditAsync(new WebhookEditRequest { Id = id, Events = [Webh
 Webhook removed = (await client.Webhooks.RemoveAsync(id)).Data;
 ```
 
-`AddOrUpdateByUrlAsync(request)` lists the webhooks, edits the one whose `Url` matches and adds one otherwise, so a deployment can register its endpoint idempotently and the webhook id stays stable. Free plans allow one webhook, paid plans ten.
+To pause a webhook without deleting it, edit it with `Disabled = true`; `Disabled = false` switches it back on, and leaving the property unset keeps the current state. Every webhook response carries the flag as `Webhook.Disabled` (`null` when the API leaves it out). SMTP2GO documents the field since October 2026.
+
+```csharp
+await client.Webhooks.EditAsync(new WebhookEditRequest { Id = id, Disabled = true });
+```
+
+`AddOrUpdateByUrlAsync(request)` does not touch the flag. It lists the webhooks, edits the one whose `Url` matches and adds one otherwise, so a deployment can register its endpoint idempotently and the webhook id stays stable. Free plans allow one webhook, paid plans ten.
 
 `WebhookEmailEvent` has the eight values the `webhook/add` reference lists plus `Resubscribe`, and `WebhookSmsEvent` the five documented plus `OptOut`; both extras come from the event tables on the Webhooks Overview page rather than the endpoint reference. Requests refuse `Unknown` members through client-side validation.
 

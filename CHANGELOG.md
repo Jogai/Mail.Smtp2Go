@@ -8,7 +8,12 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ### Added
 
+- `WebhookEditRequest.Disabled` switches a webhook off or back on without deleting it, and `Webhook.Disabled` reports the state on every webhook response.
 - The spec harvester validates the merged OpenAPI document with `Microsoft.OpenApi` before writing it, plus three checks of its own (OpenAPI 3.x, at least one operation, unique `operationId`s). Findings are recorded in `docs/api-spec/validation.json`; `validation-baseline.json` lists the accepted ones, the contract tests fail on any other, `harvest --strict` turns them into a failing exit code and a new `validate` command re-checks the committed snapshot. The current snapshot has no findings.
+
+### API compatibility
+
+- SMTP2GO documented a `disabled` property on webhooks: a request field of `webhook/edit` and a response field of `webhook/add`, `edit`, `remove` and `view` (spec snapshot of 2026-10-05).
 
 ## [1.3.6] - 2026-10-03
 

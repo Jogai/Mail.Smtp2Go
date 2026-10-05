@@ -43,7 +43,14 @@ public sealed record WebhookEditRequest : IRequestValidator
     [JsonPropertyName("auth_header_value")]
     public string? AuthHeaderValue { get; init; }
 
-    /// <summary>Creates an edit request carrying every field of <paramref name="request"/> for the webhook <paramref name="id"/>.</summary>
+    /// <summary><c>true</c> switches the webhook off, <c>false</c> switches it back on, <c>null</c> (the default) leaves its state as it is.</summary>
+    [JsonPropertyName("disabled")]
+    public bool? Disabled { get; init; }
+
+    /// <summary>
+    /// Creates an edit request carrying every field of <paramref name="request"/> for the webhook <paramref name="id"/>.
+    /// <see cref="Disabled"/> stays <c>null</c>, because an add request has no such field, so the webhook keeps its current state.
+    /// </summary>
     public static WebhookEditRequest From(long id, WebhookAddRequest request)
     {
         Argument.ThrowIfNull(request);

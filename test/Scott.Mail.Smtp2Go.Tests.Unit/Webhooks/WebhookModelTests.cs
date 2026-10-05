@@ -76,6 +76,38 @@ public class WebhookModelTests
         edit.Should().BeEquivalentTo(FullAddRequest, o => o.ExcludingMissingMembers());
     }
 
+    [Theory]
+    [InlineData(true, """{"id":4320,"disabled":true}""")]
+    [InlineData(false, """{"id":4320,"disabled":false}""")]
+    public void Disabling_and_enabling_send_only_the_id_and_the_flag(bool disabled, string expected)
+    {
+        // false must be written, not dropped like null: it is how a disabled webhook is switched back on.
+        string json = JsonSerializer.Serialize(new WebhookEditRequest { Id = 4320, Disabled = disabled }, Smtp2GoJsonContext.Default.WebhookEditRequest);
+
+        json.Should().Be(expected);
+    }
+
+    [Fact]
+    public void Edit_request_without_a_disabled_value_leaves_the_field_out()
+    {
+        string json = JsonSerializer.Serialize(new WebhookEditRequest { Id = 4320 }, Smtp2GoJsonContext.Default.WebhookEditRequest);
+
+        json.Should().Be("""{"id":4320}""");
+        WebhookEditRequest.From(4320, FullAddRequest).Disabled.Should().BeNull(because: "re-registering a webhook must not change whether it is disabled");
+    }
+
+    [Theory]
+    [InlineData("""{"request_id":"r","data":{"id":4320,"url":"https://example.com/hook","disabled":true}}""", true)]
+    [InlineData("""{"request_id":"r","data":{"id":4320,"url":"https://example.com/hook","disabled":false}}""", false)]
+    [InlineData("""{"request_id":"r","data":{"id":4320,"url":"https://example.com/hook"}}""", null)]
+    public void Response_reads_the_disabled_flag_and_tolerates_its_absence(string json, bool? expected)
+    {
+        ApiResponse<Webhook> response = JsonSerializer.Deserialize(json, Smtp2GoJsonContext.Default.ApiResponseWebhook)!;
+
+        response.Data.Disabled.Should().Be(expected);
+        response.Data.Extra.Should().BeNull(because: "disabled is a modelled field, not an unknown one");
+    }
+
     [Fact]
     public void Clearing_the_auth_header_sends_the_documented_empty_string()
     {

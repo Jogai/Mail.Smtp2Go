@@ -161,13 +161,13 @@
       "scott.mail.smtp2go.aspnetcore": {
         "type": "Project",
         "dependencies": {
-          "Scott.Mail.Smtp2Go": "[1.3.6, )"
+          "Scott.Mail.Smtp2Go": "[1.4.0, )"
         }
       },
       "scott.mail.smtp2go.tests.shared": {
         "type": "Project",
         "dependencies": {
-          "Scott.Mail.Smtp2Go": "[1.3.6, )"
+          "Scott.Mail.Smtp2Go": "[1.4.0, )"
         }
       },
       "Microsoft.Bcl.AsyncInterfaces": {

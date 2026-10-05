@@ -1,5 +1,1 @@
 #nullable enable
-Scott.Mail.Smtp2Go.Webhook.Disabled.get -> bool?
-Scott.Mail.Smtp2Go.Webhook.Disabled.init -> void
-Scott.Mail.Smtp2Go.WebhookEditRequest.Disabled.get -> bool?
-Scott.Mail.Smtp2Go.WebhookEditRequest.Disabled.init -> void

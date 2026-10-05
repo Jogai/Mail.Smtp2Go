@@ -6,6 +6,10 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+### Changed
+
+- Build-time code generation (`src/tools/Scott.Mail.Smtp2Go.Generators`, a Roslyn source generator referenced as an analyzer; nothing is added to the packages): the `EndpointTable` rows now come from `docs/api-spec/endpoints.json` with the traits the reference does not state kept as `[EndpointTraits]` patterns, 47 pass-through client methods are generated from the client interfaces, the enum wire-name tables replace reflection for the library's own enums, and the webhook event type switches (record update and handler dispatch) follow the event hierarchy. No public API or behaviour changes; the generated endpoint table equals the previous hand-written one.
+
 ## [1.4.0] - 2026-10-05
 
 ### Added

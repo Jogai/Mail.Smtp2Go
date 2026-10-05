@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using Scott.Mail.Smtp2Go.Generation;
 using Scott.Mail.Smtp2Go.Webhooks;
 
 namespace Scott.Mail.Smtp2Go.AspNetCore;
@@ -8,9 +9,10 @@ namespace Scott.Mail.Smtp2Go.AspNetCore;
 /// <summary>
 /// The default <see cref="IWebhookEventDispatcher"/>. The callback hierarchy is closed (the core parser only produces the library's types), so the walk from the
 /// concrete type to <see cref="WebhookEvent"/> is a fixed table of generic instantiations rather than reflection over <c>MakeGenericType</c>: trim- and AOT-safe,
-/// and handlers are resolved from the scope the dispatcher was created in, so scoped handlers see the request's scope.
+/// and handlers are resolved from the scope the dispatcher was created in, so scoped handlers see the request's scope. The table itself
+/// (<see cref="DispatchByTypeAsync"/>) is generated from the event records in the core assembly, so a new record is dispatched without a change here.
 /// </summary>
-internal sealed class WebhookEventDispatcher : IWebhookEventDispatcher
+internal sealed partial class WebhookEventDispatcher : IWebhookEventDispatcher
 {
     private readonly IServiceProvider _services;
     private readonly ILogger _logger;
@@ -26,23 +28,7 @@ internal sealed class WebhookEventDispatcher : IWebhookEventDispatcher
     {
         Argument.ThrowIfNull(webhookEvent);
 
-        // Order matters: a subtype must be listed before its base (click before open).
-        int invoked = webhookEvent switch
-        {
-            EmailClickEvent e => await RunAsync(cancellationToken, Handlers<EmailClickEvent>(e), Handlers<EmailOpenEvent>(e), Handlers<EmailWebhookEvent>(e), Handlers<WebhookEvent>(e)).ConfigureAwait(false),
-            EmailOpenEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailProcessedEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailDeliveredEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailBounceEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailSpamEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailUnsubscribeEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailResubscribeEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailRejectEvent e => await RunEmailAsync(e, cancellationToken).ConfigureAwait(false),
-            EmailWebhookEvent e => await RunAsync(cancellationToken, Handlers<EmailWebhookEvent>(e), Handlers<WebhookEvent>(e)).ConfigureAwait(false),
-            SmsStatusEvent e => await RunAsync(cancellationToken, Handlers<SmsStatusEvent>(e), Handlers<WebhookEvent>(e)).ConfigureAwait(false),
-            UnknownWebhookEvent e => await RunAsync(cancellationToken, Handlers<UnknownWebhookEvent>(e), Handlers<WebhookEvent>(e)).ConfigureAwait(false),
-            _ => await RunAsync(cancellationToken, Handlers<WebhookEvent>(webhookEvent)).ConfigureAwait(false),
-        };
+        int invoked = await DispatchByTypeAsync(webhookEvent, cancellationToken).ConfigureAwait(false);
 
         if (invoked == 0)
         {
@@ -54,12 +40,12 @@ internal sealed class WebhookEventDispatcher : IWebhookEventDispatcher
         return invoked;
     }
 
-    /// <summary>Concrete email type, then <see cref="EmailWebhookEvent"/>, then <see cref="WebhookEvent"/>.</summary>
-    private Task<int> RunEmailAsync<TEvent>(TEvent webhookEvent, CancellationToken cancellationToken)
-        where TEvent : EmailWebhookEvent
-    {
-        return RunAsync(cancellationToken, Handlers<TEvent>(webhookEvent), Handlers<EmailWebhookEvent>(webhookEvent), Handlers<WebhookEvent>(webhookEvent));
-    }
+    /// <summary>
+    /// Runs the handlers for the event's concrete type, then for each base up to <see cref="WebhookEvent"/> (click before open before
+    /// <see cref="EmailWebhookEvent"/>), and returns how many ran. The switch is generated: one arm per concrete event record, most derived first.
+    /// </summary>
+    [GeneratedWebhookDispatch]
+    private partial Task<int> DispatchByTypeAsync(WebhookEvent webhookEvent, CancellationToken cancellationToken);
 
     /// <summary>The registered handlers for exactly <typeparamref name="TEvent"/> (the container does not apply variance), in registration order, bound to the event.</summary>
     private IEnumerable<Func<CancellationToken, Task>> Handlers<TEvent>(TEvent webhookEvent)

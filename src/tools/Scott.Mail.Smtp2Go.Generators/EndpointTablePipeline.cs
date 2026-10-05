@@ -148,7 +148,7 @@ internal static class EndpointTablePipeline
 
             builder.Append("        table.Add((").Append(SourceWriter.Literal(operation.Path)).Append(", ").Append(SourceWriter.Literal(operation.Method)).Append("), new ").Append(EndpointType).Append('(')
                 .Append(SourceWriter.Literal(operation.Path)).Append(", ")
-                .Append(HttpMethodExpression(operation.Method)).Append(", ")
+                .Append(SourceWriter.HttpMethodExpression(operation.Method)).Append(", ")
                 .Append("Idempotent: ").Append(idempotent ? "true" : "false").Append(", ")
                 .Append("AcceptsSubaccountId: ").Append(operation.AcceptsSubaccountId ? "true" : "false").Append(", ")
                 .Append(RateLimitType).Append('.').Append(rateLimit).Append(", ")
@@ -168,21 +168,5 @@ internal static class EndpointTablePipeline
         }
 
         context.AddSource(target.TypeName + ".Seed.g.cs", SourceText.From(builder.ToString(), Encoding.UTF8));
-    }
-
-    private static string HttpMethodExpression(string method)
-    {
-        return method switch
-        {
-            "GET" => "global::System.Net.Http.HttpMethod.Get",
-            "POST" => "global::System.Net.Http.HttpMethod.Post",
-            "PUT" => "global::System.Net.Http.HttpMethod.Put",
-            "DELETE" => "global::System.Net.Http.HttpMethod.Delete",
-            "HEAD" => "global::System.Net.Http.HttpMethod.Head",
-            "OPTIONS" => "global::System.Net.Http.HttpMethod.Options",
-            "TRACE" => "global::System.Net.Http.HttpMethod.Trace",
-            "PATCH" => EndpointType + ".Patch",
-            _ => "new global::System.Net.Http.HttpMethod(" + SourceWriter.Literal(method) + ")",
-        };
     }
 }

@@ -1,29 +1,17 @@
 using System.Text.Json;
+using Scott.Mail.Smtp2Go.Generation;
 using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>Default <see cref="IApiKeyClient"/> over the shared connection.</summary>
-internal sealed class ApiKeyClient(Smtp2GoConnection connection) : IApiKeyClient
+[GeneratedClient]
+internal sealed partial class ApiKeyClient(Smtp2GoConnection connection) : IApiKeyClient
 {
-    private static readonly Endpoint s_view = EndpointTable.Get("api_keys/view");
-    private static readonly Endpoint s_add = EndpointTable.Get("api_keys/add");
     private static readonly Endpoint s_edit = EndpointTable.Get("api_keys/edit", HttpMethod.Post);
     private static readonly Endpoint s_patch = EndpointTable.Get("api_keys/edit", Endpoint.Patch);
     private static readonly Endpoint s_remove = EndpointTable.Get("api_keys/remove");
     private static readonly Endpoint s_permissions = EndpointTable.Get("api_keys/permissions");
-
-    public Task<ApiResponse<IReadOnlyList<ApiKey>>> ViewAsync(ApiKeyViewRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
-    {
-        Argument.ThrowIfNull(request);
-        return connection.SendAsync<ApiKeyViewRequest, IReadOnlyList<ApiKey>>(s_view, request, options, cancellationToken);
-    }
-
-    public Task<ApiResponse<IReadOnlyList<ApiKey>>> AddAsync(ApiKeyAddRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
-    {
-        Argument.ThrowIfNull(request);
-        return connection.SendAsync<ApiKeyAddRequest, IReadOnlyList<ApiKey>>(s_add, request, options, cancellationToken);
-    }
 
     public Task<ApiResponse<IReadOnlyList<ApiKey>>> EditAsync(ApiKeyEditRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
     {

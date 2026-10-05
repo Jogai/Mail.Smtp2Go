@@ -125,6 +125,23 @@ internal static class SourceWriter
         return parameter.ExplicitDefaultValue is null && !parameter.Type.IsValueType ? " = null" : " = default";
     }
 
+    /// <summary>The <see cref="System.Net.Http.HttpMethod"/> expression for an upper-case method name; <c>PATCH</c> is <c>Endpoint.Patch</c> because netstandard2.0 lacks it.</summary>
+    public static string HttpMethodExpression(string method)
+    {
+        return method switch
+        {
+            "GET" => "global::System.Net.Http.HttpMethod.Get",
+            "POST" => "global::System.Net.Http.HttpMethod.Post",
+            "PUT" => "global::System.Net.Http.HttpMethod.Put",
+            "DELETE" => "global::System.Net.Http.HttpMethod.Delete",
+            "HEAD" => "global::System.Net.Http.HttpMethod.Head",
+            "OPTIONS" => "global::System.Net.Http.HttpMethod.Options",
+            "TRACE" => "global::System.Net.Http.HttpMethod.Trace",
+            "PATCH" => "global::Scott.Mail.Smtp2Go.Transport.Endpoint.Patch",
+            _ => "new global::System.Net.Http.HttpMethod(" + Literal(method) + ")",
+        };
+    }
+
     private static string Keyword(INamedTypeSymbol type)
     {
         if (type.IsRecord)

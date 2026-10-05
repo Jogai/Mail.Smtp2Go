@@ -1,20 +1,15 @@
 using System.Net;
+using Scott.Mail.Smtp2Go.Generation;
 using Scott.Mail.Smtp2Go.Transport;
 
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>Default <see cref="IArchiveClient"/> over the shared connection.</summary>
-internal sealed class ArchiveClient(Smtp2GoConnection connection) : IArchiveClient
+[GeneratedClient]
+internal sealed partial class ArchiveClient(Smtp2GoConnection connection) : IArchiveClient
 {
     private const int CopyBufferSize = 81920;
-    private static readonly Endpoint s_search = EndpointTable.Get("archive/search");
     private static readonly Endpoint s_email = EndpointTable.Get("archive/email");
-
-    public Task<ApiResponse<ArchiveSearchResult>> SearchAsync(ArchiveSearchRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
-    {
-        Argument.ThrowIfNull(request);
-        return connection.SendAsync<ArchiveSearchRequest, ArchiveSearchResult>(s_search, request, options, cancellationToken);
-    }
 
     public IAsyncEnumerable<ArchivedEmail> SearchAllAsync(ArchiveSearchRequest request, RequestOptions? options = null, CancellationToken cancellationToken = default)
     {

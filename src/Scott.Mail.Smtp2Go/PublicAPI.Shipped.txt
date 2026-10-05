@@ -2173,6 +2173,8 @@ Scott.Mail.Smtp2Go.Webhook.AuthHeaderType.get -> Scott.Mail.Smtp2Go.WebhookAuthH
 Scott.Mail.Smtp2Go.Webhook.AuthHeaderType.init -> void
 Scott.Mail.Smtp2Go.Webhook.AuthHeaderValue.get -> string?
 Scott.Mail.Smtp2Go.Webhook.AuthHeaderValue.init -> void
+Scott.Mail.Smtp2Go.Webhook.Disabled.get -> bool?
+Scott.Mail.Smtp2Go.Webhook.Disabled.init -> void
 Scott.Mail.Smtp2Go.Webhook.Equals(Scott.Mail.Smtp2Go.Webhook? other) -> bool
 Scott.Mail.Smtp2Go.Webhook.Events.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookEmailEvent>?
 Scott.Mail.Smtp2Go.Webhook.Events.init -> void
@@ -2222,6 +2224,8 @@ Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderType.get -> Scott.Mail.Smtp2Go.W
 Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderType.init -> void
 Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderValue.get -> string?
 Scott.Mail.Smtp2Go.WebhookEditRequest.AuthHeaderValue.init -> void
+Scott.Mail.Smtp2Go.WebhookEditRequest.Disabled.get -> bool?
+Scott.Mail.Smtp2Go.WebhookEditRequest.Disabled.init -> void
 Scott.Mail.Smtp2Go.WebhookEditRequest.Equals(Scott.Mail.Smtp2Go.WebhookEditRequest? other) -> bool
 Scott.Mail.Smtp2Go.WebhookEditRequest.Events.get -> System.Collections.Generic.IReadOnlyList<Scott.Mail.Smtp2Go.WebhookEmailEvent>?
 Scott.Mail.Smtp2Go.WebhookEditRequest.Events.init -> void

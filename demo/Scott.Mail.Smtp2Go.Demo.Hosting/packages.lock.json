@@ -365,7 +365,7 @@
           "Microsoft.Extensions.Http.Resilience": "[10.10.0, )",
           "Microsoft.Extensions.Logging.Abstractions": "[10.0.12, )",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "[10.0.12, )",
-          "Scott.Mail.Smtp2Go": "[1.3.6, )"
+          "Scott.Mail.Smtp2Go": "[1.4.0, )"
         }
       },
       "Microsoft.Extensions.Configuration": {

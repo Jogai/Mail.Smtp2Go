@@ -7,7 +7,9 @@ namespace Scott.Mail.Smtp2Go.Json;
 
 /// <summary>
 /// Wire names of an enum's members: the <see cref="JsonStringEnumMemberNameAttribute"/> value when present, otherwise the member name in
-/// snake_case. Shared by <see cref="Converters.TolerantEnumConverter{TEnum}"/> and the error-code parser.
+/// snake_case. Shared by <see cref="Converters.TolerantEnumConverter{TEnum}"/> and the error-code parser. The library's own enums come from the
+/// generated <see cref="EnumWireNames"/> tables; an enum from another assembly is read by reflection, which is why <typeparamref name="TEnum"/>
+/// keeps its trimming annotation.
 /// </summary>
 internal static class EnumNameTable<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] TEnum>
     where TEnum : struct, Enum
@@ -57,21 +59,36 @@ internal static class EnumNameTable<[DynamicallyAccessedMembers(DynamicallyAcces
     private static TEnum? Build()
     {
         TEnum? unknown = null;
+        if (EnumWireNames.Get<TEnum>() is { } generated)
+        {
+            foreach (EnumMember<TEnum> member in generated)
+            {
+                Register(member.Value, member.Name, member.WireName, ref unknown);
+            }
+
+            return unknown;
+        }
+
         foreach (FieldInfo field in typeof(TEnum).GetFields(BindingFlags.Public | BindingFlags.Static))
         {
             TEnum value = (TEnum)field.GetValue(null)!;
             string wireName = field.GetCustomAttribute<JsonStringEnumMemberNameAttribute>()?.Name ?? JsonNamingPolicy.SnakeCaseLower.ConvertName(field.Name);
-            s_wireNames[value] = wireName;
-            s_byName[wireName] = value;
-            s_byName[field.Name] = value;
-            s_byNormalizedName[Normalize(wireName)] = value;
-            s_byNormalizedName[Normalize(field.Name)] = value;
-            if (string.Equals(field.Name, UnknownMemberName, StringComparison.Ordinal))
-            {
-                unknown = value;
-            }
+            Register(value, field.Name, wireName, ref unknown);
         }
 
         return unknown;
+    }
+
+    private static void Register(TEnum value, string name, string wireName, ref TEnum? unknown)
+    {
+        s_wireNames[value] = wireName;
+        s_byName[wireName] = value;
+        s_byName[name] = value;
+        s_byNormalizedName[Normalize(wireName)] = value;
+        s_byNormalizedName[Normalize(name)] = value;
+        if (string.Equals(name, UnknownMemberName, StringComparison.Ordinal))
+        {
+            unknown = value;
+        }
     }
 }

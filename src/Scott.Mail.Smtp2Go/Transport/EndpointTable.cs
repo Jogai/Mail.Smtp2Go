@@ -1,12 +1,37 @@
+using Scott.Mail.Smtp2Go.Generation;
+
 namespace Scott.Mail.Smtp2Go.Transport;
 
 /// <summary>
-/// Registry of known <see cref="Endpoint"/> descriptors, keyed by path and HTTP method: <c>api_keys/edit</c>, <c>users/smtp/edit</c> and
-/// <c>ip_auth/edit</c> are documented with both <c>POST</c> (full edit) and <c>PATCH</c> (partial edit), so a path may carry two descriptors.
-/// Unknown paths get a conservative default so the raw client can reach endpoints that have no descriptor yet. Each API family adds its rows to
-/// <see cref="Seed"/> when its typed client lands.
+/// Registry of known <see cref="Endpoint"/> descriptors, keyed by path and HTTP method: <c>api_keys/edit</c> and <c>users/smtp/edit</c> are
+/// documented with both <c>POST</c> (full edit) and <c>PATCH</c> (partial edit), so a path may carry two descriptors. Unknown paths get a
+/// conservative default so the raw client can reach endpoints that have no descriptor yet.
 /// </summary>
-public static class EndpointTable
+/// <remarks>
+/// The rows are generated at build time from <c>docs/api-spec/endpoints.json</c> (see <c>Seed()</c> in the generated part): every documented
+/// operation gets a descriptor with its path, HTTP method and <c>subaccount_id</c> support taken from the snapshot. The reference does not
+/// state idempotency, rate-limit classes or body limits, so those come from the <see cref="EndpointTraitsAttribute"/> list below, applied in
+/// order; a pattern that matches nothing fails the build. Re-harvesting the snapshot therefore changes this table without a code change,
+/// which the contract tests check against the same snapshot.
+/// </remarks>
+// Idempotent: the read-only endpoints. The default is "not idempotent", so a newly documented operation is never retried until someone says so.
+[EndpointTraits("*/view", Idempotent = true)]
+[EndpointTraits("*/search", Idempotent = true)]
+[EndpointTraits("sms/view-*", Idempotent = true)]
+[EndpointTraits("sms/summary", Idempotent = true)]
+[EndpointTraits("stats/*", Idempotent = true)]
+[EndpointTraits("archive/email", Idempotent = true)]
+[EndpointTraits("api_keys/permissions", Idempotent = true)]
+// Rate limits: one class per documented limit (RateLimitClass states the numbers; the contract tests compare them with the docs).
+[EndpointTraits("activity/search", RateLimit = RateLimitClass.ActivitySearch)]
+[EndpointTraits("api_keys/add", RateLimit = RateLimitClass.ApiKeyAdd)]
+[EndpointTraits("subaccount/add", RateLimit = RateLimitClass.SubaccountAdd)]
+[EndpointTraits("email/search", RateLimit = RateLimitClass.EmailSearch)]
+// Body limits: 50 MB for the endpoints that carry a message, 1 MB (the default) everywhere else, including email/search and the scheduled endpoints.
+[EndpointTraits("email/send", MaxBodyBytes = Endpoint.EmailMaxBodyBytes)]
+[EndpointTraits("email/mime", MaxBodyBytes = Endpoint.EmailMaxBodyBytes)]
+[EndpointTraits("email/batch", MaxBodyBytes = Endpoint.EmailMaxBodyBytes)]
+public static partial class EndpointTable
 {
     private static readonly Dictionary<(string Path, string Method), Endpoint> s_endpoints = Seed();
 
@@ -77,121 +102,5 @@ public static class EndpointTable
     {
         string trimmed = path.Trim();
         return trimmed.Length > 0 && trimmed[0] == '/' ? trimmed.Substring(1) : trimmed;
-    }
-
-    // One Add per endpoint. Family plans append their rows here, grouped by family, in the order of comparison.md section 4.
-    private static Dictionary<(string Path, string Method), Endpoint> Seed()
-    {
-        Dictionary<(string Path, string Method), Endpoint> table = [];
-
-        // Email
-        Add(table, new Endpoint("email/send", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
-        Add(table, new Endpoint("email/mime", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
-        Add(table, new Endpoint("email/batch", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.EmailMaxBodyBytes));
-        Add(table, new Endpoint("email/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.EmailSearch, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("email/scheduled/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("email/scheduled/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Webhooks (all four document subaccount_id)
-        Add(table, new Endpoint("webhook/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("webhook/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("webhook/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("webhook/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Stats (none documents subaccount_id; email_history filters with a subaccounts[] field instead)
-        Add(table, new Endpoint("stats/email_summary", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("stats/email_cycle", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("stats/email_bounces", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("stats/email_spam", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("stats/email_unsubs", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("stats/email_history", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Activity (filters by a subaccounts[] field, not subaccount_id; 60 requests per minute)
-        Add(table, new Endpoint("activity/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.ActivitySearch, Endpoint.DefaultMaxBodyBytes));
-
-        // Templates (the reference pages are template/add, template/edit, template/delete, template/search, template/view; none documents subaccount_id)
-        Add(table, new Endpoint("template/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("template/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("template/delete", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("template/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("template/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Suppressions (all three document subaccount_id)
-        Add(table, new Endpoint("suppression/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("suppression/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("suppression/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Archive (neither documents subaccount_id)
-        Add(table, new Endpoint("archive/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("archive/email", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // API keys (every endpoint but permissions documents subaccount_id; add is limited to 5 per minute; edit is documented as POST (full edit) and PATCH (partial edit))
-        Add(table, new Endpoint("api_keys/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("api_keys/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.ApiKeyAdd, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("api_keys/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("api_keys/edit", Endpoint.Patch, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("api_keys/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("api_keys/permissions", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // SMTP users (every endpoint documents subaccount_id; edit is documented as POST (full edit) and PATCH (partial edit))
-        Add(table, new Endpoint("users/smtp/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("users/smtp/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("users/smtp/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("users/smtp/edit", Endpoint.Patch, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("users/smtp/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // IP authentication (every endpoint documents subaccount_id; edit is documented as PATCH only)
-        Add(table, new Endpoint("ip_auth/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("ip_auth/edit", Endpoint.Patch, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("ip_auth/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Sender domains (every endpoint but subaccount_access documents subaccount_id)
-        Add(table, new Endpoint("domain/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("domain/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("domain/verify", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("domain/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("domain/tracking", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("domain/returnpath", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("domain/subaccount_access", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Single sender emails (all three document subaccount_id)
-        Add(table, new Endpoint("single_sender_emails/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("single_sender_emails/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("single_sender_emails/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Allowed senders (all four document subaccount_id)
-        Add(table, new Endpoint("allowed_senders/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("allowed_senders/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("allowed_senders/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("allowed_senders/update", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Allowed recipients (all four document subaccount_id)
-        Add(table, new Endpoint("allowed_recipients/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("allowed_recipients/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("allowed_recipients/remove", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("allowed_recipients/update", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Subaccounts (master-account endpoints; none documents subaccount_id; add is limited to 50 per hour)
-        Add(table, new Endpoint("subaccounts/search", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("subaccount/add", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.SubaccountAdd, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("subaccount/edit", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("subaccount/close", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("subaccount/reopen", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // Dedicated IPs (no subaccount_id)
-        Add(table, new Endpoint("dedicated_ips/view", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        // SMS (the reporting endpoints document subaccount_id; send does not)
-        Add(table, new Endpoint("sms/send", HttpMethod.Post, Idempotent: false, AcceptsSubaccountId: false, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("sms/summary", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("sms/view-received", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-        Add(table, new Endpoint("sms/view-sent", HttpMethod.Post, Idempotent: true, AcceptsSubaccountId: true, RateLimitClass.None, Endpoint.DefaultMaxBodyBytes));
-
-        return table;
-    }
-
-    private static void Add(Dictionary<(string Path, string Method), Endpoint> table, Endpoint endpoint)
-    {
-        table.Add((endpoint.Path, endpoint.Method.Method.ToUpperInvariant()), endpoint);
     }
 }

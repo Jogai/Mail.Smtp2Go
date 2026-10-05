@@ -18,5 +18,6 @@ public sealed class Smtp2GoGenerator : IIncrementalGenerator
         EndpointTablePipeline.Register(context, snapshot);
         ClientPipeline.Register(context, snapshot);
         EnumWireNamesPipeline.Register(context);
+        WebhookPipeline.Register(context);
     }
 }

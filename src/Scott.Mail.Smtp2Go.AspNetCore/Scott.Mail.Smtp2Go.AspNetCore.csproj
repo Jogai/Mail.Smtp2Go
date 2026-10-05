@@ -20,4 +20,9 @@
     <ProjectReference Include="..\Scott.Mail.Smtp2Go\Scott.Mail.Smtp2Go.csproj" />
   </ItemGroup>
 
+  <!-- Compile-time generation of the handler dispatch table (see the core project for the full note). Build-time only, never a package dependency. -->
+  <ItemGroup Label="Compile-time generation">
+    <ProjectReference Include="..\tools\Scott.Mail.Smtp2Go.Generators\Scott.Mail.Smtp2Go.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+  </ItemGroup>
+
 </Project>

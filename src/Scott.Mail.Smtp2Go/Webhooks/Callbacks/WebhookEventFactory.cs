@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.Json;
+using Scott.Mail.Smtp2Go.Generation;
 using Scott.Mail.Smtp2Go.Json.Converters;
 
 namespace Scott.Mail.Smtp2Go.Webhooks;
@@ -9,7 +10,7 @@ namespace Scott.Mail.Smtp2Go.Webhooks;
 /// Shared by the JSON and form paths so both produce identical instances. Fields a kind does not consume go to <see cref="WebhookEvent.Extra"/>
 /// unless they match a declared custom header.
 /// </summary>
-internal static class WebhookEventFactory
+internal static partial class WebhookEventFactory
 {
     private const string EventKey = "event";
     private const string TimeKey = "time";
@@ -149,20 +150,16 @@ internal static class WebhookEventFactory
         }
 
         Dictionary<string, JsonElement>? extra = CollectExtra(fields, consumed, options.KnownCustomHeaders, out Dictionary<string, string>? customHeaders);
-        return result switch
-        {
-            EmailClickEvent click => click with { Extra = extra, CustomHeaders = customHeaders },
-            EmailOpenEvent open => open with { Extra = extra, CustomHeaders = customHeaders },
-            EmailBounceEvent bounce => bounce with { Extra = extra, CustomHeaders = customHeaders },
-            EmailProcessedEvent processed => processed with { Extra = extra, CustomHeaders = customHeaders },
-            EmailDeliveredEvent delivered => delivered with { Extra = extra, CustomHeaders = customHeaders },
-            EmailSpamEvent spam => spam with { Extra = extra, CustomHeaders = customHeaders },
-            EmailUnsubscribeEvent unsubscribe => unsubscribe with { Extra = extra, CustomHeaders = customHeaders },
-            EmailResubscribeEvent resubscribe => resubscribe with { Extra = extra, CustomHeaders = customHeaders },
-            EmailRejectEvent reject => reject with { Extra = extra, CustomHeaders = customHeaders },
-            _ => result,
-        };
+        return WithExtras(result, extra, customHeaders);
     }
+
+    /// <summary>
+    /// <c>result with { Extra = extra, CustomHeaders = customHeaders }</c> for whichever email event record <paramref name="result"/> is. Records
+    /// need the concrete type for <c>with</c>, so the body is a generated switch over every concrete <see cref="WebhookEvent"/> that has both
+    /// properties; a value of any other type comes back unchanged.
+    /// </summary>
+    [GeneratedWebhookUpdate]
+    private static partial WebhookEvent WithExtras(WebhookEvent result, Dictionary<string, JsonElement>? extra, Dictionary<string, string>? customHeaders);
 
     private static T Fill<T>(T target, IReadOnlyDictionary<string, PayloadField> fields, HashSet<string> consumed)
         where T : EmailWebhookEvent

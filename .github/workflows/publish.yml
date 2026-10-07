@@ -45,8 +45,9 @@ jobs:
           fi
           echo "Releasing $prefix"
 
+      # eng/*.cs are file-based C# programs (dotnet run <file>.cs), so the checks run the same on both runners.
       - name: Check that every PublicAPI.Unshipped.txt is empty
-        run: eng/check-unshipped-api.sh
+        run: dotnet run eng/check-unshipped-api.cs
 
       - run: dotnet restore --locked-mode
 
@@ -59,8 +60,7 @@ jobs:
 
       # `dotnet nuget verify` is not run: the packages are unsigned (nuget.org adds its repository signature on upload), so it would fail with NU3004.
       - name: Verify package contents (README, icon, license, repository commit, symbols)
-        if: runner.os == 'Linux'
-        run: eng/verify-nupkg.sh artifacts
+        run: dotnet run eng/verify-nupkg.cs -- artifacts
 
       # netstandard2.0 consumer check: a .NET Framework 4.8 console that restores Scott.Mail.Smtp2Go from the artifacts just packed
       # (test/compat/nuget.config). It is outside the solution and only runs on Windows, where a net48 executable can execute.
@@ -118,7 +118,7 @@ jobs:
           dotnet nuget push 'artifacts/*.nupkg' --source https://api.nuget.org/v3/index.json --api-key "$NUGET_API_KEY" --skip-duplicate
 
       - name: Extract the changelog section
-        run: eng/changelog-section.sh "${GITHUB_REF_NAME#v}" | tee "$RUNNER_TEMP/release-notes.md"
+        run: dotnet run eng/changelog-section.cs -- "${GITHUB_REF_NAME#v}" --out "$RUNNER_TEMP/release-notes.md"
 
       - name: Create the GitHub release
         env:

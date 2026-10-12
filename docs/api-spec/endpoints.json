@@ -5441,7 +5441,7 @@
         },
         {
           "name": "auth",
-          "description": "The SMTP Username, API Key or IP Address used to send the email."
+          "description": "The SMTP Username, API Key (only the first 16 characters) or IP Address used to send the email."
         },
         {
           "name": "host",

@@ -6,6 +6,21 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+### Added
+
+- `ActivitySearchRequest.SearchSubjectOperator`, `SearchSenderOperator` and `SearchRecipientOperator` choose how the subject, sender and recipient filters compare (`ActivitySearchOperator`: `EqualTo`, `Contains`, `NotEqualTo`, `DoesNotContain`).
+- `WebhookAddRequest.CustomHeaders` and `WebhookEditRequest.CustomHeaders` set custom HTTP headers that SMTP2GO sends with each callback; `Webhook.CustomHeaders` reads them back. `AddOrUpdateByUrlAsync` carries them over.
+- `ApiKey.SendingStatus` reports whether SMTP2GO has blocked a key's sending for misuse, separately from its `Status`.
+
+### Fixed
+
+- The DependencyInjection package no longer picks up `Microsoft.Extensions.Configuration`, `DependencyInjection` and `Logging` as dependencies (added by a Dependabot update), and the lock files restore in locked mode again.
+- The spec harvester reports a reader error under its own path only; Microsoft.OpenApi prefixed it with every path read before it, so the location changed whenever an operation was added.
+
+### API compatibility
+
+- Spec snapshot of 2026-11-04: `search_subject_op`, `search_sender_op` and `search_recipient_op` on `activity/search`; `custom_headers` on the four webhook endpoints (its schema is malformed upstream, accepted in `validation-baseline.json`); `sending_status` on API key responses. The API key, SMTP user and IP authentication response schemas no longer describe each item as an envelope, so the ten allow-list entries for that are gone; the rewritten schemas spell `custom_ratelimit` as `custom_rate_limit`, treated as a docs typo (docs/api-notes.md). `webhook/view` no longer lists `url` as required.
+
 ### Changed
 
 - Build-time code generation (`src/tools/Scott.Mail.Smtp2Go.Generators`, a Roslyn source generator referenced as an analyzer; nothing is added to the packages): the `EndpointTable` rows now come from `docs/api-spec/endpoints.json` with the traits the reference does not state kept as `[EndpointTraits]` patterns, 47 pass-through client methods are generated from the client interfaces, the enum wire-name tables replace reflection for the library's own enums, and the webhook event type switches (record update and handler dispatch) follow the event hierarchy. No public API or behaviour changes; the generated endpoint table equals the previous hand-written one.

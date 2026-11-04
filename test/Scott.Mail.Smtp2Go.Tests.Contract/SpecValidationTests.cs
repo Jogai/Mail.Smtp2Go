@@ -66,6 +66,29 @@ public class SpecValidationTests
         report.Findings.Should().Contain(f => f.Severity == SpecValidator.Error && f.Rule == rule && f.Location == location);
     }
 
+    [Fact]
+    public void A_reader_error_is_located_under_its_own_path_only()
+    {
+        // The reader's pointer for a malformed schema lists every path walked before it; the finding keeps the last one.
+        const string Document = """{"openapi":"3.1.0","info":{"title":"t","version":"1"},"paths":{"/a":{"post":{"operationId":"a","responses":{"200":{"description":"ok"}}}},"/b/c":{"post":{"operationId":"b","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"h":{"type":"array","items":"string"}}}}}},"responses":{"200":{"description":"ok"}}}}}}""";
+
+        ValidationDocument report = SpecValidator.Validate(Document);
+
+        report.Findings.Should().ContainSingle(f => f.Severity == SpecValidator.Error)
+            .Which.Location.Should().Be("#/paths/~1b~1c/post/requestBody/content/application~1json/schema/properties/h/items");
+    }
+
+    [Theory]
+    [InlineData("#/paths/~1a/post/~1b~1c/post/requestBody/content/application~1json/schema", "#/paths/~1b~1c/post/requestBody/content/application~1json/schema")]
+    [InlineData("#/paths/~1a/post/responses/post/~1b/~1c/post/responses/200", "#/paths/~1c/post/responses/200")]
+    [InlineData("#/paths/~1b~1c/post/operationId", "#/paths/~1b~1c/post/operationId")]
+    [InlineData("#/info/title", "#/info/title")]
+    [InlineData("#/paths", "#/paths")]
+    public void Leaked_path_keys_are_dropped_from_reader_pointers(string reported, string expected)
+    {
+        SpecValidator.NormalizePointer(reported).Should().Be(expected);
+    }
+
     [Theory]
     [InlineData("""{"openapi": """)]
     [InlineData("[1,2,3]")]

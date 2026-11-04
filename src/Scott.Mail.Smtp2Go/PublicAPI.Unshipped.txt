@@ -6,8 +6,13 @@ Scott.Mail.Smtp2Go.ActivitySearchOperator.EqualTo = 1 -> Scott.Mail.Smtp2Go.Acti
 Scott.Mail.Smtp2Go.ActivitySearchOperator.NotEqualTo = 3 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
 Scott.Mail.Smtp2Go.ActivitySearchOperator.Unknown = 0 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
 Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchRecipientOperator.get -> Scott.Mail.Smtp2Go.ActivitySearchOperator?
+Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchRecipientOperator.init -> void
 Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchSenderOperator.get -> Scott.Mail.Smtp2Go.ActivitySearchOperator?
+Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchSenderOperator.init -> void
 Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchSubjectOperator.get -> Scott.Mail.Smtp2Go.ActivitySearchOperator?
+Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchSubjectOperator.init -> void
+Scott.Mail.Smtp2Go.ApiKey.SendingStatus.get -> Scott.Mail.Smtp2Go.CredentialStatus?
+Scott.Mail.Smtp2Go.ApiKey.SendingStatus.init -> void
 Scott.Mail.Smtp2Go.Webhook.CustomHeaders.get -> System.Collections.Generic.IReadOnlyList<string!>?
 Scott.Mail.Smtp2Go.Webhook.CustomHeaders.init -> void
 Scott.Mail.Smtp2Go.WebhookAddRequest.CustomHeaders.get -> System.Collections.Generic.IReadOnlyList<string!>?

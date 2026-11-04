@@ -29,6 +29,9 @@ public class ActivitySearchTests
             SearchSubject = "Booking",
             SearchSender = "no-reply@example.com",
             SearchRecipient = "someone@example.com",
+            SearchSubjectOperator = ActivitySearchOperator.EqualTo,
+            SearchSenderOperator = ActivitySearchOperator.NotEqualTo,
+            SearchRecipientOperator = ActivitySearchOperator.DoesNotContain,
             SearchUsernames = ["smtpuser", "api-5BFDE1E62529"],
             Subaccounts = ["sub-1"],
             Limit = 1000,
@@ -113,6 +116,28 @@ public class ActivitySearchTests
         ((IRequestValidator)new ActivitySearchRequest { Limit = 1001, EventTypes = [ActivityEventType.Unknown] }).Validate(EndpointTable.Get("activity/search"), errors);
 
         errors.Should().Equal("limit must be between 1 and 1000.", "event_types must not contain ActivityEventType.Unknown.");
+    }
+
+    [Theory]
+    [InlineData(ActivitySearchOperator.EqualTo, "equals")]
+    [InlineData(ActivitySearchOperator.Contains, "contains")]
+    [InlineData(ActivitySearchOperator.NotEqualTo, "not_equals")]
+    [InlineData(ActivitySearchOperator.DoesNotContain, "not_contains")]
+    public void Search_operators_use_the_documented_values(ActivitySearchOperator op, string wire)
+    {
+        string json = JsonSerializer.Serialize(new ActivitySearchRequest { SearchSubject = "Invoice", SearchSubjectOperator = op }, Smtp2GoJsonContext.Default.ActivitySearchRequest);
+
+        json.Should().Be($$"""{"search_subject":"Invoice","search_subject_op":"{{wire}}"}""");
+    }
+
+    [Fact]
+    public void An_unknown_search_operator_is_rejected_before_sending()
+    {
+        List<string> errors = [];
+
+        ((IRequestValidator)new ActivitySearchRequest { SearchSender = "a@example.com", SearchSenderOperator = ActivitySearchOperator.Unknown }).Validate(EndpointTable.Get("activity/search"), errors);
+
+        errors.Should().Equal("search_subject_op, search_sender_op and search_recipient_op must not be ActivitySearchOperator.Unknown.");
     }
 
     [Fact]

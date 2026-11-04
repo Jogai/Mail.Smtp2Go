@@ -53,6 +53,19 @@ await foreach (ActivityEvent evt in client.Activity.SearchAllAsync(new ActivityS
 }
 ```
 
+`SearchSubject`, `SearchSender` and `SearchRecipient` match text the field contains. Set `SearchSubjectOperator`, `SearchSenderOperator` or `SearchRecipientOperator` to an `ActivitySearchOperator` (`EqualTo`, `Contains`, `NotEqualTo`, `DoesNotContain`) to compare differently; an operator without its search field is ignored by the server. SMTP2GO added the operators in November 2026.
+
+```csharp
+// Everything except the newsletter, from one exact sender.
+var filtered = await client.Activity.SearchAsync(new ActivitySearchRequest
+{
+    SearchSender = "billing@example.com",
+    SearchSenderOperator = ActivitySearchOperator.EqualTo,
+    SearchSubject = "Newsletter",
+    SearchSubjectOperator = ActivitySearchOperator.DoesNotContain,
+});
+```
+
 `ActivityEvent.EventRaw` is the wire string and `Event` its `ActivityEventType` (`Unknown` for names this library does not know). Activity uses its own names (`soft-bounced`, `hard-bounced`, `opened`), which is why it has a separate enum from the webhook callbacks. `EmailClient` and `Metadata` are kept as raw `JsonElement`s because the docs do not describe their shape; everything else is typed, and unmodelled fields go to `Extra`.
 
 ### Rate limit

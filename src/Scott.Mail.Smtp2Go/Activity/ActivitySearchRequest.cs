@@ -38,6 +38,18 @@ public sealed record ActivitySearchRequest : IRequestValidator
     [JsonPropertyName("search_recipient")]
     public string? SearchRecipient { get; init; }
 
+    /// <summary>How <see cref="SearchSubject"/> is compared. The server ignores it without <see cref="SearchSubject"/>; its default is <see cref="ActivitySearchOperator.Contains"/>.</summary>
+    [JsonPropertyName("search_subject_op")]
+    public ActivitySearchOperator? SearchSubjectOperator { get; init; }
+
+    /// <summary>How <see cref="SearchSender"/> is compared. The server ignores it without <see cref="SearchSender"/>; its default is <see cref="ActivitySearchOperator.Contains"/>.</summary>
+    [JsonPropertyName("search_sender_op")]
+    public ActivitySearchOperator? SearchSenderOperator { get; init; }
+
+    /// <summary>How <see cref="SearchRecipient"/> is compared. The server ignores it without <see cref="SearchRecipient"/>; its default is <see cref="ActivitySearchOperator.Contains"/>.</summary>
+    [JsonPropertyName("search_recipient_op")]
+    public ActivitySearchOperator? SearchRecipientOperator { get; init; }
+
     /// <summary>Only emails sent by these SMTP users or API keys.</summary>
     [JsonPropertyName("search_usernames")]
     public IReadOnlyList<string>? SearchUsernames { get; init; }
@@ -90,6 +102,11 @@ public sealed record ActivitySearchRequest : IRequestValidator
         if (EventTypes is not null && EventTypes.Contains(ActivityEventType.Unknown))
         {
             errors.Add("event_types must not contain ActivityEventType.Unknown.");
+        }
+
+        if (SearchSubjectOperator == ActivitySearchOperator.Unknown || SearchSenderOperator == ActivitySearchOperator.Unknown || SearchRecipientOperator == ActivitySearchOperator.Unknown)
+        {
+            errors.Add("search_subject_op, search_sender_op and search_recipient_op must not be ActivitySearchOperator.Unknown.");
         }
     }
 }

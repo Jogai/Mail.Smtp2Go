@@ -39,12 +39,27 @@
           "deprecated": false
         },
         {
+          "name": "search_subject_op",
+          "type": "string",
+          "deprecated": false
+        },
+        {
           "name": "search_sender",
           "type": "string",
           "deprecated": false
         },
         {
+          "name": "search_sender_op",
+          "type": "string",
+          "deprecated": false
+        },
+        {
           "name": "search_recipient",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "search_recipient_op",
           "type": "string",
           "deprecated": false
         },
@@ -647,13 +662,103 @@
       "responseShape": "array",
       "responseProperties": [
         {
-          "name": "request_id",
+          "name": "api_key",
           "type": "string",
           "deprecated": false
         },
         {
-          "name": "data",
-          "type": "object",
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_rate_limit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_value",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ippool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sending_status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -669,6 +774,7 @@
             "ippool": 1234,
             "bounce_notifications": "from",
             "status": "allowed",
+            "sending_status": "allowed",
             "endpoints": [
               "/email/send"
             ]
@@ -779,13 +885,103 @@
       "responseShape": "array",
       "responseProperties": [
         {
-          "name": "request_id",
+          "name": "api_key",
           "type": "string",
           "deprecated": false
         },
         {
-          "name": "data",
-          "type": "object",
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_rate_limit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_value",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ippool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sending_status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -801,6 +997,7 @@
             "ippool": 1234,
             "bounce_notifications": "from",
             "status": "allowed",
+            "sending_status": "allowed",
             "endpoints": [
               "/email/send"
             ]
@@ -911,13 +1108,103 @@
       "responseShape": "array",
       "responseProperties": [
         {
-          "name": "request_id",
+          "name": "api_key",
           "type": "string",
           "deprecated": false
         },
         {
-          "name": "data",
-          "type": "object",
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_rate_limit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_value",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ippool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sending_status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -933,6 +1220,7 @@
             "ippool": 1234,
             "bounce_notifications": "from",
             "status": "allowed",
+            "sending_status": "allowed",
             "endpoints": [
               "/email/send"
             ]
@@ -953,18 +1241,7 @@
       "requestProperties": [],
       "acceptsSubaccountId": false,
       "responseShape": "array",
-      "responseProperties": [
-        {
-          "name": "request_id",
-          "type": "string",
-          "deprecated": false
-        },
-        {
-          "name": "data",
-          "type": "array",
-          "deprecated": false
-        }
-      ],
+      "responseProperties": [],
       "responseExample": {
         "request_id": "f3e50113-deb2-4e54-9675-2ea497c3732e",
         "data": [
@@ -1031,13 +1308,103 @@
       "responseShape": "array",
       "responseProperties": [
         {
-          "name": "request_id",
+          "name": "api_key",
           "type": "string",
           "deprecated": false
         },
         {
-          "name": "data",
-          "type": "object",
+          "name": "username",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_rate_limit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_value",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ippool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "sending_status",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "endpoints",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -1053,6 +1420,7 @@
             "ippool": 1234,
             "bounce_notifications": "from",
             "status": "allowed",
+            "sending_status": "allowed",
             "endpoints": [
               "/email/send"
             ]
@@ -2412,13 +2780,88 @@
       "responseShape": "array",
       "responseProperties": [
         {
-          "name": "request_id",
+          "name": "ip_address",
           "type": "string",
           "deprecated": false
         },
         {
-          "name": "data",
-          "type": "object",
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_rate_limit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_value",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ippool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
           "deprecated": false
         }
       ],
@@ -4642,13 +5085,88 @@
       "responseShape": "array",
       "responseProperties": [
         {
-          "name": "request_id",
+          "name": "username",
           "type": "string",
           "deprecated": false
         },
         {
-          "name": "data",
-          "type": "object",
+          "name": "description",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "custom_rate_limit",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_value",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "custom_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_value",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "default_ratelimit_period",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "ippool",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_html",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "feedback_text",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "open_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "click_tracking_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "archive_enabled",
+          "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "audit_email",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "bounce_notifications",
+          "type": "string",
+          "deprecated": false
+        },
+        {
+          "name": "status",
+          "type": "string",
           "deprecated": false
         }
       ],
@@ -4982,6 +5500,11 @@
           "name": "auth_header_value",
           "type": "string",
           "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
+          "deprecated": false
         }
       ],
       "acceptsSubaccountId": true,
@@ -5035,6 +5558,11 @@
         {
           "name": "disabled",
           "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -5122,6 +5650,11 @@
           "name": "disabled",
           "type": "boolean",
           "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
+          "deprecated": false
         }
       ],
       "acceptsSubaccountId": true,
@@ -5175,6 +5708,11 @@
         {
           "name": "disabled",
           "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -5271,6 +5809,11 @@
           "name": "disabled",
           "type": "boolean",
           "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
+          "deprecated": false
         }
       ],
       "responseExample": {
@@ -5297,9 +5840,7 @@
       "docsUpdatedAt": "2026-05-18T01:30:58.000Z",
       "spec": "parsed",
       "deprecated": false,
-      "required": [
-        "url"
-      ],
+      "required": [],
       "requestProperties": [
         {
           "name": "subaccount_id",
@@ -5358,6 +5899,11 @@
         {
           "name": "disabled",
           "type": "boolean",
+          "deprecated": false
+        },
+        {
+          "name": "custom_headers",
+          "type": "array",
           "deprecated": false
         }
       ],
@@ -5441,7 +5987,7 @@
         },
         {
           "name": "auth",
-          "description": "The SMTP Username, API Key or IP Address used to send the email."
+          "description": "The SMTP Username, API Key (only the first 16 characters) or IP Address used to send the email."
         },
         {
           "name": "host",

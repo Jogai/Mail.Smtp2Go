@@ -1,6 +1,22 @@
-<!-- Snapshot of https://developers.smtp2go.com/reference/changelog taken by the spec harvester; page updatedAt 2026-09-07T04:16:10.000Z. Do not edit. -->
+<!-- Snapshot of https://developers.smtp2go.com/reference/changelog taken by the spec harvester; page updatedAt 2026-11-04T19:42:07.000Z. Do not edit. -->
 
 # Changelog
+
+**Nov 5th 2026**
+
+* Added `search_subject_op`, `search_sender_op` and `search_recipient_op` to `/activity/search` to allow users to change the equality operations when searching.
+
+**Oct 27th 2026**
+
+* Added a read-only 'sending\_status' property to the /api\_keys responses to indicate if email sending has been blocked for misuse reasons.
+
+**Oct 13th 2026**
+
+* Added the `custom_headers` property to the webhook endpoints
+
+**Oct 10th 2026**
+
+* Added the `disabled` property to the webhook endpoints
 
 **Sep 7th 2026**
 

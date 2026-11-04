@@ -15,42 +15,6 @@
       "fixture": "Webhooks/view-response-array.json"
     },
     {
-      "endpoint": "api_keys/add",
-      "scope": "response",
-      "field": "request_id",
-      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
-    },
-    {
-      "endpoint": "api_keys/add",
-      "scope": "response",
-      "field": "data",
-      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
-    },
-    {
-      "endpoint": "api_keys/edit",
-      "scope": "response",
-      "field": "request_id",
-      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
-    },
-    {
-      "endpoint": "api_keys/edit",
-      "scope": "response",
-      "field": "data",
-      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
-    },
-    {
-      "endpoint": "api_keys/view",
-      "scope": "response",
-      "field": "request_id",
-      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
-    },
-    {
-      "endpoint": "api_keys/view",
-      "scope": "response",
-      "field": "data",
-      "reason": "The documented response schema of this endpoint describes the envelope (request_id, data) as if it were the item; the example's items are modelled by ApiKey."
-    },
-    {
       "endpoint": "users/smtp/add",
       "scope": "response",
       "field": "results",
@@ -67,30 +31,6 @@
       "scope": "response",
       "field": "results",
       "reason": "The {results: [...]} wrapper of this endpoint is unwrapped by ResultsListConverter<SmtpUser> into IReadOnlyList<SmtpUser>; results is the wrapper's key, not a property of the SmtpUser items."
-    },
-    {
-      "endpoint": "users/smtp/edit",
-      "scope": "response",
-      "field": "request_id",
-      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by SmtpUser."
-    },
-    {
-      "endpoint": "users/smtp/edit",
-      "scope": "response",
-      "field": "data",
-      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by SmtpUser."
-    },
-    {
-      "endpoint": "ip_auth/edit",
-      "scope": "response",
-      "field": "request_id",
-      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by AuthenticatedIp."
-    },
-    {
-      "endpoint": "ip_auth/edit",
-      "scope": "response",
-      "field": "data",
-      "reason": "The documented PATCH response schema describes the envelope (request_id, data) as if it were the item; the example's items are modelled by AuthenticatedIp."
     },
     {
       "endpoint": "single_sender_emails/view",
@@ -126,6 +66,36 @@
       "field": "request_id",
       "reason": "The docs example nests request_id inside data and has no top-level request_id; the live envelope carries it at the top level like every other endpoint, so the fixture is the example with request_id moved up.",
       "fixture": "Sms/view-sent-response.json"
+    },
+    {
+      "endpoint": "api_keys/add",
+      "scope": "response",
+      "field": "custom_rate_limit",
+      "reason": "The response schema rewritten in October 2026 spells this custom_rate_limit, but the request schemas, every response example, the older response schemas (users/smtp/view, ip_auth/view) and the captured live responses use custom_ratelimit, which is what CustomRateLimit reads; treated as a docs typo until a live response shows otherwise."
+    },
+    {
+      "endpoint": "api_keys/edit",
+      "scope": "response",
+      "field": "custom_rate_limit",
+      "reason": "The response schema rewritten in October 2026 spells this custom_rate_limit, but the request schemas, every response example, the older response schemas (users/smtp/view, ip_auth/view) and the captured live responses use custom_ratelimit, which is what CustomRateLimit reads; treated as a docs typo until a live response shows otherwise."
+    },
+    {
+      "endpoint": "api_keys/view",
+      "scope": "response",
+      "field": "custom_rate_limit",
+      "reason": "The response schema rewritten in October 2026 spells this custom_rate_limit, but the request schemas, every response example, the older response schemas (users/smtp/view, ip_auth/view) and the captured live responses use custom_ratelimit, which is what CustomRateLimit reads; treated as a docs typo until a live response shows otherwise."
+    },
+    {
+      "endpoint": "ip_auth/edit",
+      "scope": "response",
+      "field": "custom_rate_limit",
+      "reason": "The response schema rewritten in October 2026 spells this custom_rate_limit, but the request schemas, every response example, the older response schemas (users/smtp/view, ip_auth/view) and the captured live responses use custom_ratelimit, which is what CustomRateLimit reads; treated as a docs typo until a live response shows otherwise."
+    },
+    {
+      "endpoint": "users/smtp/edit",
+      "scope": "response",
+      "field": "custom_rate_limit",
+      "reason": "The response schema rewritten in October 2026 spells this custom_rate_limit, but the request schemas, every response example, the older response schemas (users/smtp/view, ip_auth/view) and the captured live responses use custom_ratelimit, which is what CustomRateLimit reads; treated as a docs typo until a live response shows otherwise."
     }
   ]
 }

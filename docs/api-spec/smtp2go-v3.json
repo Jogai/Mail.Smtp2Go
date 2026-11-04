@@ -2,19 +2,20 @@
   "components": {
     "securitySchemes": {
       "sec0": {
+        "description": "Your SMTP2GO API key. When calling through the SMTP2GO MCP server, this is supplied automatically from the MCP connection: do not set `X-Smtp2go-Api-Key` or `Authorization` in `execute-request` headers, as any value set there overrides the connection's key.",
         "in": "header",
         "name": "X-Smtp2go-Api-Key",
-        "type": "apiKey",
-        "x-default": "${SMTP2GO_API_KEY}"
+        "type": "apiKey"
       },
       "sec1": {
+        "description": "Your SMTP2GO API key as a bearer token (`Authorization: Bearer api-...`). When calling through the SMTP2GO MCP server, this is supplied automatically from the MCP connection: do not set `X-Smtp2go-Api-Key` or `Authorization` in `execute-request` headers, as any value set there overrides the connection's key.",
         "scheme": "bearer",
-        "type": "http",
-        "x-default": "${SMTP2GO_API_KEY}"
+        "type": "http"
       }
     }
   },
   "info": {
+    "description": "SMTP2GO API",
     "title": "SMTP2GO API v3.0.4",
     "version": "3.0.4"
   },
@@ -94,12 +95,27 @@
                     "description": "If passed, will return all events for emails containing this string in the email recipient. Matching is case-insensitive.",
                     "type": "string"
                   },
+                  "search_recipient_op": {
+                    "default": "",
+                    "description": "If passed along with <code>search_recipient</code>, will change the comparison operator when filtering.<br><br><strong>Values:</strong> 'equals', 'contains', 'not_equals', 'not_contains'.",
+                    "type": "string"
+                  },
                   "search_sender": {
                     "description": "If passed, will return all events for emails containing this string in the email sender. Matching is case-insensitive.",
                     "type": "string"
                   },
+                  "search_sender_op": {
+                    "default": "",
+                    "description": "If passed along with <code>search_sender</code>, will change the comparison operator when filtering.<br><br><strong>Values:</strong> 'equals', 'contains', 'not_equals', 'not_contains'.",
+                    "type": "string"
+                  },
                   "search_subject": {
                     "description": "If passed, will return all events for emails containing this string in the email subject. Matching is case-insensitive.",
+                    "type": "string"
+                  },
+                  "search_subject_op": {
+                    "default": "",
+                    "description": "If passed along with <code>search_subject</code>, will change the comparison operator when filtering.<br><br><strong>Values:</strong> 'equals', 'contains', 'not_equals', 'not_contains'.",
                     "type": "string"
                   },
                   "search_usernames": {
@@ -1662,6 +1678,7 @@
                           "feedback_html": "test_html",
                           "feedback_text": "test_text",
                           "ippool": 1234,
+                          "sending_status": "allowed",
                           "status": "allowed"
                         }
                       ],
@@ -1675,113 +1692,105 @@
                       "description": "An array of API key results",
                       "items": {
                         "properties": {
-                          "data": {
-                            "properties": {
-                              "api_key": {
-                                "description": "The new API key used to query the API.",
-                                "example": "api-00000000000000000000000000000000",
-                                "type": "string"
-                              },
-                              "archive_enabled": {
-                                "default": false,
-                                "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "audit_email": {
-                                "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
-                                "type": "string"
-                              },
-                              "bounce_notifications": {
-                                "default": "from",
-                                "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
-                                "type": "string"
-                              },
-                              "click_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, click tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "custom_rate_limit": {
-                                "default": false,
-                                "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
-                                "example": true,
-                                "type": "boolean"
-                              },
-                              "custom_ratelimit_period": {
-                                "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
-                                "example": "0:30:00",
-                                "type": "string"
-                              },
-                              "custom_ratelimit_value": {
-                                "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
-                                "example": 123,
-                                "type": "integer"
-                              },
-                              "default_ratelimit_period": {
-                                "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": "unlimited",
-                                "type": "string"
-                              },
-                              "default_ratelimit_value": {
-                                "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": 123,
-                                "type": "string"
-                              },
-                              "description": {
-                                "description": "A comment or description of the API key.",
-                                "type": "string"
-                              },
-                              "endpoints": {
-                                "default": [
-                                  "/email/send"
-                                ],
-                                "description": "An array of endpoints that this API key will be allowed to use.",
-                                "type": "array"
-                              },
-                              "feedback_enabled": {
-                                "default": false,
-                                "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
-                                "type": "boolean"
-                              },
-                              "feedback_html": {
-                                "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "feedback_text": {
-                                "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "ippool": {
-                                "example": 1234,
-                                "type": "integer"
-                              },
-                              "open_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, open tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "status": {
-                                "default": "allowed",
-                                "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
-                                "type": "string"
-                              },
-                              "username": {
-                                "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
-                                "example": "api-000000000000",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
+                          "api_key": {
+                            "description": "The new API key used to query the API.",
+                            "example": "api-00000000000000000000000000000000",
+                            "type": "string"
                           },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+                          "archive_enabled": {
+                            "default": false,
+                            "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "audit_email": {
+                            "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
+                            "type": "string"
+                          },
+                          "bounce_notifications": {
+                            "default": "from",
+                            "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
+                            "type": "string"
+                          },
+                          "click_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, click tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "custom_rate_limit": {
+                            "default": false,
+                            "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
+                            "example": true,
+                            "type": "boolean"
+                          },
+                          "custom_ratelimit_period": {
+                            "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
+                            "example": "0:30:00",
+                            "type": "string"
+                          },
+                          "custom_ratelimit_value": {
+                            "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
+                            "example": 123,
+                            "type": "integer"
+                          },
+                          "default_ratelimit_period": {
+                            "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": "unlimited",
+                            "type": "string"
+                          },
+                          "default_ratelimit_value": {
+                            "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": 123,
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "A comment or description of the API key.",
+                            "type": "string"
+                          },
+                          "endpoints": {
+                            "default": [
+                              "/email/send"
+                            ],
+                            "description": "An array of endpoints that this API key will be allowed to use.",
+                            "type": "array"
+                          },
+                          "feedback_enabled": {
+                            "default": false,
+                            "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
+                            "type": "boolean"
+                          },
+                          "feedback_html": {
+                            "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "feedback_text": {
+                            "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "ippool": {
+                            "example": 1234,
+                            "type": "integer"
+                          },
+                          "open_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, open tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "sending_status": {
+                            "default": "allowed",
+                            "description": "The email sending status of the API key - one of ['allowed', 'blocked'], This is separate from 'status' in the event the API keys email sending is blocked due to spam or other misuse.",
+                            "type": "string"
+                          },
+                          "status": {
+                            "default": "allowed",
+                            "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
+                            "type": "string"
+                          },
+                          "username": {
+                            "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
+                            "example": "api-000000000000",
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -1972,6 +1981,7 @@
                           "feedback_html": "test_html",
                           "feedback_text": "test_text",
                           "ippool": 1234,
+                          "sending_status": "allowed",
                           "status": "allowed"
                         }
                       ],
@@ -1985,113 +1995,105 @@
                       "description": "An array of API key results",
                       "items": {
                         "properties": {
-                          "data": {
-                            "properties": {
-                              "api_key": {
-                                "description": "The API key used to query the API (masked)",
-                                "example": "api-000000000000********************",
-                                "type": "string"
-                              },
-                              "archive_enabled": {
-                                "default": false,
-                                "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "audit_email": {
-                                "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
-                                "type": "string"
-                              },
-                              "bounce_notifications": {
-                                "default": "from",
-                                "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
-                                "type": "string"
-                              },
-                              "click_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, click tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "custom_rate_limit": {
-                                "default": false,
-                                "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
-                                "example": true,
-                                "type": "boolean"
-                              },
-                              "custom_ratelimit_period": {
-                                "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
-                                "example": "0:30:00",
-                                "type": "string"
-                              },
-                              "custom_ratelimit_value": {
-                                "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
-                                "example": 123,
-                                "type": "integer"
-                              },
-                              "default_ratelimit_period": {
-                                "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": "unlimited",
-                                "type": "string"
-                              },
-                              "default_ratelimit_value": {
-                                "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": 123,
-                                "type": "string"
-                              },
-                              "description": {
-                                "description": "A comment or description of the API key.",
-                                "type": "string"
-                              },
-                              "endpoints": {
-                                "default": [
-                                  "/email/send"
-                                ],
-                                "description": "An array of endpoints that this API key will be allowed to use.",
-                                "type": "array"
-                              },
-                              "feedback_enabled": {
-                                "default": false,
-                                "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
-                                "type": "boolean"
-                              },
-                              "feedback_html": {
-                                "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "feedback_text": {
-                                "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "ippool": {
-                                "example": 1234,
-                                "type": "integer"
-                              },
-                              "open_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, open tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "status": {
-                                "default": "allowed",
-                                "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
-                                "type": "string"
-                              },
-                              "username": {
-                                "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
-                                "example": "api-000000000000",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
+                          "api_key": {
+                            "description": "The API key used to query the API (masked)",
+                            "example": "api-000000000000********************",
+                            "type": "string"
                           },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+                          "archive_enabled": {
+                            "default": false,
+                            "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "audit_email": {
+                            "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
+                            "type": "string"
+                          },
+                          "bounce_notifications": {
+                            "default": "from",
+                            "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
+                            "type": "string"
+                          },
+                          "click_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, click tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "custom_rate_limit": {
+                            "default": false,
+                            "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
+                            "example": true,
+                            "type": "boolean"
+                          },
+                          "custom_ratelimit_period": {
+                            "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
+                            "example": "0:30:00",
+                            "type": "string"
+                          },
+                          "custom_ratelimit_value": {
+                            "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
+                            "example": 123,
+                            "type": "integer"
+                          },
+                          "default_ratelimit_period": {
+                            "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": "unlimited",
+                            "type": "string"
+                          },
+                          "default_ratelimit_value": {
+                            "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": 123,
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "A comment or description of the API key.",
+                            "type": "string"
+                          },
+                          "endpoints": {
+                            "default": [
+                              "/email/send"
+                            ],
+                            "description": "An array of endpoints that this API key will be allowed to use.",
+                            "type": "array"
+                          },
+                          "feedback_enabled": {
+                            "default": false,
+                            "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
+                            "type": "boolean"
+                          },
+                          "feedback_html": {
+                            "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "feedback_text": {
+                            "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "ippool": {
+                            "example": 1234,
+                            "type": "integer"
+                          },
+                          "open_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, open tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "sending_status": {
+                            "default": "allowed",
+                            "description": "The email sending status of the API key - one of ['allowed', 'blocked'], This is separate from 'status' in the event the API keys email sending is blocked due to spam or other misuse.",
+                            "type": "string"
+                          },
+                          "status": {
+                            "default": "allowed",
+                            "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
+                            "type": "string"
+                          },
+                          "username": {
+                            "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
+                            "example": "api-000000000000",
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -2282,6 +2284,7 @@
                           "feedback_html": "test_html",
                           "feedback_text": "test_text",
                           "ippool": 1234,
+                          "sending_status": "allowed",
                           "status": "allowed"
                         }
                       ],
@@ -2295,113 +2298,105 @@
                       "description": "An array of API key results",
                       "items": {
                         "properties": {
-                          "data": {
-                            "properties": {
-                              "api_key": {
-                                "description": "The API key used to query the API (masked)",
-                                "example": "api-000000000000********************",
-                                "type": "string"
-                              },
-                              "archive_enabled": {
-                                "default": false,
-                                "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "audit_email": {
-                                "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
-                                "type": "string"
-                              },
-                              "bounce_notifications": {
-                                "default": "from",
-                                "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
-                                "type": "string"
-                              },
-                              "click_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, click tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "custom_rate_limit": {
-                                "default": false,
-                                "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
-                                "example": true,
-                                "type": "boolean"
-                              },
-                              "custom_ratelimit_period": {
-                                "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
-                                "example": "0:30:00",
-                                "type": "string"
-                              },
-                              "custom_ratelimit_value": {
-                                "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
-                                "example": 123,
-                                "type": "integer"
-                              },
-                              "default_ratelimit_period": {
-                                "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": "unlimited",
-                                "type": "string"
-                              },
-                              "default_ratelimit_value": {
-                                "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": 123,
-                                "type": "string"
-                              },
-                              "description": {
-                                "description": "A comment or description of the API key.",
-                                "type": "string"
-                              },
-                              "endpoints": {
-                                "default": [
-                                  "/email/send"
-                                ],
-                                "description": "An array of endpoints that this API key will be allowed to use.",
-                                "type": "array"
-                              },
-                              "feedback_enabled": {
-                                "default": false,
-                                "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
-                                "type": "boolean"
-                              },
-                              "feedback_html": {
-                                "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "feedback_text": {
-                                "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "ippool": {
-                                "example": 1234,
-                                "type": "integer"
-                              },
-                              "open_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, open tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "status": {
-                                "default": "allowed",
-                                "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
-                                "type": "string"
-                              },
-                              "username": {
-                                "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
-                                "example": "api-000000000000",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
+                          "api_key": {
+                            "description": "The API key used to query the API (masked)",
+                            "example": "api-000000000000********************",
+                            "type": "string"
                           },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+                          "archive_enabled": {
+                            "default": false,
+                            "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "audit_email": {
+                            "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
+                            "type": "string"
+                          },
+                          "bounce_notifications": {
+                            "default": "from",
+                            "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
+                            "type": "string"
+                          },
+                          "click_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, click tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "custom_rate_limit": {
+                            "default": false,
+                            "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
+                            "example": true,
+                            "type": "boolean"
+                          },
+                          "custom_ratelimit_period": {
+                            "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
+                            "example": "0:30:00",
+                            "type": "string"
+                          },
+                          "custom_ratelimit_value": {
+                            "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
+                            "example": 123,
+                            "type": "integer"
+                          },
+                          "default_ratelimit_period": {
+                            "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": "unlimited",
+                            "type": "string"
+                          },
+                          "default_ratelimit_value": {
+                            "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": 123,
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "A comment or description of the API key.",
+                            "type": "string"
+                          },
+                          "endpoints": {
+                            "default": [
+                              "/email/send"
+                            ],
+                            "description": "An array of endpoints that this API key will be allowed to use.",
+                            "type": "array"
+                          },
+                          "feedback_enabled": {
+                            "default": false,
+                            "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
+                            "type": "boolean"
+                          },
+                          "feedback_html": {
+                            "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "feedback_text": {
+                            "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "ippool": {
+                            "example": 1234,
+                            "type": "integer"
+                          },
+                          "open_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, open tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "sending_status": {
+                            "default": "allowed",
+                            "description": "The email sending status of the API key - one of ['allowed', 'blocked'], This is separate from 'status' in the event the API keys email sending is blocked due to spam or other misuse.",
+                            "type": "string"
+                          },
+                          "status": {
+                            "default": "allowed",
+                            "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
+                            "type": "string"
+                          },
+                          "username": {
+                            "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
+                            "example": "api-000000000000",
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -2503,23 +2498,7 @@
                     "data": {
                       "description": "An array of API key results",
                       "items": {
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "type": "string"
-                            },
-                            "type": "array"
-                          },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
-                        "type": "object"
+                        "type": "string"
                       },
                       "type": "array"
                     },
@@ -2714,6 +2693,7 @@
                           "feedback_html": "test_html",
                           "feedback_text": "test_text",
                           "ippool": 1234,
+                          "sending_status": "allowed",
                           "status": "allowed"
                         }
                       ],
@@ -2727,113 +2707,105 @@
                       "description": "An array of API key results",
                       "items": {
                         "properties": {
-                          "data": {
-                            "properties": {
-                              "api_key": {
-                                "description": "The masked API key.",
-                                "example": "api-000000000000********************",
-                                "type": "string"
-                              },
-                              "archive_enabled": {
-                                "default": false,
-                                "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "audit_email": {
-                                "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
-                                "type": "string"
-                              },
-                              "bounce_notifications": {
-                                "default": "from",
-                                "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
-                                "type": "string"
-                              },
-                              "click_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, click tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "custom_rate_limit": {
-                                "default": false,
-                                "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
-                                "example": true,
-                                "type": "boolean"
-                              },
-                              "custom_ratelimit_period": {
-                                "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
-                                "example": "0:30:00",
-                                "type": "string"
-                              },
-                              "custom_ratelimit_value": {
-                                "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
-                                "example": 123,
-                                "type": "integer"
-                              },
-                              "default_ratelimit_period": {
-                                "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": "unlimited",
-                                "type": "string"
-                              },
-                              "default_ratelimit_value": {
-                                "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": 123,
-                                "type": "string"
-                              },
-                              "description": {
-                                "description": "A comment or description of the API key.",
-                                "type": "string"
-                              },
-                              "endpoints": {
-                                "default": [
-                                  "/email/send"
-                                ],
-                                "description": "An array of endpoints that this API key will be allowed to use.",
-                                "type": "array"
-                              },
-                              "feedback_enabled": {
-                                "default": false,
-                                "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
-                                "type": "boolean"
-                              },
-                              "feedback_html": {
-                                "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "feedback_text": {
-                                "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "ippool": {
-                                "example": 1234,
-                                "type": "integer"
-                              },
-                              "open_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, open tracking will be enabled for this API key.",
-                                "type": "boolean"
-                              },
-                              "status": {
-                                "default": "allowed",
-                                "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
-                                "type": "string"
-                              },
-                              "username": {
-                                "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
-                                "example": "api-000000000000",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
+                          "api_key": {
+                            "description": "The masked API key.",
+                            "example": "api-000000000000********************",
+                            "type": "string"
                           },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+                          "archive_enabled": {
+                            "default": false,
+                            "description": "If true, archiving (available on paid plans) will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "audit_email": {
+                            "description": "If passed, this email will be BCC'd on all emails sent by this API key.",
+                            "type": "string"
+                          },
+                          "bounce_notifications": {
+                            "default": "from",
+                            "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
+                            "type": "string"
+                          },
+                          "click_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, click tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "custom_rate_limit": {
+                            "default": false,
+                            "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
+                            "example": true,
+                            "type": "boolean"
+                          },
+                          "custom_ratelimit_period": {
+                            "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
+                            "example": "0:30:00",
+                            "type": "string"
+                          },
+                          "custom_ratelimit_value": {
+                            "description": "If passed, defines the limit of emails this API key can send in the period specified in <code>custom_ratelimit_period</code>.",
+                            "example": 123,
+                            "type": "integer"
+                          },
+                          "default_ratelimit_period": {
+                            "description": "The default period for which this API key will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": "unlimited",
+                            "type": "string"
+                          },
+                          "default_ratelimit_value": {
+                            "description": "The default limit of emails this API key can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": 123,
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "A comment or description of the API key.",
+                            "type": "string"
+                          },
+                          "endpoints": {
+                            "default": [
+                              "/email/send"
+                            ],
+                            "description": "An array of endpoints that this API key will be allowed to use.",
+                            "type": "array"
+                          },
+                          "feedback_enabled": {
+                            "default": false,
+                            "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
+                            "type": "boolean"
+                          },
+                          "feedback_html": {
+                            "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "feedback_text": {
+                            "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "ippool": {
+                            "example": 1234,
+                            "type": "integer"
+                          },
+                          "open_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, open tracking will be enabled for this API key.",
+                            "type": "boolean"
+                          },
+                          "sending_status": {
+                            "default": "allowed",
+                            "description": "The email sending status of the API key - one of ['allowed', 'blocked'], This is separate from 'status' in the event the API keys email sending is blocked due to spam or other misuse.",
+                            "type": "string"
+                          },
+                          "status": {
+                            "default": "allowed",
+                            "description": "The initial status of the API key, one of ['allowed', 'blocked', 'sandbox'].",
+                            "type": "string"
+                          },
+                          "username": {
+                            "description": "A shortened version of the API key which can be used to correlate data with some other API calls that also feature <code>username</code>.",
+                            "example": "api-000000000000",
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -6655,101 +6627,88 @@
                       "description": "An array of IP Auth results",
                       "items": {
                         "properties": {
-                          "data": {
-                            "properties": {
-                              "archive_enabled": {
-                                "default": false,
-                                "description": "If true, archiving (available on paid plans) will be enabled for this IP Auth.",
-                                "type": "boolean"
-                              },
-                              "audit_email": {
-                                "description": "If passed, this email will be BCC'd on all emails sent by this IP Auth.",
-                                "type": "string"
-                              },
-                              "bounce_notifications": {
-                                "default": "from",
-                                "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
-                                "type": "string"
-                              },
-                              "click_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, click tracking will be enabled for this IP Auth.",
-                                "type": "boolean"
-                              },
-                              "custom_rate_limit": {
-                                "default": false,
-                                "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
-                                "example": true,
-                                "type": "boolean"
-                              },
-                              "custom_ratelimit_period": {
-                                "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
-                                "example": "0:30:00",
-                                "type": "string"
-                              },
-                              "custom_ratelimit_value": {
-                                "description": "If passed, defines the limit of emails this IP Auth can send in the period specified in <code>custom_ratelimit_period</code>.",
-                                "example": 123,
-                                "type": "integer"
-                              },
-                              "default_ratelimit_period": {
-                                "description": "The default period for which this IP Auth will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": "unlimited",
-                                "type": "string"
-                              },
-                              "default_ratelimit_value": {
-                                "description": "The default limit of emails this IP Auth can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": 123,
-                                "type": "string"
-                              },
-                              "description": {
-                                "description": "A comment or description of the IP Auth.",
-                                "type": "string"
-                              },
-                              "feedback_enabled": {
-                                "default": false,
-                                "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
-                                "type": "boolean"
-                              },
-                              "feedback_html": {
-                                "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "feedback_text": {
-                                "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "ip_address": {
-                                "description": "The IP address of the IP Auth",
-                                "example": "ip_address",
-                                "type": "string"
-                              },
-                              "ippool": {
-                                "example": 1234,
-                                "type": "integer"
-                              },
-                              "open_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, open tracking will be enabled for this IP Auth.",
-                                "type": "boolean"
-                              },
-                              "status": {
-                                "default": "allowed",
-                                "description": "The initial status of the IP Auth, one of ['allowed', 'blocked', 'sandbox'].",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
+                          "archive_enabled": {
+                            "default": false,
+                            "description": "If true, archiving (available on paid plans) will be enabled for this IP Auth.",
+                            "type": "boolean"
                           },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+                          "audit_email": {
+                            "description": "If passed, this email will be BCC'd on all emails sent by this IP Auth.",
+                            "type": "string"
+                          },
+                          "bounce_notifications": {
+                            "default": "from",
+                            "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
+                            "type": "string"
+                          },
+                          "click_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, click tracking will be enabled for this IP Auth.",
+                            "type": "boolean"
+                          },
+                          "custom_rate_limit": {
+                            "default": false,
+                            "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
+                            "example": true,
+                            "type": "boolean"
+                          },
+                          "custom_ratelimit_period": {
+                            "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
+                            "example": "0:30:00",
+                            "type": "string"
+                          },
+                          "custom_ratelimit_value": {
+                            "description": "If passed, defines the limit of emails this IP Auth can send in the period specified in <code>custom_ratelimit_period</code>.",
+                            "example": 123,
+                            "type": "integer"
+                          },
+                          "default_ratelimit_period": {
+                            "description": "The default period for which this IP Auth will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": "unlimited",
+                            "type": "string"
+                          },
+                          "default_ratelimit_value": {
+                            "description": "The default limit of emails this IP Auth can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": 123,
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "A comment or description of the IP Auth.",
+                            "type": "string"
+                          },
+                          "feedback_enabled": {
+                            "default": false,
+                            "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
+                            "type": "boolean"
+                          },
+                          "feedback_html": {
+                            "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "feedback_text": {
+                            "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "ip_address": {
+                            "description": "The IP address of the IP Auth",
+                            "example": "ip_address",
+                            "type": "string"
+                          },
+                          "ippool": {
+                            "example": 1234,
+                            "type": "integer"
+                          },
+                          "open_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, open tracking will be enabled for this IP Auth.",
+                            "type": "boolean"
+                          },
+                          "status": {
+                            "default": "allowed",
+                            "description": "The initial status of the IP Auth, one of ['allowed', 'blocked', 'sandbox'].",
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -11832,101 +11791,88 @@
                       "description": "An array of SMTP user results",
                       "items": {
                         "properties": {
-                          "data": {
-                            "properties": {
-                              "archive_enabled": {
-                                "default": false,
-                                "description": "If true, archiving (available on paid plans) will be enabled for this SMTP user.",
-                                "type": "boolean"
-                              },
-                              "audit_email": {
-                                "description": "If passed, this email will be BCC'd on all emails sent by this SMTP user.",
-                                "type": "string"
-                              },
-                              "bounce_notifications": {
-                                "default": "from",
-                                "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
-                                "type": "string"
-                              },
-                              "click_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, click tracking will be enabled for this SMTP user.",
-                                "type": "boolean"
-                              },
-                              "custom_rate_limit": {
-                                "default": false,
-                                "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
-                                "example": true,
-                                "type": "boolean"
-                              },
-                              "custom_ratelimit_period": {
-                                "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
-                                "example": "0:30:00",
-                                "type": "string"
-                              },
-                              "custom_ratelimit_value": {
-                                "description": "If passed, defines the limit of emails this SMTP user can send in the period specified in <code>custom_ratelimit_period</code>.",
-                                "example": 123,
-                                "type": "integer"
-                              },
-                              "default_ratelimit_period": {
-                                "description": "The default period for which this SMTP user will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": "unlimited",
-                                "type": "string"
-                              },
-                              "default_ratelimit_value": {
-                                "description": "The default limit of emails this SMTP user can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
-                                "example": 123,
-                                "type": "string"
-                              },
-                              "description": {
-                                "description": "A comment or description of the SMTP user.",
-                                "type": "string"
-                              },
-                              "feedback_enabled": {
-                                "default": false,
-                                "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
-                                "type": "boolean"
-                              },
-                              "feedback_html": {
-                                "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "feedback_text": {
-                                "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
-                                "type": "string"
-                              },
-                              "ippool": {
-                                "example": 1234,
-                                "type": "integer"
-                              },
-                              "open_tracking_enabled": {
-                                "default": false,
-                                "description": "If true, open tracking will be enabled for this SMTP user.",
-                                "type": "boolean"
-                              },
-                              "status": {
-                                "default": "allowed",
-                                "description": "The initial status of the SMTP user, one of ['allowed', 'blocked', 'sandbox'].",
-                                "type": "string"
-                              },
-                              "username": {
-                                "description": "The username of the SMTP user",
-                                "example": "username",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
+                          "archive_enabled": {
+                            "default": false,
+                            "description": "If true, archiving (available on paid plans) will be enabled for this SMTP user.",
+                            "type": "boolean"
                           },
-                          "request_id": {
-                            "example": "aa253464-0bd0-467a-b24b-6159dcd7be60",
+                          "audit_email": {
+                            "description": "If passed, this email will be BCC'd on all emails sent by this SMTP user.",
+                            "type": "string"
+                          },
+                          "bounce_notifications": {
+                            "default": "from",
+                            "description": "If passed, will control how bounce notifications are handled. Must be one of [from, drop, or a valid email address]. [from] will return the email to sender, [drop] will discard the event, and the inclusion of an email address will send the event on to this account.",
+                            "type": "string"
+                          },
+                          "click_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, click tracking will be enabled for this SMTP user.",
+                            "type": "boolean"
+                          },
+                          "custom_rate_limit": {
+                            "default": false,
+                            "description": "If enabled will use the values of <code>custom_ratelimit_value</code> and <code>custom_ratelimit_period</code> for rate limiting.",
+                            "example": true,
+                            "type": "boolean"
+                          },
+                          "custom_ratelimit_period": {
+                            "description": "If passed, defines the period for which this user will be limited to the number of emails specified in <code>custom_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Only stores this value if <code>custom_ratelimit</code> is true.",
+                            "example": "0:30:00",
+                            "type": "string"
+                          },
+                          "custom_ratelimit_value": {
+                            "description": "If passed, defines the limit of emails this SMTP user can send in the period specified in <code>custom_ratelimit_period</code>.",
+                            "example": 123,
+                            "type": "integer"
+                          },
+                          "default_ratelimit_period": {
+                            "description": "The default period for which this SMTP user will be limited to the number of emails specified in <code>default_ratelimit_value</code>.<br><br><strong>Syntax:</strong> \"\\<n\\> [hour[s]|day[s]|week[s]|month[s]] [hh:mm:ss]\".<br><br><strong>Examples: </strong> \"0:30:00\", \"1 hour\", \"2 days\", \"3 months\", \"4 months 5:00:00\".<br><br><strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": "unlimited",
+                            "type": "string"
+                          },
+                          "default_ratelimit_value": {
+                            "description": "The default limit of emails this SMTP user can send in the period specified in <code>default_ratelimit_period</code>. <strong>Note:</strong> Used if <code>custom_ratelimit</code> is false.",
+                            "example": 123,
+                            "type": "string"
+                          },
+                          "description": {
+                            "description": "A comment or description of the SMTP user.",
+                            "type": "string"
+                          },
+                          "feedback_enabled": {
+                            "default": false,
+                            "description": "If true, custom feedback via the unsubscribe footer will be enabled and defined by the below settings.",
+                            "type": "boolean"
+                          },
+                          "feedback_html": {
+                            "description": "The HTML content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank <br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "feedback_text": {
+                            "description": "The text content to insert into the custom feedback email body via the unsubscribe footer.  Default: blank<br><br><strong>System Variables (Only available here):</strong><ul><li>Unsubscribe URL = %%UNSUBSCRIBE%% </li><li>Email address = %%EMAIL%%</li></ul>",
+                            "type": "string"
+                          },
+                          "ippool": {
+                            "example": 1234,
+                            "type": "integer"
+                          },
+                          "open_tracking_enabled": {
+                            "default": false,
+                            "description": "If true, open tracking will be enabled for this SMTP user.",
+                            "type": "boolean"
+                          },
+                          "status": {
+                            "default": "allowed",
+                            "description": "The initial status of the SMTP user, one of ['allowed', 'blocked', 'sandbox'].",
+                            "type": "string"
+                          },
+                          "username": {
+                            "description": "The username of the SMTP user",
+                            "example": "username",
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "request_id",
-                          "data"
-                        ],
                         "type": "object"
                       },
                       "type": "array"
@@ -12752,6 +12698,12 @@
                     "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                     "type": "string"
                   },
+                  "custom_headers": {
+                    "default": "",
+                    "description": "The custom HTTP headers sent with the webhook.",
+                    "items": "string",
+                    "type": "array"
+                  },
                   "events": {
                     "description": "A list of events the webhook will receive, from this list [<code>delivered</code>,<code>unsubscribe</code>,<code>spam</code>,<code>bounce</code>,<code>processed</code>,<code>reject</code>,<code>click</code>,<code>open</code>].",
                     "items": {
@@ -12839,6 +12791,12 @@
                           "default": "",
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                           "type": "string"
+                        },
+                        "custom_headers": {
+                          "default": "",
+                          "description": "The custom HTTP headers sent with the webhook.",
+                          "items": "string",
+                          "type": "array"
                         },
                         "disabled": {
                           "default": false,
@@ -12972,6 +12930,12 @@
                     "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                     "type": "string"
                   },
+                  "custom_headers": {
+                    "default": "",
+                    "description": "The custom HTTP headers sent with the webhook.",
+                    "items": "string",
+                    "type": "array"
+                  },
                   "disabled": {
                     "default": false,
                     "description": "The status of the webhook.",
@@ -13068,6 +13032,12 @@
                           "default": "",
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code>, <code>a custom token</code> or <code>Header:Value</code> if type is 'custom'.",
                           "type": "string"
+                        },
+                        "custom_headers": {
+                          "default": "",
+                          "description": "The custom HTTP headers sent with the webhook.",
+                          "items": "string",
+                          "type": "array"
                         },
                         "disabled": {
                           "default": false,
@@ -13244,6 +13214,12 @@
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                           "type": "string"
                         },
+                        "custom_headers": {
+                          "default": "",
+                          "description": "The custom HTTP headers sent with the webhook.",
+                          "items": "string",
+                          "type": "array"
+                        },
                         "disabled": {
                           "default": false,
                           "description": "The status of the webhook.",
@@ -13371,9 +13347,6 @@
                     "type": "string"
                   }
                 },
-                "required": [
-                  "url"
-                ],
                 "type": "object"
               }
             }
@@ -13414,6 +13387,12 @@
                           "default": "",
                           "description": "The value of authentiction header, Either <code>base64(user:pass)</code> or <code>a custom token</code>.",
                           "type": "string"
+                        },
+                        "custom_headers": {
+                          "default": "",
+                          "description": "The custom HTTP headers sent with the webhook.",
+                          "items": "string",
+                          "type": "array"
                         },
                         "disabled": {
                           "default": false,

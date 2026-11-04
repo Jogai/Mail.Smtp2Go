@@ -94,6 +94,7 @@ public class CoverageTests
                 }
                 else if (entry.Field != "*")
                 {
+                    Spec.Endpoints.ForPath(entry.Endpoint).SelectMany(o => o.ResponseProperties).Select(p => p.Name).Should().Contain(entry.Field, because: "{0} names a response property the docs no longer list; delete the entry", entry);
                     foreach (Type model in Spec.Models.Where(m => m.Path == entry.Endpoint && m.ResponseDataType is not null).Select(m => ModelDiscovery.ElementTypeOrSelf(m.ResponseDataType!)).Where(ModelDiscovery.IsObjectModel))
                     {
                         ModelDiscovery.WireNames(model).Should().NotContain(entry.Field, because: "{0} is allow-listed as unmodelled but {1} models it; delete the entry", entry, model.Name);

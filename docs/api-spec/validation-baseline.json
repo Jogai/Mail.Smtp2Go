@@ -1,3 +1,40 @@
 {
-  "accepted": []
+  "accepted": [
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1add/post/requestBody/content/application~1json/schema/properties/custom_headers/items",
+      "message": "schema must be a map/object",
+      "reason": "Upstream defect (custom_headers added 2026-10-13): the webhook pages declare the array's items as the bare string \"string\" instead of {\"type\": \"string\"}. The prose says the property holds the custom HTTP headers, modelled as a list of strings on WebhookAddRequest, WebhookEditRequest and Webhook."
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1add/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object",
+      "reason": "Upstream defect (custom_headers added 2026-10-13): the webhook pages declare the array's items as the bare string \"string\" instead of {\"type\": \"string\"}. The prose says the property holds the custom HTTP headers, modelled as a list of strings on WebhookAddRequest, WebhookEditRequest and Webhook."
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1edit/post/requestBody/content/application~1json/schema/properties/custom_headers/items",
+      "message": "schema must be a map/object",
+      "reason": "Upstream defect (custom_headers added 2026-10-13): the webhook pages declare the array's items as the bare string \"string\" instead of {\"type\": \"string\"}. The prose says the property holds the custom HTTP headers, modelled as a list of strings on WebhookAddRequest, WebhookEditRequest and Webhook."
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1edit/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object",
+      "reason": "Upstream defect (custom_headers added 2026-10-13): the webhook pages declare the array's items as the bare string \"string\" instead of {\"type\": \"string\"}. The prose says the property holds the custom HTTP headers, modelled as a list of strings on WebhookAddRequest, WebhookEditRequest and Webhook."
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1remove/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object",
+      "reason": "Upstream defect (custom_headers added 2026-10-13): the webhook pages declare the array's items as the bare string \"string\" instead of {\"type\": \"string\"}. The prose says the property holds the custom HTTP headers, modelled as a list of strings on WebhookAddRequest, WebhookEditRequest and Webhook."
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1view/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object",
+      "reason": "Upstream defect (custom_headers added 2026-10-13): the webhook pages declare the array's items as the bare string \"string\" instead of {\"type\": \"string\"}. The prose says the property holds the custom HTTP headers, modelled as a list of strings on WebhookAddRequest, WebhookEditRequest and Webhook."
+    }
+  ]
 }

@@ -1,4 +1,35 @@
 {
   "specificationVersion": "3.1",
-  "findings": []
+  "findings": [
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1add/post/requestBody/content/application~1json/schema/properties/custom_headers/items",
+      "message": "schema must be a map/object"
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1add/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object"
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1edit/post/requestBody/content/application~1json/schema/properties/custom_headers/items",
+      "message": "schema must be a map/object"
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1edit/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object"
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1remove/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object"
+    },
+    {
+      "severity": "error",
+      "location": "#/paths/~1webhook~1view/post/responses/200/content/application~1json/schema/properties/data/properties/custom_headers/items",
+      "message": "schema must be a map/object"
+    }
+  ]
 }

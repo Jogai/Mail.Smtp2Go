@@ -1,5 +1,7 @@
 #!/usr/bin/env dotnet
 #:property RestorePackagesWithLockFile=false
+// Only ever run with `dotnet run`, never published: no native AOT, so the ILCompiler package (and its audit findings) stays out.
+#:property PublishAot=false
 // Inspects every .nupkg in a directory (default: artifacts/) and fails unless each one carries the README and icon named in its nuspec,
 // the LGPL-3.0-or-later license expression, the repository url with a commit, at least one lib/ assembly, and has a symbols package next to it.
 // Usage: dotnet run eng/verify-nupkg.cs -- [directory]

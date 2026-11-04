@@ -1,5 +1,7 @@
 #!/usr/bin/env dotnet
 #:property RestorePackagesWithLockFile=false
+// Only ever run with `dotnet run`, never published: no native AOT, so the ILCompiler package (and its audit findings) stays out.
+#:property PublishAot=false
 // Prints the body of one version's section of CHANGELOG.md (Keep a Changelog layout), for the GitHub release notes.
 // Usage: dotnet run eng/changelog-section.cs -- <version> [--out <file>]
 // Writes to stdout unless --out is given. Exit code 1 when the section does not exist.

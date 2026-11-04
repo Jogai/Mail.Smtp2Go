@@ -6,6 +6,8 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-04
+
 ### Added
 
 - `ActivitySearchRequest.SearchSubjectOperator`, `SearchSenderOperator` and `SearchRecipientOperator` choose how the subject, sender and recipient filters compare (`ActivitySearchOperator`: `EqualTo`, `Contains`, `NotEqualTo`, `DoesNotContain`).
@@ -70,7 +72,8 @@ First release.
 
 - Public API tracked with `Microsoft.CodeAnalysis.PublicApiAnalyzers`; the shipped surface for this release is in each project's `PublicAPI.Shipped.txt`. Package validation runs across target frameworks on every pack; a baseline against 1.3.5 is enabled from the next release.
 
-[Unreleased]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.3.6...v1.4.0
 [1.3.6]: https://github.com/Jogai/Mail.Smtp2Go/compare/v1.3.5...v1.3.6
 [1.3.5]: https://github.com/Jogai/Mail.Smtp2Go/releases/tag/v1.3.5

@@ -30,6 +30,13 @@ public sealed record ApiKey
     [JsonPropertyName("sending_allowed")]
     public bool? SendingAllowed { get; init; }
 
+    /// <summary>
+    /// Whether SMTP2GO lets the key send (<see cref="CredentialStatus.Allowed"/> or <see cref="CredentialStatus.Blocked"/>). Read-only and separate
+    /// from <see cref="Status"/>: SMTP2GO blocks a key here for spam or other misuse, whatever its status says.
+    /// </summary>
+    [JsonPropertyName("sending_status")]
+    public CredentialStatus? SendingStatus { get; init; }
+
     /// <summary>The username associated with the key, where returned.</summary>
     [JsonPropertyName("username")]
     public string? Username { get; init; }

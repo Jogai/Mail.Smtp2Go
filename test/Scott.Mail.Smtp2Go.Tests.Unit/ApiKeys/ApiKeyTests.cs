@@ -78,12 +78,24 @@ public class ApiKeyTests
         key.IpPool.Should().Be(1234);
         key.BounceNotifications.Should().Be(BounceNotifications.From);
         key.Status.Should().Be(CredentialStatus.Allowed);
+        key.SendingStatus.Should().Be(CredentialStatus.Allowed);
         key.Endpoints.Should().Equal("/email/send");
         key.Extra.Should().BeNull();
 
         added.Data.Single().Key.Should().Be("api-00000000000000000000000000000000");
         added.Data.Single().Extra.Should().BeNull();
         permissions.Data.Should().Equal("/email/send", "/api_keys/view");
+    }
+
+    [Fact]
+    public void A_key_blocked_for_misuse_reports_it_separately_from_its_status()
+    {
+        ApiResponse<IReadOnlyList<ApiKey>> viewed = JsonSerializer.Deserialize("""{"request_id":"r","data":[{"api_key":"k","status":"allowed","sending_status":"blocked"}]}""", Smtp2GoJsonContext.Default.ApiResponseIReadOnlyListApiKey)!;
+
+        ApiKey key = viewed.Data.Should().ContainSingle().Which;
+        key.Status.Should().Be(CredentialStatus.Allowed);
+        key.SendingStatus.Should().Be(CredentialStatus.Blocked);
+        key.Extra.Should().BeNull();
     }
 
     [Fact]

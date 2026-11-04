@@ -16,7 +16,7 @@ API keys (`client.ApiKeys`), SMTP users (`client.SmtpUsers`) and authenticated I
 
 | Method | Endpoint | Returns |
 | :-- | :-- | :-- |
-| `ViewAsync(ApiKeyViewRequest)` | `api_keys/view` | `IReadOnlyList<ApiKey>`, keys masked (`api-000000000000****`). |
+| `ViewAsync(ApiKeyViewRequest)` | `api_keys/view` | `IReadOnlyList<ApiKey>`, keys masked (`api-000000000000****`). `ApiKey.SendingStatus` is read-only and separate from `Status`: `Blocked` there means SMTP2GO stopped the key for spam or other misuse (documented since October 2026). |
 | `AddAsync(ApiKeyAddRequest)` | `api_keys/add` (5 per minute) | The new key, unmasked, as a one-element list. |
 | `EditAsync(ApiKeyEditRequest)` | `POST api_keys/edit` | Full edit: omitted fields fall back to the documented defaults. |
 | `PatchAsync(ApiKeyPatchRequest)` | `PATCH api_keys/edit` | Partial edit: omitted fields are left unchanged. |

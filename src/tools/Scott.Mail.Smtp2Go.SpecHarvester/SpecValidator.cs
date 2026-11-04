@@ -177,9 +177,29 @@ public static class SpecValidator
         {
             Severity = severity,
             Rule = string.IsNullOrWhiteSpace(rule) ? null : rule,
-            Location = string.IsNullOrWhiteSpace(error.Pointer) ? "#" : error.Pointer,
+            Location = string.IsNullOrWhiteSpace(error.Pointer) ? "#" : NormalizePointer(error.Pointer),
             Message = (error.Message ?? string.Empty).Replace("\r\n", "\n", StringComparison.Ordinal).Trim(),
         };
+    }
+
+    /// <summary>
+    /// Repairs a reader diagnostic's pointer. Microsoft.OpenApi (3.10 and 3.11 at least) does not pop the path keys it has already walked, so an
+    /// error under <c>/webhook/add</c> is reported as <c>#/paths/~1activity~1search/post/~1allowed_recipients~1add/.../~1webhook~1add/post/...</c>:
+    /// every earlier path in document order. Such a pointer would change whenever SMTP2GO adds an operation and stop matching its baseline
+    /// entry, so everything between <c>#/paths/</c> and the last path key (a segment starting with an escaped <c>/</c>) is dropped. Validator
+    /// rule pointers are already correct and pass through unchanged.
+    /// </summary>
+    public static string NormalizePointer(string location)
+    {
+        const string PathsPrefix = "#/paths/";
+        if (!location.StartsWith(PathsPrefix, StringComparison.Ordinal))
+        {
+            return location;
+        }
+
+        string[] segments = location[PathsPrefix.Length..].Split('/');
+        int last = Array.FindLastIndex(segments, segment => segment.StartsWith("~1", StringComparison.Ordinal));
+        return last <= 0 ? location : PathsPrefix + string.Join('/', segments[last..]);
     }
 
     private static string Describe(OpenApiSpecVersion version)

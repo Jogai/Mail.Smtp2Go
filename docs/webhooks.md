@@ -4,7 +4,7 @@ Three parts: managing webhooks through the API (`client.Webhooks`), parsing the 
 
 ## Management
 
-`client.Webhooks` covers `webhook/view`, `webhook/add`, `webhook/edit` and `webhook/remove`, all of which accept `subaccount_id` through `RequestOptions.SubaccountId` or `Smtp2GoClientOptions.DefaultSubaccountId`. Every operation returns the full `Webhook` object (`Id`, `Url`, `Events`, `SmsEvents`, `Headers`, `Usernames`, `OutputFormat`, `AuthHeaderType`, `AuthHeaderValue`, `Extra`).
+`client.Webhooks` covers `webhook/view`, `webhook/add`, `webhook/edit` and `webhook/remove`, all of which accept `subaccount_id` through `RequestOptions.SubaccountId` or `Smtp2GoClientOptions.DefaultSubaccountId`. Every operation returns the full `Webhook` object (`Id`, `Url`, `Events`, `SmsEvents`, `Headers`, `CustomHeaders`, `Usernames`, `OutputFormat`, `AuthHeaderType`, `AuthHeaderValue`, `Disabled`, `Extra`).
 
 ```csharp
 using Scott.Mail.Smtp2Go;
@@ -26,6 +26,8 @@ IReadOnlyList<Webhook> all = (await client.Webhooks.ViewAsync()).Data;
 await client.Webhooks.EditAsync(new WebhookEditRequest { Id = id, Events = [WebhookEmailEvent.Bounce] });
 Webhook removed = (await client.Webhooks.RemoveAsync(id)).Data;
 ```
+
+`Headers` and `CustomHeaders` are different things. `Headers` names email headers whose values SMTP2GO copies into each callback payload. `CustomHeaders` (`custom_headers`, documented since October 2026) are HTTP headers SMTP2GO adds to the callback request itself; the reference types them as a list of strings without saying how a header is written, so check the value in the SMTP2GO dashboard or a captured callback before relying on a format such as `"X-Tenant: acme"`. `AddOrUpdateByUrlAsync` copies both to the edit.
 
 To pause a webhook without deleting it, edit it with `Disabled = true`; `Disabled = false` switches it back on, and leaving the property unset keeps the current state. Every webhook response carries the flag as `Webhook.Disabled` (`null` when the API leaves it out). SMTP2GO documents the field since October 2026.
 

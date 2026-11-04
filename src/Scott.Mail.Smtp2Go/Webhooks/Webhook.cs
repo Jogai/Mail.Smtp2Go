@@ -30,6 +30,11 @@ public sealed record Webhook
     [JsonConverter(typeof(StringOrStringArrayConverter))]
     public IReadOnlyList<string>? Headers { get; init; }
 
+    /// <summary>Custom HTTP headers SMTP2GO sends with every callback request (see <see cref="WebhookAddRequest.CustomHeaders"/>). Read as a string or an array, like <see cref="Headers"/>.</summary>
+    [JsonPropertyName("custom_headers")]
+    [JsonConverter(typeof(StringOrStringArrayConverter))]
+    public IReadOnlyList<string>? CustomHeaders { get; init; }
+
     /// <summary>The SMTP users, API keys or authenticated IPs the webhook covers; empty means all. Read as a string or an array, like <see cref="Headers"/>.</summary>
     [JsonPropertyName("usernames")]
     [JsonConverter(typeof(StringOrStringArrayConverter))]

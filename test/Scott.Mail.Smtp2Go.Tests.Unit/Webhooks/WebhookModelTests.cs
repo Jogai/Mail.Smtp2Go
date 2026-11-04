@@ -14,6 +14,7 @@ public class WebhookModelTests
         Events = [WebhookEmailEvent.Processed, WebhookEmailEvent.Delivered, WebhookEmailEvent.Bounce, WebhookEmailEvent.Open, WebhookEmailEvent.Click, WebhookEmailEvent.Spam, WebhookEmailEvent.Unsubscribe, WebhookEmailEvent.Resubscribe, WebhookEmailEvent.Reject],
         SmsEvents = [WebhookSmsEvent.Sending, WebhookSmsEvent.Submitted, WebhookSmsEvent.Delivered, WebhookSmsEvent.Failed, WebhookSmsEvent.Rejected, WebhookSmsEvent.OptOut],
         Headers = ["X-Campaign", "X-Customer-Id"],
+        CustomHeaders = ["X-Receiver-Tenant: acme"],
         Usernames = ["api-5BFDE1E62529", "smtpuser"],
         OutputFormat = WebhookOutputFormat.Json,
         AuthHeaderType = WebhookAuthHeaderType.Bearer,
@@ -106,6 +107,18 @@ public class WebhookModelTests
 
         response.Data.Disabled.Should().Be(expected);
         response.Data.Extra.Should().BeNull(because: "disabled is a modelled field, not an unknown one");
+    }
+
+    [Theory]
+    [InlineData("""{"request_id":"r","data":{"id":4320,"custom_headers":["X-Receiver-Tenant: acme","X-Env: prod"]}}""", new[] { "X-Receiver-Tenant: acme", "X-Env: prod" })]
+    [InlineData("""{"request_id":"r","data":{"id":4320,"custom_headers":"X-Receiver-Tenant: acme"}}""", new[] { "X-Receiver-Tenant: acme" })]
+    [InlineData("""{"request_id":"r","data":{"id":4320}}""", null)]
+    public void Response_reads_custom_headers_as_a_list_or_a_single_string(string json, string[]? expected)
+    {
+        ApiResponse<Webhook> response = JsonSerializer.Deserialize(json, Smtp2GoJsonContext.Default.ApiResponseWebhook)!;
+
+        response.Data.CustomHeaders.Should().BeEquivalentTo(expected, o => o.WithStrictOrdering());
+        response.Data.Extra.Should().BeNull(because: "custom_headers is a modelled field, not an unknown one");
     }
 
     [Fact]

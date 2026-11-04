@@ -26,6 +26,10 @@ public sealed record WebhookAddRequest : IRequestValidator
     [JsonPropertyName("headers")]
     public IReadOnlyList<string>? Headers { get; init; }
 
+    /// <summary>Custom HTTP headers SMTP2GO sends with every callback request, as opposed to <see cref="Headers"/>, which picks email headers for the payload. The API documents a list of strings without a format.</summary>
+    [JsonPropertyName("custom_headers")]
+    public IReadOnlyList<string>? CustomHeaders { get; init; }
+
     /// <summary>Restrict the webhook to these SMTP users, API keys or authenticated IPs. Omit for all.</summary>
     [JsonPropertyName("usernames")]
     public IReadOnlyList<string>? Usernames { get; init; }

@@ -1,1 +1,10 @@
 #nullable enable
+Scott.Mail.Smtp2Go.ActivitySearchOperator
+Scott.Mail.Smtp2Go.ActivitySearchOperator.Contains = 2 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
+Scott.Mail.Smtp2Go.ActivitySearchOperator.DoesNotContain = 4 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
+Scott.Mail.Smtp2Go.ActivitySearchOperator.EqualTo = 1 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
+Scott.Mail.Smtp2Go.ActivitySearchOperator.NotEqualTo = 3 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
+Scott.Mail.Smtp2Go.ActivitySearchOperator.Unknown = 0 -> Scott.Mail.Smtp2Go.ActivitySearchOperator
+Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchRecipientOperator.get -> Scott.Mail.Smtp2Go.ActivitySearchOperator?
+Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchSenderOperator.get -> Scott.Mail.Smtp2Go.ActivitySearchOperator?
+Scott.Mail.Smtp2Go.ActivitySearchRequest.SearchSubjectOperator.get -> Scott.Mail.Smtp2Go.ActivitySearchOperator?

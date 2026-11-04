@@ -27,6 +27,10 @@ public sealed record WebhookEditRequest : IRequestValidator
     [JsonPropertyName("headers")]
     public IReadOnlyList<string>? Headers { get; init; }
 
+    /// <summary>Custom HTTP headers SMTP2GO sends with every callback request (see <see cref="WebhookAddRequest.CustomHeaders"/>).</summary>
+    [JsonPropertyName("custom_headers")]
+    public IReadOnlyList<string>? CustomHeaders { get; init; }
+
     /// <summary>The new username restriction.</summary>
     [JsonPropertyName("usernames")]
     public IReadOnlyList<string>? Usernames { get; init; }
@@ -61,6 +65,7 @@ public sealed record WebhookEditRequest : IRequestValidator
             Events = request.Events,
             SmsEvents = request.SmsEvents,
             Headers = request.Headers,
+            CustomHeaders = request.CustomHeaders,
             Usernames = request.Usernames,
             OutputFormat = request.OutputFormat,
             AuthHeaderType = request.AuthHeaderType,

@@ -3,6 +3,7 @@
   "events": ["processed", "delivered", "bounce", "open", "click", "spam", "unsubscribe", "resubscribe", "reject"],
   "sms_events": ["sending", "submitted", "delivered", "failed", "rejected", "opt_out"],
   "headers": ["X-Campaign", "X-Customer-Id"],
+  "custom_headers": ["X-Receiver-Tenant: acme"],
   "usernames": ["api-5BFDE1E62529", "smtpuser"],
   "output_format": "json",
   "auth_header_type": "bearer",

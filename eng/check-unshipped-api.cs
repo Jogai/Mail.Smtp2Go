@@ -1,5 +1,7 @@
 #!/usr/bin/env dotnet
 #:property RestorePackagesWithLockFile=false
+// Only ever run with `dotnet run`, never published: no native AOT, so the ILCompiler package (and its audit findings) stays out.
+#:property PublishAot=false
 // Fails when any PublicAPI.Unshipped.txt under src/ still lists API surface. A release ships everything: the entries move to the
 // PublicAPI.Shipped.txt next to each file (docs/contributing.md, "Releasing"). The publish workflow runs this on every tag build.
 // Usage: dotnet run eng/check-unshipped-api.cs

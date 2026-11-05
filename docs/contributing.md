@@ -2,15 +2,15 @@
 
 ## SDK
 
-The repository pins .NET SDK `10.0.401` in `global.json`. With [vfox](https://vfox.dev/) and its `dotnet` plugin:
+The repository pins .NET SDK `10.0.403` exactly in `global.json` (`rollForward: disable`). With [vfox](https://vfox.dev/) and its `dotnet` plugin:
 
 ```shell
-vfox install dotnet@10.0.12
-vfox use dotnet@10.0.12
-dotnet --version   # 10.0.401
+vfox install dotnet@10.0.14
+vfox use dotnet@10.0.14
+dotnet --version   # 10.0.403
 ```
 
-`.vfox.toml` records the same version for vfox users. Without vfox, install SDK 10.0.401 (or a later 10.0.4xx patch; `global.json` rolls forward to the latest patch).
+`.vfox.toml` records the same version for vfox users. Without vfox, install SDK 10.0.403. The pin is exact because the SDK adds an implicit `Microsoft.NET.ILLink.Tasks` reference to the trimmable projects at the version of its own runtime, and the lock files record it: a different SDK patch fails `dotnet restore --locked-mode`. To move to a newer SDK, change `global.json` and `.vfox.toml`, run `dotnet restore --force-evaluate` and commit the lock files with it.
 
 ## Build, test, pack
 

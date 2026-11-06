@@ -36,7 +36,8 @@ The `demo/` project is the manual end-to-end check for the archive: see [archive
 
 ## Conventions
 
-- Central Package Management: versions live only in `Directory.Packages.props`; never put `Version=` on a `PackageReference`. Lock files (`packages.lock.json`) are committed.
+- Central Package Management: versions live only in `Directory.Packages.props`; never put `Version=` on a `PackageReference` (`VersionOverride` is a restore error, NU1013). Lock files (`packages.lock.json`) are committed.
+- Dependabot updates only the packages in `Directory.Packages.props` (never transitive ones, never the generator's pinned `Microsoft.CodeAnalysis.CSharp`). It cannot regenerate these lock files correctly, so the `dependabot-lockfiles` workflow regenerates them on each Dependabot pull request, pushes a `chore(deps): regenerate lock files` commit and dispatches `ci` for it. Dependabot then stops rebasing that pull request on its own; comment `@dependabot recreate` to start over.
 - Every public member of a package is listed in that project's `PublicAPI.Unshipped.txt`; the build fails otherwise. Move entries to `PublicAPI.Shipped.txt` at release time.
 - `dotnet pack` runs package validation across the core package's target frameworks (`EnablePackageValidation`). Abstract records trip it: net8.0+ redeclares `<Clone>$` with a covariant return that netstandard2.0 lacks. Such differences are suppressed in `src/Scott.Mail.Smtp2Go/CompatibilitySuppressions.xml`; regenerate it with `dotnet pack src/Scott.Mail.Smtp2Go -c Release /p:ApiCompatGenerateSuppressionFile=true` when a new abstract record is added and review the diff.
 - Warnings are errors, code style is enforced in the build, namespaces are file-scoped.

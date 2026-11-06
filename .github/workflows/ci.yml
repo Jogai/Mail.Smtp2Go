@@ -4,6 +4,8 @@ on:
   push:
     branches: [master]
   pull_request:
+  # Started by dependabot-lockfiles.yml after it pushes regenerated lock files to a Dependabot branch.
+  workflow_dispatch:
 
 permissions:
   contents: read

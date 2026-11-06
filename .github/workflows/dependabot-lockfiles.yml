@@ -1,0 +1,63 @@
+name: dependabot-lockfiles
+
+# Dependabot cannot regenerate the lock files of these multi-targeted projects: it drops target frameworks, so its NuGet pull requests
+# fail CI's locked restore. This job regenerates them with the pinned SDK on the pull request's branch and pushes the result.
+# A push made with GITHUB_TOKEN starts no workflows, so it then dispatches ci on the branch to give the new head commit its checks.
+on:
+  pull_request:
+    paths:
+      - Directory.Packages.props
+      - '**/*.csproj'
+      - '**/packages.lock.json'
+
+permissions: {}
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_NOLOGO: 1
+
+jobs:
+  regenerate:
+    # Only Dependabot's own pull requests from this repository: the restore below evaluates the branch's project files with a token that can push.
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the regenerated lock files to the pull request branch
+      actions: write  # dispatch ci on that branch
+    concurrency:
+      group: dependabot-lockfiles-${{ github.head_ref }}
+      cancel-in-progress: true
+    env:
+      BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - run: dotnet restore --force-evaluate
+
+      - name: Commit and push the lock files if they changed
+        id: commit
+        run: |
+          if git diff --quiet -- '*packages.lock.json'; then
+            echo "Lock files are already consistent."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git --no-pager diff --stat -- '*packages.lock.json'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*packages.lock.json'
+          git commit -m 'chore(deps): regenerate lock files'
+          git push origin "HEAD:$BRANCH"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Run ci on the new head commit
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ci.yml --ref "$BRANCH"

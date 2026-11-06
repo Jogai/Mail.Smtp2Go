@@ -3,6 +3,8 @@
     <!-- Enable central package management, https://learn.microsoft.com/en-us/nuget/consume-packages/Central-Package-Management -->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+    <!-- Versions live here only: a VersionOverride on a PackageReference is a build error (NU1013). -->
+    <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
   </PropertyGroup>
   <!-- Versions are pinned exactly and bumped deliberately. Resolved on 2026-09-10 with dotnet package search (exact match). -->
   <ItemGroup Label="Core (netstandard2.0 only)">

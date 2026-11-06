@@ -4,6 +4,15 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Only the packages in Directory.Packages.props. Without this Dependabot lifts transitive dependencies by adding direct
+    # PackageReferences to individual projects, which in a library become new NuGet dependencies of the package.
+    # Security updates are a repository setting and are not affected.
+    allow:
+      - dependency-type: direct
+    ignore:
+      # The compiler API the source generator builds against is the oldest one it needs, not the newest: a generator built
+      # against a newer Roslyn than the host compiler fails to load (CS9057). See src/tools/Scott.Mail.Smtp2Go.Generators.
+      - dependency-name: Microsoft.CodeAnalysis.CSharp
     groups:
       nuget:
         patterns: ["*"]

@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup Label="Source generators (resolved 2026-10-05)">
     <!-- The oldest compiler API the generators need, see src/tools/Scott.Mail.Smtp2Go.Generators; the analyzers package checks generator correctness (RS1xxx). -->
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="5.9.0" />
   </ItemGroup>
   <ItemGroup Label="AspNetCore tests (resolved 2026-09-11)">

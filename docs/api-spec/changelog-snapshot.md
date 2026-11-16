@@ -1,6 +1,11 @@
-<!-- Snapshot of https://developers.smtp2go.com/reference/changelog taken by the spec harvester; page updatedAt 2026-11-04T19:42:07.000Z. Do not edit. -->
+<!-- Snapshot of https://developers.smtp2go.com/reference/changelog taken by the spec harvester; page updatedAt 2026-11-15T23:29:41.000Z. Do not edit. -->
 
 # Changelog
+
+**Nov 16th 2026**
+
+* Added an `opt-out` value to the webhook endpoints `sms_events` property.
+* Added an `ip_pool` property to the subaccount add and edit endpoints.
 
 **Nov 5th 2026**
 

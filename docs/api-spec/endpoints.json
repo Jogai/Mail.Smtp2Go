@@ -3842,6 +3842,11 @@
           "name": "sms_limit",
           "type": "integer",
           "deprecated": false
+        },
+        {
+          "name": "ip_pool",
+          "type": "integer",
+          "deprecated": false
         }
       ],
       "acceptsSubaccountId": false,
@@ -4007,6 +4012,11 @@
         },
         {
           "name": "sms_limit",
+          "type": "integer",
+          "deprecated": false
+        },
+        {
+          "name": "ip_pool",
           "type": "integer",
           "deprecated": false
         }

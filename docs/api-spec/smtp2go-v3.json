@@ -9225,6 +9225,11 @@
                     "description": "A full name used for the subaccount",
                     "type": "string"
                   },
+                  "ip_pool": {
+                    "description": "If passed, will set the default ip_pool of this subaccount and any emails sent will use dedicated IP's in this IP Pool, This value can be found on the <code>/v3/dedicated_ips/view</code> endpoint.",
+                    "example": 1234,
+                    "type": "integer"
+                  },
                   "limit": {
                     "default": 10000,
                     "description": "The number of emails the subaccount is allowed to send per billing cycle. <br><br><strong>Valid values:</strong><br>2000, 5000, 10000, 20000, 30000, 40000, 50000, 60000, 80000, 100000, 250000, 500000, 1000000, 2000000, 3000000, 5000000, 10000000",
@@ -9543,6 +9548,11 @@
                   "id": {
                     "description": "The id of an existing subaccount",
                     "type": "string"
+                  },
+                  "ip_pool": {
+                    "description": "If passed, will set the default ip_pool of this subaccount and any emails sent will use dedicated IP's in this IP Pool, This value can be found on the <code>/v3/dedicated_ips/view</code> endpoint.",
+                    "example": 1234,
+                    "type": "integer"
                   },
                   "limit": {
                     "description": "If provided, will set to the new limit for the subaccount",
@@ -12724,7 +12734,7 @@
                     "type": "string"
                   },
                   "sms_events": {
-                    "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>].",
+                    "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>,<code>opt-out</code>].",
                     "items": {
                       "type": "string"
                     },
@@ -12827,7 +12837,7 @@
                           "type": "string"
                         },
                         "sms_events": {
-                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>].",
+                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>,<code>opt-out</code>].",
                           "items": {
                             "type": "string"
                           },
@@ -12965,7 +12975,7 @@
                     "type": "string"
                   },
                   "sms_events": {
-                    "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>].",
+                    "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>,<code>opt-out</code>].",
                     "items": {
                       "type": "string"
                     },
@@ -13068,7 +13078,7 @@
                           "type": "string"
                         },
                         "sms_events": {
-                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>].",
+                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>,<code>opt-out</code>].",
                           "items": {
                             "type": "string"
                           },
@@ -13249,7 +13259,7 @@
                           "type": "string"
                         },
                         "sms_events": {
-                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>].",
+                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>,<code>opt-out</code>].",
                           "items": {
                             "type": "string"
                           },
@@ -13423,7 +13433,7 @@
                           "type": "string"
                         },
                         "sms_events": {
-                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>].",
+                          "description": "A list of SMS events the webhook will receive, from this list [<code>delivered</code>,<code>failed</code>,<code>rejected</code>,<code>sending</code>,<code>submitted</code>,<code>opt-out</code>].",
                           "items": {
                             "type": "string"
                           },

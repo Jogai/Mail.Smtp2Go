@@ -93,7 +93,7 @@ public sealed class RegistrationTests
         services.AddSmtp2Go("marketing", configuration.GetSection("Smtp2Go:Marketing"));
         using ServiceProvider provider = services.BuildServiceProvider();
 
-        Func<Task> act = async () => await provider.GetRequiredService<IAsyncStartupValidator>().ValidateAsync(TestContext.Current.CancellationToken);
+        Func<Task> act = () => ValidateOnStartAsync(provider);
 
         (await act.Should().ThrowAsync<OptionsValidationException>()).Which.Failures.Should().Contain(
         [
@@ -132,9 +132,23 @@ public sealed class RegistrationTests
         });
         using ServiceProvider provider = services.BuildServiceProvider();
 
-        Func<Task> act = async () => await provider.GetRequiredService<IAsyncStartupValidator>().ValidateAsync(TestContext.Current.CancellationToken);
+        Func<Task> act = () => ValidateOnStartAsync(provider);
 
         await act.Should().NotThrowAsync();
+    }
+
+    /// <summary>
+    /// Runs the start-up validation <c>ValidateOnStart</c> registered. Options 11 adds <c>IAsyncStartupValidator</c> and obsoletes the synchronous
+    /// <c>IStartupValidator</c> (SYSLIB0066); on net10.0 the synchronous one is still the only one.
+    /// </summary>
+    private static Task ValidateOnStartAsync(IServiceProvider provider)
+    {
+#if NET11_0_OR_GREATER
+        return provider.GetRequiredService<IAsyncStartupValidator>().ValidateAsync(TestContext.Current.CancellationToken);
+#else
+        provider.GetRequiredService<IStartupValidator>().Validate();
+        return Task.CompletedTask;
+#endif
     }
 
     [Fact]

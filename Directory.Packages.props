@@ -8,32 +8,35 @@
   </PropertyGroup>
   <!-- Versions are pinned exactly and bumped deliberately. Resolved on 2026-11-26 (.NET 11) with dotnet package search (exact match). -->
   <!--
-    Packages that the net8.0 target of a library also references. The 11.0.x Microsoft.Extensions.* and System.* packages support
-    netstandard2.0, net10.0 and net11.0 but not net8.0: a .NET 8 consumer would get an unsupported-target-framework warning from their
-    build targets. net8.0 is deprecated (out of support since November 2026) and stays on the latest 10.0.x, which still supports it;
-    every other target framework gets 11.0.x. $(TargetFramework) is set for each inner build and for each restore target framework,
-    so the package dependency group of each target framework carries its own version. Keep the two lists in step.
+    Runtime packages the libraries depend on. Only net11.0 gets the 11.0.x versions; netstandard2.0, net8.0 and net10.0 stay on the
+    latest 10.0.x. A higher version here becomes the minimum for consumers: a .NET 10 (or .NET Framework) app that references one of
+    these packages itself at 10.0.x would otherwise fail its restore with a package downgrade (NU1605). 10.0.x also still supports
+    the deprecated net8.0, which 11.0.x does not. $(TargetFramework) is set for each inner build and each restore target framework,
+    so each dependency group of the packages carries its own version. Keep the two lists in step.
   -->
-  <ItemGroup Label="Shared with net8.0 (net8.0 only)" Condition="'$(TargetFramework)' == 'net8.0'">
-    <PackageVersion Include="System.Text.Json" Version="10.0.15" />
-    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.15" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.15" />
-  </ItemGroup>
-  <ItemGroup Label="Shared with net8.0 (every other target framework)" Condition="'$(TargetFramework)' != 'net8.0'">
+  <ItemGroup Label="Library dependencies (net11.0)" Condition="'$(TargetFramework)' == 'net11.0'">
     <PackageVersion Include="System.Text.Json" Version="11.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="11.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="11.0.0" />
-  </ItemGroup>
-  <ItemGroup Label="Core (netstandard2.0 only)">
     <PackageVersion Include="System.Net.Http.Json" Version="11.0.0" />
     <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="11.0.0" />
-    <PackageVersion Include="PolySharp" Version="1.17.1" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="11.0.0" />
     <PackageVersion Include="Microsoft.Bcl.TimeProvider" Version="11.0.0" />
-  </ItemGroup>
-  <ItemGroup Label="DependencyInjection">
-    <!-- 11.0.x still supports net8.0, and its net8.0 dependencies are 8.0.x lower bounds: one version for every target framework. -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="11.0.1" />
+  </ItemGroup>
+  <ItemGroup Label="Library dependencies (netstandard2.0, net8.0, net10.0)" Condition="'$(TargetFramework)' != 'net11.0'">
+    <PackageVersion Include="System.Text.Json" Version="10.0.15" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.15" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.15" />
+    <PackageVersion Include="System.Net.Http.Json" Version="10.0.15" />
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.15" />
+    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="10.0.15" />
+    <PackageVersion Include="Microsoft.Bcl.TimeProvider" Version="10.0.15" />
+    <!-- Versioned apart from the runtime (dotnet/extensions); its 11.0.x would raise the minimum for .NET 10 apps the same way. -->
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.11.1" />
+  </ItemGroup>
+  <ItemGroup Label="Core (netstandard2.0 only)">
+    <PackageVersion Include="PolySharp" Version="1.17.1" />
   </ItemGroup>
   <ItemGroup Label="Analyzers">
     <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0" />

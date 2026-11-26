@@ -111,7 +111,7 @@ SMTP2GO waits 10 seconds for response headers, then retries up to 35 times over 
 
 ## Receiving callbacks
 
-The `Scott.Mail.Smtp2Go.AspNetCore` package (net8.0 and net10.0; depends only on the core package and the ASP.NET Core shared framework) turns the parser into an endpoint:
+The `Scott.Mail.Smtp2Go.AspNetCore` package (net8.0, net10.0 and net11.0, of which net8.0 is deprecated; depends only on the core package and the ASP.NET Core shared framework) turns the parser into an endpoint:
 
 ```shell
 dotnet package add Scott.Mail.Smtp2Go.AspNetCore

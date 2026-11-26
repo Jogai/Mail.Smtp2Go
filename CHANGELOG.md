@@ -6,6 +6,19 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ## [Unreleased]
 
+### Added
+
+- A `net11.0` target in all three packages.
+
+### Changed
+
+- The `netstandard2.0`, `net10.0` and `net11.0` targets depend on the 11.0.x `System.*` and `Microsoft.Extensions.*` packages (`net10.0` and `net11.0` use the in-box framework assemblies wherever they exist). The `net8.0` target stays on 10.0.x, because the 11.0.x packages do not support `net8.0`. `Microsoft.Extensions.Http.Resilience` is 11.0.1 on every target.
+- The repository builds with .NET SDK 11.0.100.
+
+### Deprecated
+
+- The `net8.0` target: .NET 8 has been out of Microsoft support since November 2026. It still builds and ships unchanged in 1.x and will be removed in the next major version.
+
 ## [1.5.0] - 2026-11-04
 
 ### Added

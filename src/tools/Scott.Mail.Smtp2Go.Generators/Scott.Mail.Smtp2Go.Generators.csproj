@@ -13,7 +13,7 @@
   <ItemGroup>
     <!--
       The compiler API version is the oldest one the generators need, not the newest available: a generator built against a newer Roslyn than
-      the host compiler fails to load (CS9057). 4.14.0 is the .NET 9 SDK compiler; the pinned .NET 10 SDK and current IDEs are newer.
+      the host compiler fails to load (CS9057). 4.14.0 is the .NET 9 SDK compiler; the pinned .NET 11 SDK and current IDEs are newer.
     -->
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />

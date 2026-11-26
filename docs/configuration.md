@@ -31,7 +31,7 @@ Pass an `ISmtp2GoDiagnostics` to the `HttpClient` constructor to receive `Reques
 
 ## Dependency injection
 
-`Scott.Mail.Smtp2Go.DependencyInjection` registers a validated, factory-managed, resilient client in one call. It targets `net8.0` and `net10.0`.
+`Scott.Mail.Smtp2Go.DependencyInjection` registers a validated, factory-managed, resilient client in one call. It targets `net8.0`, `net10.0` and `net11.0`. `net8.0` is deprecated: .NET 8 has been out of Microsoft support since November 2026, and the next major version drops it.
 
 ```shell
 dotnet package add Scott.Mail.Smtp2Go.DependencyInjection

@@ -81,7 +81,7 @@ public sealed class RegistrationTests
     }
 
     [Fact]
-    public void Validation_failure_on_start_names_the_configuration_path()
+    public async Task Validation_failure_on_start_names_the_configuration_path()
     {
         IConfiguration configuration = BuildConfiguration(new Dictionary<string, string?>
         {
@@ -93,9 +93,9 @@ public sealed class RegistrationTests
         services.AddSmtp2Go("marketing", configuration.GetSection("Smtp2Go:Marketing"));
         using ServiceProvider provider = services.BuildServiceProvider();
 
-        Action act = () => provider.GetRequiredService<IStartupValidator>().Validate();
+        Func<Task> act = async () => await provider.GetRequiredService<IAsyncStartupValidator>().ValidateAsync(TestContext.Current.CancellationToken);
 
-        act.Should().Throw<OptionsValidationException>().Which.Failures.Should().Contain(
+        (await act.Should().ThrowAsync<OptionsValidationException>()).Which.Failures.Should().Contain(
         [
             "Smtp2Go:Marketing:ApiKey is required.",
             "Smtp2Go:Marketing:Resilience:CircuitBreaker:FailureRatio must be greater than 0 and at most 1.",
@@ -121,7 +121,7 @@ public sealed class RegistrationTests
     }
 
     [Fact]
-    public void Valid_options_pass_start_up_validation()
+    public async Task Valid_options_pass_start_up_validation()
     {
         ServiceCollection services = new();
         services.AddSmtp2Go(options => options.ApiKey = TestClient.ApiKey);
@@ -132,9 +132,9 @@ public sealed class RegistrationTests
         });
         using ServiceProvider provider = services.BuildServiceProvider();
 
-        Action act = () => provider.GetRequiredService<IStartupValidator>().Validate();
+        Func<Task> act = async () => await provider.GetRequiredService<IAsyncStartupValidator>().ValidateAsync(TestContext.Current.CancellationToken);
 
-        act.Should().NotThrow();
+        await act.Should().NotThrowAsync();
     }
 
     [Fact]

@@ -14,7 +14,7 @@ public sealed class WebhookListConverter : JsonConverter<IReadOnlyList<Webhook>>
     public override IReadOnlyList<Webhook>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         Argument.ThrowIfNull(options);
-        JsonTypeInfo<Webhook> itemInfo = (JsonTypeInfo<Webhook>)options.GetTypeInfo(typeof(Webhook));
+        JsonTypeInfo<Webhook> itemInfo = options.GetTypeInfo<Webhook>();
         switch (reader.TokenType)
         {
             case JsonTokenType.Null:
@@ -47,7 +47,7 @@ public sealed class WebhookListConverter : JsonConverter<IReadOnlyList<Webhook>>
         Argument.ThrowIfNull(writer);
         Argument.ThrowIfNull(value);
         Argument.ThrowIfNull(options);
-        JsonTypeInfo<Webhook> itemInfo = (JsonTypeInfo<Webhook>)options.GetTypeInfo(typeof(Webhook));
+        JsonTypeInfo<Webhook> itemInfo = options.GetTypeInfo<Webhook>();
         writer.WriteStartArray();
         foreach (Webhook item in value)
         {

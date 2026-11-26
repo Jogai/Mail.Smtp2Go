@@ -13,7 +13,7 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 
 ### Changed
 
-- The `netstandard2.0`, `net10.0` and `net11.0` targets depend on the 11.0.x `System.*` and `Microsoft.Extensions.*` packages (`net10.0` and `net11.0` use the in-box framework assemblies wherever they exist). The `net8.0` target stays on 10.0.x, because the 11.0.x packages do not support `net8.0`. `Microsoft.Extensions.Http.Resilience` is 11.0.1 on every target.
+- The `net11.0` target depends on the 11.0.x `System.*` and `Microsoft.Extensions.*` packages and `Microsoft.Extensions.Http.Resilience` 11.0.1. `netstandard2.0`, `net8.0` and `net10.0` stay on the latest 10.0.x and `Http.Resilience` 10.11.1, so .NET 10, .NET 8 and .NET Framework apps that pin those packages at 10.x are not forced up to 11.0. `net10.0` and `net11.0` use the in-box framework assemblies wherever they exist.
 - The repository builds with .NET SDK 11.0.100.
 
 ### Deprecated

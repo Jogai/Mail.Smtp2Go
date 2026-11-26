@@ -1,5 +1,1 @@
 #nullable enable
-Scott.Mail.Smtp2Go.SubaccountAddRequest.IpPool.get -> int?
-Scott.Mail.Smtp2Go.SubaccountAddRequest.IpPool.init -> void
-Scott.Mail.Smtp2Go.SubaccountEditRequest.IpPool.get -> int?
-Scott.Mail.Smtp2Go.SubaccountEditRequest.IpPool.init -> void

@@ -304,7 +304,7 @@
       "scott.mail.smtp2go.aspnetcore": {
         "type": "Project",
         "dependencies": {
-          "Scott.Mail.Smtp2Go": "[1.5.0, )"
+          "Scott.Mail.Smtp2Go": "[1.6.0, )"
         }
       },
       "scott.mail.smtp2go.dependencyinjection": {
@@ -312,21 +312,21 @@
         "dependencies": {
           "Microsoft.Extensions.Http.Resilience": "[11.0.1, )",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "[11.0.0, )",
-          "Scott.Mail.Smtp2Go": "[1.5.0, )"
+          "Scott.Mail.Smtp2Go": "[1.6.0, )"
         }
       },
       "scott.mail.smtp2go.specharvester": {
         "type": "Project",
         "dependencies": {
           "Microsoft.OpenApi": "[3.11.1, )",
-          "Scott.Mail.Smtp2Go": "[1.5.0, )",
+          "Scott.Mail.Smtp2Go": "[1.6.0, )",
           "System.CommandLine": "[3.0.0, )"
         }
       },
       "scott.mail.smtp2go.tests.shared": {
         "type": "Project",
         "dependencies": {
-          "Scott.Mail.Smtp2Go": "[1.5.0, )"
+          "Scott.Mail.Smtp2Go": "[1.6.0, )"
         }
       },
       "Microsoft.Bcl.AsyncInterfaces": {

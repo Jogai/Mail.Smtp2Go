@@ -270,7 +270,7 @@
         "dependencies": {
           "Microsoft.Extensions.Http.Resilience": "[11.0.1, )",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "[11.0.0, )",
-          "Scott.Mail.Smtp2Go": "[1.5.0, )"
+          "Scott.Mail.Smtp2Go": "[1.6.0, )"
         }
       },
       "Microsoft.Extensions.Configuration": {

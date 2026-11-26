@@ -109,8 +109,8 @@ Master-account keys only; none of these endpoints takes `subaccount_id`.
 | :-- | :-- | :-- |
 | `SearchAsync(SubaccountSearchRequest)` | `subaccounts/search` | Filters: `SearchTerms`, `FuzzySearch`, `States` (`SubaccountStateFilter`), `SortDirection`, `PageSize`, `ContinueToken`. |
 | `SearchAllAsync(SubaccountSearchRequest)` | `subaccounts/search` | Walks every page by `continue_token`. |
-| `AddAsync(SubaccountAddRequest)` | `subaccount/add` (50 per hour) | `FullName` required; `Limit` must be one of the documented plan sizes. |
-| `EditAsync(SubaccountEditRequest)` | `subaccount/edit` | `Id` plus the fields to change. |
+| `AddAsync(SubaccountAddRequest)` | `subaccount/add` (50 per hour) | `FullName` required; `Limit` must be one of the documented plan sizes; `IpPool` sets the default dedicated IP pool. |
+| `EditAsync(SubaccountEditRequest)` | `subaccount/edit` | `Id` plus the fields to change, including `IpPool`. |
 | `CloseAsync(SubaccountCloseRequest)` | `subaccount/close` | `ApiResponse<string>` with a message. |
 | `ReopenAsync(SubaccountReopenRequest)` | `subaccount/reopen` | `ApiResponse<string>`; the docs example is a message like `close` (the schema says an object, see [API notes](api-notes.md)). |
 
@@ -118,7 +118,7 @@ Master-account keys only; none of these endpoints takes `subaccount_id`.
 
 ## Dedicated IPs (`client.DedicatedIps`)
 
-`ViewAsync()` returns the pools (`DedicatedIpPool`: `Id`, `Name`, `IpAddresses`). The `Id` is the `IpPool` of the credential requests.
+`ViewAsync()` returns the pools (`DedicatedIpPool`: `Id`, `Name`, `IpAddresses`). The `Id` is the `IpPool` of the credential and subaccount requests.
 
 ## SMS (`client.Sms`)
 

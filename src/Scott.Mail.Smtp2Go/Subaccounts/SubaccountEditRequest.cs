@@ -39,6 +39,10 @@ public sealed record SubaccountEditRequest : IRequestValidator
     [JsonPropertyName("sms_limit")]
     public int? SmsLimit { get; init; }
 
+    /// <summary>A new default dedicated IP pool: the subaccount's emails are sent from the dedicated IPs in this pool. Ids come from <see cref="IDedicatedIpClient.ViewAsync"/>.</summary>
+    [JsonPropertyName("ip_pool")]
+    public int? IpPool { get; init; }
+
     /// <inheritdoc />
     void IRequestValidator.Validate(Endpoint endpoint, ICollection<string> errors)
     {

@@ -6,5 +6,6 @@
   "archiving": true,
   "enforce_2fa": true,
   "enable_sms": true,
-  "sms_limit": 1000
+  "sms_limit": 1000,
+  "ip_pool": 1234
 }

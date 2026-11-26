@@ -4,15 +4,27 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    # Only the packages in Directory.Packages.props. Without this Dependabot lifts transitive dependencies by adding direct
-    # PackageReferences to individual projects, which in a library become new NuGet dependencies of the package.
-    # Security updates are a repository setting and are not affected.
+    # Only packages listed in Directory.Packages.props (NuGet supports no transitive updates anyway). A package listed there
+    # for one project still counts as direct everywhere, so Dependabot may lift it in a project that only gets it transitively,
+    # by adding a PackageReference; the major-version ignores below catch the usual case. Security updates are a repository
+    # setting and are not affected.
     allow:
       - dependency-type: direct
     ignore:
       # The compiler API the source generator builds against is the oldest one it needs, not the newest: a generator built
       # against a newer Roslyn than the host compiler fails to load (CS9057). See src/tools/Scott.Mail.Smtp2Go.Generators.
       - dependency-name: Microsoft.CodeAnalysis.CSharp
+      # Runtime packages move a major version only with a deliberate .NET upgrade: Directory.Packages.props keeps them on 10.x for
+      # netstandard2.0, net8.0 and net10.0 and on 11.x for net11.0, so a 10.x -> 11.x bump would raise the minimum for .NET 10
+      # users. Patch and minor updates within each line still come through.
+      - dependency-name: "System.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Microsoft.Extensions.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Microsoft.Bcl.*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "Microsoft.AspNetCore.*"
+        update-types: ["version-update:semver-major"]
     groups:
       nuget:
         patterns: ["*"]

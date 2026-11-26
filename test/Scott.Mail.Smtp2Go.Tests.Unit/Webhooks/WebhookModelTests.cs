@@ -209,6 +209,22 @@ public class WebhookModelTests
         response.Data.OutputFormat.Should().Be(WebhookOutputFormat.Unknown);
     }
 
+    [Fact]
+    public void Opt_out_is_written_with_the_documented_hyphen()
+    {
+        JsonSerializer.Serialize(WebhookSmsEvent.OptOut, Smtp2GoJsonContext.Default.WebhookSmsEvent).Should().Be("\"opt-out\"");
+    }
+
+    [Theory]
+    [InlineData("opt-out")]
+    [InlineData("opt_out")]
+    [InlineData("Opt-Out")]
+    [InlineData("optout")]
+    public void Opt_out_is_read_in_any_spelling(string wire)
+    {
+        JsonSerializer.Deserialize($"\"{wire}\"", Smtp2GoJsonContext.Default.WebhookSmsEvent).Should().Be(WebhookSmsEvent.OptOut);
+    }
+
     [Theory]
     [InlineData("ftp://example.com/x", "url must be an absolute http or https URL.")]
     [InlineData("not a url", "url must be an absolute http or https URL.")]

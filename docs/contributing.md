@@ -21,7 +21,7 @@ dotnet test
 dotnet pack -c Release -o artifacts
 ```
 
-Tests run on Microsoft.Testing.Platform (selected by `test.runner` in `global.json`) with xUnit v3.
+Tests run on Microsoft.Testing.Platform (selected by `test.runner` in `global.json`) with xUnit v3. The unit, ASP.NET Core and integration tests run on both `net10.0` and `net11.0`, each against the dependency set its users get (10.x and 11.x packages); the contract and generator tests run on `net11.0` only, since they check the spec and the generator rather than the runtime. The `net10.0` runs need the .NET 10 runtime in the same .NET installation as SDK 11.0.100, which CI installs (`dotnet-version: 10.0.x`). vfox keeps each version in its own directory, so locally either install both into one directory (for example with `dotnet-install.sh --runtime dotnet --version 10.0.x` and `--runtime aspnetcore` into the SDK's directory) or run `dotnet test -f net11.0` and leave `net10.0` to CI.
 
 Unit and contract tests never touch the network. The integration tests marked `[Trait("Category", "Sandbox")]` call the SMTP2GO sandbox, which accepts without delivering; they skip unless a sandbox key is present in the `SMTP2GO_SANDBOX_API_KEY` environment variable or the user secret `Smtp2Go:ApiKey:Sandbox`:
 

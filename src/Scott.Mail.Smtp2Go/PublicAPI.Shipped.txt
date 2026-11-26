@@ -3160,3 +3160,7 @@ Scott.Mail.Smtp2Go.WebhookAddRequest.CustomHeaders.get -> System.Collections.Gen
 Scott.Mail.Smtp2Go.WebhookAddRequest.CustomHeaders.init -> void
 Scott.Mail.Smtp2Go.WebhookEditRequest.CustomHeaders.get -> System.Collections.Generic.IReadOnlyList<string!>?
 Scott.Mail.Smtp2Go.WebhookEditRequest.CustomHeaders.init -> void
+Scott.Mail.Smtp2Go.SubaccountAddRequest.IpPool.get -> int?
+Scott.Mail.Smtp2Go.SubaccountAddRequest.IpPool.init -> void
+Scott.Mail.Smtp2Go.SubaccountEditRequest.IpPool.get -> int?
+Scott.Mail.Smtp2Go.SubaccountEditRequest.IpPool.init -> void

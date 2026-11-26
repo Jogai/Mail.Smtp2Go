@@ -1,10 +1,10 @@
 # Scott.Mail.Smtp2Go
 
 [![NuGet](https://img.shields.io/nuget/v/Scott.Mail.Smtp2Go?style=for-the-badge)](https://www.nuget.org/packages/Scott.Mail.Smtp2Go)
-[![Target frameworks](https://img.shields.io/badge/.NET-8%20%7C%2010%20%7C%20netstandard2.0-purple?style=for-the-badge)](https://www.nuget.org/packages/Scott.Mail.Smtp2Go#supportedframeworks-body-tab)
+[![Target frameworks](https://img.shields.io/badge/.NET-10%20%7C%2011%20%7C%20netstandard2.0-purple?style=for-the-badge)](https://www.nuget.org/packages/Scott.Mail.Smtp2Go#supportedframeworks-body-tab)
 [![API coverage](https://img.shields.io/badge/SMTP2GO%20API-69%20of%2069%20endpoints-green?style=for-the-badge)](docs/api-coverage.md)
 [![Dependabot](https://img.shields.io/badge/dependabot-enabled-blue?style=for-the-badge&logo=dependabot)](.github/dependabot.yml)
-[![Downloads](https://img.shields.io/nuget/dt/Scott.Mail.Smtp2Go?style=for-the-badge)](https://www.nuget.org/packages?q=Tags%3Asmtp2go+id%3AScott.Mail)
+[![Downloads](https://img.shields.io/nuget/dt/Scott.Mail.Smtp2Go?style=for-the-badge)](https://www.nuget.org/packages?q=owner%3AScott-Software+tags%3Asmtp2go)
 [![ci](https://img.shields.io/github/actions/workflow/status/Jogai/Mail.Smtp2Go/ci.yml?branch=master&style=for-the-badge&label=ci)](https://github.com/Jogai/Mail.Smtp2Go/actions/workflows/ci.yml)
 [![License: LGPL-3.0-or-later](https://img.shields.io/badge/license-LGPL--3.0--or--later-blue?style=for-the-badge)](LICENSE)
 

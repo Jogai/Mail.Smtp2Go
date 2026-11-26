@@ -37,7 +37,7 @@ await client.Webhooks.EditAsync(new WebhookEditRequest { Id = id, Disabled = tru
 
 `AddOrUpdateByUrlAsync(request)` does not touch the flag. It lists the webhooks, edits the one whose `Url` matches and adds one otherwise, so a deployment can register its endpoint idempotently and the webhook id stays stable. Free plans allow one webhook, paid plans ten.
 
-`WebhookEmailEvent` has the eight values the `webhook/add` reference lists plus `Resubscribe`, and `WebhookSmsEvent` the five documented plus `OptOut`; both extras come from the event tables on the Webhooks Overview page rather than the endpoint reference. Requests refuse `Unknown` members through client-side validation.
+`WebhookEmailEvent` has the eight values the `webhook/add` reference lists plus `Resubscribe`, which comes from the event table on the Webhooks Overview page rather than the endpoint reference; `WebhookSmsEvent` has the six documented values, `OptOut` (`opt-out`) included. Requests refuse `Unknown` members through client-side validation.
 
 ### Choose JSON output
 

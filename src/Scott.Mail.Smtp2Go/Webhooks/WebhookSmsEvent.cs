@@ -4,8 +4,7 @@ using Scott.Mail.Smtp2Go.Json.Converters;
 namespace Scott.Mail.Smtp2Go;
 
 /// <summary>
-/// SMS events a webhook can subscribe to (<c>sms_events</c> on <c>webhook/add</c> and <c>webhook/edit</c>). The five documented values plus
-/// <see cref="OptOut"/>, which the Webhooks Overview lists as an SMS event but the <c>webhook/add</c> reference omits.
+/// SMS events a webhook can subscribe to (<c>sms_events</c> on <c>webhook/add</c> and <c>webhook/edit</c>): the six documented values.
 /// </summary>
 [JsonConverter(typeof(TolerantEnumConverter<WebhookSmsEvent>))]
 public enum WebhookSmsEvent
@@ -28,7 +27,7 @@ public enum WebhookSmsEvent
     /// <summary>The SMS network blocked the message.</summary>
     Rejected,
 
-    /// <summary>The recipient opted out of further messages. Listed in the overview, not in the <c>webhook/add</c> reference.</summary>
-    [JsonStringEnumMemberName("opt_out")]
+    /// <summary>The recipient opted out of further messages. Sent as <c>opt-out</c>; <c>opt_out</c> is also read.</summary>
+    [JsonStringEnumMemberName("opt-out")]
     OptOut,
 }

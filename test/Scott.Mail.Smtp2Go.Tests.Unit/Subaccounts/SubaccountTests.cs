@@ -25,13 +25,22 @@ public class SubaccountTests
     [Fact]
     public void Requests_serialise_the_documented_fields()
     {
-        Golden.AssertMatchesFixture(JsonSerializer.Serialize(new SubaccountAddRequest { FullName = "Test Person", SubaccountEmail = "test@example.com", Limit = 10000, DedicatedIp = false, Archiving = true, Enforce2fa = true, EnableSms = true, SmsLimit = 1000 }, Smtp2GoJsonContext.Default.SubaccountAddRequest), "Subaccounts/add-request.json");
-        Golden.AssertMatchesFixture(JsonSerializer.Serialize(new SubaccountEditRequest { Id = "34l8oj", FullName = "Renamed Person", Limit = 20000, DedicatedIp = false, Archiving = false, Enforce2fa = false, EnableSms = false, SmsLimit = 0 }, Smtp2GoJsonContext.Default.SubaccountEditRequest), "Subaccounts/edit-request.json");
+        Golden.AssertMatchesFixture(JsonSerializer.Serialize(new SubaccountAddRequest { FullName = "Test Person", SubaccountEmail = "test@example.com", Limit = 10000, DedicatedIp = false, Archiving = true, Enforce2fa = true, EnableSms = true, SmsLimit = 1000, IpPool = 1234 }, Smtp2GoJsonContext.Default.SubaccountAddRequest), "Subaccounts/add-request.json");
+        Golden.AssertMatchesFixture(JsonSerializer.Serialize(new SubaccountEditRequest { Id = "34l8oj", FullName = "Renamed Person", Limit = 20000, DedicatedIp = false, Archiving = false, Enforce2fa = false, EnableSms = false, SmsLimit = 0, IpPool = 1234 }, Smtp2GoJsonContext.Default.SubaccountEditRequest), "Subaccounts/edit-request.json");
         Golden.AssertMatchesFixture(JsonSerializer.Serialize(new SubaccountSearchRequest { FuzzySearch = false, SearchTerms = ["Test", "example.com"], States = SubaccountStateFilter.Active, SortDirection = SortDirection.Desc, PageSize = 50, ContinueToken = "eyJwYWdlIjoyfQ==" }, Smtp2GoJsonContext.Default.SubaccountSearchRequest), "Subaccounts/search-request.json");
         JsonSerializer.Serialize(new SubaccountSearchRequest(), Smtp2GoJsonContext.Default.SubaccountSearchRequest).Should().Be("{}");
         JsonSerializer.Serialize(new SubaccountSearchRequest { States = SubaccountStateFilter.All }, Smtp2GoJsonContext.Default.SubaccountSearchRequest).Should().Be("""{"states":"all"}""");
         JsonSerializer.Serialize(new SubaccountCloseRequest { Id = "34l8oj", Email = "test@example.com" }, Smtp2GoJsonContext.Default.SubaccountCloseRequest).Should().Be("""{"id":"34l8oj","email":"test@example.com"}""");
         JsonSerializer.Serialize(new SubaccountReopenRequest { Id = "34l8oj" }, Smtp2GoJsonContext.Default.SubaccountReopenRequest).Should().Be("""{"id":"34l8oj"}""");
+    }
+
+    [Fact]
+    public void Ip_pool_is_sent_only_when_set()
+    {
+        JsonSerializer.Serialize(new SubaccountAddRequest { FullName = "Test Person" }, Smtp2GoJsonContext.Default.SubaccountAddRequest).Should().Be("""{"fullname":"Test Person"}""");
+        JsonSerializer.Serialize(new SubaccountAddRequest { FullName = "Test Person", IpPool = 1234 }, Smtp2GoJsonContext.Default.SubaccountAddRequest).Should().Be("""{"fullname":"Test Person","ip_pool":1234}""");
+        JsonSerializer.Serialize(new SubaccountEditRequest { Id = "34l8oj" }, Smtp2GoJsonContext.Default.SubaccountEditRequest).Should().Be("""{"id":"34l8oj"}""");
+        JsonSerializer.Serialize(new SubaccountEditRequest { Id = "34l8oj", IpPool = 1234 }, Smtp2GoJsonContext.Default.SubaccountEditRequest).Should().Be("""{"id":"34l8oj","ip_pool":1234}""");
     }
 
     [Fact]

@@ -126,7 +126,7 @@ SMS is a paid add-on; `sms/send` needs it enabled on the account.
 
 | Method | Endpoint | Notes |
 | :-- | :-- | :-- |
-| `SendAsync(SmsSendRequest)` | `sms/send` | `Destination` (1 to 100 numbers with country code, `+` optional), `Content`, optional `Sender` (E.164). Returns `Statuses` (count per status), `TotalSent` and, per the schema, `Messages` with an `SmsStatus` each. No `subaccount_id`. |
+| `SendAsync(SmsSendRequest)` | `sms/send` | `Destination` (1 to 100 numbers with country code, `+` optional), `Content`, optional `Sender` (an E.164 number or a sender ID). Returns `Statuses` (count per status), `TotalSent` and, per the schema, `Messages` with an `SmsStatus` each. No `subaccount_id`. |
 | `GetSummaryAsync(SmsSummaryRequest)` | `sms/summary` | Totals and a row per subaccount for a period. |
 | `ViewReceivedAsync(SmsReceivedRequest)` | `sms/view-received` | Received messages; `UnixStart`/`UnixEnd` are `[Obsolete]` as the docs deprecate them. |
 | `ViewSentAsync(SmsSentRequest)` | `sms/view-sent` | Sent messages with `Status` as free text (`Message discarded`), `Units` and the destination country. |

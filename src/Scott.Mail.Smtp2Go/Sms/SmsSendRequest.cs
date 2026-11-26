@@ -14,7 +14,7 @@ public sealed record SmsSendRequest : IRequestValidator
     [JsonPropertyName("destination")]
     public required IReadOnlyList<string> Destination { get; init; }
 
-    /// <summary>The sending number in E.164 format; omit for the account's default sender. A shared number in the recipient's country is used when the countries differ.</summary>
+    /// <summary>The sending number (in E.164 format) or sender ID. When it is omitted, or the sender and recipient are in different countries, SMTP2GO tries one of the account's other senders.</summary>
     [JsonPropertyName("sender")]
     public string? Sender { get; init; }
 

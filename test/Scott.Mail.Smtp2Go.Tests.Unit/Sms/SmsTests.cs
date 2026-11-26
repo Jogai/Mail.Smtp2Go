@@ -97,6 +97,18 @@ public class SmsTests
     }
 
     [Fact]
+    public void Sender_may_be_a_sender_id()
+    {
+        SmsSendRequest request = new() { Destination = ["12025550959"], Sender = "ACME", Content = "hi" };
+        List<string> errors = [];
+
+        ((IRequestValidator)request).Validate(EndpointTable.Get("sms/send"), errors);
+
+        errors.Should().BeEmpty();
+        JsonSerializer.Serialize(request, Smtp2GoJsonContext.Default.SmsSendRequest).Should().Be("""{"destination":["12025550959"],"sender":"ACME","content":"hi"}""");
+    }
+
+    [Fact]
     public void Requests_are_validated()
     {
         List<string> errors = [];

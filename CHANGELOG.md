@@ -9,6 +9,7 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 ### Added
 
 - A `net11.0` target in all three packages.
+- `SubaccountAddRequest.IpPool` and `SubaccountEditRequest.IpPool` set a subaccount's default dedicated IP pool (`ip_pool`; ids from `client.DedicatedIps.ViewAsync()`).
 
 ### Changed
 
@@ -18,6 +19,14 @@ Pull requests opened by the `spec-drift` workflow record what changed in the pub
 ### Deprecated
 
 - The `net8.0` target: .NET 8 has been out of Microsoft support since November 2026. It still builds and ships unchanged in 1.x and will be removed in the next major version.
+
+### Fixed
+
+- `WebhookSmsEvent.OptOut` is sent as the documented `opt-out` instead of `opt_out`; responses are read in either spelling.
+
+### API compatibility
+
+- Spec snapshot of 2026-11-26: `ip_pool` on `subaccount/add` and `subaccount/edit`; `opt-out` added to the documented `sms_events` values of the webhook endpoints; the `sms/send` `sender` may now be a sender ID as well as an E.164 number (documentation only, `Sender` was never format-checked). No allow-list or validation-baseline changes.
 
 ## [1.5.0] - 2026-11-04
 

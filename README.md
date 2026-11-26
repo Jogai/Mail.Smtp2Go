@@ -8,7 +8,7 @@
 [![ci](https://img.shields.io/github/actions/workflow/status/Jogai/Mail.Smtp2Go/ci.yml?branch=master&style=for-the-badge&label=ci)](https://github.com/Jogai/Mail.Smtp2Go/actions/workflows/ci.yml)
 [![License: LGPL-3.0-or-later](https://img.shields.io/badge/license-LGPL--3.0--or--later-blue?style=for-the-badge)](LICENSE)
 
-A .NET client for the whole [SMTP2GO](https://www.smtp2go.com/) v3 API: sending (JSON, MIME, batch, scheduled), webhooks, reporting and statistics, templates, suppressions, allowed senders and recipients, API keys, SMTP users, domains, subaccounts, email archiving and SMS. Targets `netstandard2.0`, `net8.0` and `net10.0`, is trim- and AOT-compatible, sends the API key in a header rather than the body, surfaces the API's own error payloads as typed exceptions, and ships opt-in packages for `Microsoft.Extensions.DependencyInjection` and ASP.NET Core webhook endpoints.
+A .NET client for the whole [SMTP2GO](https://www.smtp2go.com/) v3 API: sending (JSON, MIME, batch, scheduled), webhooks, reporting and statistics, templates, suppressions, allowed senders and recipients, API keys, SMTP users, domains, subaccounts, email archiving and SMS. Targets `netstandard2.0`, `net8.0`, `net10.0` and `net11.0`, is trim- and AOT-compatible, sends the API key in a header rather than the body, surfaces the API's own error payloads as typed exceptions, and ships opt-in packages for `Microsoft.Extensions.DependencyInjection` and ASP.NET Core webhook endpoints. `net8.0` is deprecated: .NET 8 has been out of Microsoft support since November 2026, and the next major version drops it.
 
 ## Features
 
@@ -20,7 +20,7 @@ A .NET client for the whole [SMTP2GO](https://www.smtp2go.com/) v3 API: sending 
 - **Webhooks end to end.** Managing webhooks, parsing JSON and form-encoded callbacks into typed events (unknown fields land in `Extra`, custom headers in `CustomHeaders`), and `MapSmtp2GoWebhook` for ASP.NET Core with bearer or basic authentication, a source-IP allow-list and `IWebhookEventHandler<TEvent>` dispatch from the concrete event up to `WebhookEvent`.
 - **Paging and the archive.** `IAsyncEnumerable<T>` pagers over activity, templates, suppressions, subaccounts and the archive; downloading the original archived message.
 - **Observability.** An `ActivitySource` span per call, a `Meter` with request, duration and email-result instruments, and source-generated logging with stable event ids.
-- **Built to last.** `netstandard2.0`, `net8.0` and `net10.0`; trim- and AOT-compatible with source-generated JSON; the public API tracked with `PublicAPI.*.txt` and package validation against the previous release; the API reference harvested weekly into `docs/api-spec/`, with contract tests that fail when the models and the documentation disagree.
+- **Built to last.** `netstandard2.0`, `net8.0` (deprecated), `net10.0` and `net11.0`; trim- and AOT-compatible with source-generated JSON; the public API tracked with `PublicAPI.*.txt` and package validation against the previous release; the API reference harvested weekly into `docs/api-spec/`, with contract tests that fail when the models and the documentation disagree.
 
 ## Install
 

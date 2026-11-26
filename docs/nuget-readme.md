@@ -1,6 +1,6 @@
 # Scott.Mail.Smtp2Go
 
-A .NET client for the whole [SMTP2GO](https://www.smtp2go.com/) v3 API: sending (JSON, MIME, batch, scheduled), webhooks, reporting and statistics, templates, suppressions, allowed senders and recipients, API keys, SMTP users, domains, subaccounts, email archiving and SMS. Targets `netstandard2.0`, `net8.0` and `net10.0`, is trim- and AOT-compatible, sends the API key in a header rather than the body, and surfaces the API's own error payloads as typed exceptions.
+.NET (`netstandard2.0`, `net10.0` and `net11.0`) client for the whole [SMTP2GO](https://www.smtp2go.com/) v3 API: sending (JSON, MIME, batch, scheduled), webhooks, reporting and statistics, templates, suppressions, allowed senders and recipients, API keys, SMTP users, domains, subaccounts, email archiving and SMS. It is trim- and AOT-compatible, sends the API key in a header rather than the body, and surfaces the API's own error payloads as typed exceptions. A `net8.0` build is still included but deprecated: .NET 8 has been out of Microsoft support since November 2026, and the next major version drops it.
 
 ## Install
 

@@ -6,6 +6,8 @@ Install the core package and construct a client with an API key. `client.Email` 
 dotnet package add Scott.Mail.Smtp2Go
 ```
 
+The core package targets `netstandard2.0`, `net8.0`, `net10.0` and `net11.0`; the dependency injection and ASP.NET Core packages target `net8.0`, `net10.0` and `net11.0`. `net8.0` is deprecated: .NET 8 has been out of Microsoft support since November 2026, and the next major version drops it. On `net8.0` the packages depend on the 10.0.x `System.*` and `Microsoft.Extensions.*` packages, everywhere else on 11.0.x.
+
 ## Construct a client
 
 ```csharp

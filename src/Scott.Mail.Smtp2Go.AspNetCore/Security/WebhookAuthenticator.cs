@@ -7,7 +7,7 @@ namespace Scott.Mail.Smtp2Go.AspNetCore;
 /// <summary>
 /// Checks a request's <c>Authorization</c> header against the credentials configured with <c>RequireBasicAuth</c> and <c>RequireBearer</c>.
 /// SMTP2GO sends the webhook's <c>auth_header_type</c>/<c>auth_header_value</c> as that header, and URL userinfo (<c>https://user:pass@host/path</c>)
-/// as the same <c>Basic</c> header, so both configuration styles arrive here. Comparisons use <see cref="CryptographicOperations.FixedTimeEquals"/>.
+/// as the same <c>Basic</c> header, so both configuration styles arrive here. Comparisons use <see cref="CryptographicOperations.FixedTimeEquals(ReadOnlySpan{byte}, ReadOnlySpan{byte})"/>.
 /// </summary>
 internal static class WebhookAuthenticator
 {

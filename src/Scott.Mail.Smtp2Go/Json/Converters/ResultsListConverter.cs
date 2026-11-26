@@ -18,7 +18,7 @@ public sealed class ResultsListConverter<TItem> : JsonConverter<IReadOnlyList<TI
     public override IReadOnlyList<TItem>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         Argument.ThrowIfNull(options);
-        JsonTypeInfo<TItem> itemInfo = (JsonTypeInfo<TItem>)options.GetTypeInfo(typeof(TItem));
+        JsonTypeInfo<TItem> itemInfo = options.GetTypeInfo<TItem>();
         switch (reader.TokenType)
         {
             case JsonTokenType.Null:
@@ -53,7 +53,7 @@ public sealed class ResultsListConverter<TItem> : JsonConverter<IReadOnlyList<TI
         Argument.ThrowIfNull(writer);
         Argument.ThrowIfNull(value);
         Argument.ThrowIfNull(options);
-        JsonTypeInfo<TItem> itemInfo = (JsonTypeInfo<TItem>)options.GetTypeInfo(typeof(TItem));
+        JsonTypeInfo<TItem> itemInfo = options.GetTypeInfo<TItem>();
         writer.WriteStartArray();
         foreach (TItem item in value)
         {
